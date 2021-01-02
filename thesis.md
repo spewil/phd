@@ -1,5 +1,5 @@
 ---
-title: Sensorimotor Learning in Virtual Environment
+title: Sensorimotor Learning in Virtual Environments
 author: Spencer R. Wilson
 date: 1/1/2021
 toc-title: Contents
@@ -87,7 +87,7 @@ In piano performance, not all digits necessarily move for the production of a to
 
 The motor system is distributed in order to solve the redundancy problem as well as to learn new control schemes.
 
-### Analysis of the synergies underlying complex hand manipulation (Todorov & Ghahramani 2005)
+### Analysis of the synergies underlying complex hand manipulation (Todorov & Ghahramani 2005) blah blah blah blah blah blah
 
 > Remarkably, the dimensionality in the individuated joint task was 8.7, or only 2 higher. The latter task is designed to reveal the maximal number of degrees of freedom humans have access to. Why this number is not 20 is unclear; the most likely reason is biomechanical coupling, although limitations in neural control may also play a role. Furthermore, the number 8.7 intuitively seems too low ñ suggesting that such counting methods may underestimate the true dimensionality.
 

@@ -19,65 +19,91 @@ body {
   background: #fefefe;
 }
 
+#title-block-header{
+  padding: 30px;
+  width: 70%;
+}
+
+.title{
+  text-align: center;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.author {
+  text-align: center;
+  font-size: 1.2em;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.date {
+  text-align: center;
+  font-size: 1.2em;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 .toc-col {
   width: 30%; /* Set the width of the sidebar */
+  position: fixed;
+  top: 0; /* Stay at the top */
+  right: 0;
+  word-wrap: all;
+  height: 100%;
+  z-index: 1; /* Stay on top */
+  overflow-y: scroll;
 }
 
 .toc {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  right: 0;
-  overflow-x: hidden; /* Disable horizontal scroll */
+  margin-top: 400px;
   font-size: 13px;
-  /*padding-right: 30px;*/
+  margin-right: 10%
 }
 
 .main-col {
   margin-right: 30%; /*match the toc */
+  margin-left: 10%;
 }
 
 .main {
+  width: 90%
   margin-left: 5%;
-  margin-right: 10%;
+  margin-right: 5%;
 }
 
 
 @media screen and (max-width: 800px) {
   .toc-col {
     width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
     }
   .toc {
-    position: relative;
-    margin-left: 5%;
+    width: 70%;
+    margin: 0;
+    margin-left: 10%;
+    padding: 0;
   }
   .main-col {
     width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   .main{
-    margin: 50px;
+    width: 90%;
+    margin: 5%;
+    padding: 0;
   }
 
   #title-block-header{
-    width: 50%;
+    width: 90%;
+    margin: 5%;
+    padding: 0;
   }
-}
-
-#title-block-header{
-  padding: 30px;
-  width: 70%;
-}
-
-.author {
-  font-size: 1.2em;
-  text-align: left;
-}
-
-.date {
-  font-size: 1.2em;
-  text-align: left;
 }
 
 a {
