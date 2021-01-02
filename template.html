@@ -34,6 +34,7 @@
       $for(include-before)$
       $include-before$
       $endfor$
+
       $if(title)$
       <header id="title-block-header">
         <h1 class="title">$title$</h1>
@@ -44,30 +45,35 @@
         <p class="author">$author$</p>
         $endfor$
         $if(date)$
-        <p class="date">$date$</p>
+        <!-- <p class="date">$date$</p> -->
+        <p class="date">Last updated: <script> document.write(new Date().toLocaleDateString());</script></p>
+
         $endif$
       </header>
       $endif$
-      <div class="col">
+
       $if(toc)$
-      <div class="toc">
-        <nav id="$idprefix$TOC" role="doc-toc">
-          $if(toc-title)$
-          <h2 id="$idprefix$toc-title">$toc-title$</h2>
-          $endif$
-          $table-of-contents$
-        </nav>
+      <div class="toc-col">
+        <div class="toc">
+          <nav id="$idprefix$TOC" role="doc-toc">
+            $if(toc-title)$
+            <h2 id="$idprefix$toc-title">$toc-title$</h2>
+            $endif$
+            $table-of-contents$
+          </nav>
+        </div>
       </div>
       $endif$
-    </div>
-        <div class="col">
-      <div class="main">
-        $body$
-        $for(include-after)$
-        $include-after$
-        $endfor$
+
+      <div class="main-col">
+          <div class="main">
+            $body$
+            $for(include-after)$
+            $include-after$
+            $endfor$
+          </div>
       </div>
-    </div>
-    </div>
+
+
   </body>
 </html>

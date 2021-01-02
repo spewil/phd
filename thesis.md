@@ -1,3 +1,10 @@
+---
+title: Sensorimotor Learning in Virtual Environment
+author: Spencer R. Wilson
+date: 1/1/2021
+toc-title: Contents
+---
+
 <!--
 
 How does this document work?
@@ -7,46 +14,20 @@ Here is general stuff about the page. Below that add "mdmerge" CLI links to tran
 Then we run compile, a python script that invokes pypandoc, which adds a header and puts it all into a template which references pandoc.css
 
 TODO:
-	make the layout more small-screen friendly (rearrange the TOC)
-	think about how to include footnotes in the sidebar?
+	- make the layout more small-screen friendly (rearrange the TOC)
+	- think about how to include footnotes in the sidebar? (tufte pandoc css)
+		- combine tufte template with fixed table of contents (maybe on the left?)
+	- how do we output to pdf?
 
  -->
 
 ## Where are you?
 
-This is an experiment in creating an open kind of thesis. I would like to work together using the nonprofit <a href="https://web.hypothes.is/" target="_blank">Hypothes.is</a> toolkit to annotate this living document, for which we'll track changes using [git](www.github.com/spewil/). In less than two years, this page will represent the culminated collective effort of a few people to better understand the organizing principles of human motor learning.
+This is an experiment in creating an open kind of thesis. To start adding comments to this page, just highlight some text, click `annotate` and start typing. Note that you will have to a <a href="https://web.hypothes.is/" target="_blank">Hypothes.is</a> account, but it only takes a moment (and it's a nonprofit organization). Add as many comments as you like!
 
-To start adding comments to this page, just highlight some text, click `annotate` and start typing. Note that you will have to a <a href="https://web.hypothes.is/" target="_blank">Hypothes.is</a> account, but it only takes a second.
-
-## What am I doing?
+# Introduction
 
 I'm working on my PhD at the Sainsbury Wellcome Centre for Neural Circuits and Behavior in London. I'm setting up a family of experiments that I hope will test hypotheses about the organizing principles of sensorimotor control and learning. I'm setting up a task where I record from participants' muscles in their arms and hands using `electromyography`. Subjects' arms and hands are fixed in a brace, but as they send signals from their brain down to their spinal cords and ultimately to their muscles, my electrodes will sense this change in electrical potential and relay this change to the computer, which will reflect these changes through visuals shown on a screen. The object of the game is for the participant to learn which muscle activations correspond to which changes in the visual scene. You can think about this as a video game you're playing directly with your muscles.
-
-## PhD Timeline
-
-- Year 1 (October 2018 - October 2019)
-  - coursework (October 2018 - March 2019)
-  - <a href="/phd/rotations/mouse_ball.html" target="_blank">mouse wheel task in Mrsic-Flogel Lab</a> (Jan 2019 - March 2019)
-  - <a href="/phd/rotations/ctrl-labs.html" target="_blank">ctrl-labs rotation in NYC</a> (April 2019 - June 2019)
-  - <a href="https://www.sainsburywellcome.org/web/groups/murray-lab" target="_blank">MurrayLab rotation</a> (July 2019 - August 2019)
-  - <a href="https://github.com/swcphd/greyboxes" target="_blank">Organize SWC PhD Bootcamp</a> (September 2019)
-
-- Year 2 (October 2019 - October 2020)
-	- list of thesis committee members
-	- project proposal with literature search
-	- data club presentation / 6-month review (May)
-	- SfN poster introducing setup, concept
-	- final draft of project proposal
-	- introduction and background chapters
-	- upgrade / 2nd year review (October)
-	- preliminary task data
-- Year 3 (October 2020 - October 2021)
-	- finer-grained experiments, supporting experiments
-	- theory chapter
-	- modeling chapter
-- Year 4 (October 2020 - October 2021)
-
-# Purpose
 
 > The processes by which biological control solutions spanning large and continuous state spaces are constructed remain relatively unexplored. Future investigations may need to embed rich dynamical interactions between object dynamics and task goals in novel and complex movements [@McNamee2019].
 
@@ -54,70 +35,92 @@ We know surprisingly little about how this process unfolds in the brain. So litt
 
 To do this, I'll use the literature of reinforcement learning and optimal control theory to guide my theoretical understanding of what is happening when a subject begins to experience learning in this novel situation. I will model hypotheses of this learning process and compare these models to the large amounts of data my experimental setup will produce as we track learning of subjects over many sessions.
 
+## BMI
 
-# Biological Background
+## Arbitrary Visuomotor Mappings
 
-Muscles are collections of fibers that contract when chemical gradients are produced at the neuromuscular junction by action potentials emanating from neurons in the ventral horn of the spinal cord.
+There are several studies using non-EMG-driven sensorimotor mappings to study human motor control and learning.
 
-Electromyography is the detection of changes in chemical potential using electrodes. In my setup, we use a total 64 monopolar surface electrodes and monopolar needle electrodes to record chemical potentials from muscles in the forearm and hand.
+x * Remapping Hand Movements in a Novel Geometrical Environment
+https://www.ncbi.nlm.nih.gov/pubmed/16148276
 
-## Anatomy of the Hand and Forearm
+vocoder machine bell labs
 
-### Motor Units
+Hinton, Fells
 
-> The motor unit, namely a motoneurone and the many muscle fibres singularly innervated by branches of the motoneurone’s axon, is the quantal element underlying the transduction of neural commands driving the exquisite motor behaviours produced by the hand. (Fuglevand 2011)
+palsy study
 
-Experimental work characterizing motor unit properties in humans and other mammals has been consistent with regard to two findings(see Fuglevandet al.1993). First, twitch or tetanic forces of motor units that constitute a muscle vary over an extremely wide range, usually 100-fold or greater. And second, the frequency distribution of motor units according to force capacity is markedly skewed toward motor units that produce small forces, with few units that generate large forces. (Fuglevand 2011)
+takehome: humans are really good at learning tasks like these, especially with their hands. this type of dexterity is specific to primates if not humans. let's use this ability to understand and try to model how this learning process unfolds.
 
-One consequence of this organization is that fine resolution of force is an in-built control feature, such that when performing delicate motor tasks involving weak muscle contractions, subtle adjustments in force can be accomplished by drawing upon a large population of weak motor units. (*this is logarthmic in the number of units recruited*) (Fuglevand 2011)
-
-**Motor unit number itself seems to play a critical role in determining precision of muscle force. When human subjects attempt to produce a constant force during isometric contractions, the force inadvertently fluctuates about the specified target level. Such force variability increases in roughly in proportion to the target force(Enoka et  al.2003). Unexpectedly, this noise in force control is greater for hand muscles compared to more proximal muscles (Hamilton et al.2004). Furthermore,based on available estimates of motor unit numbers and computer simulation, a key factor underlying greater noisiness in hand muscles was relatively low numbers of motor units (Jones et al.2002; Hamilton et al.2004). In addition, augmented force variability in hand muscles maybe related to greater variability and common modulation in motor unit discharge rate compared to more proximal muscles (Negro et al.2009). Therefore, the widely held view that hand muscles are optimally designed for fine control may require reconsideration.** (Fuglevand 2011)
-
-While there are anatomical (Feinsteinet  al.1955) and electrophysiological (McComaset  al.1971; Bromberg,2007) means to estimate motor unit numbers in humans,both methods are susceptible to several sources of error.Perhaps the most reliable information at present available about relative numbers of motor units supplying different muscles comes from retrograde labelling of motoneurones in non-human primates. In such studies, intrinsic hand muscles have been shown to be innervated by ∼50–200 motoneurones, while more proximal muscles like biceps and triceps brachii are each supplied by more than 1000 motoneurones (Jenny & Inukai, 1983). (Fuglevand 2011)
-
-### Kinematics
-
-The human hand has approximately 20 degrees of freedom in its 19 joints, but the number of dominant modes of activity is much lower due to mechanical coupling.
-
-27 bones and 36 muscles (???)
-
-There are 31 muscles of different and often complex architecture involved in hand movement with 19 residing in the hand (the intrinsic hand muscles). The hand has 19 articulations, 18 tendons crossing the wrist, and at least 25 degrees of freedom. (Duinen & Gandevia 2011)
-
-### Thumb
-
-The human thumb confers great scope for dexterity and its long length relative to the index gives it the highest ‘opposability index’ among primates (Napier, 1972), while its rotated first metacarpal and unique carpometacarpal joint enhance its range of movement for grasping and manipulation (Wood-Jones, 1949). Furthermore, the thumb is moved by a muscle in the forearm, ﬂexor pollicis longus (FPL), which provides the only way to ﬂex its distal joint and is rudimentary in apes. (Hiske van Duinen and Simon C. Gandevia 2011)
-
-The presence of FPL in humans is associated with a high capacity to s ense thumb voluntary forces at remarkably low levels compared even to intrinsic hand muscles (muscles with their origin and insertion in the hand; Kilbreath & Gandevia, 1993) and to detect length changes at its distal joint (Refshauge et al. 1998). (Hiske van Duinen and Simon C. Gandevia 2011)
-
-### Hand
-
-The intrinsic hand muscles can also be activated almost maximally (e.g. Merton, 1954; Herbert & Gandevia, 1996), but they are special in that they can b e ‘controlled’ at very low levels, even below the recruitment threshold for the earliest recruited units (Gandevia & Rothwell, 1987). (Duinen & Gandevia 2011)
-
-### Forearm
-
-the deep flexor attaches to the distal phalanx
-the superficial flexor attaches to the middle phalanx
-
-The main finger extensor, extensor digitorum (ED), when active generates torque about the elbow, wrist, metacarpalphalanegeal, proximal interphalangeal and distal interphalangeal joints simultaneously (Anet  al.1981). Moreover, ED, likeits flexor counterparts, flexor digitorum superficialis and flexor digitorum profundus, gives rise to four distal tendons that insert into each of the fingers.Therefore, attempts to move a single finger in isolation require that other muscles be co-activated to counteract the unwanted  actions produced by the agonist (Schieber, 1995; Valero-Cuevas, 2000). (Fuglevand 2011)
-
-Three major forearm muscles consist of multiple muscle bellies with tendons to each finger so that the muscles have four ‘compartments’ (Duinen & Gandevia 2011)
-
-Force and displacement interactions can occur within muscles, an issue of particular concern given that ﬂexor digitorum profundus (FDP), ﬂexor digitorum superficialis (FDS) and extensor digitorum (ED) are muscles with tendons to each of the fingers. These interactions may occur, for example, because a motor unit’s territory is such that force is ‘injected’ into more than one distal tendon. This sort of ‘lateral’ force transmission exerted by individual muscle fibres and motor units can be significant in some animal preparations (e.g. Street, 1983; see also Young et al. 2000). The topic of lateral force transmission is controversial but it appears that such an effect can even result in inter-muscle force transfer (e.g. for review Patel & Lieber, 1997; Huijing, 1999, 2009). This process has been most studied in the lower limb for gastrocnemius and soleus in animals (for details see Maas & Sandercock, 2008) but some evidence exists for it in humans (e.g. Bojsen-Moller et al. 2010). However, the unresolved issues are the magnitude of these effects and the conditions under which they are functionally significant. (Duinen & Gandevia 2011)
-
-If hand muscles do not always behave as simple in-line motors, then the spread of their mechanical effects must depend on the links of force–length curve, viscoelastic properties, and the changes induced by muscle contractions. Such detailed biomechanical information is largely lacking. (Duinen & Gandevia 2011)
-
-Spillover has been shown in experiments studying the ‘recruitment thresholds’ (defined below) of motor units ac ting on other digits during single digit contractions (Kilbreath & Gandevia, 1994; Butler et al. 2005; van Duinen et al. 2009). In these experiments, motor units were recorded from one (test) compartment of the respective muscles, while subjects were asked to contract the compartment of the other digits up to 50% of their maximal force. When the subjects contracted these other digits (one by one), motor units of the test compartment were often recruited. The amount of force produced by the other digits at the time of recruitment of the motor unit of the test compartment is termed the recruitment threshold. The general finding for all three muscles was that, the closer the contracting compartment to the test finger, the more motor units were recruited. (Duinen & Gandevia 2011)
-
-One has to ask whether this spillover is functional. Is the frequent recruitment of motor units ac ting on the little finger when we extend the thumb part of a fixed pattern of muscle activation, perhaps to balance forces around the wrist? (Duinen & Gandevia 2011)
-
-Until recently, most studies looked at either flexion or extension, but when we compare the amount of enslavement in flexion and extension, the enslaved forces in extension are higher than in flexion, when recorded in the same apparatus. We hypothesise that the level of enslavement might depend on the amount of individual daily usage (for data on usage see Ingram et al. 2008). (Duinen & Gandevia 2011)
-
-When multiple digits had to contract, the subjects were not able to reach their maximal force, thus showing a force ‘deﬁcit’. These deﬁcits may be comparable to those when trying to produce force with two hands or arms, a phenomenon known as the bilateral deﬁcit (Gandevia, 2001).
+**_What does this give us that a force-field reaching task can't?_**
 
 
-### Muscle Spindles
 
-Arm  movements  are  sensed  via  distributed  and  individually  ambiguous  activity  patterns  of  muscle  spindles,which depend on relative joint configurations rather than the absolute hand position.  Interpreting this high dimensional  input  (around  50  muscles  for  a  human  arm)  of  distributed information at the relevant behavioral level poses a challenging  decoding  problem  for  the  central  nervous  system. Proprioceptive information from the receptors undergoes several  processing  steps  before  reaching  somatosensory  cortex (3,8) - from the spindles that synapse in Clarke’s nucleus, to cuneate nucleus, thalamus (3,9), and finally to somatosensory cortex (S1).   In cortex,  a number of tuning properties have been observed, such as responsiveness to varied combinations of joints and muscle lengths (10,11), sensitivity to different loads and angles (12), and broad and unimodal tuning for movement direction during arm movements (11,13).The proprioceptive information in S1 is then hypothesized to serve as the basis of a wide variety of tasks, via its connections to motor cortex and higher somatosensory processing regions. (Sandbrink & Mathis, 2020)
+## Muscle Synergies
+
+* Neural basis for hand muscle synergies in the primate spinal cord
+https://www.ncbi.nlm.nih.gov/pubmed/28739958
+
+Two  mutually  non-exclusive  scenarios  can  be envisioned as to how corticospinal (and reticulospinal –see Baker, 2011, this issue) pathways might be organized to coordinate the activities of multiple muscles needed to perform finger movements (Schieber, 1990). In one,separate pathways operate on each of the requisite motor nuclei. In the other, selection of the muscles into functional groups is determined in part by the pattern of divergence of individual descending pathways across different motor nuclei in the spinal cord. This latter type of organization,while less flexible, might underlie the assemblage of muscles into synergistic groups that serve as the building blocks of the behavioural repertoire of an animal. In contrast to the extrinsic muscles of the dominant hand described above, virtually no short-term synchrony was observed across intrinsic muscles participating in the precision grip (McIsaac & Fuglevand, 2008). This result suggests that the descending pathways that control the activities of intrinsic muscles provide more concentrated input to individual motor nuclei than those pathways destined for motor nuclei innervating extrinsic hand muscles. The contrasting organizations of the descending pathways targeting extrinsic and intrinsic muscles seem in harmony with postulated functions of these two groups of muscles(Longet al.1970). Intrinsic muscles configure the digits to the unique dimensions of an object to be handled. HighlyFigure 5. Mean (SD) common input strength (CIS – index representing magnitude of short-term synchrony; Nordstrometal.1992) for pairs of motor units residing in the same compartment or adjacent compartments of three human multi-tendoned hand muscles, extensor digitorum (ED), flexor digitorum superficialis (FDS) and flexor digitorum profundus(FDP)Mean (SD) CIS values: ED same=0.70 (0.30), ED adjacent=0.41(0.18), FDS same=0.45 (0.30), FDS adjacent=0.27 (0.17), FDPsame=0.47 (0.19), FDP adjacent=0.36 (0.21). Values inside ofbars indicate number of motor unit pairs. Data compiled from:†Keen & Fuglevand (2004b); McIsaac & Fuglevand (2007); McIsaac& Fuglevand (unpublished data); Winges & Santello (2004).independent pathways, therefore, enable the fractionated actions of the digits needed for such a function. Extrinsic muscles provide the primary gripping forces during object manipulation. Because gripping necessitates the production of precisely counterbalanced forces between the thumb and one or more fingers, extrinsic muscles have their activities linked by divergent descending inputs. (Fuglevand 2011)
+
+### Precision Grip
+
+Results imply that descending pathways diverge extensively to operate on the two motor nuclei supplying thumb and index finger muscles as a unit and thereby compel them to operate in unison. Interestingly, such across-muscle synchrony was seen only in the dominant but not in the non-dominant hand (Fig. 4). Whether such lateralized differences are laid down early in development or represent plastic changes associated with chronic usage are questions currently under investigation. (Fuglevand 2011)
+
+Statistics of Natural Movements Are Reflected in Motor Errors (Wolpert)
+https://www.ncbi.nlm.nih.gov/pubmed/19605616
+
+Structural Learning, Wolpert+Braun+Mehring
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2692080/
+
+### Skilled Piano Performance
+
+In piano performance, for keystrokes with each of the four fingers during playing various tone sequences, the hand kinematics was characterized by three distinct patterns of finger joint coordination (Furuya et al., 2011a). The motion of the striking finger was consistent across these patterns, whereas the motion of the non-striking fingers differed across them. This was interpreted as evidence for the independence of movements across fingers. In addition, the amount of movement covariation between the striking and non-striking fingers was similar, independent of which finger was used for a keystroke. The finding was in contrast to non-musicians who displayed a hierarchy of independence of finger movements, the middle and ring fingers being less individuated than the index and little fingers (Häger-Ross and Schieber, 2000; Zatsiorsky et al., 2000). The equal independence of movements across fingers can be therefore achieved by extensive piano training. This idea is supported by superior independence of finger movement control for pianists as compared to non-musicians (Slobounov et al., 2002; Aoki et al., 2005), which possibly occurs due to changes at biomechanical and neural levels (Chiang et al., 2004; Smahel and Klimová, 2004). (Shinichi Furuya* and Eckart Altenmüller 2013)
+
+In piano performance, not all digits necessarily move for the production of a tone. Depending on contexts and task demands, some digits either move anticipatorily to facilitate production of upcoming acoustic events or even do not have to move. The former anticipatory modification of the movements is called coarticulation and serves as a mechanism that ensures smooth succession of sequential movements such as speech (Ostry et al., 1996) and finger spelling (Jerde et al., 2003). This coarticulation was also evident in piano playing, particularly when the hand posture changes dynamically (Engel et al., 1997). For example, the fingers and wrist initiated preparatory motions 500 ms prior to the thumb-under maneuver, which facilitated the subsequent horizontal translation of the hand. Finger muscular activity also provided evidence supportive for co-articulation in piano playing (Winges et al., 2013). The balance of burst amplitudes across multiple muscles depended on the characteristics of the preceding and subsequent keypresses, forming neuromuscular co-articulation throughout the time course of sequential finger movements. (Shinichi Furuya* and Eckart Altenmüller 2013)
+
+
+
+### Muscular and Postural Synergies of the Human Hand (Weiss & Flanders 2004)
+
+> Single motor units receive a variety of motor commands, and the net result may be that neighboring units in the same muscle are preferentially recruited to produce forces in different directions 3D space or to hold the hand in different static postures. The corollary to this is that a given force or posture involves a collection of units that spans many muscles.
+
+The motor system is distributed in order to solve the redundancy problem as well as to learn new control schemes.
+
+### Analysis of the synergies underlying complex hand manipulation (Todorov & Ghahramani 2005)
+
+> Remarkably, the dimensionality in the individuated joint task was 8.7, or only 2 higher. The latter task is designed to reveal the maximal number of degrees of freedom humans have access to. Why this number is not 20 is unclear; the most likely reason is biomechanical coupling, although limitations in neural control may also play a role. Furthermore, the number 8.7 intuitively seems too low ñ suggesting that such counting methods may underestimate the true dimensionality.
+
+### The statistics of natural hand movements (Ingram & Wolpert 2008)
+
+
+### Neural Basis of Muscle Synergies, Bizzi Cheung 2013
+
+
+### Greg Wayne Deep Learning Motor Control
+
+> There are many variations on the motor synergy concept61; here we mean functional couplings of different joints or muscles such that motor control operates at the level of multi-joint coordination patterns ratherthan through independent control of all joints. Producing actionsat this slightly higher level of abstraction can facilitate explorationand learning of new skills as well as simplify planning. (Wayne Nature Comms Hierarchical Motor Control)
+
+There is a longstanding debate about the origins of muscle synergies that strongly mirrors the nature-nuture debate. Are synergies learned or are they hardwired? If they're hardwired, what physiological subsystem contains this hardwiring? We don't need to take a side because there is clear evidence that humans overcome synergies to adapt their motor outputs to solve novel tasks and overcome all types of changes in the motor loop (injury, fatigue, prism goggles, etc.) via well-studied (in laboratory tasks at least) adaptation mechanisms [Helmholtz, Wolpert, Todorov, newer work on synergy shifts such as [@DeRugy2012,Berger2013]. The more interesting questions ask on what timescales and by what mechanisms does learning occur, and can we reverse engineer paradigms and tasks that improve the learning rate.
+
+Note that there are a great number of tasks, and the case for synergies in the motor system cannot be answered simply. Here we are concerned with motions of the hand because we know that this is the endpoint of CM connections. There are many fewer tasks dealing with this system in particular. Most tasks deal with arm reaching, though the most highly cited synergy paper deals with a 1DOF kick [@DAvella2003].
+
+
+### Todorov 2009
+
+From a 2009 review suggesting exactly the work that our hunch is leading us towards:
+
+> First, analyses such as that performed by Valero-Cuevas et al. [42] and Kutch et al. [40] should be done across many different behaviors and a wider range of behavioral conditions to evaluate whether the structure in the variability of muscle activation patterns is consistent with the muscle synergy hypothesis. Although the analyses used in those experiments exploit some ideal features of finger control, similar experiments should be possible in other behaviors and would help address concerns about synergies arising from task constraints. Second, it should be possible to use synergies to explain suboptimal performance of the CNS [70]. If the CNS has access to a limited set of synergies at a particular time based on the tasks that it currently is able to accomplish, this should suggest that some new tasks should be easier to perform than others [44 ]: if the muscle activation patterns required by the new task lay within the space defined by existing muscle synergies, learning the new task should be relatively easy. In contrast, if the required activations lay outside that space, then the learning should be more difficult and initial performance should be suboptimal. Designing such tasks requires an accurate musculoskeletal model along with knowledge of the existing muscle synergies which would make it possible to predict which tasks would be easy and which would be difficult to learn.
+
+Additionally, the review authors provide an argument for a developmental basis of the synergies we find in EMG recordings:
+
+> Rather than considering muscle synergies as reflecting a strategy for the simplification of control, we suggest that synergies might be considered in the larger context of the intimate interactions between the properties of the musculoskeletal system and neural control strategies. In this context, muscle synergies could be considered as reflecting the statistics of the external world, acknowledging the fact that the external world also consists of the musculoskeletal system itself. In the same way that properties of natural scenes might influence the structure of the visual system, we suggest that statistics of the musculoskeletal system and external world might influence the structure of motor systems.
+
+Note that the authors' second suggestion has been tested in a reaching task. The results concorded with the hypothesis from the quoted review, as we would expect:
+
+> After compatible virtual surgeries, a full range of movements could still be achieved recombining the synergies, whereas after incompatible virtual surgeries, new or modified synergies would be required. Adaptation rates after the two types of surgery were compared. If synergies were only a parsimonious description of the regularities in the muscle patterns generated by a nonmodular controller, we would expect adaptation rates to be similar, as both types of surgeries could be compensated with similar changes in the muscle patterns. In contrast, as predicted by modularity, we found strikingly faster adaptation after compatible surgeries than after incompatible ones.
+
+However, seeing that the mapping between the recorded EMG and the output was a multilinear regression based on a calibration dataset which was grossly altered for the surgery, I do not find it surprising that the learning curves were different after the two surgeries.
 
 ## Corticomotoneuronal Connections
 
@@ -232,8 +235,6 @@ Statement of unknowns about how dynamics are shifted at the MU level in terms of
 Indirect control of MU synchronization might also be mediated by supraspinal modulation of the Renshaw decorrelating action (Gelfand et al. 1963; Adam et al. 1978), or by enhanced activity of spindle afferents via selective activation of gamma-motoneurons (Rudomin 1989). These possibilities suggest further experiments to resolve the neural mechanisms by which humans could rapidly alter short-term synchrony of MUs and, by implication, control the proportion of last-order common inputs to motoneurons. [Schmeid, 1993]
 
 
-# Theory Background
-
 ## Task Formalization
 
 In this task, the subject's first goal is to interact through an unknown visuomotor mapping and internalize this model. The second problem is to use this model to solve a control problem.
@@ -339,308 +340,19 @@ In the LQG setting, this might be called "adaptive LQG".
 - We might hypothesize that a subject will act as randomly as possible while minimizing cost, a maximum entropy solution that converges to an optimal controller? $\mathcal{H}(p(u_t|x_t))$
 - How does a subject penalize changes to their controllers? Do they follow a KL-divergence type of measurement when improving their policy?
 
-## Motor Adaptation
+# Theory
 
-Implicit / Explicit
-Model-based / Model-free
-Slow / Fast
+## Error-based Learning
 
+## Optimal Feedback Control
 
-Krakauer et al.'s categorization of motor learning places prior work into the following classes:
-- Adaptation
-- Sequence Learning
-- De Novo Learning
-- Motor Acuity
-- Expertise
+## KL-control and Composition
 
-work in reaching
+## Generalized Policy Selection
 
-shadmehr, krakaur reviews
 
-### State-space Models of Motor Adaptation
 
-*Modeling Sensorimotor Learning with Linear Dynamical Systems* by Cheng and Sabes, 2006. The goal is to model trial-by-trial learning by fitting data to a linear dynamical system model. Here we'll call $F_t$ the **sensorimotor mapping** transforming inputs $w_t$ to $y_t$ outputs per trial:
 
-$$
-y_t = F_t(w_t, \gamma_t).
-$$
-
-This can be thought of as a mapping from inputs within a single trial to, for example, endpoint error. Noise is captured by the $\gamma_t$. The trajectory in $F$ space attempts to capture the process of learning. The learning rule $L_t$ can be written
-
-$$F_{t+1} = L_t\left(\left\{F_\tau\right\}_{\tau=1}^{t}, u_t, \eta_t, t\right)$$
-
-where $\left\{F_\tau\right\}_{\tau=1}^{t}$ is the history of the mapping, $u_t$ is the history of the total inputs to learning which could encompass $y$, $w$, and exogenous inputs $r$. Noise in the learning is captured by $\eta$.
-
-We can approximate this learning problem using linear equations by assuming that $L_t=L \ \forall \ t$ is stationary, $F_t$ is parameterized by $x_t\in\mathbb{R}^y$. Thus,
-
-$$
-\begin{aligned}
-y_t &= F(x_t, w_t, \gamma_t) \\
-x_{t+1} &= L(x_t, u_t, \eta_t).
-\end{aligned}
-$$
-
-The trial-to-trial input-output mapping $F$ is now fixed, and is transformed by trial through its parameters $x_t$ by $L$. Note that both mappings are Markovian and there are two input vectors, one for within-trial and one between-trial. These can include overlap. We can now linearize these mappings around an equilibrium point:
-
-$$
-\begin{aligned}
-x_{t+1} - x_e &= A(x_t-x_e) + B(u_t-u_e) + \eta_t \\
-y_t - m_e &= C(x_t-x_e) + D(w_t-w_e) + \gamma_t
-\end{aligned}
-$$
-
-As shown by Cheng and Sabes, we can bundle the equilibrium terms into a bias term and drop this term if we mean-subtract our data ($x_t, y_t, u_t, w_t$) when it's time to fit. This gives us a simple linear dynamical system:
-
-$$
-\begin{aligned}
-x_{t+1} &= Ax_t + Bu_t + \eta_t \\
-y_t &= Cx_t + Dw_t + \gamma_t.
-\end{aligned}
-$$
-
-The first equation governs the evolution of parameters of the within-trial input-output mapping, while the second equation governs the trial output given the current within-trial mapping parameters $x_t$ and learning inputs $w_t$. The parameters $x_t$ are hidden variables that are only observed through the output $y_t$. The noise terms $\eta_t$ and $\gamma_t$ are normally distributed with covariances $Q$ and $R$, respectively. $A$ governs the passive trajectory of $x_t$. If $A=\mathbb{I}$, $x_t$ does not decay passively.
-
-There is a general form for this model which separates endogenous input $y_t$ from exogenous input $r_t$
-
-$$
-\begin{aligned}
-x_{t+1} &= Ax_t + [G \ H][r_t \ y_t]^T + \eta_t \\
-y_t &= Cx_t + Dw_t + \gamma_t
-\end{aligned}
-$$
-
-where $H$ governs biases in directions of the outputs. A unbiased output is isotropic. To add
-explicit stationary bias we write
-
-$$
-\begin{aligned}
-x_{t+1} &= Ax_t + Gr_t + Hy_t - Hb_x + \eta_t.
-\end{aligned}
-$$
-
-### Example Models
-
-#### Feedback Error Learning
-
-$$x_t+1 = Ax_t + [H\ H][-y_t^*\ y_t]^T$$
-
-The second term is simply the difference between the output $y_t$ and the desired output $y_t^*$.
-
-#### Prediction Error Learning
-
-Let $u_t = y_t - \hat{y}_t$ where $\hat{y}_t$, the difference between the output and the predicted output such that
-
-$\hat{y}_t = Cx_t + Dw_t$. Thus,$\hat{y}_t$ is a kind of forward model. Plugging in,
-
-$$x_{t+1} = Ax_t + Bu_t + \eta_t$$
-
-becomes
-
-$$
-\begin{aligned}
-x_{t+1} &= Ax_t + B(y_t - Cx_t - Dw_t) + \eta_t \\
-x_{t+1} &= (A-BC)x_t + By_t - BDw_t + \eta_t
-\end{aligned}
-$$
-
-#### Target Prediction Error Learning
-
-Now let $u_t = \hat{y}_t - y^*_t$, the difference between predicted
-output and target output.
-
-$$
-\begin{aligned}
-x_{t+1} &= Ax_t + B(Cx_t + Dw_t - y^*_t) + \eta_t \\
-x_{t+1} &= (A+BC)x_t + BDw_t - By^*_t + \eta_t
-\end{aligned}
-$$
-
-#### Steady State
-
-If we take the output and state vectors in expectation for constant
-inputs $w$ and $r$, we have
-
-$$
-\begin{aligned}
-y_\infty &= \lim_{t\to\infty}\mathbb{E}\left[Cx_\infty + Dw\right] \\
-x_\infty &= \lim_{t\to\infty}\mathbb{E}\left[Ax_\infty + Bu\right] \\
-&= Ax_\infty + Gr + Hy_\infty \\
-&= Ax_\infty + Gr + HCx_\infty + HDw \\
--(A + HC - \mathbb{I})x_\infty &= HDw + Gr.
-\end{aligned}
-$$
-
-Thus, the
-eigenvalues of $A + HC$ must be less than or equal to 1 for $x_\infty$
-to be stable in expectation.
-
-### Critique
-
-> It should be emphasized, however, that these models are not intended to provide a mechanistic explanation of adaptation—they do not explain why adaptation has the properties it does. They explain neither why compensation for a perturbation decays, nor why people learn at the rate they do. However, these models do encapsulate a set of simple assumptions about how learning might occur on a single-trial timescale, and allow us to predict behavior in response to sustained or fluctuating perturbations over many trials. (Krakauer)
-
-> [Bayesian theories of learning] hold that adaptation is essentially a problem of estimating the properties of the imposed perturbation, given uncertainty about sensory feedback and the state of the world. Mathematically, under certain assumptions (that the noise/variability is Gaussian in both cases), this Bayesian estimation framework becomes equivalent to a Kalman filter (219)—a common algorithm for optimally tracking dynamic states under noisy observations— which is almost identical to a state-space model. (Krakauer)
-
-
-## Two-rate models
-
-$$
-\begin{align*}
-X_{t+1} &= X^{s}_{t} + X^f_t \\
-X^s_{t+1} &= L_s \cdot e_t + R_s \cdot X^s_{t} \\
-X^f_{t+1} &= L_f \cdot e_t + R_f \cdot X^f_{t} \\
-\end{align*}
-$$
-
-where we fit $L_i and R_i$, the learning rate and retention parameters. (shadmehr 2006)
-
-> Observations have revealed that there is far more to how participants compensate for an imposed perturbation than just implicit recalibration of a pre-existing motor controller. Instead, multiple, qualitatively different processes occur during adaptation tasks; for example, processes driven by explicit, cognitive strategies. When it comes to studying implicit recalibration, these other processes can be a contaminant. At the same time, however, these additional processes likely reflect the involvement of similar mechanisms to those responsible for more general motor skill learning. (Krakauer 2019 Motor Learning Review)
-
-> it is unlikely that the underlying components that contribute to learning in adaptation paradigms only differ in terms of their learning and retention rates, as the two- state model suggests. The multiple components of learning instead correspond to entirely distinct learning processes that are simultaneously brought to bear on the same problem. (Krakauer 2019 Motor Learning Review)
-
-## Unsupervised Feature Extraction
-
-We want to determine a redundant control space from data taken during natural activity. The difficulty with this is that such a natural activity manifold may display spatial (channel-wise) correlations that are possibly physiologically separable. Thus, there are two aims   which must be addressed separately:
-
-1. Expore subjects' ability to decorrelate descending output to the muscles which have been shown to be correlated in a natural activity dataset.
-    - Such a structured exploration might provide support for the hypothesis that "synergies" are flexible correlations between muscles driven by task demands rather than (or in addition to) physiological structure. This needs to be done incredibly carefully to escape criticism of hard-wired synergy enthusiasts.
-    - See *de Rugy 2012* for a critique of OFC and hard-wired synergies
-2. Use common correlated outputs to develop a family of BMI-type learning tasks as a proxy for a "novel skill", then track motor planning of this new skill to compare with motor planning algorithms.
-    - We might be able to get #1 for free by going after this goal if we're careful in the setup
-    - This is arguably a more impactful focus as it connects low-level motor hierarchy data (EMG) to high-level planning with a normative hypothesis.
-
-Electrode data from a single trial of a single session is held in a data matrix $X$ (n_electrodes, n_samples), and we wish to find a latent weight matrix $W$ (n_electrodes, n_components) which reconstructs $X$ by projecting latent trajectories $H$ (n_components, n_samples) into electrode space:
-
-$$
-X = W\cdot{H}
-$$
-
-$H$ is the activity of the latent processes, and $W$ is there mixing matrix. The columns of $W$ are the principal vectors spanning the latent subspace in electrode space. If we have new samples, we can project these new points onto this subspace:
-
-$$
-h_{new} = W^T\cdot{w_{new}}
-$$
-
-To justify this decomposition, we have to make some assumptions about the nature of the EMG signal, namely that the signal is linear instantaneous (each EMG sample can be instantly mapped to control space). The other assumption is that the basis $W$ should be orthonormal, that the columns of $W$ are orthogonal with unity norm. This ensures that the left inverse $W^{-1}$ is equal to the transpose $W^T$ such that:
-
-$$
-\begin{align}
-X &= W\cdot{H} \\
-W^{-1}\cdot{X} &= {H} \\
-W^{T}\cdot{X} &= {H}
-\end{align}
-$$
-
-See *Muceli 2014* for use of the Moore-Penrose pseudoinverse in place of the transpose when the columns of $W$ do not form an orthonormal basis. This would be the case for NMF. Is there a factorization that produces nonnegative, orthogonal coordinates? Or is the pseudoinverse okay? I will need to test this.
-
-Stated in an information theoretic way, we want to minimize the reconstruction loss $\mathcal{L}$ for our derived encoder-decoder pair ($E$,$D$). We're decoding high dimensional activity into its latent dimensions, and encoding back into the high dimensional space. :
-
-$$
-\min_{E,D}{\mathcal{L}\left[X - EDX\right]}
-$$
-
-This way, forget about orthonormality and solve for an encoder and decoder directly. That is, $E\neq{D}$ is perfectly acceptable.
-
-Each row of $D$ might be called a **spatial filter**, a linear combination of electrode activities into a surrogate, hopefully more intuitive space.
-
-In general to find such a basis we must :
-
-- Extract "natural activity manifold" from freeform data
-- Use features of this natural subspace to derive control mapping
-  - Linear iid features:
-    - PCA
-    - dPCA
-    - NMF
-    - ICA
-  - Linear time-dependent features:
-    - SSA
-    - LDS model / PGM
-  - Nonlinear
-    - autoencoders
-    - networks
-
-The behaviors present in our calibration dataset are crucial, as they determine the spatial correlations used to generate the mapping. If only complex, multi-muscle movements are present in the calibration, it will be impossible to decode subtle movements involving few muscles. Additionally, because extraction is unsupervised, it will be impossible to know how to alter the control basis directions (if we wish to do so) such that they involve single muscles or the smallest sets of muscles.
-
-Ultimately, we want to find reproducible features in our data that are due to muscle coordination alone, rather than volitional movements. We want the lowest level covariance that reflects physiology rather than a task-level behavioral description (see *Todorov, Ghahramani 2005* and *Ingram, Wolpert 2009*). The idea is that if we collect data from enough tasks, we can extract the common modes of muscle activity. This is true only if we are sampling uniformly from the space of tasks. Otherwise one task, and therefore one coordination pattern, will be overrepresented.
-
-## Policy Gradient
-
-> The Reward Hypothesis: That all of what we mean by goals and purposes can be well thought of as the maximization of the expected value of the cumulative sum of a received scalar signal (called reward).
-
-As an RL practitioner and researcher, one’s job is to find the right set of rewards for a given problem known as reward shaping.
-
-> Reinforcement Learning Objective: Maximize the “expected” reward following a parametrized policy.
-
-$$
-\begin{align*}
-J(\theta) &= \mathbb{E}_{\tau \sim p_\theta(\tau)}\sum_t^H{r(s_t,a_t)} \\
-& \approx \frac{1}{N}\sum^{N paths}_n\sum_t^H{r(s^{(n)}_t,a^{(n)}_t)}
-\end{align*}
-$$
-
-This is the policy gradient objective, the future expected return in an episode of time steps $H$. The factor $a$ is a discount, $\gamma^k$ or $1/H$ for discounted and average reward objectives, respectively. This is the expectation over the roll-outs / trajectories governed by the current policy. Thus it is "on-policy".
-
-
-
-The general (episodic) gradient update
-
-$$
-\begin{align*}
-\theta_{h+1} = \theta_h + \alpha_h\nabla_\theta J(\theta=\theta_h)
-\end{align*}
-$$
-
-The policy parameter gradient update step:
-
-$$
-\begin{align*}
-\theta_{t+1} = \theta_t + \alpha\hat{Q}(s,a)\nabla_\theta\log{\pi_\theta}(s|a)
-\end{align*}
-$$
-
-We don't know the $Q$-value weighting, but we can approximate it with $\hat{Q}$. Subtracting V(s) from Q(s, a), we get the advantage function A(s, a) which removes common value between actions. This is a specific form of the baseline in REINFORCE. The log-derivative is due to
-
-$$
-\begin{align*}
-\theta_{t+1} &= \theta_t + \alpha\hat{A}(s,a)\nabla_\theta\log{\pi_\theta}(s|a) \\
-&= \theta_t + \alpha\hat{A}(s,a)\frac{\nabla\pi_\theta(s|a)}{\pi_\theta(a|s)}
-\end{align*}
-$$
-
-
-
-### Problems with Policy Gradient
-
-- by definition on-policy (need to forget data very fast in order to avoid the introduction of a bias to the gradient estimator); not sample efficient
-- only converge to a local maximum of which there may be many
-- requires considerable knowledge about the system one wants to control to make reasonable policy definitions
-- always requires a free learning rate parameter
-
-
-
-
-Jan Peters (2010), Scholarpedia, 5(11):3698.
-
-
-
-# Experimental Setup
-
-## Hardware
-
-There are two streams in the setup's hardware:
-1. Electrode to Computer
-2. Everything else
-
-The first stream handles the motion of electrodes perturbed by the electric field created due to synapses at the muscle and captured by the sensor circuit. The second stream handles the mechanical constraints around the subject's arm and hand during data acquisition. This second stream fixes the arm and hand in place in order to limit data to isometric contractions.
-
-### Electrode Hardware
-
-<p align="center">
-  <img src="images/press_fit.jpg" width="250" />
-  <img src="images/hinge.jpg" width="250" />
-</p>
-
-
-### Fixture Hardware
 
 
 ## Bibliography
