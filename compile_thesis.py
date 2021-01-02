@@ -11,7 +11,6 @@
 import pypandoc
 import jinja2
 from pathlib import Path
-import markdown
 
 file_loader = jinja2.FileSystemLoader('.')
 env = jinja2.Environment(loader=file_loader)
@@ -32,17 +31,18 @@ def main():
         "--include-in-header",  # custom header -- so I can add hypothesis, etc
         "header.html",
         "--template",
-        "template.html"
+        "template.html",
+        "--citeproc"
     ]
-    filters = ['pandoc-citeproc']
+    # filters = ['pandoc-citeproc']
     input_path = Path("thesis.md")
     output_path = input_path.parent / Path("index.html")
     # processFile(input_path, "thesis_toc.md")
     html = pypandoc.convert_file(input_path.name,
                                  'html5',
                                  format='md',
-                                 extra_args=pdoc_args,
-                                 filters=filters)
+                                 extra_args=pdoc_args)
+    # filters=filters)
     doc = template.render(content=html)
     with open(output_path, 'w') as outfile:
         outfile.write(doc)
