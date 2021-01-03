@@ -57,6 +57,8 @@
                         <li><a href="#where-are-you">Where are you?</a></li>
                         <li><a href="#introduction">Introduction</a>
                         <ul>
+                        <li><a href="#brain-dumppppp">brain dumppppp</a></li>
+                        <li><a href="#sfn-abstract">SfN abstract</a></li>
                         <li><a href="#bmi">BMI</a></li>
                         <li><a href="#arbitrary-visuomotor-mappings">Arbitrary Visuomotor Mappings</a></li>
                         <li><a href="#muscle-synergies">Muscle Synergies</a>
@@ -74,6 +76,7 @@
                         <ul>
                         <li><a href="#porter-lemon">Porter &amp; Lemon</a></li>
                         </ul></li>
+                        <li><a href="#unsupervised-feature-extraction">Unsupervised Feature Extraction</a></li>
                         <li><a href="#task-formalization">Task Formalization</a>
                         <ul>
                         <li><a href="#questions">Questions</a></li>
@@ -116,12 +119,60 @@
             <h2 id="where-are-you">Where are you?</h2>
             <p>This is an experiment in creating an open kind of thesis. To start adding comments to this page, just highlight some text, click <code>annotate</code> and start typing. Note that you will have to a <a href="https://web.hypothes.is/" target="_blank">Hypothes.is</a> account, but it only takes a moment (and it’s a nonprofit organization). Add as many comments as you like!</p>
             <h1 id="introduction">Introduction</h1>
-            <p>I’m working on my PhD at the Sainsbury Wellcome Centre for Neural Circuits and Behavior in London. I’m setting up a family of experiments that I hope will test hypotheses about the organizing principles of sensorimotor control and learning. I’m setting up a task where I record from participants’ muscles in their arms and hands using <code>electromyography</code>. Subjects’ arms and hands are fixed in a brace, but as they send signals from their brain down to their spinal cords and ultimately to their muscles, my electrodes will sense this change in electrical potential and relay this change to the computer, which will reflect these changes through visuals shown on a screen. The object of the game is for the participant to learn which muscle activations correspond to which changes in the visual scene. You can think about this as a video game you’re playing directly with your muscles.</p>
+            <h2 id="brain-dumppppp">brain dumppppp</h2>
+            <p>I’m working on my PhD at the Sainsbury Wellcome Centre for Neural Circuits and Behavior in London.</p>
+            <p>I’m setting up a family of experiments that I hope will test hypotheses about the organizing principles of sensorimotor control and learning.</p>
+            <p>I’m setting up a task where I record from participants’ muscles in their arms and hands using <code>electromyography</code>.</p>
+            <p>Subjects’ arms and hands are fixed in a brace, but as they send signals from their brain down to their spinal cords and ultimately to their muscles, my electrodes will sense this change in electrical potential and relay this change to the computer, which will reflect these changes through visuals shown on a screen.</p>
+            <p>The object of the game is for the participant to learn which muscle activations correspond to which changes in the visual scene.</p>
+            <p>You can think about this as a video game you’re playing directly with your muscles.</p>
             <blockquote>
             <p>The processes by which biological control solutions spanning large and continuous state spaces are constructed remain relatively unexplored. Future investigations may need to embed rich dynamical interactions between object dynamics and task goals in novel and complex movements.<span class="citation" data-cites="McNamee2019"><sup><a href="#ref-McNamee2019" role="doc-biblioref">1</a></sup></span></p>
             </blockquote>
             <p>We know surprisingly little about how this process unfolds in the brain. So little, in fact, that we haven’t quite figured out what the brain is actually doing. We know that it is involved in these muscle contractions, but what sort of strategy do you use to explore this space of possible mappings between what you experience when you move and what you expect to see and feel as a result? This is the question I hope to make headway on.</p>
             <p>To do this, I’ll use the literature of reinforcement learning and optimal control theory to guide my theoretical understanding of what is happening when a subject begins to experience learning in this novel situation. I will model hypotheses of this learning process and compare these models to the large amounts of data my experimental setup will produce as we track learning of subjects over many sessions.</p>
+            <h2 id="sfn-abstract">SfN abstract</h2>
+            <p>A considerable amount of research has focused on the existence of synergies as a simplifying structure in the motor system. We believe that the concept of synergies is often attributed to the process of motor control as opposed to a strict structural constraint. In this work, we use a bespoke experimental setup to track spatiotemporal dynamics of synergistic muscle activations across learning in a virtual, high-dimensional, electromyographic-driven task involving muscle contractions of the hand and forearm. We find that over trials the motor system adapts its synergistic action to fulfill the predefined task requirements in an optimal manner.</p>
+            <ul>
+            <li>engineering
+            <ul>
+            <li>recording 64 channels of EMG from multiple muscles the arm and hand with realtime feedback</li>
+            <li>in an isometric learning task</li>
+            </ul></li>
+            <li>dimensionality reduction
+            <ul>
+            <li>static weights</li>
+            <li>synergies shift</li>
+            </ul></li>
+            <li>novel rig / setup</li>
+            <li>compare to previous approaches</li>
+            <li>enables novel approaches to analysis of high dimensional neural data</li>
+            <li>hypothesis: ?</li>
+            </ul>
+            <p>abstract We propose a high-density closed-loop EMG-driven setup to study human motor learning on a virtual task driven directly by muscle activation.</p>
+            <ul>
+            <li>rig methods</li>
+            <li>task methods
+            <ul>
+            <li>calibration –&gt; choice of movements/task</li>
+            <li>training –&gt; choice of mappings/feedback</li>
+            </ul></li>
+            <li>analysis
+            <ul>
+            <li>existing constraints from calibration data?</li>
+            <li>learning curve in task space</li>
+            <li>shift in synergies – time evolution of covariance?</li>
+            <li>perturbation response?</li>
+            </ul></li>
+            <li>modeling
+            <ul>
+            <li>LQG predictions</li>
+            <li>SDN? look at stats</li>
+            <li>choice of gradients</li>
+            <li>comparison of muscle-level stats</li>
+            <li>LQG lesioning</li>
+            </ul></li>
+            </ul>
             <h2 id="bmi">BMI</h2>
             <h2 id="arbitrary-visuomotor-mappings">Arbitrary Visuomotor Mappings</h2>
             <p>There are several studies using non-EMG-driven sensorimotor mappings to study human motor control and learning.</p>
@@ -239,6 +290,69 @@
             <p>The present changes in short-term synchronization were detected in the course of the conditioning session and must reflect rapid alterations in the relative contributions of common inputs. One direct mechanism would involve a change in the proportion of descending monosynaptic input, such as the corticomotoneuronal cells that strongly affect EDC motoneurons (Phillips and Porter 1977; Fetz and Cheney 1980). [Schmeid, 1993]</p>
             <p>Statement of unknowns about how dynamics are shifted at the MU level in terms of spinal circuitry:</p>
             <p>Indirect control of MU synchronization might also be mediated by supraspinal modulation of the Renshaw decorrelating action (Gelfand et al. 1963; Adam et al. 1978), or by enhanced activity of spindle afferents via selective activation of gamma-motoneurons (Rudomin 1989). These possibilities suggest further experiments to resolve the neural mechanisms by which humans could rapidly alter short-term synchrony of MUs and, by implication, control the proportion of last-order common inputs to motoneurons. [Schmeid, 1993]</p>
+            <h2 id="unsupervised-feature-extraction">Unsupervised Feature Extraction</h2>
+            <p>We want to determine a redundant control space from data taken during natural activity. The difficulty with this is that such a natural activity manifold may display spatial (channel-wise) correlations that are possibly physiologically separable. Thus, there are two aims which must be addressed separately:</p>
+            <ol type="1">
+            <li>Expore subjects’ ability to decorrelate descending output to the muscles which have been shown to be correlated in a natural activity dataset.
+            <ul>
+            <li>Such a structured exploration might provide support for the hypothesis that “synergies” are flexible correlations between muscles driven by task demands rather than (or in addition to) physiological structure. This needs to be done incredibly carefully to escape criticism of hard-wired synergy enthusiasts.</li>
+            <li>See <em>de Rugy 2012</em> for a critique of OFC and hard-wired synergies</li>
+            </ul></li>
+            <li>Use common correlated outputs to develop a family of BMI-type learning tasks as a proxy for a “novel skill”, then track motor planning of this new skill to compare with motor planning algorithms.
+            <ul>
+            <li>We might be able to get #1 for free by going after this goal if we’re careful in the setup</li>
+            <li>This is arguably a more impactful focus as it connects low-level motor hierarchy data (EMG) to high-level planning with a normative hypothesis.</li>
+            </ul></li>
+            </ol>
+            <p>Electrode data from a single trial of a single session is held in a data matrix <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math> (n_electrodes, n_samples), and we wish to find a latent weight matrix <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math> (n_electrodes, n_components) which reconstructs <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math> by projecting latent trajectories <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math> (n_components, n_samples) into electrode space:</p>
+            <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi>W</mi><mo>⋅</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">
+            X = W\cdot{H}
+            </annotation></semantics></math></p>
+            <p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math> is the activity of the latent processes, and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math> is there mixing matrix. The columns of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math> are the principal vectors spanning the latent subspace in electrode space. If we have new samples, we can project these new points onto this subspace:</p>
+            <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mrow><mi>n</mi><mi>e</mi><mi>w</mi></mrow></msub><mo>=</mo><msup><mi>W</mi><mi>T</mi></msup><mo>⋅</mo><msub><mi>w</mi><mrow><mi>n</mi><mi>e</mi><mi>w</mi></mrow></msub></mrow><annotation encoding="application/x-tex">
+            h_{new} = W^T\cdot{w_{new}}
+            </annotation></semantics></math></p>
+            <p>To justify this decomposition, we have to make some assumptions about the nature of the EMG signal, namely that the signal is linear instantaneous (each EMG sample can be instantly mapped to control space). The other assumption is that the basis <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math> should be orthonormal, that the columns of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math> are orthogonal with unity norm. This ensures that the left inverse <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>W</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">W^{-1}</annotation></semantics></math> is equal to the transpose <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>W</mi><mi>T</mi></msup><annotation encoding="application/x-tex">W^T</annotation></semantics></math> such that:</p>
+            <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right"><mi>X</mi></mtd><mtd columnalign="left"><mo>=</mo><mi>W</mi><mo>⋅</mo><mi>H</mi></mtd></mtr><mtr><mtd columnalign="right"><msup><mi>W</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⋅</mo><mi>X</mi></mtd><mtd columnalign="left"><mo>=</mo><mi>H</mi></mtd></mtr><mtr><mtd columnalign="right"><msup><mi>W</mi><mi>T</mi></msup><mo>⋅</mo><mi>X</mi></mtd><mtd columnalign="left"><mo>=</mo><mi>H</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+            \begin{align}
+            X &amp;= W\cdot{H} \\
+            W^{-1}\cdot{X} &amp;= {H} \\
+            W^{T}\cdot{X} &amp;= {H}
+            \end{align}
+            </annotation></semantics></math></p>
+            <p>See <em>Muceli 2014</em> for use of the Moore-Penrose pseudoinverse in place of the transpose when the columns of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>W</mi><annotation encoding="application/x-tex">W</annotation></semantics></math> do not form an orthonormal basis. This would be the case for NMF. Is there a factorization that produces nonnegative, orthogonal coordinates? Or is the pseudoinverse okay? I will need to test this.</p>
+            <p>Stated in an information theoretic way, we want to minimize the reconstruction loss <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mstyle mathvariant="script"><mi>ℒ</mi></mstyle><annotation encoding="application/x-tex">\mathcal{L}</annotation></semantics></math> for our derived encoder-decoder pair (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math>,<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>). We’re decoding high dimensional activity into its latent dimensions, and encoding back into the high dimensional space. :</p>
+            <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>min</mo><mrow><mi>E</mi><mo>,</mo><mi>D</mi></mrow></munder><mrow><mstyle mathvariant="script"><mi>ℒ</mi></mstyle><mrow><mo stretchy="true" form="prefix">[</mo><mi>X</mi><mo>−</mo><mi>E</mi><mi>D</mi><mi>X</mi><mo stretchy="true" form="postfix">]</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">
+            \min_{E,D}{\mathcal{L}\left[X - EDX\right]}
+            </annotation></semantics></math></p>
+            <p>This way, forget about orthonormality and solve for an encoder and decoder directly. That is, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>≠</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">E\neq{D}</annotation></semantics></math> is perfectly acceptable.</p>
+            <p>Each row of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math> might be called a <strong>spatial filter</strong>, a linear combination of electrode activities into a surrogate, hopefully more intuitive space.</p>
+            <p>In general to find such a basis we must :</p>
+            <ul>
+            <li>Extract “natural activity manifold” from freeform data</li>
+            <li>Use features of this natural subspace to derive control mapping
+            <ul>
+            <li>Linear iid features:
+            <ul>
+            <li>PCA</li>
+            <li>dPCA</li>
+            <li>NMF</li>
+            <li>ICA</li>
+            </ul></li>
+            <li>Linear time-dependent features:
+            <ul>
+            <li>SSA</li>
+            <li>LDS model / PGM</li>
+            </ul></li>
+            <li>Nonlinear
+            <ul>
+            <li>autoencoders</li>
+            <li>networks</li>
+            </ul></li>
+            </ul></li>
+            </ul>
+            <p>The behaviors present in our calibration dataset are crucial, as they determine the spatial correlations used to generate the mapping. If only complex, multi-muscle movements are present in the calibration, it will be impossible to decode subtle movements involving few muscles. Additionally, because extraction is unsupervised, it will be impossible to know how to alter the control basis directions (if we wish to do so) such that they involve single muscles or the smallest sets of muscles.</p>
+            <p>Ultimately, we want to find reproducible features in our data that are due to muscle coordination alone, rather than volitional movements. We want the lowest level covariance that reflects physiology rather than a task-level behavioral description (see <em>Todorov, Ghahramani 2005</em> and <em>Ingram, Wolpert 2009</em>). The idea is that if we collect data from enough tasks, we can extract the common modes of muscle activity. This is true only if we are sampling uniformly from the space of tasks. Otherwise one task, and therefore one coordination pattern, will be overrepresented.</p>
             <h2 id="task-formalization">Task Formalization</h2>
             <p>In this task, the subject’s first goal is to interact through an unknown visuomotor mapping and internalize this model. The second problem is to use this model to solve a control problem.</p>
             <ol type="1">

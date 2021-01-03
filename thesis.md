@@ -27,13 +27,62 @@ This is an experiment in creating an open kind of thesis. To start adding commen
 
 # Introduction
 
-I'm working on my PhD at the Sainsbury Wellcome Centre for Neural Circuits and Behavior in London. I'm setting up a family of experiments that I hope will test hypotheses about the organizing principles of sensorimotor control and learning. I'm setting up a task where I record from participants' muscles in their arms and hands using `electromyography`. Subjects' arms and hands are fixed in a brace, but as they send signals from their brain down to their spinal cords and ultimately to their muscles, my electrodes will sense this change in electrical potential and relay this change to the computer, which will reflect these changes through visuals shown on a screen. The object of the game is for the participant to learn which muscle activations correspond to which changes in the visual scene. You can think about this as a video game you're playing directly with your muscles.
+## brain dumppppp
+
+I'm working on my PhD at the Sainsbury Wellcome Centre for Neural Circuits and Behavior in London.
+
+I'm setting up a family of experiments that I hope will test hypotheses about the organizing principles of sensorimotor control and learning.
+
+I'm setting up a task where I record from participants' muscles in their arms and hands using `electromyography`.
+
+Subjects' arms and hands are fixed in a brace, but as they send signals from their brain down to their spinal cords and ultimately to their muscles, my electrodes will sense this change in electrical potential and relay this change to the computer, which will reflect these changes through visuals shown on a screen.
+
+The object of the game is for the participant to learn which muscle activations correspond to which changes in the visual scene.
+
+You can think about this as a video game you're playing directly with your muscles.
 
 > The processes by which biological control solutions spanning large and continuous state spaces are constructed remain relatively unexplored. Future investigations may need to embed rich dynamical interactions between object dynamics and task goals in novel and complex movements [@McNamee2019].
 
 We know surprisingly little about how this process unfolds in the brain. So little, in fact, that we haven't quite figured out what the brain is actually doing. We know that it is involved in these muscle contractions, but what sort of strategy do you use to explore this space of possible mappings between what you experience when you move and what you expect to see and feel as a result? This is the question I hope to make headway on.
 
 To do this, I'll use the literature of reinforcement learning and optimal control theory to guide my theoretical understanding of what is happening when a subject begins to experience learning in this novel situation. I will model hypotheses of this learning process and compare these models to the large amounts of data my experimental setup will produce as we track learning of subjects over many sessions.
+
+
+## SfN abstract
+
+A considerable amount of research has focused on  the existence of synergies as a simplifying structure in the motor system. We believe that the concept of synergies is often attributed to the process of motor control as opposed to a strict structural constraint. In this work, we use a bespoke experimental setup to track spatiotemporal dynamics of synergistic muscle activations across learning in a virtual, high-dimensional, electromyographic-driven task involving muscle contractions of the hand and forearm. We find that over trials the motor system adapts its synergistic action to fulfill the predefined task requirements in an optimal manner.
+
+- engineering
+	- recording 64 channels of EMG from multiple muscles the arm and hand with realtime feedback
+	- in an isometric learning task
+- dimensionality reduction
+	- static weights
+	- synergies shift
+- novel rig / setup
+- compare to previous approaches
+- enables novel approaches to analysis of high dimensional neural data
+- hypothesis: ?
+
+abstract
+We propose a high-density closed-loop EMG-driven setup to study human motor learning on a virtual task driven directly by muscle activation.
+
+
+- rig methods
+- task methods
+	- calibration --> choice of movements/task
+	- training --> choice of mappings/feedback
+- analysis
+	- existing constraints from calibration data?
+	- learning curve in task space
+	- shift in synergies -- time evolution of covariance?
+	- perturbation response?
+- modeling
+	- LQG predictions
+	- SDN? look at stats
+	- choice of gradients
+	- comparison of muscle-level stats
+	- LQG lesioning
+
 
 ## BMI
 
@@ -234,6 +283,70 @@ Statement of unknowns about how dynamics are shifted at the MU level in terms of
 
 Indirect control of MU synchronization might also be mediated by supraspinal modulation of the Renshaw decorrelating action (Gelfand et al. 1963; Adam et al. 1978), or by enhanced activity of spindle afferents via selective activation of gamma-motoneurons (Rudomin 1989). These possibilities suggest further experiments to resolve the neural mechanisms by which humans could rapidly alter short-term synchrony of MUs and, by implication, control the proportion of last-order common inputs to motoneurons. [Schmeid, 1993]
 
+## Unsupervised Feature Extraction
+
+We want to determine a redundant control space from data taken during natural activity. The difficulty with this is that such a natural activity manifold may display spatial (channel-wise) correlations that are possibly physiologically separable. Thus, there are two aims   which must be addressed separately:
+
+1. Expore subjects' ability to decorrelate descending output to the muscles which have been shown to be correlated in a natural activity dataset.
+    - Such a structured exploration might provide support for the hypothesis that "synergies" are flexible correlations between muscles driven by task demands rather than (or in addition to) physiological structure. This needs to be done incredibly carefully to escape criticism of hard-wired synergy enthusiasts.
+    - See *de Rugy 2012* for a critique of OFC and hard-wired synergies
+2. Use common correlated outputs to develop a family of BMI-type learning tasks as a proxy for a "novel skill", then track motor planning of this new skill to compare with motor planning algorithms.
+    - We might be able to get #1 for free by going after this goal if we're careful in the setup
+    - This is arguably a more impactful focus as it connects low-level motor hierarchy data (EMG) to high-level planning with a normative hypothesis.
+
+Electrode data from a single trial of a single session is held in a data matrix $X$ (n_electrodes, n_samples), and we wish to find a latent weight matrix $W$ (n_electrodes, n_components) which reconstructs $X$ by projecting latent trajectories $H$ (n_components, n_samples) into electrode space:
+
+$$
+X = W\cdot{H}
+$$
+
+$H$ is the activity of the latent processes, and $W$ is there mixing matrix. The columns of $W$ are the principal vectors spanning the latent subspace in electrode space. If we have new samples, we can project these new points onto this subspace:
+
+$$
+h_{new} = W^T\cdot{w_{new}}
+$$
+
+To justify this decomposition, we have to make some assumptions about the nature of the EMG signal, namely that the signal is linear instantaneous (each EMG sample can be instantly mapped to control space). The other assumption is that the basis $W$ should be orthonormal, that the columns of $W$ are orthogonal with unity norm. This ensures that the left inverse $W^{-1}$ is equal to the transpose $W^T$ such that:
+
+$$
+\begin{align}
+X &= W\cdot{H} \\
+W^{-1}\cdot{X} &= {H} \\
+W^{T}\cdot{X} &= {H}
+\end{align}
+$$
+
+See *Muceli 2014* for use of the Moore-Penrose pseudoinverse in place of the transpose when the columns of $W$ do not form an orthonormal basis. This would be the case for NMF. Is there a factorization that produces nonnegative, orthogonal coordinates? Or is the pseudoinverse okay? I will need to test this.
+
+Stated in an information theoretic way, we want to minimize the reconstruction loss $\mathcal{L}$ for our derived encoder-decoder pair ($E$,$D$). We're decoding high dimensional activity into its latent dimensions, and encoding back into the high dimensional space. :
+
+$$
+\min_{E,D}{\mathcal{L}\left[X - EDX\right]}
+$$
+
+This way, forget about orthonormality and solve for an encoder and decoder directly. That is, $E\neq{D}$ is perfectly acceptable.
+
+Each row of $D$ might be called a **spatial filter**, a linear combination of electrode activities into a surrogate, hopefully more intuitive space.
+
+In general to find such a basis we must :
+
+- Extract "natural activity manifold" from freeform data
+- Use features of this natural subspace to derive control mapping
+  - Linear iid features:
+    - PCA
+    - dPCA
+    - NMF
+    - ICA
+  - Linear time-dependent features:
+    - SSA
+    - LDS model / PGM
+  - Nonlinear
+    - autoencoders
+    - networks
+
+The behaviors present in our calibration dataset are crucial, as they determine the spatial correlations used to generate the mapping. If only complex, multi-muscle movements are present in the calibration, it will be impossible to decode subtle movements involving few muscles. Additionally, because extraction is unsupervised, it will be impossible to know how to alter the control basis directions (if we wish to do so) such that they involve single muscles or the smallest sets of muscles.
+
+Ultimately, we want to find reproducible features in our data that are due to muscle coordination alone, rather than volitional movements. We want the lowest level covariance that reflects physiology rather than a task-level behavioral description (see *Todorov, Ghahramani 2005* and *Ingram, Wolpert 2009*). The idea is that if we collect data from enough tasks, we can extract the common modes of muscle activity. This is true only if we are sampling uniformly from the space of tasks. Otherwise one task, and therefore one coordination pattern, will be overrepresented.
 
 ## Task Formalization
 

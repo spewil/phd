@@ -1,12 +1,61 @@
 # Introduction
 
-I'm working on my PhD at the Sainsbury Wellcome Centre for Neural Circuits and Behavior in London. I'm setting up a family of experiments that I hope will test hypotheses about the organizing principles of sensorimotor control and learning. I'm setting up a task where I record from participants' muscles in their arms and hands using `electromyography`. Subjects' arms and hands are fixed in a brace, but as they send signals from their brain down to their spinal cords and ultimately to their muscles, my electrodes will sense this change in electrical potential and relay this change to the computer, which will reflect these changes through visuals shown on a screen. The object of the game is for the participant to learn which muscle activations correspond to which changes in the visual scene. You can think about this as a video game you're playing directly with your muscles.
+## brain dump
+
+I'm working on my PhD at the Sainsbury Wellcome Centre for Neural Circuits and Behavior in London.
+
+I'm setting up a family of experiments that I hope will test hypotheses about the organizing principles of sensorimotor control and learning.
+
+I'm setting up a task where I record from participants' muscles in their arms and hands using `electromyography`.
+
+Subjects' arms and hands are fixed in a brace, but as they send signals from their brain down to their spinal cords and ultimately to their muscles, my electrodes will sense this change in electrical potential and relay this change to the computer, which will reflect these changes through visuals shown on a screen.
+
+The object of the game is for the participant to learn which muscle activations correspond to which changes in the visual scene.
+
+You can think about this as a video game you're playing directly with your muscles.
 
 > The processes by which biological control solutions spanning large and continuous state spaces are constructed remain relatively unexplored. Future investigations may need to embed rich dynamical interactions between object dynamics and task goals in novel and complex movements [@McNamee2019].
 
 We know surprisingly little about how this process unfolds in the brain. So little, in fact, that we haven't quite figured out what the brain is actually doing. We know that it is involved in these muscle contractions, but what sort of strategy do you use to explore this space of possible mappings between what you experience when you move and what you expect to see and feel as a result? This is the question I hope to make headway on.
 
 To do this, I'll use the literature of reinforcement learning and optimal control theory to guide my theoretical understanding of what is happening when a subject begins to experience learning in this novel situation. I will model hypotheses of this learning process and compare these models to the large amounts of data my experimental setup will produce as we track learning of subjects over many sessions.
+
+
+## SfN abstract
+
+A considerable amount of research has focused on  the existence of synergies as a simplifying structure in the motor system. We believe that the concept of synergies is often attributed to the process of motor control as opposed to a strict structural constraint. In this work, we use a bespoke experimental setup to track spatiotemporal dynamics of synergistic muscle activations across learning in a virtual, high-dimensional, electromyographic-driven task involving muscle contractions of the hand and forearm. We find that over trials the motor system adapts its synergistic action to fulfill the predefined task requirements in an optimal manner.
+
+- engineering
+	- recording 64 channels of EMG from multiple muscles the arm and hand with realtime feedback
+	- in an isometric learning task
+- dimensionality reduction
+	- static weights
+	- synergies shift
+- novel rig / setup
+- compare to previous approaches
+- enables novel approaches to analysis of high dimensional neural data
+- hypothesis: ?
+
+abstract
+We propose a high-density closed-loop EMG-driven setup to study human motor learning on a virtual task driven directly by muscle activation.
+
+
+- rig methods
+- task methods
+	- calibration --> choice of movements/task
+	- training --> choice of mappings/feedback
+- analysis
+	- existing constraints from calibration data?
+	- learning curve in task space
+	- shift in synergies -- time evolution of covariance?
+	- perturbation response?
+- modeling
+	- LQG predictions
+	- SDN? look at stats
+	- choice of gradients
+	- comparison of muscle-level stats
+	- LQG lesioning
+
 
 ## BMI
 
