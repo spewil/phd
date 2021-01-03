@@ -99,15 +99,7 @@ what questions model parameters can answer?
 
 todo:
 - what is the appropriate (quadratic) cost function for this task?
--
 
-## moravec paradox
-
-There’s something called the Moravec paradox which I’ve mentioned in the past.
-
-“it is comparatively easy to make computers exhibit adult level performance on intelligence tests or playing checkers, and difficult or impossible to give them the skills of a one-year-old when it comes to perception and mobility”
-
-Robotics embodies the Moravec paradox. There’s a sort of corollary to this that people who work in the tiny field of “actual AI” (as opposed to ML ding dongs who got above their station) used to know about. This was before the marketing departments of google and other frauds made objective thought about this impossible. The idea is that intelligence and consciousness arose spontaneously out of biological motion control systems.
 
 ## goal
 

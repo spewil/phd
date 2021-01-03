@@ -1,6 +1,16 @@
 # Introduction
 
-## brain dump
+Named after roboticist Hans Moravec, the Moravec Paradox states that it is easier to generate artificially intelligent performance on tasks such as chess which we think of as intellectually challenging than to provide a machine with the faculties we take for granted such as movement. Under this lens, the human motor system is an incredible feat of evolution which produces not only only
+
+This thesis attempts to make incremental progress on advancing the ability of machines to move naturally by studying the movement of human subjects in controlled experiments and working to test models of natural movement by comparing with the collected data.
+
+
+$$
+\begin{align*}
+x + 5 &= y - 7 \\
+c &= y + ge
+\end{align*}
+$$
 
 I'm working on my PhD at the Sainsbury Wellcome Centre for Neural Circuits and Behavior in London.
 
@@ -19,6 +29,17 @@ You can think about this as a video game you're playing directly with your muscl
 We know surprisingly little about how this process unfolds in the brain. So little, in fact, that we haven't quite figured out what the brain is actually doing. We know that it is involved in these muscle contractions, but what sort of strategy do you use to explore this space of possible mappings between what you experience when you move and what you expect to see and feel as a result? This is the question I hope to make headway on.
 
 To do this, I'll use the literature of reinforcement learning and optimal control theory to guide my theoretical understanding of what is happening when a subject begins to experience learning in this novel situation. I will model hypotheses of this learning process and compare these models to the large amounts of data my experimental setup will produce as we track learning of subjects over many sessions.
+
+## proposal
+
+Even inane tasks such as bringing a glass of water to your lips are routinely referred to in the control literature as a “problem” despite being effortless for the majority of people. A recent review provides a clear call to action:
+
+> The processes by which biological control solutions spanning large and continuous state spaces are constructed remain relatively unexplored. Future investigations may need to embed rich dynamical interactions between object dynamics and task goals in novel and complex movements [@McNamee2019].
+
+For my PhD project, I propose developing a real-time, high-dimensional electromyography (EMG) pipeline to create closed-loop virtual motor learning experiments with human sub- jects which involve tasks with precisely this kind of dynamical richness. We aim to build on our current understanding and models of continuous control in humans with an eye towards illustrating how the variability in our motor output evolves over learning a novel, highly-skilled task.
+In particular, the human hand is a unique evolutionary invention that enables an unprece- dented ability to manipulate objects in a range of tasks. Recent work has shown that monosy- naptic cortical projections controlling the digits, the corticomotoneuronal (CM) tract, act in coordination with synergistic muscle activations of the hand to achieve control that is balanced between modularity and flexibility[20, 21, 27]. These findings suggest that this bipartite structure in human motor cortex driving dexterous control of the distal part of the upper limb is due to evolutionary pressure to quickly generalize between tasks. Thus, the control system governing movement of the human hand is an ideal testbed for quantifying changes in muscle activity during skill acquisition.
+Classical laboratory tasks, such as reaching under perturbations, tend not to reflect the statistical richness of natural sensorimotor control and learning. Natural learning processes unfold across multiple timescales, and humans have a unique ability to quickly optimize internal parameters in response to external perturbations and new sensory information to achieve the goals of an ongoing plan. To engineer this flexible learning in silico, we must understand how humans adapt to a novel sensorimotor mapping. There exist a handful of prior studies mapping EMG activity and finger joint angles directly to virtual stimuli, though few are focused on the learning process and none have the input dimensionality we aim to achieve in work proposed here[3, 16, 19, 6, 14].
+In one sense, our goal is to reverse-engineer our ability to acquire novel motor skills. This will require three sequential phases: characterizing the space of naturalistic motor behaviors recorded via surface EMG, determining the ability of healthy subjects to perform tasks outside of this space of naturalistic muscle activity, and modeling the learning process for tasks designed with knowledge from the first two phases.
 
 
 ## SfN abstract

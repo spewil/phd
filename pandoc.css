@@ -51,15 +51,14 @@ body {
   top: 0; /* Stay at the top */
   right: 0;
   word-wrap: all;
-  height: 100%;
+  height: 95%;
   z-index: 1; /* Stay on top */
   overflow-y: scroll;
 }
 
 .toc {
-  margin-top: 400px;
   font-size: 13px;
-  margin-right: 10%
+  margin-right: 30%
 }
 
 .main-col {

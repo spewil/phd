@@ -27,7 +27,17 @@ This is an experiment in creating an open kind of thesis. To start adding commen
 
 # Introduction
 
-## brain dumppppp
+Named after roboticist Hans Moravec, the Moravec Paradox states that it is easier to generate artificially intelligent performance on tasks such as chess which we think of as intellectually challenging than to provide a machine with the faculties we take for granted such as movement. Under this lens, the human motor system is an incredible feat of evolution which produces not only only
+
+This thesis attempts to make incremental progress on advancing the ability of machines to move naturally by studying the movement of human subjects in controlled experiments and working to test models of natural movement by comparing with the collected data.
+
+
+$$
+\begin{align*}
+x + 5 &= y - 7 \\
+c &= y + ge
+\end{align*}
+$$
 
 I'm working on my PhD at the Sainsbury Wellcome Centre for Neural Circuits and Behavior in London.
 
@@ -46,6 +56,17 @@ You can think about this as a video game you're playing directly with your muscl
 We know surprisingly little about how this process unfolds in the brain. So little, in fact, that we haven't quite figured out what the brain is actually doing. We know that it is involved in these muscle contractions, but what sort of strategy do you use to explore this space of possible mappings between what you experience when you move and what you expect to see and feel as a result? This is the question I hope to make headway on.
 
 To do this, I'll use the literature of reinforcement learning and optimal control theory to guide my theoretical understanding of what is happening when a subject begins to experience learning in this novel situation. I will model hypotheses of this learning process and compare these models to the large amounts of data my experimental setup will produce as we track learning of subjects over many sessions.
+
+## proposal
+
+Even inane tasks such as bringing a glass of water to your lips are routinely referred to in the control literature as a “problem” despite being effortless for the majority of people. A recent review provides a clear call to action:
+
+> The processes by which biological control solutions spanning large and continuous state spaces are constructed remain relatively unexplored. Future investigations may need to embed rich dynamical interactions between object dynamics and task goals in novel and complex movements [@McNamee2019].
+
+For my PhD project, I propose developing a real-time, high-dimensional electromyography (EMG) pipeline to create closed-loop virtual motor learning experiments with human sub- jects which involve tasks with precisely this kind of dynamical richness. We aim to build on our current understanding and models of continuous control in humans with an eye towards illustrating how the variability in our motor output evolves over learning a novel, highly-skilled task.
+In particular, the human hand is a unique evolutionary invention that enables an unprece- dented ability to manipulate objects in a range of tasks. Recent work has shown that monosy- naptic cortical projections controlling the digits, the corticomotoneuronal (CM) tract, act in coordination with synergistic muscle activations of the hand to achieve control that is balanced between modularity and flexibility[20, 21, 27]. These findings suggest that this bipartite structure in human motor cortex driving dexterous control of the distal part of the upper limb is due to evolutionary pressure to quickly generalize between tasks. Thus, the control system governing movement of the human hand is an ideal testbed for quantifying changes in muscle activity during skill acquisition.
+Classical laboratory tasks, such as reaching under perturbations, tend not to reflect the statistical richness of natural sensorimotor control and learning. Natural learning processes unfold across multiple timescales, and humans have a unique ability to quickly optimize internal parameters in response to external perturbations and new sensory information to achieve the goals of an ongoing plan. To engineer this flexible learning in silico, we must understand how humans adapt to a novel sensorimotor mapping. There exist a handful of prior studies mapping EMG activity and finger joint angles directly to virtual stimuli, though few are focused on the learning process and none have the input dimensionality we aim to achieve in work proposed here[3, 16, 19, 6, 14].
+In one sense, our goal is to reverse-engineer our ability to acquire novel motor skills. This will require three sequential phases: characterizing the space of naturalistic motor behaviors recorded via surface EMG, determining the ability of healthy subjects to perform tasks outside of this space of naturalistic muscle activity, and modeling the learning process for tasks designed with knowledge from the first two phases.
 
 
 ## SfN abstract
@@ -282,6 +303,16 @@ The present changes in short-term synchronization were detected in the course of
 Statement of unknowns about how dynamics are shifted at the MU level in terms of spinal circuitry:
 
 Indirect control of MU synchronization might also be mediated by supraspinal modulation of the Renshaw decorrelating action (Gelfand et al. 1963; Adam et al. 1978), or by enhanced activity of spindle afferents via selective activation of gamma-motoneurons (Rudomin 1989). These possibilities suggest further experiments to resolve the neural mechanisms by which humans could rapidly alter short-term synchrony of MUs and, by implication, control the proportion of last-order common inputs to motoneurons. [Schmeid, 1993]
+
+The goal of the project’s first phase is to develop a high-dimensional surface EMG recording rig to generate datasets with high signal-to-noise ratio and dense coverage over superficial muscles of the arm and hand. The first question of this phase is: what are the limitations of a closed-loop myocontrol experiment, and how can such constraints be avoided or leveraged? To answer this question we will develop a signal processing pipeline and diagnostics suite to identify constraints in the setup and aim to overcome, as much as possible, the limitations inherent in surface EMG recording such as muscle crosstalk and rigorous electrode placement[10].
+The concept of the experimental setup is shown in Figure 1, where 64 monopolar electrodes are attached to a subject’s arm and hand to record muscle activity. The arm and hand are kinematically constrained in a custom fixture and motor activity is recorded during isometric muscle contractions at levels less than 20% maximum voluntary contraction to lessen the risk of involuntary co-contractions. The setup circumvents the limb biomechanics by mapping muscle output directly to virtual stimuli shown on a computer monitor. Additionally, our study focuses on low-force, isometric contractions to avoid complications due to artifacts in dynamic, high- force movements.
+We chose 64 channels in order to have at least two electrodes per muscle implicated in control of the hand in the event that we require differential recording. This choice limits our analysis to the motor pool level. If our questions require recording at the motor unit level, we will need to move to a higher channel count system. Literature in this field typically use a much lower number of channels. We believe that using 64 electrodes will help develop a more complete picture of the superficial muscle activity of the arm and hand across learning. A diagram of muscles relevant to thee control of the hand and wrist is shown in Figure 2 on page 4. We are not aware of a rigorous study testing which muscles of the arm and hand can be accurately captured using surface EMG.
+
+The second question of this phase is: what is the manifold of activity in electrode space during natural hand use? To answer this question, we will record naturalistic activity by subjects completing a set protocol that covers the naturalistic space of electrode covariance. For comparison, we will record a dataset of naturalistic tasks using a separate, mobile setup with the same electrode placement pattern but without the isometric constraint. These datasets could be collected from a range subjects going throughout their daily tasks, or using a specific set of tasks in the laboratory such as handwriting and the use of various tools. Encouragingly, a recent review noted that “Similarly to the breakthroughs in understanding vision that followed the quantification of statistics of natural scenes, a clear description of the statistics of natural tasks might revolutionize our understanding of the neural basis of high-level learning and decision- making”[18].
+By analyzing the structure of these naturalistic datasets, we can compute the dimensionality of naturalistic movement as a subspace within our electrode space, similar to work done using joint angles of the hand[24, 22, 11]. From this work we know that while the hand has 29 joints and is controlled by 34 muscles, the dimensionality of natural hand movements is closer to 8 in joint angle dimension space based on principle components analysis. This analysis will also help us determine the biomechanical constraints on hand output dimensionality. We hypothesize that this will be higher than 8 and lower than 23, which gives us a large task space to work with for generating learning tasks.
+We aim to extend this prior work using learning algorithms that take into account time- varying dynamics of the signal in addition to common tools like components analysis and matrix factorization. This analysis will help generate an understanding of intersubject, intersession, and intertask variability. Both an analysis of dynamic correlations and a validation of dimensionality using EMG would be a novel contribution to the literature.
+We anticipate that quantifying electrode placement and calibrating across sessions will be a major challenge. We aim to develop a mechanical fixture for recording as well as alignment tools to aid in placing electrodes in precisely the same location each session. Properly separating variability due to electrode placement from behavioral and physiological variability will be paramount to establish repeatability in our results. Once we have collected a naturalistic activity dataset, we can begin to design bespoke feedback mappings and perturbations, as discussed in Section .
+
 
 ## Unsupervised Feature Extraction
 
