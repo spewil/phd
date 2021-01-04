@@ -27,11 +27,13 @@ This is an experiment in creating an open kind of thesis. To start adding commen
 
 <<[sections/introduction.md]
 
-<<[sections/physiology.md]
+<<[sections/motor_physiology.md]
 
-<<[sections/experimental_setup.md]
+<<[sections/experimental_methods.md]
 
 <<[sections/problem_formalization.md]
+
+<<[sections/data_analysis.md]
 
 <<[sections/theory.md]
 

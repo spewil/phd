@@ -72,13 +72,6 @@ Extracted Annotations (31/12/2020, 15:58:46)
 
 "Sauerbrei BA, Guo JZ, Cohen JD, Mischiati M, Guo W, Kabra M, Verma N, Mensh B, Branson K, Hantman AW. Cortical pattern generation during dexterous movement is input-driven. Nature" (Bizzi and Ajemian 2020:1823)
 
-### comments:
-- yes bro it seems like a nice idea but biology isn't ever nice. look at rathelot and strick etc-- it's part of the evolution of the motor circuit, mice have actually lost direct muscle connections
-- i think bizzi conflates different types of movements and different mammalian motor systems. mice aren't primates aren't frogs, reaching isn't swimming isn't walking. synergies as spinal modules exist in some of these systems some of these behaviors, but they aren't end all be all
--  that hantman paper is compelling for upstream drive but again, in mice and ballistic. i think as usual it's not causal or acausal depends on movement and animal right?
--  look at rathelot and strick etc-- it's part of the evolution of the motor circuit, mice have actually lost direct muscle connections
-- my argument is that we just need to be precise about what behaviors were talking about and in what creatures
-
 
 ## piray, daw -- common model explaining flexible decision making, grid fields, and cognitive control
 
