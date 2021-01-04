@@ -1,38 +1,33 @@
-# Introduction
+# Introduction & Aims
 
-Named after roboticist Hans Moravec, the Moravec Paradox states that it is easier to generate artificially intelligent performance on tasks such as chess which we think of as intellectually challenging than to provide a machine with the faculties we take for granted such as movement. Under this lens, the human motor system is an incredible feat of evolution which produces not only only
+- what are we interested in?
+	- why can't robots move like humans?
+	- What is special about human movement?
+- why is this the most interesting problem?
+- how are we going to approach this interest?
+- what do we hope to achieve?
+	- experiments with interesting and novel movement data
+	- analysis of muscle and behavioral data
+	- inject RL / control theory into skill acquisition
+		- what do we mean by "RL" here?
+		- is "RL" relevant? why?
 
-This thesis attempts to make incremental progress on advancing the ability of machines to move naturally by studying the movement of human subjects in controlled experiments and working to test models of natural movement by comparing with the collected data.
-
-
-$$
-\begin{align*}
-x + 5 &= y - 7 \\
-c &= y + ge
-\end{align*}
-$$
-
-I'm working on my PhD at the Sainsbury Wellcome Centre for Neural Circuits and Behavior in London.
-
-I'm setting up a family of experiments that I hope will test hypotheses about the organizing principles of sensorimotor control and learning.
-
-I'm setting up a task where I record from participants' muscles in their arms and hands using `electromyography`.
-
-Subjects' arms and hands are fixed in a brace, but as they send signals from their brain down to their spinal cords and ultimately to their muscles, my electrodes will sense this change in electrical potential and relay this change to the computer, which will reflect these changes through visuals shown on a screen.
-
-The object of the game is for the participant to learn which muscle activations correspond to which changes in the visual scene.
-
-You can think about this as a video game you're playing directly with your muscles.
+Named after roboticist Hans Moravec, the Moravec Paradox states that it is easier to generate artificially intelligent performance on tasks such as chess which we think of as intellectually challenging than to provide a machine with the faculties we take for granted such as movement. Simply put, the human motor system is the most advanced control system in the known universe. Tasks such as bringing a glass of water to your lips are referred to in the literature as a “problem” despite being effortless for the majority of people. A recent review provides a clear call to action:
 
 > The processes by which biological control solutions spanning large and continuous state spaces are constructed remain relatively unexplored. Future investigations may need to embed rich dynamical interactions between object dynamics and task goals in novel and complex movements [@McNamee2019].
 
-We know surprisingly little about how this process unfolds in the brain. So little, in fact, that we haven't quite figured out what the brain is actually doing. We know that it is involved in these muscle contractions, but what sort of strategy do you use to explore this space of possible mappings between what you experience when you move and what you expect to see and feel as a result? This is the question I hope to make headway on.
+This thesis attempts to make progress on advancing the ability of machines to produce naturalistic motor solutions by studying movements produced by human subjects in controlled experiments. A recent review paper highlights the gap we hope to fill through this study:
+
+
+
+
+
+We know that it is involved in these muscle contractions, but what sort of strategy do you use to explore this space of possible mappings between what you experience when you move and what you expect to see and feel as a result? This is the question I hope to make headway on.
 
 To do this, I'll use the literature of reinforcement learning and optimal control theory to guide my theoretical understanding of what is happening when a subject begins to experience learning in this novel situation. I will model hypotheses of this learning process and compare these models to the large amounts of data my experimental setup will produce as we track learning of subjects over many sessions.
 
-## proposal
 
-Even inane tasks such as bringing a glass of water to your lips are routinely referred to in the control literature as a “problem” despite being effortless for the majority of people. A recent review provides a clear call to action:
+
 
 > The processes by which biological control solutions spanning large and continuous state spaces are constructed remain relatively unexplored. Future investigations may need to embed rich dynamical interactions between object dynamics and task goals in novel and complex movements [@McNamee2019].
 
@@ -42,40 +37,9 @@ Classical laboratory tasks, such as reaching under perturbations, tend not to re
 In one sense, our goal is to reverse-engineer our ability to acquire novel motor skills. This will require three sequential phases: characterizing the space of naturalistic motor behaviors recorded via surface EMG, determining the ability of healthy subjects to perform tasks outside of this space of naturalistic muscle activity, and modeling the learning process for tasks designed with knowledge from the first two phases.
 
 
-## SfN abstract
+## Synergies
 
 A considerable amount of research has focused on  the existence of synergies as a simplifying structure in the motor system. We believe that the concept of synergies is often attributed to the process of motor control as opposed to a strict structural constraint. In this work, we use a bespoke experimental setup to track spatiotemporal dynamics of synergistic muscle activations across learning in a virtual, high-dimensional, electromyographic-driven task involving muscle contractions of the hand and forearm. We find that over trials the motor system adapts its synergistic action to fulfill the predefined task requirements in an optimal manner.
-
-- engineering
-	- recording 64 channels of EMG from multiple muscles the arm and hand with realtime feedback
-	- in an isometric learning task
-- dimensionality reduction
-	- static weights
-	- synergies shift
-- novel rig / setup
-- compare to previous approaches
-- enables novel approaches to analysis of high dimensional neural data
-- hypothesis: ?
-
-abstract
-We propose a high-density closed-loop EMG-driven setup to study human motor learning on a virtual task driven directly by muscle activation.
-
-
-- rig methods
-- task methods
-	- calibration --> choice of movements/task
-	- training --> choice of mappings/feedback
-- analysis
-	- existing constraints from calibration data?
-	- learning curve in task space
-	- shift in synergies -- time evolution of covariance?
-	- perturbation response?
-- modeling
-	- LQG predictions
-	- SDN? look at stats
-	- choice of gradients
-	- comparison of muscle-level stats
-	- LQG lesioning
 
 
 ## BMI
