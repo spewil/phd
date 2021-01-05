@@ -7,6 +7,20 @@ UCL guidelines:
 	plan for remainder
 	bibliography
 
+<<[sections/introduction.md]
+
+<<[sections/motor_physiology.md]
+
+<<[sections/experimental_methods.md]
+
+<<[sections/problem_formalization.md]
+
+<<[sections/data_analysis.md]
+
+<<[sections/theory.md]
+
+<<[sections/next_steps.md]
+
 4 -- intro, physiology, experimental methods
 5 --
 6
