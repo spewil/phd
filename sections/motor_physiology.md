@@ -1,3 +1,5 @@
+# Physiology of the Motor System {#sec:physiology}
+
 ## Corticomotoneuronal Connections
 
 * Subdivisions of primary motor cortex based on cortico-motoneuronal cells (Rathelot, Strick PNAS 2008)

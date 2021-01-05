@@ -21,13 +21,18 @@ def main():
     pdoc_args = [
         '--toc',
         '--toc-depth=4',
-        '-s',  # standalone?
+        '--number-sections',
+        "--filter",
+        "pandoc-xnos",  # https://github.com/tomduck/pandoc-xnos
+        # '-s',  # standalone?
         '--bibliography=bibliography.bib',
         '--metadata',
         'link-citations=true',  # make citation links
         '--csl=nature.csl',
         '--mathml',  # this works in chrome and firefox
         "--css=pandoc.css",  # custom css
+        # "--include-before-body",
+        # "preamble.tex",
         "--include-in-header",  # custom header -- so I can add hypothesis, etc
         "header.html",
         "--template",
@@ -37,7 +42,7 @@ def main():
     # filters = ['pandoc-citeproc']
     input_path = Path("thesis.md")
     output_path = input_path.parent / Path("index.html")
-    # processFile(input_path, "thesis_toc.md")
+    tex_path = Path("thesis.tex")
     html = pypandoc.convert_file(input_path.name,
                                  'html5',
                                  format='md',
@@ -46,6 +51,13 @@ def main():
     doc = template.render(content=html)
     with open(output_path, 'w') as outfile:
         outfile.write(doc)
+
+    # save tex file
+    pypandoc.convert_file(input_path.name,
+                          'latex',
+                          format='md',
+                          extra_args=pdoc_args,
+                          outputfile="thesis.tex")
 
 
 def processFile(inFile, outFile):
