@@ -26,7 +26,7 @@ TODO:
 
 This is an experiment in creating an open kind of thesis. To start adding comments to this page, just highlight some text, click `annotate` and start typing. Note that you will have to a <a href="https://web.hypothes.is/" target="_blank">Hypothes.is</a> account, but it only takes a moment (and it's a nonprofit organization). Add as many comments as you like!
 
-% <<[sections/introduction.md]
+<!-- % <<[sections/introduction.md]
 
 % <<[sections/motor_physiology.md]
 
@@ -38,7 +38,7 @@ This is an experiment in creating an open kind of thesis. To start adding commen
 
 % <<[sections/theory.md]
 
-% <<[sections/next_steps.md]
+% <<[sections/next_steps.md] -->
 
 
 ## Bibliography
