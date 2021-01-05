@@ -1,4 +1,4 @@
-## Analysis of Myocontrol Data
+## Data Analysis
 
 *Coming Soon*
 
