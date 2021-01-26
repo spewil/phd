@@ -1,9 +1,11 @@
 ---
 title: Sensorimotor Learning in Virtual Environments
 author: Spencer R. Wilson
-date: 1/1/2021
+date: \today
 xnos-cleveref: true
 xnos-capitalise: true
+papersize: a4
+geometry: margin=30mm
 ---
 
 <!-- you MUST have new lines between transcludes! -->

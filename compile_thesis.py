@@ -42,24 +42,11 @@ def main():
     ]
 
     input_path = Path("thesis.md")
-    output_path = input_path.parent / Path("index.html")
-    tex_path = Path("thesis.tex")
-    html = pypandoc.convert_file(input_path.name,
-                                 'html5',
-                                 outputfile="index.html",
-                                 format='md',
-                                 extra_args=pdoc_args)
-
-    doc = template.render(content=html)
-    with open(output_path, 'w') as outfile:
-        outfile.write(doc)
-
-    # save tex file
     pypandoc.convert_file(input_path.name,
-                          'latex',
+                          'html5',
+                          outputfile="index.html",
                           format='md',
-                          extra_args=pdoc_args,
-                          outputfile=tex_path.name)
+                          extra_args=pdoc_args)
 
 
 @click.command()
@@ -79,8 +66,9 @@ def compile_to_pdf(input_file, output_type):
         # "--include-before-body",
         # "preamble.tex",
         # '--template',
-        # "template.tex",
-        "--citeproc"
+        # "template",
+        "--citeproc",
+        "--verbose"
     ]
     # output_path = input_path.parent / Path("index.html")
     pypandoc.convert_file(source_file=input_file,
@@ -94,6 +82,8 @@ if __name__ == '__main__':
     import sys
     try:
         sys.argv[1]
+        print(f"compiling {sys.argv[1]}")
         compile_to_pdf()
     except IndexError:
+        print("compiling to index.html")
         main()

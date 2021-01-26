@@ -1,11 +1,45 @@
 # Experimental Methods
 
-## Prior Work
+## Prior Art
+
+There exist a handful of prior studies mapping EMG activity and finger joint angles directly to virtual stimuli, though few are focused on the learning process and none have the input dimensionality we aim to achieve in work proposed here.
+
+
+D. J. Berger, R. Gentner, T. Edmunds, D. K. Pai, and A. d’Avella. Differences in Adap- tation Rates after Virtual Surgeries Provide Direct Evidence for Modularity. Journal of Neuroscience, 33(30):12384–12394, 2013.
+Zachary Danziger, Alon Fishbach, and Ferdinando A Mussa-ivaldi. Learning Algorithms
+for Human – Machine Interfaces. 56(5):1502–1511, 2009.
+Kristine M. Mosier, Robert A. Scheidt, Santiago Acosta, and Ferdinando A. Mussa-Ivaldi. Remapping Hand Movements in a Novel Geometrical Environment. Journal of Neurophys- iology, 94(6):4362–4372, December 2005.
+K. Nazarpour, A. Barnard, and A. Jackson. Flexible Cortical Control of Task-Specific Muscle Synergies. Journal of Neuroscience, 32(36):12349–12360, 2012.
+Saritha M. Radhakrishnan, Stuart N. Baker, and Andrew Jackson. Learning a Novel Myoelectric-Controlled Interface Task. Journal of Neurophysiology, 100(4):2397–2408, Oc- tober 2008.
+
+
+
+### Arbitrary Visuomotor Mappings
+
+There are several studies using non-EMG-driven sensorimotor mappings to study human motor control and learning.
+
+* Remapping Hand Movements in a Novel Geometrical Environment
+https://www.ncbi.nlm.nih.gov/pubmed/16148276
+
+vocoder machine bell labs
+
+Hinton, Fells
+
+palsy study
+
+takehome: humans are really good at learning tasks like these, especially with their hands. this type of dexterity is specific to primates if not humans. let's use this ability to understand and try to model how this learning process unfolds.
+
+**_What does this give us that a force-field reaching task can't?_**
+
 
 
 ## High-Dimensional EMG Feedback
 
-The goal of the project’s first phase is to develop a high-dimensional surface EMG recording rig to generate datasets with high signal-to-noise ratio and dense coverage over superficial muscles of the arm and hand. The first question of this phase is: what are the limitations of a closed-loop myocontrol experiment, and how can such constraints be avoided or leveraged? To answer this question we will develop a signal processing pipeline and diagnostics suite to identify constraints in the setup and aim to overcome, as much as possible, the limitations inherent in surface EMG recording such as muscle crosstalk and rigorous electrode placement[10].
+The goal of the project’s first phase is to develop a high-dimensional surface EMG recording rig to generate datasets with high signal-to-noise ratio and dense coverage over superficial muscles of the arm and hand. The first question of this phase is: what are the limitations of a closed-loop myocontrol experiment, and how can such constraints be avoided or leveraged? To answer this question we will develop a signal processing pipeline and diagnostics suite to identify constraints in the setup and aim to overcome, as much as possible, the limitations inherent in surface EMG recording such as muscle crosstalk and rigorous electrode placement.
+
+Franc ̧ois Hug. Can muscle coordination be precisely studied by surface electromyography?
+Journal of Electromyography and Kinesiology, 21(1):1–12, February 2011.
+
 The concept of the experimental setup is shown in Figure 1, where 64 monopolar electrodes are attached to a subject’s arm and hand to record muscle activity. The arm and hand are kinematically constrained in a custom fixture and motor activity is recorded during isometric muscle contractions at levels less than 20\% maximum voluntary contraction to lessen the risk of involuntary co-contractions. The setup circumvents the limb biomechanics by mapping muscle output directly to virtual stimuli shown on a computer monitor. Additionally, our study focuses on low-force, isometric contractions to avoid complications due to artifacts in dynamic, high- force movements.
 We chose 64 channels in order to have at least two electrodes per muscle implicated in control of the hand in the event that we require differential recording. This choice limits our analysis to the motor pool level. If our questions require recording at the motor unit level, we will need to move to a higher channel count system. Literature in this field typically use a much lower number of channels. We believe that using 64 electrodes will help develop a more complete picture of the superficial muscle activity of the arm and hand across learning. A diagram of muscles relevant to thee control of the hand and wrist is shown in Figure 2 on page 4. We are not aware of a rigorous study testing which muscles of the arm and hand can be accurately captured using surface EMG.
 
