@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 
-# to compile from command line:
-# mdmerge -o thesis.md outline.md; p3 compile_thesis.py
-# first command transcludes sections into main markdown file
-# second command converts thesis.md to thesis.html with all the bells
 # pandoc templates
 # https://pandoc.org/MANUAL.html#templates
-# default templates
+
+# using two filters from pypi:
+# https://github.com/tomduck/pandoc-xnos
+# pandoc-include to transclude markdown files
 
 import pypandoc
 import jinja2
 from pathlib import Path
+import click
 
 file_loader = jinja2.FileSystemLoader('.')
 env = jinja2.Environment(loader=file_loader)
@@ -22,9 +22,10 @@ def main():
         '--toc',
         '--toc-depth=4',
         '--number-sections',
-        "--filter",
-        "pandoc-xnos",  # https://github.com/tomduck/pandoc-xnos
-        # '-s',  # standalone?
+        '--filter',
+        'pandoc-include',
+        '--filter',
+        'pandoc-xnos',
         '--bibliography=bibliography.bib',
         '--metadata',
         'link-citations=true',  # make citation links
@@ -39,15 +40,16 @@ def main():
         "template.html",
         "--citeproc"
     ]
-    # filters = ['pandoc-citeproc']
+
     input_path = Path("thesis.md")
     output_path = input_path.parent / Path("index.html")
     tex_path = Path("thesis.tex")
     html = pypandoc.convert_file(input_path.name,
                                  'html5',
+                                 outputfile="index.html",
                                  format='md',
                                  extra_args=pdoc_args)
-    # filters=filters)
+
     doc = template.render(content=html)
     with open(output_path, 'w') as outfile:
         outfile.write(doc)
@@ -57,84 +59,41 @@ def main():
                           'latex',
                           format='md',
                           extra_args=pdoc_args,
-                          outputfile="thesis.tex")
+                          outputfile=tex_path.name)
 
 
-def processFile(inFile, outFile):
-    mdFile = open(inFile, 'r')
-    toc = []
-    levels = [0, 0, 0, 0]
-    newFile = open(outFile, 'w')
-    tempFile = []
-    tocLoc = 0
-    partOfToc = False
-
-    for line in mdFile:
-        if partOfToc and line != '\n':
-            continue
-        else:
-            partOfToc = False
-        if 'Table of Contents' in line:
-            tocLoc = len(tempFile) + 1
-            partOfToc = True
-        elif line[0] == '#':
-            secId = buildToc(line, toc, levels)
-            line = addSectionTag(cleanLine(line), secId) + '\n'
-        tempFile.append(line)
-
-    for line in toc:
-        tempFile.insert(tocLoc, line)
-        tocLoc += 1
-
-    for line in tempFile:
-        newFile.write(line)
-
-    mdFile.close()
-    newFile.close()
-
-
-def addSectionTag(line, secId):
-    startIndex = line.find(' ')
-    line = line[:startIndex +
-                1] + '<a id=\'' + secId + '\' />' + line[startIndex + 1:]
-    return line
-
-
-def buildToc(line, toc, levels):
-    line = cleanLine(line)
-    vspace = "   "
-    if line[:4] == '####':
-        link = line[5:].strip().lower().replace(" ", "-")
-        toc.append(vspace * 3 + '* [' + line[5:] + '](#' + link + ')\n')
-    elif line[:3] == '###':
-        link = line[4:].strip().lower().replace(" ", "-")
-        toc.append(vspace * 2 + '* [' + line[4:] + '](#' + link + ')\n')
-    elif line[:2] == '##':
-        link = line[3:].strip().lower().replace(" ", "-")
-        toc.append(vspace * 1 + '* [' + line[3:] + '](#' + link + ')\n')
-    elif line[:1] == '#':
-        link = line[2:].strip().lower().replace(" ", "-")
-        toc.append('* [' + line[2:] + '](#' + link + ')\n')
-    return link
-
-
-def cleanLine(text):
-    text = stripNewline(text)
-    text = removeAnchors(text)
-    return text
-
-
-def stripNewline(text):
-    return text.replace('\n', '')
-
-
-def removeAnchors(text):
-    while ('<' in text and '>' in text):
-        leftTag = text.index('<')
-        rightTag = text.index('>')
-        text = text[0:leftTag] + text[rightTag + 1:]
-    return text
+@click.command()
+@click.argument('input_file', type=str)
+@click.argument('output_type', default='html', type=str)
+def compile_to_pdf(input_file, output_type):
+    pdoc_args = [
+        '--number-sections',
+        '--filter',
+        'pandoc-include',
+        '--filter',
+        'pandoc-xnos',
+        '--bibliography=bibliography.bib',
+        '--metadata',
+        'link-citations=true',  # make citation links
+        '--csl=nature.csl',
+        # "--include-before-body",
+        # "preamble.tex",
+        # '--template',
+        # "template.tex",
+        "--citeproc"
+    ]
+    # output_path = input_path.parent / Path("index.html")
+    pypandoc.convert_file(source_file=input_file,
+                          format='md',
+                          to='pdf',
+                          outputfile="thesis.pdf",
+                          extra_args=pdoc_args)
 
 
 if __name__ == '__main__':
-    main()
+    import sys
+    try:
+        sys.argv[1]
+        compile_to_pdf()
+    except IndexError:
+        main()

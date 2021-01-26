@@ -1,28 +1,25 @@
-# Introduction & Aims
+# Introduction & Aims{#sec:intro}
 
-- what are we interested in?
-	- why can't robots move like humans?
-	- What is special about human movement?
-- why is this the most interesting problem?
-- how are we going to approach this interest?
-- what do we hope to achieve?
-	- experiments with interesting and novel movement data
-	- analysis of muscle and behavioral data
-	- inject RL / control theory into skill acquisition
-		- what do we mean by "RL" here?
-		- is "RL" relevant? why?
+> *Movement is nothing but the quality of our being.*
+>
+> &mdash; Sunryu Suzuki
+
+<!-- reference {+@sec:intro} -->
 
 Named after roboticist Hans Moravec, the Moravec Paradox states that it is easier to generate artificially intelligent performance on tasks we think of as intellectually challenging, such as chess, than to provide a machine with faculties we take for granted, such as movement. Simply put, the human motor apparatus is the most advanced control system in the known universe. Tasks such as bringing a glass of water to your lips are referred to in the literature as a “problem” despite being effortless for the majority of people. A recent review provides a clear call to action:
 
 > The processes by which biological control solutions spanning large and continuous state spaces are constructed remain relatively unexplored. Future investigations may need to embed rich dynamical interactions between object dynamics and task goals in novel and complex movements [@McNamee2019].
 
-This thesis attempts to make progress on advancing our understanding of naturalistic movement by studying solutions to motor problems produced by human subjects in controlled experiments. These experiments involve a real-time, high-dimensional electromyography (EMG) pipeline to create closed-loop virtual motor learning environments.
+This thesis is an attempt to progress our understanding of naturalistic movement by studying solutions to motor problems produced by human subjects in dynamically rich yet controlled environments. We leverage a real-time, high-dimensional electromyography (EMG) pipeline to create closed-loop virtual motor learning tasks.
+
+Due to the unique physiology governing the control of the human hand.
 
 
 
-Due to the unique physiology governing the control of the human hand,
 
-This is discussed in detail in {@sec:physiology}.
+Loops -- at the level of reflexes, within the brain, within cortex. Even reflexes can be modualted by value-based.
+
+The problem is one of decision-making, as studied by cognitive neuroscience. We wish to extend such thinking into the problem of volitional, goal-directed motor output selection. Deciding, that is, the sequence of muscle activations to produce given a current perceived state and a goal.
 
 
 
@@ -45,9 +42,7 @@ To engineer this flexible learning in silico, we must understand how humans adap
 In one sense, our goal is to reverse-engineer our ability to acquire novel motor skills. This will require three sequential phases: characterizing the space of naturalistic motor behaviors recorded via surface EMG, determining the ability of healthy subjects to perform tasks outside of this space of naturalistic muscle activity, and modeling the learning process for tasks designed with knowledge from the first two phases.
 
 
-## Synergies
 
-A considerable amount of research has focused on  the existence of synergies as a simplifying structure in the motor system. We believe that the concept of synergies is often attributed to the process of motor control as opposed to a strict structural constraint. In this work, we use a bespoke experimental setup to track spatiotemporal dynamics of synergistic muscle activations across learning in a virtual, high-dimensional, electromyographic-driven task involving muscle contractions of the hand and forearm. We find that over trials the motor system adapts its synergistic action to fulfill the predefined task requirements in an optimal manner.
 
 
 ## BMI
@@ -56,7 +51,7 @@ A considerable amount of research has focused on  the existence of synergies as 
 
 There are several studies using non-EMG-driven sensorimotor mappings to study human motor control and learning.
 
-x * Remapping Hand Movements in a Novel Geometrical Environment
+* Remapping Hand Movements in a Novel Geometrical Environment
 https://www.ncbi.nlm.nih.gov/pubmed/16148276
 
 vocoder machine bell labs
@@ -104,19 +99,13 @@ The motor system is distributed in order to solve the redundancy problem as well
 
 ### Analysis of the synergies underlying complex hand manipulation (Todorov & Ghahramani 2005) blah blah blah blah blah blah
 
-> Remarkably, the dimensionality in the individuated joint task was 8.7, or only 2 higher. The latter task is designed to reveal the maximal number of degrees of freedom humans have access to. Why this number is not 20 is unclear; the most likely reason is biomechanical coupling, although limitations in neural control may also play a role. Furthermore, the number 8.7 intuitively seems too low ñ suggesting that such counting methods may underestimate the true dimensionality.
+> Remarkably, the dimensionality in the individuated joint task was 8.7, or only 2 higher. The latter task is designed to reveal the maximal number of degrees of freedom humans have access to. Why this number is not 20 is unclear; the most likely reason is biomechanical coupling, although limitations in neural control may also play a role. Furthermore, the number 8.7 intuitively seems too low suggesting that such counting methods may underestimate the true dimensionality.
 
 ### The statistics of natural hand movements (Ingram & Wolpert 2008)
 
 
 ### Neural Basis of Muscle Synergies, Bizzi Cheung 2013
 
-
-### Greg Wayne Deep Learning Motor Control
-
-> There are many variations on the motor synergy concept61; here we mean functional couplings of different joints or muscles such that motor control operates at the level of multi-joint coordination patterns ratherthan through independent control of all joints. Producing actionsat this slightly higher level of abstraction can facilitate explorationand learning of new skills as well as simplify planning. (Wayne Nature Comms Hierarchical Motor Control)
-
-There is a longstanding debate about the origins of muscle synergies that strongly mirrors the nature-nuture debate. Are synergies learned or are they hardwired? If they're hardwired, what physiological subsystem contains this hardwiring? We don't need to take a side because there is clear evidence that humans overcome synergies to adapt their motor outputs to solve novel tasks and overcome all types of changes in the motor loop (injury, fatigue, prism goggles, etc.) via well-studied (in laboratory tasks at least) adaptation mechanisms [Helmholtz, Wolpert, Todorov, newer work on synergy shifts such as [@DeRugy2012,Berger2013]. The more interesting questions ask on what timescales and by what mechanisms does learning occur, and can we reverse engineer paradigms and tasks that improve the learning rate.
 
 Note that there are a great number of tasks, and the case for synergies in the motor system cannot be answered simply. Here we are concerned with motions of the hand because we know that this is the endpoint of CM connections. There are many fewer tasks dealing with this system in particular. Most tasks deal with arm reaching, though the most highly cited synergy paper deals with a 1DOF kick [@DAvella2003].
 
