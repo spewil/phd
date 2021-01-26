@@ -28,7 +28,7 @@ def main():
         'link-citations=true',  # make citation links
         '--csl=../assets/nature.csl',
         '--mathml',  # this works in chrome and firefox
-        "--css=../../pandoc.css",  # custom css
+        "--css=pandoc.css",  # custom css
         # "--include-before-body",
         # "preamble.tex",
         "--include-in-header",  # custom header -- so I can add hypothesis, etc
