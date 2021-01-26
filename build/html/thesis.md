@@ -13,7 +13,7 @@ This is an experiment in creating an open kind of thesis. To start adding commen
 
 <!-- you MUST have new lines between transcludes! -->
 
-$include sections/introduction.md
+$include ../../sections/introduction.md
 
 <!-- $include sections/motor_physiology.md
 
