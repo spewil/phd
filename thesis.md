@@ -27,4 +27,4 @@ $include sections/theory.md
 
 $include sections/next_steps.md -->
 
-## Bibliography
+# Bibliography
