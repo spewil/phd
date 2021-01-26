@@ -8,16 +8,13 @@
 # pandoc-include to transclude markdown files
 
 import pypandoc
-import jinja2
-from pathlib import Path
 import click
-
-file_loader = jinja2.FileSystemLoader('.')
-env = jinja2.Environment(loader=file_loader)
-template = env.get_template('base.html')
+import os
 
 
 def main():
+    os.chdir("build/html")
+
     pdoc_args = [
         '--toc',
         '--toc-depth=4',
@@ -26,12 +23,12 @@ def main():
         'pandoc-include',
         '--filter',
         'pandoc-xnos',
-        '--bibliography=bibliography.bib',
+        '--bibliography=../assets/bibliography.bib',
         '--metadata',
         'link-citations=true',  # make citation links
-        '--csl=nature.csl',
+        '--csl=../assets/nature.csl',
         '--mathml',  # this works in chrome and firefox
-        "--css=pandoc.css",  # custom css
+        "--css=../../pandoc.css",  # custom css
         # "--include-before-body",
         # "preamble.tex",
         "--include-in-header",  # custom header -- so I can add hypothesis, etc
@@ -41,10 +38,10 @@ def main():
         "--citeproc"
     ]
 
-    input_path = Path("thesis.md")
-    pypandoc.convert_file(input_path.name,
+    input_path = "thesis.md"
+    pypandoc.convert_file(input_path,
                           'html5',
-                          outputfile="index.html",
+                          outputfile="../../index.html",
                           format='md',
                           extra_args=pdoc_args)
 
@@ -53,6 +50,7 @@ def main():
 @click.argument('input_file', type=str)
 @click.argument('output_type', default='html', type=str)
 def compile_to_pdf(input_file, output_type):
+    os.chdir("build/latex")
     pdoc_args = [
         '--number-sections',
         '--filter',
