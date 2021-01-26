@@ -1,3 +1,8 @@
+# ted 22/1
+
+- look through GPS repo, 2D env plots
+- overleaf GPS
+
 # ted
 
 - papers openai tasks
@@ -11,7 +16,7 @@
 		- GPI paper
 		- what guarantees can we prove to our thing?
 - policies are being combined somewhere in the brain, not sure where
-	- mixing actual motor actions, as opposed to politics
+	- mixing actual motor actions, as opposed to policies
 
 - for Neurips
 	- 2D env

@@ -1,5 +1,125 @@
 # motor learning
 
+
+## kitano robustness
+
+Robustness is a property that allows a system to maintain its functions despite external and internal perturbations. 
+
+A system must be robust to function in unpredictable environments using unreliable components. 
+
+Robustness is ubiquitous in living organisms that have evolved. 
+
+Robustness is the maintenance of specific functionalities of the system against perturbations, and it often requires the system to change its mode of operation in a flexible way. In other words, robustness allows changes in the structure and components of the system owing to perturbations, but specific functions are maintained.
+
+The mechanisms that ensure the robustness of a system are system control, alternative (or fail-safe) mechanisms, modularity and decoupling.
+
+System control consists of negative and positive feedback to attain a robust dynamic response observed in a wide range of regulatory networks
+
+Robustness can be enhanced if there are multiple means to achieve a specific function, because failure of one of them can be rescued by others. Here, I call this mechanism ‘alternative’, or ‘fail-safe’. This concept encompasses redundancy, overlapping function and diversity, as the differing degrees of similarity between the various alternative means that are available.
+
+Redundancy generally refers to a situation in which several identical, or similar, components (or modules) can replace each other when another component fails. Diversity, or heterogeneity, represents the other extreme, whereby a specific function can be attained by different means available in a population of heterogeneous components. 
+
+Modularity is an effective mechanism for containing perturbations and damage locally to mini- mize the effects on the whole system. Modules are widely observed in various organisms, functioning as possible biological design principles
+
+Decoupling isolates low-level variation from high-level functionalities.
+
+**My theory is that robustness is an inherent property of evolving, complex dynamic systems — various mechanisms incurring robustness of organisms actually facilitate evolution, and evolution favours robust traits. Therefore, requirements for robustness and evolvability are similar. This implies that there are architectural requirements for complex systems to be evolvable, which essentially requires the system to be robust against environmental and genetic perturbations.**
+
+
+
+
+## psychology of reaching 2020
+
+Behavioral studies have provided further support for the parallel planning hypothesis. In these studies, an initial display shows potential targets, and the participant must initiate a movement prior to final target specification. Under such conditions, the initial movement direction corre- sponds to a weighted average of the potential movements
+
+Behavioral studies have also offered a reconceptualization of the initial trajectories observed in tasks involv- ing goal uncertainty (Wong & Haith 2017). Rather than indicating an averaging process, these trajectories may reflect a deliberate decision regarding how to optimize performance (Hudson et al. 2007). That is, an intermediary trajectory may be optimal to rapidly update a (single) move- ment plan once the final goal is specified. When this option is no longer optimal—for example, by increasing the distance between candidate targets—the occurrence of intermediate movements is dramatically diminished (Figure 2d) (Haith et al. 2015a).
+
+The probability of intermediate movements increases when targets overlap in terms of semantics (Dale et al. 2007), phonology (Spivey et al. 2005), or even truth evaluation (McKinstry et al. 2008). These effects suggest that interference in goal selection may promote an optimal strategy to plan an intermediate movement without committing to the final goal. 
+
+*cognitive strategies-- reflects optimality given cost of controlling arms, etc independently.*
+
+Decision making is a dynamic and multilevel process that encompasses multiple brain networks (Gallivan et al. 2018). It entails the evaluation of the value associated with possible options (Padoa- Schioppa 2011), constrained by the current context. Decision-making processes continue to oper- ate throughout the movement (Wispinski et al. 2018); we can change our minds after movement initiation, replacing one movement with another (van den Berg et al. 2016) or rapidly aborting an initiated movement (Verbruggen et al. 2019). It is reasonable that the optimal decision to make an intermediate movement amid uncertainty takes advantage of our capability to move in a flexible manner, as the ongoing behavior entails the continuous reevaluation of how our actions conform to current goals.
+
+*flexibility is to continuous updating of ongoing plans, re-planning, etc, adjustment in face of changing environment and goals* 
+
+The activity of neurons in premotor and motor cortices can be quite distinct during preparatory and execution phases (Figure 3d), and at the population level, the correlation is modest (Churchland et al. 2010).
+
+Humans exhibit a rich repertoire of movements that vary in extent, speed, duration, force, and so forth. Despite this flexibility, there are notable features that remain largely invariant. After deciding to eat a cookie, our movement to that goal is not arbitrary: The hand smoothly follows a direct, rather than curved, path to the cookie, even though this may require rather complex, nonlinear changes in joint space (Morasso 1981). Moreover, the velocity profile is bell shaped, reaching a maximum around the middle of the movement. 
+
+A hallmark of skilled behavior is a reduction in variability (Shmuelof et al. 2012b)
+
+### feedback, online control
+
+Feedback mechanisms are frequently described as reflexive, in the sense that they operate out- side awareness or volitional control. These mechanisms are divided into two components. First, there are reflexive responses of spinal origin. With latencies as short as 25 ms, sensory information from the muscles, joints, and skin can modify activity in motor neurons. This sensory informa- tion is integrated with descending motor commands by spinal interneurons to assist voluntary drive to the motor neurons to help correct or resist movement errors (Nielsen 2004, Pruszynski et al. 2009). [...] Second, there are more flexible, task-dependent long-latency reflexes, which are under the control of both subcortical and cortical mechanisms (Scott et al. 2015). Long-latency reflexes in response to mechanical perturbations have estimated latencies of 50 to 105 ms (Pruszynski & Scott 2012), whereas the response to visual errors ranges from 150 to 200 ms (Carroll et al. 2019, Day & Lyon 2000, Franklin & Wolpert 2008). 
+
+[OFC] provides a unified framework to account for the relationship between planning and control: Con- trol mechanisms enacted during movement are a natural corollary of how reflex gains are set in a task-dependent manner prior to movement initiation. OFC also offers a solution to the degrees- of-freedom problem. Specifically, the brain tends to find a stereotypical manner of producing a movement because reflex gains are set in order to minimize task-relevant variability.
+
+As might be expected, directing attention to the target improved performance when the tar- get was displaced. Interestingly, directing attention to the cursor had little impact on performance when the cursor was displaced. The authors (Reichenbach et al. 2014) hypothesize that the motor system retains a stable estimate of hand position regardless of attention. In addition, when the display included multiple moving targets and cursors, most of which were task irrelevant, the par- ticipants had difficulty identifying task-relevant target displacement amid the visual distractors. However, they were able to ignore these distractors when responding to feedback about hand position. It may be that proprioceptive feedback from the hand is readily combined with visual information to create a stable representation for feedback control. In contrast, vision provides the only source of feedback for responding to errors in the estimate of target position.
+
+*Shows that the hand position representation is probably strongly dependent on proprioception. Does this remain when we make isometric contractions? I might expect the hand to have more haptic feedback than proprioceptive...?* 
+
+Carroll et al. (2019) asked how properties of the target it- self, specifically reward value, affect online control processes. Participants initially reached toward a center target that was flanked by two outer targets. Immediately following movement initiation, but prior to a cursor jump, a cue was given to indicate which one of the three targets would be rewarded. Feedback responses beginning 170 ms post cursor jump reflected rapid computations normally associated with high-level decision-making processes, as the hand moved toward the rewarding target. 
+
+*Not sure what's going on here-- unknown reward and a cursor jump?*
+
+
+### error adaptation
+
+Historically, [the term sensorimotor adaptation] was used to refer to an implicit and automatic learning process that keeps the motor system well calibrated. However, recent research has shown that adaptation is not a unitary process. Thus, we use the term in a more general sense, encompassing the many learning processes that allow us to flexibly modify skilled behaviors to be well suited for a range of contexts.
+
+
+trial-by-trial state space model of error adaptation
+
+\begin{align*}
+e(n) &= r(n) - x(n) \\ 
+x(n+1) &= Ax(n) + Be(n)
+\end{align*}}
+
+\begin{align*}
+x(n+1) &= (A - B)x(n)+ Br(n)
+\end{align*}
+
+If training is limited to one part of the workspace, the generalization function is relatively narrow, showing a Gaussian-like function with a standard deviation of ∼30° (Krakauer et al. 2000, Shadmehr & Moussavi 2000).
+
+*Howard et al 2015 suggests that follow-through necessitates distinct motor plans, as subjects without follow-throughs failed to adapt to opposing force fields which changed on a per-trial basis.*
+
+Several studies have shown that savings is almost entirely due to recall of explicit strategies (Haith et al. 2015b, Huberdeau et al. 2015, Morehead et al. 2015). In contrast, the implicit recalibration component does not increase across repeated exposures to the same perturbation, and even exhibits attenuation (Avraham et al. 2020).
+
+
+### cerebellum 
+
+In terms of a process-based account, the core deficit [as a result of cerebellum damage] has been associated with an inability to generate an accurate prediction of the sensory consequences of a movement, an impairment that not only disrupts learning but also underlies the dysmetric movements characteristic of ataxia (Wolpert et al. 1998).
+
+In general, cortical areas including the prefrontal, parietal, and premotor cortices are strongly engaged during the early stages of learning, and exhibit a decrease in activity as performance improves (Bédard & Sanes 2014, Bernardi et al. 2018, Graydon et al. 2005, Krakauer et al. 2004, Shadmehr & Holcomb 1997). Regions within the cerebellum sometimes show a similar pattern (Bernard & Seidler 2013; Imamizu et al. 2000, 2003; Nezafat et al. 2001), consistent with the observation that cerebellar and cortical activity patterns tend to be positively correlated. However, increased activity within subregions of the cerebellum over the course of learning has also been reported (Graydon et al. 2005, Krakauer et al. 2004, Shadmehr & Holcomb 1997). These increases have been interpreted to reflect the establishment of a new internal model or recalibration of an existing internal model (Imamizu et al. 2000).
+
+### implicit, explicit, use-dependent
+
+[Consider] the error components when aiming at the landmark. Given the 45° rotation, the cur- sor lands in the target when reaching to the neighboring landmark. Despite this success, there remains, at least from the perspective of the motor system, a 45° sensory prediction error: The system generates a prediction of the sensory consequences (i.e., feedback at the landmark), but the cursor appears at the target. The recalibration process applies its update rule (see Equation 2), producing the observed drift function. Indeed, the drift would suggest that implicit learning over- rides strategy use.
+
+Whereas adaptation is driven by SPE, the difference between predicted and actual feedback, strategy change is driven by target error (TE), the difference between the actual feedback and the goal 
+
+**The computational goal of the implicit component of adaptation is to keep the motor system well calibrated, ensuring that motor commands are faithfully implemented (Miyamoto et al. 2020). This system appears impervious to information about task success. In contrast, the computational goal of a strategic process such as aiming is to ensure that the appropriate action is selected to optimize performance. For this to occur, it is essential to monitor how well a selected action achieves its desired goal.**
+
+A striking example of UDL comes from a transcranial magnetic stimulation (TMS) study look- ing at motor cortex plasticity. At the beginning of the session, the TMS coil was positioned over M1 to elicit adduction of the thumb. The participant was then given the simple task of repeat- edly abducting the thumb. Post training, the same M1 stimulation now elicited thumb movements clearly shifted in the direction of abduction (Classen et al. 1998; see also Mawase et al. 2017).
+
+a recent paper suggests that a bias to repeat recent movements may reflect constraints in action planning (Marinovic et al. 2017). These biases become diminished when participants are given more time for movement preparation; conversely, preparation for the repeated movement becomes more rapid (Mawase et al. 2018).
+
+### RL 
+
+Can binary feedback be sufficient to learn a visuomotor rotation? Izawa & Shadmehr (2011) provided salient positive feedback in the form of an exploding target for movements that fell within a window corresponding to roughly the magnitude of normal motor variability. This window was originally centered around the target but was gradually rotated, eventually reaching 8° away from the target. Behaviorally, participants were able to track the rotation from the binary feedback. However, learning was much more variable than that observed with standard, vectorial feedback, suggesting an exploratory process (Cashaback et al. 2017, Therrien et al. 2018). Moreover, tests of perceived hand position indicated that, unlike SPE-driven learning, the sensorimotor map was unchanged by binary feedback.
+
+One hypothesis is that reward information has little effect on the rate of learning, but strengthens retention (Galea et al. 2015, Shmuelof et al. 2012a; for a different perspective, see Nikooyan & Ahmed 2015), on the basis of the observation that participants who received rewards during a visuomotor rotation took longer to wash out than those who did not receive rewards. However, Codol and colleagues (Codol et al. 2018, Holland et al. 2018) reported that the maintenance of asymptotic performance during washout was under participants’ explicit control; thus, the effect of reinforcement may be to make strategy use more salient, rather than have a direct effect on an internal model.
+
+*skin-in the game type explanation*
+
+If a target jumps mid-reach such that a rotated cursor lands within the target, adaptation is attenuated (Leow et al. 2018). One interpretation of this effect is that having the cursor land in the target results in a reward signal, which moderates the effect of the SPE (Reichenthal et al. 2016). Presumably the “reward” occurs even though the participant is fully aware that the outcome was not the direct result of his movement.
+
+### questions
+
+**How do we bring together computational ideas concerned with addressing high-level task requirements (e.g., where and when to move) with lower-level requirements needed to generate the motor commands that activate the appropriate muscles?**
+
+
+
 ## bizzi review of sensorimotor loops
 
 Extracted Annotations (31/12/2020, 15:58:46)
