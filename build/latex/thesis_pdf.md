@@ -10,18 +10,18 @@ geometry: margin=30mm
 
 <!-- you MUST have new lines between transcludes! -->
 
-$include sections/introduction.md
+$include ../../sections/introduction.md
 
-<!-- $include sections/motor_physiology.md
+$include ../../sections/motor_physiology.md
 
-$include sections/experimental_methods.md
+<!-- $include  ../../sections/experimental_methods.md
 
-$include sections/problem_formalization.md
+$include ../../sections/problem_formalization.md
 
-$include sections/data_analysis.md
+$include ../../sections/data_analysis.md
 
-$include sections/theory.md
+$include ../../sections/theory.md
 
-$include sections/next_steps.md -->
+$include ../../sections/next_steps.md -->
 
 ## Bibliography

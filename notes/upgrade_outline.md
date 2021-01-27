@@ -14,13 +14,17 @@ TODO:
 
 # intro & aims (1 day) 
 - what are we interested in?
+  - why can't robots move like humans?
+  - What is special about human movement?
+  - why is this the most interesting problem?
 - how are we going to approach this interest?
 - what do we hope to achieve?
-- Why can't robots move like humans?
-- What is special about human movement?
-- Why is this the most interesting problem?
+  	- experiments with interesting and novel movement data
+	- analysis of muscle and behavioral data
+	- inject RL / control theory into skill acquisition
+		- what do we mean by "RL" here?
+		- is "RL" relevant? why?
 - What is motor learning vs. motor control?
-- Goals and Aims (look at earlier proposals)
 - claim about control needing an extension for learning
 - use RL concepts to analyze motor learning experiments
 - can we defend this use of RL for learning?
@@ -30,17 +34,6 @@ TODO:
 - what is our approach?
 - develop models of ...
   
-- what are we interested in?
-	- why can't robots move like humans?
-	- What is special about human movement?
-- why is this the most interesting problem?
-- how are we going to approach this interest?
-- what do we hope to achieve?
-	- experiments with interesting and novel movement data
-	- analysis of muscle and behavioral data
-	- inject RL / control theory into skill acquisition
-		- what do we mean by "RL" here?
-		- is "RL" relevant? why?
 
 
 # human motor physiology (why is it special?)(1 day)
@@ -70,7 +63,7 @@ TODO:
 	- how does this inform theory?
 
 
-# what have they done experimentally? (1 day)
+# what has been done experimentally? (1 day)
 experimental methods
 prior work on human motor control and learning (doesn't have to be long!)
 	- what theory doesn't exist?
@@ -95,7 +88,7 @@ prior work on human motor control and learning (doesn't have to be long!)
 	- bird vocal learning
 
 
-# what experiments do we need? (previewed in intro) (1 day)
+# what experiments do we need to do? (1 day)
 experimental setup
 i made a thing, it works like this, here's the data
 	- detail how this works

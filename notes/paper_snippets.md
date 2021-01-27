@@ -79,7 +79,7 @@ x(n+1) &= Ax(n) + Be(n)
 x(n+1) &= (A - B)x(n)+ Br(n)
 \end{align*}
 
-If training is limited to one part of the workspace, the generalization function is relatively narrow, showing a Gaussian-like function with a standard deviation of ∼30° (Krakauer et al. 2000, Shadmehr & Moussavi 2000).
+If training is limited to one part of the workspace, the generalization function is relatively narrow, showing a Gaussian-like function with a standard deviation of approximately 30° (Krakauer et al. 2000, Shadmehr & Moussavi 2000).
 
 *Howard et al 2015 suggests that follow-through necessitates distinct motor plans, as subjects without follow-throughs failed to adapt to opposing force fields which changed on a per-trial basis.*
 
@@ -122,7 +122,7 @@ If a target jumps mid-reach such that a rotated cursor lands within the target, 
 
 ## bizzi review of sensorimotor loops
 
-Extracted Annotations (31/12/2020, 15:58:46)
+<!-- Extracted Annotations (31/12/2020, 15:58:46)
 
 "A major function of these synergies is to simplify the control of movements, a notoriously hard computational problem" (Bizzi and Ajemian 2020:1815)
 
@@ -190,7 +190,7 @@ Extracted Annotations (31/12/2020, 15:58:46)
 
 "Kitano H. Biological robustness. Nat Rev Genet 5: 826-837, 2004. doi:10.1038/ nrg1471." (Bizzi and Ajemian 2020:1823)
 
-"Sauerbrei BA, Guo JZ, Cohen JD, Mischiati M, Guo W, Kabra M, Verma N, Mensh B, Branson K, Hantman AW. Cortical pattern generation during dexterous movement is input-driven. Nature" (Bizzi and Ajemian 2020:1823)
+"Sauerbrei BA, Guo JZ, Cohen JD, Mischiati M, Guo W, Kabra M, Verma N, Mensh B, Branson K, Hantman AW. Cortical pattern generation during dexterous movement is input-driven. Nature" (Bizzi and Ajemian 2020:1823) -->
 
 
 ## piray, daw -- common model explaining flexible decision making, grid fields, and cognitive control
@@ -199,7 +199,7 @@ Extracted Annotations (31/12/2020, 15:58:46)
 
 ## graziano intelligent movement machine 2009
 
-In a standard stimulation experiment on motor cortex, the stimulation is applied in a brief burst for 50 ms or less. The result of this brief stimulation is a muscle twitch. But little if any behavior unfolds on such a short time scale. Neurons in motor cortex are not normally active in 50 ms bursts but instead, to a first approximation, are active throughout the duration of a movement. In the present case, the stimulation was applied for half a second, approximating the duration of a monkey’s reaching or grasping. As a result, instead of a muscle twitch, a complete movement unfolded.
+<!-- In a standard stimulation experiment on motor cortex, the stimulation is applied in a brief burst for 50 ms or less. The result of this brief stimulation is a muscle twitch. But little if any behavior unfolds on such a short time scale. Neurons in motor cortex are not normally active in 50 ms bursts but instead, to a first approximation, are active throughout the duration of a movement. In the present case, the stimulation was applied for half a second, approximating the duration of a monkey’s reaching or grasping. As a result, instead of a muscle twitch, a complete movement unfolded.
 
 the movement evoked by stimulation seemed to bring the hand toward the same final position as if in a goal-directed action.
 
@@ -240,7 +240,7 @@ A study by Lemon et al. (1995) on the human motor cortex also suggested that the
 
 Arguably nobody has done more to establish the organization of premotor cortex than Rizzolatti and colleagues. Most of their work has focused on the monkey motor cortex. They presented several lines of evidence to argue that the lateral premotor cortex exists as a separate motor area anterior to the primary motor cortex, and that it controls movement at a higher level of abstraction. They also proposed that the lateral premotor cortex is not a unitary area but is divisible into at least four subareas that participate in different though not fully understood aspects of movement control.
 
-Strick and colleagues have gathered evidence that the lateral motor cortex contains at least three hand areas: one in traditional primary motor cortex, one in the ventral premotor cortex, and one in the dorsal premotor cortex, all three of which project to the spinal cord (Dum and Strick, 2005). Of the three hand areas, the most posterior one projects directly to the motor neurons in the spinal cord (Rathelot and Strick, 2006). The other two project mainly to interneurons in the spinal cord. This difference might be taken as evidence that the posterior area is more primary in its control of movement. A different explanation, however, may better account for the connectional pattern. The direct projection to the spinal motor neurons, bypassing the spinal interneurons, appears to relate to the control of dextrous manipulation of objects. Animals that are good at dextrous manipulation tend to have this direct projection, and animals that have poor manual dexterity lack the direct projection (Heffner and Masterton, 1975, 1983; see also Bortoff and Strick, 1993; Maier et al., 1997). The data suggest that the direct projection from cortex to spinal motor neurons is not an indication of a lower level in a hierarchy, but instead an indication of the control of a specific kind of action that requires a specific neuronal machinery.
+Strick and colleagues have gathered evidence that the lateral motor cortex contains at least three hand areas: one in traditional primary motor cortex, one in the ventral premotor cortex, and one in the dorsal premotor cortex, all three of which project to the spinal cord (Dum and Strick, 2005). Of the three hand areas, the most posterior one projects directly to the motor neurons in the spinal cord (Rathelot and Strick, 2006). The other two project mainly to interneurons in the spinal cord. This difference might be taken as evidence that the posterior area is more primary in its control of movement. A different explanation, however, may better account for the connectional pattern. The direct projection to the spinal motor neurons, bypassing the spinal interneurons, appears to relate to the control of dextrous manipulation of objects. Animals that are good at dextrous manipulation tend to have this direct projection, and animals that have poor manual dexterity lack the direct projection (Heffner and Masterton, 1975, 1983; see also Bortoff and Strick, 1993; Maier et al., 1997). The data suggest that the direct projection from cortex to spinal motor neurons is not an indication of a lower level in a hierarchy, but instead an indication of the control of a specific kind of action that requires a specific neuronal machinery. -->
 
 
 
