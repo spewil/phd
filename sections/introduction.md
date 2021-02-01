@@ -19,6 +19,9 @@ Over the last few decades, there has been considerable amount of work done to un
 <!-- Robustness, Flexibility, Generalization, Composition -->
 <!-- Why is this the most interesting problem?  -->
 
+
+<!-- The interesting problem here is coordination of a redundant system to produce dexterous solutions-- we want to solve the redundancy problem and produce solutions that are robust to external perturbations and sensitive to new information -->
+
 Humans produce a great variety of movements every day, often without conscious thought. For example, movements like bringing a cup of coffee to our lips for a sip are generally out of reach for state-of-the-art robotic systems. We claim that this "motor gap" between biological and artificial motor systems is due to a lack of *dexterity* in the latter. Soviet neuroscientist Nikolai Bernstein defined dexterity as the ability to "find a motor solution in any situation and in any condition."[@Bernstein1967] The crux of this definition is the flexibility of such solutions. This flexibility, or robustness^[Kitano defines robustness as "the maintenance of specific functionalities of the system against perturbations, and it often requires the system to change its mode of operation in a flexible way." He claims that robustness requires control, alternative mechanisms, modularity and decoupling between high and low level variability.][@kitanoBiologicalRobustness2004], is the ability to optimize internal parameters in response to external perturbations and adapt to new information to achieve the goals of an ongoing plan.
 
 While a robot may be able to move a cup of coffee to a precise location in space, its solution is often found to be brittle in a new context, or unable to generalize to the movement of new objects. We define a skill as a behavior that involves dexterity in Bernstein's sense. The use of a tool such as a screwdriver is an example of a motor skill. We define a task as the production of skilled movement in a particular context. Driving a screw in a particular posture using a particular screwdriver is an example of a task. These concepts will be further formalized in later chapters. 
@@ -30,8 +33,6 @@ Human movement is ultimately the result of the activation and contraction of mus
 <!-- Setting up a specific experiment will help us to track muscle-level changes -->
 
 We are more interested in the leveraging the hand as a readout of flexible motor behavior than we are in the kinematics of hand movement itself. For this reason, we chose to develop an experimental setup that is capable of recording directly from muscle activations. We achieve this through surface electromyography recordings taken from the forearms controlling subjects' dominant hands. This allows us to track the sequential selection of muscle these contractions during skill acquisition and subsequent goal-oriented muscle activations. As we are interested in subjects' abilities to acquire new skills, we design tasks that require subjects to use available, but uncommon, motor activations. We then track the selection and execution of these activation during virtual tasks. The details of how this is achieved are described in {@sec:experiment}.
-
-
 
 <!-- we think theorizing with control and learning models will help us -->
 <!-- what exactly from the theory world will help us? why is control/RL relevant? -->
