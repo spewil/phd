@@ -1,4 +1,4 @@
-# Experimental Methods
+# Experimental Methods{#sec:experiment}
 
 ## Prior Art
 
@@ -49,6 +49,16 @@ The second question of this phase is: what is the manifold of activity in electr
 By analyzing the structure of these naturalistic datasets, we can compute the dimensionality of naturalistic movement as a subspace within our electrode space, similar to work done using joint angles of the hand[24, 22, 11]. From this work we know that while the hand has 29 joints and is controlled by 34 muscles, the dimensionality of natural hand movements is closer to 8 in joint angle dimension space based on principle components analysis. This analysis will also help us determine the biomechanical constraints on hand output dimensionality. We hypothesize that this will be higher than 8 and lower than 23, which gives us a large task space to work with for generating learning tasks.
 We aim to extend this prior work using learning algorithms that take into account time- varying dynamics of the signal in addition to common tools like components analysis and matrix factorization. This analysis will help generate an understanding of intersubject, intersession, and intertask variability. Both an analysis of dynamic correlations and a validation of dimensionality using EMG would be a novel contribution to the literature.
 We anticipate that quantifying electrode placement and calibrating across sessions will be a major challenge. We aim to develop a mechanical fixture for recording as well as alignment tools to aid in placing electrodes in precisely the same location each session. Properly separating variability due to electrode placement from behavioral and physiological variability will be paramount to establish repeatability in our results. Once we have collected a naturalistic activity dataset, we can begin to design bespoke feedback mappings and perturbations, as discussed in Section .
+
+
+Goal here is to use the linear dynamics environment to isolate the control strategies of the CNS under these constraints-- how does the CNS adapt to this environment? How does it construct solutions to control problems of various dimensionalities? How does it produce dexterous responses to perturbations of these solutions?
+
+
+
+This requires first mapping the intrinsic available dynamics of the hand per user.
+
+We then would like to present fixed mappings between hand output (either through direct muscle activity or through a controller such as a force pad).
+
 
 
 ## Unsupervised Feature Extraction
