@@ -1,5 +1,9 @@
 # motor learning
 
+## random 
+
+The brain seems a thoroughfare for nerve-action passing on its way to the motor animal. It has been remarked that Life’s aim is an act, not a thought. Today the dictum must be modified to admit that, often, to refrain from an act is no less an act than to commit one, because inhibition is co-equally with excitation a nervous activity. (Sherrington, Rede Lecture, 1933)
+
 
 ## kitano robustness
 
@@ -24,6 +28,7 @@ Modularity is an effective mechanism for containing perturbations and damage loc
 Decoupling isolates low-level variation from high-level functionalities.
 
 **My theory is that robustness is an inherent property of evolving, complex dynamic systems — various mechanisms incurring robustness of organisms actually facilitate evolution, and evolution favours robust traits. Therefore, requirements for robustness and evolvability are similar. This implies that there are architectural requirements for complex systems to be evolvable, which essentially requires the system to be robust against environmental and genetic perturbations.**
+
 
 
 
