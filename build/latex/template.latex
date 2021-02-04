@@ -428,8 +428,8 @@ $endif$
 $endif$
 
 \usepackage[capitalise]{cleveref}
-\usepackage{graphicx} %Loading the package
-\graphicspath{{/Users/spencerw/Google Drive/motor_control/phd/images/}}
+\usepackage{graphicx}
+\graphicspath{{/Users/spencerw/Google Drive/motor_control/phd/}}
 \usepackage{subfigure}
 
 \begin{document}
