@@ -122,10 +122,6 @@ INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/generic/iftex/ifvtex.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/generic/iftex/ifvtex.sty
-INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/cleveref/cleveref.sty
-INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/cleveref/cleveref.sty
-INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/tools/calc.sty
-INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/tools/calc.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
@@ -134,6 +130,10 @@ INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/cleveref/cleveref.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/cleveref/cleveref.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/tools/calc.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/tools/calc.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/subfigure/subfigure.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/subfigure/subfigure.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/subfigure/subfigure.cfg
@@ -216,12 +216,9 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmr6.tfm
 INPUT /usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx12.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx7.tfm
-INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot_CMs.pdf
-INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot_CMs.pdf
-INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot_CMs.pdf
-INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/graziano_aligned.pdf
-INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/graziano_aligned.pdf
-INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/graziano_aligned.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot_graziano.png
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot_graziano.png
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot_graziano.png
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx10.tfm
 INPUT thesis.aux
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc

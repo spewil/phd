@@ -111,25 +111,14 @@ The degree to which fractionation of movement is learned is unknown. Skilled pia
 The concept of a balanced control may prove to be a fruitful direction for theoretical work on dexterous motor control, the goal being to construct a model which takes into account this spectrum of individuation into account. The experimental challenge is to identify tasks which ostensibly require the direct descending connections to fractionate learned synergies. There is work suggesting that CM connections synapse primarily on low threshold, low force motor units that are recruited first. This would imply a difference in synergy fractionation at lower force as opposed to higher force. This can be tested easily by including a force parameter in a hand control task. The hypothesis stemming from the previously described work is that CM connections override the "consolidated" patterns putatively generated via spinal interneuron circuitry.
 
 
-
-
 ## Supraspinal Motor Maps
 
 It is known from recent work that primary motor cortex (M1) is not an isolated movement-generating dynamical system, but rather a node in the network of a feedback-modulated, distributed movement machine. This is reflected in recent work in the rodent which suggests that task-relevant movement depends on these network connections [@sauerbreiCorticalPatternGeneration2019]. This finding is relevant for our purposed as it demonstrates a fundamental function for cortical input as opposed to a specific substructure of motor cortex as detailed above in the primate literature.
 
-Thinking structural architecture of M1 as an input-driven system with outputs along a spectrum of modularity from synergistic to fractionated, we can then ask what kind of functional architecture might have evolved in the neuromuscular controller? Graziano and colleagues found that 500ms electrical stimulation to M1 reliabaly produced stereotyped movements in primates [@grazianoORGANIZATIONBEHAVIORALREPERTOIRE2006]. These movements appeared to produce goal-oriented actions pulled out of other contexts such as bringing food to the mouth, and seemed to be arranged on the cortical sheet topographically in terms of spatial endpoints rather than as a homonculus. Graziano refers to this as the cortical "action map", that these stimulations tapped into the control mechanisms of the primate's motor system[@grazianoIntelligentMovementMachine2009].
+Thinking structural architecture of M1 as an input-driven system with outputs along a spectrum of modularity from synergistic to fractionated, we can then ask what kind of functional architecture might have evolved in the neuromuscular controller? Graziano and colleagues found that 500ms electrical stimulation to M1 reliabaly produced stereotyped movements in primates, shown in {+@fig:rathelot_graziano}[@grazianoORGANIZATIONBEHAVIORALREPERTOIRE2006]. These movements appeared to produce goal-oriented actions pulled out of other contexts such as bringing food to the mouth, and seemed to be arranged on the cortical sheet topographically in terms of spatial endpoints rather than as a homonculus. Graziano refers to this as the cortical "action map", that these stimulations tapped into the control mechanisms of the primate's motor system[@grazianoIntelligentMovementMachine2009].
 
-\begin{figure}[!h]
-\centering
-\subfigure[(Left) Corticomotoneuronal (CM) cells traced using rabies from muscles of the elbow and finger. (Right) CM cells traced using rabies from muscles of the shoulder and finger.]{
-  \label{fig:graziano}\includegraphics[width=\linewidth]{physiology/rathelot_CMs.pdf}
-  }
-\subfigure[Complex movements evoked by 500ms electrical stimulation pulse trains.]{
-  \label{fig:rathelot}\includegraphics[width=\linewidth]{physiology/graziano_aligned.pdf}
-  }
-\caption{Similarities between electrical stimulation on behavorial timescales and rabies tracing identification of CM cells. CM cells are largely confined to the caudal half of M1, while this region tends to evokes complex manipulatory movements when electrically stimulated.}
-\label{fig:motor_maps}
-\end{figure}
+![Similarities between electrical stimulation on behavorial timescales and rabies tracing identification of CM cells. CM cells are largely confined to the caudal half of M1, while this region tends to evokes complex manipulatory movements when electrically stimulated. (Top Left) Corticomotoneuronal (CM) cells traced using rabies from muscles of the elbow and finger. (Top Right) CM cells traced using rabies from muscles of the shoulder and finger. (Bottom) Complex movements evoked by 500ms electrical stimulation pulse trains. *Adapted from Graziano 2005 and Rathelot 2009*](images/physiology/rathelot_graziano.png){width=100%}{#fig:rathelot_graziano}
+
 
 Recent work identifying movement syllables on a behaviorally relevant timescale has a similar flavor. Along with behavioral syllables, the motor map concept posits the idea that M1 might be looked at like a field of feedback control microcircuits, integrating and transforming inputs, both internal and external, to sculpt ongoing movement [@wiltschkoMappingSubSecondStructure2015]. This is in accordance with the idea that there is a structural hierarchy in M1 covering a spectrum of movement modularity. These ideas together form a picture of the motor system as a structural scaffold upon which behaviorally relevant feedback mappings from cortex to the spinal cord are continuously activated and modulated based on information and estimates about the periphery. In this view, the encoded variables of interest depend on the goals, context, and perturbations of the intended movement. Graziano writes:
 

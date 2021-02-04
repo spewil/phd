@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.13)  4 FEB 2021 15:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.13)  4 FEB 2021 16:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -363,6 +363,23 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutvoffset=\dimen156
 \Gm@dimlist=\toks24
 )
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+)
+\Gin@req@height=\dimen157
+\Gin@req@width=\dimen158
+)
 (/usr/local/texlive/2020/texmf-dist/tex/latex/cleveref/cleveref.sty
 Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
 Package cleveref Info: `hyperref' support loaded on input line 2370.
@@ -388,31 +405,14 @@ Package cleveref Info: always capitalise cross-reference names on input line 78
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count270
 \calc@Bcount=\count271
-\calc@Adimen=\dimen157
-\calc@Bdimen=\dimen158
+\calc@Adimen=\dimen159
+\calc@Bdimen=\dimen160
 \calc@Askip=\skip56
 \calc@Bskip=\skip57
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count272
 \calc@Cskip=\skip58
-)
-(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-)
-(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
-)
-Package graphics Info: Driver file: pdftex.def on input line 105.
-)
-\Gin@req@height=\dimen159
-\Gin@req@width=\dimen160
 )
 (/usr/local/texlive/2020/texmf-dist/tex/latex/subfigure/subfigure.sty
 Package: subfigure 2002/03/15 v2.1.5 subfigure package
@@ -442,32 +442,32 @@ File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
 (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Info: Redefining \microtypecontext on input line 86.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Info: Redefining \microtypecontext on input line 99.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
-LaTeX Info: Redefining \showhyphens on input line 86.
+LaTeX Info: Redefining \showhyphens on input line 99.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -499,7 +499,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box49
-Package hyperref Info: Link coloring OFF on input line 86.
+Package hyperref Info: Link coloring OFF on input line 99.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -513,9 +513,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count284
 )
-LaTeX Info: Redefining \ref on input line 86.
-LaTeX Info: Redefining \pageref on input line 86.
-LaTeX Info: Redefining \nameref on input line 86.
+LaTeX Info: Redefining \ref on input line 99.
+LaTeX Info: Redefining \pageref on input line 99.
+LaTeX Info: Redefining \nameref on input line 99.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -551,37 +551,37 @@ LaTeX Info: Redefining \nameref on input line 86.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 8
-8.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
+01.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 8
-8.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
+01.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-88.
+101.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-88.
+101.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 88.
+(Font)              <12> on input line 101.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 88.
+(Font)              <8> on input line 101.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 88.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 88.
-
+(Font)              <6> on input line 101.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 101
+.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -589,8 +589,8 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2020/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 88.
-
+LaTeX Font Info:    Trying to load font information for U+msb on input line 101
+.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -599,436 +599,411 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 117.
+(Font)              <10> on input line 128.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 117.
+(Font)              <7> on input line 128.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 117.
+(Font)              <5> on input line 128.
  [1
 
 {/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
  [4]
 [5]
-</Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot_CMs.
-pdf, id=141, 1849.42911pt x 853.58266pt>
+</Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot_graz
+iano.png, id=138, 2020.54875pt x 1439.3775pt>
 File: /Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot
-_CMs.pdf Graphic file (type pdf)
+_graziano.png Graphic file (type png)
 <use /Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot_
-CMs.pdf>
+graziano.png>
 Package pdftex.def Info: /Users/spencerw/Google Drive/motor_control/phd/images/
-physiology/rathelot_CMs.pdf  used on input line 529.
-(pdftex.def)             Requested size: 426.79135pt x 196.97112pt.
-</Users/spencerw/Google Drive/motor_control/phd/images/physiology/graziano_alig
-ned.pdf, id=142, 1849.42911pt x 853.58266pt>
-File: /Users/spencerw/Google Drive/motor_control/phd/images/physiology/graziano
-_aligned.pdf Graphic file (type pdf)
-<use /Users/spencerw/Google Drive/motor_control/phd/images/physiology/graziano_
-aligned.pdf>
-Package pdftex.def Info: /Users/spencerw/Google Drive/motor_control/phd/images/
-physiology/graziano_aligned.pdf  used on input line 532.
-(pdftex.def)             Requested size: 426.79135pt x 196.97112pt.
-
-Overfull \hbox (6.66666pt too wide) in paragraph at lines 529--533
- [][] 
- []
-
-
-Overfull \hbox (6.66666pt too wide) in paragraph at lines 529--533
- [][] 
- []
-
-[6 </Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot_C
-Ms.pdf> </Users/spencerw/Google Drive/motor_control/phd/images/physiology/grazi
-ano_aligned.pdf
-
-pdfTeX warning: pdflatex (file /Users/spencerw/Google Drive/motor_control/phd/i
-mages/physiology/graziano_aligned.pdf): PDF inclusion: multiple pdfs with page 
-group included in a single page
->] [7]
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 610--615
+physiology/rathelot_graziano.png  used on input line 549.
+(pdftex.def)             Requested size: 426.76341pt x 304.01328pt.
+ [6 </Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot_
+graziano.png>] [7]
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 625--630
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 610--615
+Underfull \hbox (badness 10000) in paragraph at lines 625--630
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 616--620
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 631--635
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 616--620
+Underfull \hbox (badness 10000) in paragraph at lines 631--635
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 621--626
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 636--641
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 621--626
+Underfull \hbox (badness 10000) in paragraph at lines 636--641
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 627--633
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 642--648
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 627--633
+Underfull \hbox (badness 10000) in paragraph at lines 642--648
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 634--638
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 649--653
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 634--638
+Underfull \hbox (badness 10000) in paragraph at lines 649--653
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 639--643
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 654--658
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 639--643
+Underfull \hbox (badness 10000) in paragraph at lines 654--658
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 644--649
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 659--664
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 644--649
+Underfull \hbox (badness 10000) in paragraph at lines 659--664
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 650--654
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 665--669
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 650--654
+Underfull \hbox (badness 10000) in paragraph at lines 665--669
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 655--660
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 670--675
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 655--660
+Underfull \hbox (badness 10000) in paragraph at lines 670--675
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 661--667
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 676--682
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 661--667
+Underfull \hbox (badness 10000) in paragraph at lines 676--682
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 668--673
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 683--688
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 668--673
+Underfull \hbox (badness 10000) in paragraph at lines 683--688
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 674--678
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 689--693
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 674--678
+Underfull \hbox (badness 10000) in paragraph at lines 689--693
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 679--684
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 694--699
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 679--684
+Underfull \hbox (badness 10000) in paragraph at lines 694--699
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 685--690
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 700--705
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 685--690
+Underfull \hbox (badness 10000) in paragraph at lines 700--705
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 691--696
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 706--711
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 691--696
+Underfull \hbox (badness 10000) in paragraph at lines 706--711
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 697--703
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 712--718
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 697--703
+Underfull \hbox (badness 10000) in paragraph at lines 712--718
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 704--708
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 719--723
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 704--708
+Underfull \hbox (badness 10000) in paragraph at lines 719--723
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 709--715
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 724--730
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 709--715
+Underfull \hbox (badness 10000) in paragraph at lines 724--730
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 716--721
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 731--736
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 716--721
+Underfull \hbox (badness 10000) in paragraph at lines 731--736
 
  []
 
 [8]
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 722--726
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 737--741
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 722--726
+Underfull \hbox (badness 10000) in paragraph at lines 737--741
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 727--731
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 742--746
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 727--731
+Underfull \hbox (badness 10000) in paragraph at lines 742--746
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 732--736
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 747--751
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 732--736
+Underfull \hbox (badness 10000) in paragraph at lines 747--751
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 737--742
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 752--757
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 737--742
+Underfull \hbox (badness 10000) in paragraph at lines 752--757
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 743--748
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 758--763
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 743--748
+Underfull \hbox (badness 10000) in paragraph at lines 758--763
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 749--754
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 764--769
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 749--754
+Underfull \hbox (badness 10000) in paragraph at lines 764--769
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 755--760
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 770--775
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 755--760
+Underfull \hbox (badness 10000) in paragraph at lines 770--775
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 761--766
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 776--781
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 761--766
+Underfull \hbox (badness 10000) in paragraph at lines 776--781
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 767--772
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 782--787
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 767--772
+Underfull \hbox (badness 10000) in paragraph at lines 782--787
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 773--778
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 788--793
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 773--778
+Underfull \hbox (badness 10000) in paragraph at lines 788--793
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 779--785
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 794--800
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 779--785
+Underfull \hbox (badness 10000) in paragraph at lines 794--800
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 786--792
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 801--807
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 786--792
+Underfull \hbox (badness 10000) in paragraph at lines 801--807
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 793--798
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 808--813
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 793--798
+Underfull \hbox (badness 10000) in paragraph at lines 808--813
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 799--804
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 814--819
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 799--804
+Underfull \hbox (badness 10000) in paragraph at lines 814--819
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 805--810
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 820--825
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 805--810
+Underfull \hbox (badness 10000) in paragraph at lines 820--825
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 811--816
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 826--831
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 811--816
+Underfull \hbox (badness 10000) in paragraph at lines 826--831
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 817--821
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 832--836
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 817--821
+Underfull \hbox (badness 10000) in paragraph at lines 832--836
 
  []
 
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 822--828
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 837--843
 [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 822--828
+Underfull \hbox (badness 10000) in paragraph at lines 837--843
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 831.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 846.
 [9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 831.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 846.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 831.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 831.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 846.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 846.
  ) 
 Here is how much of TeX's memory you used:
- 14883 strings out of 480608
- 232836 string characters out of 5903630
- 522976 words of memory out of 5000000
- 30353 multiletter control sequences out of 15000+600000
- 599290 words of font info for 126 fonts, out of 8000000 for 9000
+ 14875 strings out of 480608
+ 232372 string characters out of 5903630
+ 526799 words of memory out of 5000000
+ 30344 multiletter control sequences out of 15000+600000
+ 599419 words of font info for 127 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,8n,42p,814b,370s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,8n,42p,814b,361s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{ref-Gao2017} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1042,10 +1017,10 @@ m/lmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr17.pfb
 /texlive/2020/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/202
 0/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2020/texmf-dist
 /fonts/type1/public/lm/lmri10.pfb>
-Output written on thesis.pdf (9 pages, 1691313 bytes).
+Output written on thesis.pdf (9 pages, 858004 bytes).
 PDF statistics:
- 331 PDF objects out of 1000 (max. 8388607)
- 283 compressed objects within 3 object streams
- 78 named destinations out of 1000 (max. 500000)
- 14435 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 268 PDF objects out of 1000 (max. 8388607)
+ 242 compressed objects within 3 object streams
+ 77 named destinations out of 1000 (max. 500000)
+ 14430 words of extra memory for PDF output out of 17280 (max. 10000000)
 

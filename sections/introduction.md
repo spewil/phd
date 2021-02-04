@@ -1,9 +1,5 @@
 # Introduction & Aims{#sec:intro}
 
-{+@fig:graziano}
-{+@fig:rathelot}
-{+@fig:motor_maps}
-
 > *Movement is nothing but the quality of our being.*
 >
 > &mdash; Sunryu Suzuki, *Zen Mind, Beginner's Mind*
