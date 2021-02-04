@@ -84,7 +84,7 @@ Nikolai Bernstein coined the phrase "the degrees-of-freedom problem" to describe
 
 A considerable amount of discussion has focused on the existence of synergies as a simplifying structure which allows the motor system to "solve" the redundancy "problem". The term motor synergy can be used descriptively to describe the spatiotemporal coactivation of muscles necessary for an ongoing task. Synergetic control implies control in the space of a low-dimensional set of synergy weights rather than independent control over the actuator dimensions themselves. The control dimensions are functionally coupled as a result of synergetic action, which both simplifies the control task and constrains behavior to the low-dimensional subspace defined by the synergy weights[@merelHierarchicalMotorControl2019]. This is what Bizzi and colleagues refer to as "the puppet's strings". The term can also be used as a normative model of motor coordination which implies a constraint in the dimensionality of the descending supraspinal control signal, the simplifying movements of the puppeteer.
 
-Many studies have contributed to the concept of synergies as a hard-wired organizing feature of the motor system[@mussa-ivaldiMotorLearningCombination2000,@DAvella2003] ^[I should really have more studies here, or a really nice review.]. However, these works tend to extrapolate from non-primate preparations and use tasks which are inherently low-dimensional to explain covariance structure in primate and human kinematic and electromyography data[@Gao2017]. That said, it would be foolish to deny the existence of synergistic muscle coactivation even at the structural level. Careful studies of force control by the fingertips present a complex story of dimensionality of control in this regime [@raczSpatiotemporalAnalysisReveals2013]. Constraints exist in the architecture of the hand as well as its control system, though we maintain that concept of synergies, especially in the context of dexterous movement, is often presented as an oversimplification rather than a mere simplification. We believe the story of the hand is more complex.
+Many studies have contributed to the concept of synergies as a hard-wired organizing feature of the motor system[@mussa-ivaldiMotorLearningCombination2000,@DAvella2003] ^[I should really have more studies here, or a really nice review.]. However, these works tend to extrapolate from non-primate preparations, particularly in the frog, and use tasks which are inherently low-dimensional to explain covariance structure in primate and human kinematic and electromyography data[@giszterMotorPrimitivesNew2015;@Gao2017]. That said, it would be foolish to deny the existence of synergistic muscle coactivation even at the structural level. Careful studies of force control by the fingertips present a complex story of dimensionality of control in this regime [@raczSpatiotemporalAnalysisReveals2013]. Constraints exist in the architecture of the hand as well as its control system, though we maintain that concept of synergies, especially in the context of dexterous movement, is often presented as an oversimplification rather than a mere simplification. We believe the story of the hand is more complex.
 
 Studies have attempted to quantify the number of effective degrees of freedom of the hand with various methods. This has primarily been taken to be the number of linear features which contain a desired level of the original signal variance, where the signal is the joint angles of the hand engaged in various behaviors[@Ingram2009;@TodorovDimensionality2005]. These methods have resulted in roughly 8 linear features of hand kinematics to solve a variety of tasks, with subtleties found in inter-task and inter-subject variations.^[It has been argued that the motor repertoire is hardly high-dimensional when compared to the dimensionality of the visual feature extraction system[@yanUnexpectedComplexityEveryday2020]. A recent study found that low-variance linear, kinematic components displayed significantly higher correlation within condition (e.g. grasp of a specific object) than across condition. This suggests that these components carry task-dependent information rather than condition-independent, task-irrelevant noise[@yanUnexpectedComplexityEveryday2020]. This suggests that the control of the hand is more nuanced than a set of fixed synergies.
 
@@ -99,132 +99,62 @@ At the other end of the spectrum, years of research has contributed to a more co
 
 Just as many muscle fibers may be innervated by a single AMN, up to thousands of neurons contact single AMNs through CM connections or a variety of spinal interneuron circuits. The hallmark of CM connections is their influence over multiple muscle compartments as well as multiple muscles, though typically agonist or antagonist sets[@cheneyFunctionalClassesPrimate1980]. This may seem counter-intuitive as a means to produce individuated movement, but experimental evidence in primates has show that the convergence of many CM collateral fibers onto single AMNs driving the distal muscles in particular can produce a fine grading of activity over motor units driving the distal joints. CM cells also appear to play a role in the inhibition of antagonist muscles prior to contractions required for movement [@griffinMotorCortexUses2020]. These findings confirm theories about the excitatory and inhibitory role of these connection dating back decades, and combine to suggest that variables encoded in cortical ensembles are more complex than kinematics or dynamics alone.[@cheneyFunctionalClassesPrimate1980].
 
-The CM tract thus acts in coordination with synergistic muscle activations of the hand to achieve control that is balanced between modularity and flexibility. Findings suggest that there is a bipartite structure in human motor cortex driving dexterous control of the distal part of the upper limb which, it has been suggested, evolved under pressure to quickly generalize between tasks[@Rathelot2009;@griffinCorticomotoneuronalCellsAre2015;@Takei2017]. This dualistic control is not rigidly dichotomous, but a spectrum of overriding fractionation atop a vestigial system of synergistic action. Griffin and colleagues found that CM cells are functionally tuned to a muscle's mode of activity (agonist, antagonist, fixator) to "bypass spinal cord mechanisms and sculpt novel patterns of motor output that are essential for highly skilled movements” [@griffinCorticomotoneuronalCellsAre2015].
+The CM tract thus acts in coordination with synergistic muscle activations of the hand to achieve control that is balanced between modularity and flexibility. Findings suggest that there is a bipartite structure in human motor cortex driving dexterous control of the distal part of the upper limb which, it has been suggested, evolved under pressure to quickly generalize between tasks. This work argues that these two streams of hand control, namely "fractionated" and "synergistic" control, may interact to produce versatility, and balancing these subsystems may be a key part of the optimization function when learning new skills[@Rathelot2009;@griffinCorticomotoneuronalCellsAre2015;@Takei2017]. This dualism is likely not rigidly dichotomous, but rather a spectrum of overriding fractionation (so-called "New M1") atop a phylogenetically older system of synergistic action[@dumCorticospinalSystemStructural2011]. Griffin and colleagues found that CM cells are functionally tuned to a muscle's mode of activity (agonist, antagonist, fixator) to "bypass spinal cord mechanisms and sculpt novel patterns of motor output that are essential for highly skilled movements” [@griffinCorticomotoneuronalCellsAre2015].
 
 <!-- Individual corticomotoneurons contact multiple motor pools, and rarely (if ever) individual motor neurons. -->
 
 
-> It is generally believed that the direct corticomotoneuronal (CM) pathway, which is a phylogenetically newer pathway in higher primates, plays a critical role in the fractionation of muscle ac- tivity during dexterous hand movements. However, the present study demonstrated that PreM-INs, which are phylogenetically older, have spatiotemporal properties that correlate with muscle synergies during voluntary hand movements. Therefore, it is likely that these two systems have specialized functions for the control of primate hand movements, namely “fractionated control” and “synergistic control,” respectively. The interaction of these two putative control systems might be the source of the exceptional versatility of primate hand movements. [...] Optimization of balanced control may be an important factor also for the acquisition of new motor skills [@Takei2017].
+<!-- > It is generally believed that the direct corticomotoneuronal (CM) pathway, which is a phylogenetically newer pathway in higher primates, plays a critical role in the fractionation of muscle activity during dexterous hand movements. However, the present study demonstrated that PreM-INs, which are phylogenetically older, have spatiotemporal properties that correlate with muscle synergies during voluntary hand movements. Therefore, it is likely that these two systems have specialized functions for the control of primate hand movements, namely “fractionated control” and “synergistic control,” respectively. The interaction of these two putative control systems might be the source of the exceptional versatility of primate hand movements. [...] Optimization of balanced control may be an important factor also for the acquisition of new motor skills [@Takei2017]. -->
 
-The concept of a balanced control may prove to be a fruitful direction for modeling work. The goal would be to build a model which takes into account the bipartite structure of M1 into account, and find tasks that ostensibly require the direct descending connections to fractionate learned synergies. In effect, the hypothesis to test is that CM connections override the "consolidated" patterns putatively generated via spinal circuitry.
+The degree to which fractionation of movement is learned is unknown. Skilled piano performers have been found to exhibit a higher degree of independent movement among the fingers compared to control participants. Control groups displayed a hierarchical, presumably lower dimensional, organization of finger movement patterns while pianists showed distinct but individuated movement patterns[@furuyaFlexibilityMovementOrganization2013]. These results are imply that with skilled practice humans can produce finer and more independent movements of the fingers, and construct bespoke coactivations to solve specific goals. Similarly, studies have found that coherence between the index finger and thumb is greater on the dominant hand. This might imply a developmental lateralization, but use-dependent plasticity due to greater precision grip behavior of the dominant hand is also a viable explanation[@fuglevandMechanicalPropertiesNeural2011].
 
-
-This notion of an "old" and "new" motor cortex is not conceptual, but has been shown using viral tracing techniques [@Rathelot2009].
-
-There is work suggesting that CM connections synapse primarily on low threshold motor units that are recruited first. This would imply a difference in synergy fractionation at lower force as opposed to higher force. This can be tested by adding a force parameter within a task.
-
-`The degree to which fractionation of movement is learned is unknown. For example, skilled piano performers have been found to exhibit a higher degree of independent movement among the fingers compared to control participants. Control groups displayed a hierarchical, presumably low-dimensional, organization of finger movement patterns, while pianists showed distinct but individuated movement patterns[@furuyaFlexibilityMovementOrganization2013] These results are imply that with skilled practice humans can produce finer and more independent movements of the fingers, and construct bespoke coactivations to solve specific goals. Similarly, studies have found that coherence between the index finger and thumb is greater on the dominant hand. Of course, this could imply a development lateralization, but use-dependent plasticity due to greater precision grip behavior of the dominant hand is a viable explanation[@fuglevandMechanicalPropertiesNeural2011].
-
-
-The take-home here is that the primate motor system has evolved specifically for a special kind of dexterous movement, and this should be theorized in order to develop dexterous movement algorithms
-
-<!-- primate motor system is very different!! -->
+The concept of a balanced control may prove to be a fruitful direction for theoretical work on dexterous motor control, the goal being to construct a model which takes into account this spectrum of individuation into account. The experimental challenge is to identify tasks which ostensibly require the direct descending connections to fractionate learned synergies. There is work suggesting that CM connections synapse primarily on low threshold, low force motor units that are recruited first. This would imply a difference in synergy fractionation at lower force as opposed to higher force. This can be tested easily by including a force parameter in a hand control task. The hypothesis stemming from the previously described work is that CM connections override the "consolidated" patterns putatively generated via spinal interneuron circuitry.
 
 
 
 
+## Supraspinal Motor Maps
+
+It is known from recent work that primary motor cortex (M1) is not an isolated movement-generating dynamical system, but rather a node in the network of a feedback-modulated, distributed movement machine. This is reflected in recent work in the rodent which suggests that task-relevant movement depends on these network connections [@sauerbreiCorticalPatternGeneration2019]. This finding is relevant for our purposed as it demonstrates a fundamental function for cortical input as opposed to a specific substructure of motor cortex as detailed above in the primate literature.
+
+Thinking structural architecture of M1 as an input-driven system with outputs along a spectrum of modularity from synergistic to fractionated, we can then ask what kind of functional architecture might have evolved in the neuromuscular controller? Graziano and colleagues found that 500ms electrical stimulation to M1 reliabaly produced stereotyped movements in primates [@grazianoORGANIZATIONBEHAVIORALREPERTOIRE2006]. These movements appeared to produce goal-oriented actions pulled out of other contexts such as bringing food to the mouth, and seemed to be arranged on the cortical sheet topographically in terms of spatial endpoints rather than as a homonculus. Graziano refers to this as the cortical "action map", that these stimulations tapped into the control mechanisms of the primate's motor system[@grazianoIntelligentMovementMachine2009].
+
+\begin{figure}[!h]
+\centering
+\subfigure[(Left) Corticomotoneuronal (CM) cells traced using rabies from muscles of the elbow and finger. (Right) CM cells traced using rabies from muscles of the shoulder and finger.]{
+  \label{fig:graziano}\includegraphics[width=\linewidth]{physiology/rathelot_CMs.pdf}
+  }
+\subfigure[Complex movements evoked by 500ms electrical stimulation pulse trains.]{
+  \label{fig:rathelot}\includegraphics[width=\linewidth]{physiology/graziano_aligned.pdf}
+  }
+\caption{Similarities between electrical stimulation on behavorial timescales and rabies tracing identification of CM cells. CM cells are largely confined to the caudal half of M1, while this region tends to evokes complex manipulatory movements when electrically stimulated.}
+\label{fig:motor_maps}
+\end{figure}
+
+Recent work identifying movement syllables on a behaviorally relevant timescale has a similar flavor. Along with behavioral syllables, the motor map concept posits the idea that M1 might be looked at like a field of feedback control microcircuits, integrating and transforming inputs, both internal and external, to sculpt ongoing movement [@wiltschkoMappingSubSecondStructure2015]. This is in accordance with the idea that there is a structural hierarchy in M1 covering a spectrum of movement modularity. These ideas together form a picture of the motor system as a structural scaffold upon which behaviorally relevant feedback mappings from cortex to the spinal cord are continuously activated and modulated based on information and estimates about the periphery. In this view, the encoded variables of interest depend on the goals, context, and perturbations of the intended movement. Graziano writes:
+
+> "The usefulness of a feedback-dependent mapping from cortex to muscles is that it can in principle allow neurons in motor cortex to control a diversity of movement variables, such as direction, speed, hand position, or posture that transcend a fixed pattern of muscle activation. If the network receives feedback information about a specific movement variable, then it can learn to control that variable."
+
+<!-- 
+![Similarities between electrical stimulation on behavorial timescales and rabies tracing identification of CM cells. CM cells are largely confined to the caudal half of M1, while this region tends to evokes complex manipulatory movements when electrically stimulated. *(a)* (Left) Corticomotoneuronal (CM) cells traced using rabies from muscles of the elbow and finger. (Right) CM cells traced using rabies from muscles of the shoulder and finger. *(b)* Complex movements evoked by 500ms electrical stimulation pulse trains.](physiology/rathelot_graziano.pdf){#fig:CM_motor_map} -->
+
+Muscle activity is, in a sense, a readout from a network transforming state-dependent inputs into movement goals. Rather than playing chords, the motor system is improvisational jazzmaster. The movement machine wields its complexity to construct a movement fit to purpose, to suit its context and the information it receives. Rather than choosing muscle patterns in reconfigurable blocks, it creatively constructs and sculpts movements. That is, the hierarchy of the motor system is not rigidly organized around a particular set of variables. Many loops exist connecting cortex with the spinal cord, the cerebellum, the basal ganglia, and the sensorimotor periphery. Each of these loops contributes information to flexible activate the relevant action maps. Prevailing theory suggests that cerebellar loops provide predictive state information while basal gangliar loops provide state and/or action value information.
+
+The movement machine reasons in the space of feedback control systems and their ensuing trajectories. The phenomenal thing about the motor system is that it is able to tune itself rapidly with both high-dimensional sensory inputs and sparse reward signals[@bahlNeuralDynamicPoliciesfor2020;@ijspeertDynamicalMovementPrimitives2013]. This has some precedence in the literature and will be discussed further in {+@sec:theory}. This section has attempted to illustrate the complexity of the motor control system specifically with regard to dexterous control of the hand, with an eye toward experimental and theoretical avenues for exploration. The goal is to build and test a theoretical scheme for aspects of the compositional nature of the neural hand controller.
 
 
+<!-- "reimagine muscle synergies as reflecting the statistics of the external world (that includes the peripheral level) that might provide useful behaviors based on regularities" [@brutonSynergiesCoordinationComprehensive2018] -->
 
+<!-- By studying patients with cerebellar ataxia, a recent study suggests that the cerebellum plays a role in the temporal recruitment of behavioral syllables, while motor cortex may be implicated in the spatial structure of synergetic action, though this study focused on 13 proximal muscles of the shoulder and arm [@bergerDoesCerebellumShape2020]. -->
 
-
-
-
-
-
-
-
-
-
-### Supraspinal Motor Maps
-
-What kind of control system can flexibly govern this spectrum of covariance? 
-
-if synergies aren't the whole story with the hand, then how might we think about the neural controller? it isn't simply setting the gains of a few synergy modules, it's controlling flexibly...
-
-
-feedback view of movement -- M1 is not an isolated movement-generating dynamical system, but a node in the network of a feedback-modulated, distributed movement machine. This is reflected in work in the rodent which suggests that task-relevant movement depends on these network connections [@sauerbreiCorticalPatternGeneration2019].
-
-inputs to M1 include all types of sensory information as well
-
-all of this information means the neural controller is continuously modulating itself
-
-By studying patients with cerebellar ataxia, a recent study suggests that the cerebellum plays a role in the temporal recruitment of behavioral syllables, while motor cortex may be implicated in the spatial structure of synergetic action, though this study focused on 13 proximal muscles of the shoulder and arm [@bergerDoesCerebellumShape2020].
-
-
-
-
-
-inputs to M1 produce stereotyped movements in primates similar to the concept of behavioral syllables [@grazianoORGANIZATIONBEHAVIORALREPERTOIRE2006;@wiltschkoMappingSubSecondStructure2015]
-
-
-> We have some idea as to the intricate design of the puppet and the puppet strings, but we lack insight into the mind of the puppeteer. [@bizziMotorPlanningExecution2020]
-
-How does the nervous system deal with new information during movement? How is this information used to update the ongoing plan?
-
-If motor cortex relies on inputs to function, an input-driven dynamical system, motor cortex might be looked at like a field of feedback microcircuits, integrating and transforming external inputs to sculpt ongoing movement
-
-Graziano found that with stimulations of 500ms, a behaviorally relevant timescale, entire movements reliably unfolded which were functional and stereotyped. They appeared to produce goal-oriented actions pulled out of other contexts such as bringing food to the mouth. Graziano refers to this as the cortical "action map", that these stimulations tapped into the control mechanisms of the primate's motor system. The movements seemed to be arrange topographic not as a homonculus, but in terms of spatial endpoints. 
-
-the organization of cortex reflects a topographical arrangement of behaviorally relevant movements
-
-**A traditional view of the neuronal machinery of movement control is that activity at a site in motor cortex propagates down a fixed pathway through the spinal cord, activating a set of muscles. Based on our stimulation results, however, the underlying mechanism seems to be less of a simple feed-forward pathway and more of a network. The effect of the network is to create a specific class of mapping from the cortex to the muscles, a mapping that can change continuously on the basis of feedback about the state of the periphery. If the periphery is relatively still, the mapping from cortex to muscles appears fixed and resembles the traditional view. But once the state of the periphery is allowed to vary as in natural movement, the mapping from cortex to muscles becomes somewhat fluid in a manner that facilitates complex movement control.** [@grazianoIntelligentMovementMachine2009]
-
-cortex as a feedback-remapping mechanism that uses ongoing information to transform descending output to the muscles. The idea of feedback remapping is the idea of state-dependent feedback control where state includes all relevant sensors, with varying degrees of synergistic action
-
-the variables of interest in this view, rather than being fixed in a particular coordinate system, depend on the context, goals, and perturbations of the intended movement
-
-for control of the hand, the variables of interest may include muscle-level dimensions, or perhaps even submuscular control signals at the level of motor units for very fine control. 
-
-the relationship between cortex and muscles [may be] more complex than a muscle map. Instead, the firing of a cortical neuron may carry instructions about useful control variables.
-
-posture or musculoskeletal configuration may alter the feedback remapping by producing varying inputs to the neural control system
-
-"The usefulness of a feedback-dependent mapping from cortex to muscles is that it can in principle allow neurons in motor cortex to control a diversity of movement variables, such as direction, speed, hand position, or posture that transcend a fixed pattern of muscle activation. If the network receives feedback information about a specific movement variable, then it can learn to control that variable."
-
-muscle activity is a readout from a network not controlling movement per se, but transforming state-dependent inputs into movement
-
-rather than playing chords, the motor system is improvising
-
-the motor system wields its complexity to construct a movement fit to purpose, to suit its context and the information it recieves. rather than choosing muscle patterns in reconfigurable blocks, it creatively sculpts movements 
-
-the hierarchy is also not rigid, but information flows between levels of the hierarchy as well, and each level of the hierarchy receives similar inputs
+<!-- **A traditional view of the neuronal machinery of movement control is that activity at a site in motor cortex propagates down a fixed pathway through the spinal cord, activating a set of muscles. Based on our stimulation results, however, the underlying mechanism seems to be less of a simple feed-forward pathway and more of a network. The effect of the network is to create a specific class of mapping from the cortex to the muscles, a mapping that can change continuously on the basis of feedback about the state of the periphery. If the periphery is relatively still, the mapping from cortex to muscles appears fixed and resembles the traditional view. But once the state of the periphery is allowed to vary as in natural movement, the mapping from cortex to muscles becomes somewhat fluid in a manner that facilitates complex movement control.** [@grazianoIntelligentMovementMachine2009] -->
 
 <!-- **A central proposal of this book is that different zones in motor cortex emphasize different modes of behavior that probably have different control requirements. It may be that one type of action, such as manipulation of objects, is more slanted toward muscle or joint control whereas another type of action, such as reaching toward objects, is more slanted toward control of spatial variables.** -->
 
 <!-- **Fine control of the wrist and fingers may have evolved a specialized machinery. In primates that manipulate objects with a high degree of skill, the motor cortex projects directly to the spinal motoneurons that control the hand (Bortoff and Strick, 1993; Heffner and Masterton, 1975, 1983; Maier et al., 1997). The control of other body parts, such as the upper arm, involves mainly projections from the motor cortex to spinal interneurons.** -->
 
 
-direct connection in motor cortex which projects to alpha-motoneurons is for specific movement types, not the lowest level of the hierarchy, the other two subdivisions proejct to interneurons and are thus suited to recruit groups of muscles in function movements [@dumCorticospinalSystemStructural2011]
 
-"there exist multiple sensorimotor loops involving the cortex, other brain regions, the spinal cord, and the sensorimotor periphery, all of which include these cortical output regions along their path; 3) each of these loops serves distinct, yet crucially overlapping, functional roles in solving the supraspinal pattern formation problem" (Bizzi)
-
-Preparatory states for movements seem to set the system at the initial state for subsequent execution which allows the appropriate dynamics to unfold complete with information from the periphery and connected spinal and supraspinal systems such as cerebellum and premotor cortex. 
-
-The idea here is not that movement primitives constitute a modular set of behavioral outputs, played like keys on a keyboard. Instead, we suggest that primitives are themselves input-driven dynamical systems modulated by context (goal, environment, sensation). While this does not neg
-
-Reasoning in the space of feedback control systems, or feedback control trajectories. Rather than reasoning moment-to-moment, the neuromotor control system might reason with respect to feedback dynamics. The phenomenal thing about the system is that it is able to tune itself rapidly with both high-dimensional sensory inputs and sparse reward signals[@bahlNeuralDynamicPoliciesfor2020;@ijspeertDynamicalMovementPrimitives2013]. This has some precendence in the literature and will be discussed further in {+@sec:theory}.
-
-"reconciling the frameworks of kinematic MPs and kinetic/synergy MPs into a unified compositional scheme remains difficult" [@giszterMotorPrimitivesNew2015]
-
-"Strong predictions of an MP framework are that the underlying neural circuitry should involve interneurons assembling the synergies and driving them as units."
-
-"it is unknown whether these interneuron projections to motor pools occur in specific patterns that cluster into discrete sets, as happens in the frog."
-
-"reimagine muscle synergies as reflecting the statistics of the external world (that includes the peripheral level) that might provide useful behaviors based on regularities"
-[@brutonSynergiesCoordinationComprehensive2018]
-
-predictions about synergetic primitives remain predictions, and the evidence accumulated here suggests that the situation is much more complex for control of the hand and wrist
-
-<!-- what about inputs / feeback? -->
-
-Cerebellar loops provide information about predicted sensory states
-Basal Ganglia loops provide information about the value of particular movement variables 
-there is never true feedforward control, in this sense. rather feedback control is modulated based on both internal predictions and incoming external data. cerebellum is thought of as a state prediction machine
-
-<!-- Segway to next section -->
-
-There are very few tasks dealing with the hand in particular. What type of task would test the hypothesis that CM connections act to fractionate synergies of the hand such that we can tune a parameter of the task to require more or less influence of these direct connections? We would like to ask a user to fractionate synergies of the hand to different levels.
 
 
 <!-- 
