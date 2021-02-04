@@ -20,7 +20,8 @@ $include ../../sections/data_analysis.md
 
 $include ../../sections/theory.md
 
-$include ../../sections/next_steps.md -->
+$include ../../sections/next_steps.md
 
 \newpage
+
 ## Bibliography
