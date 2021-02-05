@@ -220,15 +220,7 @@ INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot_
 INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot_graziano.png
 INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/rathelot_graziano.png
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx10.tfm
-INPUT thesis.aux
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx10.pfb
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx7.pfb
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr17.pfb
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr6.pfb
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr7.pfb
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr8.pfb
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri10.pfb
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/lm/ts1lmr.fd
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/lm/ts1lmr.fd
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ts1-lmr10.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbxi10.tfm
