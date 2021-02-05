@@ -75,7 +75,7 @@ def compile_to_pdf():
     print("compiling to pdf")
     os.chdir(root_folder)
     os.system(
-        "cd build/latex/output; latexmk -pdf ../../../thesis.tex; mv thesis.pdf ../../../; ...."
+        "cd build/latex/output; latexmk -pdf ../../../thesis.tex; cd ../../../; mv build/latex/output/thesis.pdf ."
     )
     os.system("mv build/latex/output/thesis.pdf .")
 

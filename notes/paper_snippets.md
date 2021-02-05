@@ -5,7 +5,7 @@
 The brain seems a thoroughfare for nerve-action passing on its way to the motor animal. It has been remarked that Life’s aim is an act, not a thought. Today the dictum must be modified to admit that, often, to refrain from an act is no less an act than to commit one, because inhibition is co-equally with excitation a nervous activity. (Sherrington, Rede Lecture, 1933)
 
 
-## kitano robustness
+## kitano robustness [@kitanoBiologicalRobustness2004]
 
 Robustness is a property that allows a system to maintain its functions despite external and internal perturbations. 
 

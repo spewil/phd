@@ -4,6 +4,14 @@ Optimal Feedback Control
 
 <!-- The UCM is not a hard-and-fast principle, as nothing as in the motor system. Rather, as we've seen elsehwhere, there seems to be a spectrum of control. This could be explained through a composite cost function which penalizes deviations from prior movement strategies[@raczSpatiotemporalAnalysisReveals2013]. There is much research pushing back on optimal control, uncontrolled manifold hypothesis, and this will be addressed in {+@sec:experiment}. -->
 
+Adaptive LQR
+
+- use endpoint error to update state model of LQR controller 
+
+
+RNNs
+
+> Sensory feedback takes at least 25 ms to influence cortical responses and >50 ms to reflect the current goal27. Thus, during this ~200-ms interval, the neural dynamics are not yet affected by sensory feedback and should presumably be explained via internal dynamics. This is true even of optimal feed- back control architectures, which employ a dynamically varying control policy and internal ‘efference-copy’ recurrence to generate time-varying output patterns before the arrival of feedback28,29. Given the practical choice to use a model without sensory feedback, we verified with additional simulations that the solutions found by the model were robust to the addition of reasonable forms of feedback (Sussillo 2015 Nature)
 
 ## Error-based Learning (1 day)
 
