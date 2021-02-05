@@ -1,3 +1,28 @@
+# andy and dan
+
+- van beers style experiments?
+	- simple, behavioral...?
+	- force pad, eye movements
+- error-drive LQR adaptation?
+
+# andy 5/2/21
+
+- what is the strick figure of / what kind of visualizastion?
+- posture -- different movement or differnt aparams of same movement?
+- todo
+	- add stuff to 2 
+	- free-write on 3, go go go
+	- analyze andy data (as a project?)
+	- APT data (as a project?)
+		- LQR fitting?
+	- write up theory projects clearly (atomically for later replacement)
+		- GPS
+		- adaptive LQR
+		- LQR-RL 
+		- compositional LQR
+
+
+
 # ted 22/1
 
 - look through GPS repo, 2D env plots
