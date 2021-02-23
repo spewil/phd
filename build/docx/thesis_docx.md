@@ -1,5 +1,5 @@
 ---
-title: Sensorimotor Learning in Virtual Environments
+title: Heterarchical Control in Sensorimotor Processing
 author: Spencer R. Wilson
 date: \today
 xnos-cleveref: true

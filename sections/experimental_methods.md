@@ -1,1 +1,0 @@
-# Experimental Methods{#sec:experiment}

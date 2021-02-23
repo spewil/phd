@@ -1,3 +1,71 @@
+# Background Theory{#sec:bg_theory}
+
+**The motor learning field does not yet possess an adequate computational model for practice-induced increases in motor acuity.** (Krakauer Motor Learning 2019)
+
+## Existing Models of Motor Control and Adaptation
+
+### Optimal Feedback Control
+
+
+<!-- The UCM is not a hard-and-fast principle, as nothing as in the motor system. Rather, as we've seen elsehwhere, there seems to be a spectrum of control. This could be explained through a composite cost function which penalizes deviations from prior movement strategies[@raczSpatiotemporalAnalysisReveals2013]. There is much research pushing back on optimal control, uncontrolled manifold hypothesis, and this will be addressed in {+@sec:experiment}. -->
+
+
+<!-- Since the value function represents cost-to-go, it would be sensible to move down this landscape as quickly as possible. Indeed, is in the direction of steepest descent of the value function. However, not all directions are possible to achieve in state-space. represents precisely the projection of the steepest descent onto the control space, and is the steepest descent achievable with the control inputs . Finally, the pre-scaling by the matrix biases the direction of descent to account for relative weightings that we have placed on the different control inputs. Note that although this interpretation is straight-forward, the slope that we are descending (in the value function, ) is a complicated function of the dynamics and cost. (Tedrake http://underactuated.mit.edu/lqr.html)-->
+
+<!-- A solution to the algebraic Riccati equation can be obtained by matrix factorizations or by iterating on the Riccati equation. One type of iteration can be obtained in the discrete time case by using the dynamic Riccati equation that arises in the finite-horizon problem: in the latter type of problem each iteration of the value of the matrix is relevant for optimal choice at each period that is a finite distance in time from a final time period, and if it is iterated infinitely far back in time it converges to the specific matrix that is relevant for optimal choice an infinite length of time prior to a final period—that is, for when there is an infinite horizon.  wiki riccati equation-->
+
+
+OFC is the best we got for motor coordination, but there's no adaptation or learning
+
+The control setup writes a cost, environment has some dynamics. 
+
+What is changing in this scenario?
+What is being learned?
+What information is used to do this learning?
+
+Which model variables correspond to muscles? Movements?
+What does the resultant feedback controller compute? How does this relate to cognition?
+
+
+
+This model is lacking in ... 
+
+A key paper is `Valero-Cuevas 2009` which recording EMG from the seven muscles driving the finger in a force-feedback task. The authors found support for the "minimum intervention principle" [@Valero-Cuevas2009].
+
+
+### Intuitive Example of the OFC framework
+
+Here we see a feedback controller with three muscles such that we can plot the muscle activation trajectory.
+
+This is the feedback controller K, we can understand it's action by plotting 
+
+PLOT OF SIMPLE EXAMPLE 
+
+PLOT OF APT DATA
+
+
+### Error-based Adaptation
+
+Error-based sdaption and state-space models have a great amount of precedent in the sensorimotor learning literature. We will summarize these models briefly and discuss our willingness to depart from them.
+
+This is pretty much the best model we have that describe learning from error
+
+Current models of motor learning 
+
+x' = Ax + Bu 
+
+This model describes...
+
+The downsides of this model are that it describes a small aspect of our data.
+
+
+
+
+
+
+
+
+
 ## Motor Adaptation
 
 Implicit / Explicit
@@ -13,6 +81,8 @@ Krakauer et al.'s categorization of motor learning places prior work into the fo
 
 work in reaching
 shadmehr, krakauer reviews
+
+
 
 ### State-space Models of Motor Adaptation
 
@@ -141,11 +211,11 @@ to be stable in expectation.
 ## Two-rate models
 
 $$
-\begin{align*}
+\begin{aligned}
 X_{t+1} &= X^{s}_{t} + X^f_t \\
 X^s_{t+1} &= L_s \cdot e_t + R_s \cdot X^s_{t} \\
 X^f_{t+1} &= L_f \cdot e_t + R_f \cdot X^f_{t} \\
-\end{align*}
+\end{aligned}
 $$
 
 where we fit $L_i and R_i$, the learning rate and retention parameters. (shadmehr 2006)
