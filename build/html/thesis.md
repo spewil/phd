@@ -1,5 +1,5 @@
 ---
-title: Sensorimotor Learning in Virtual Environments
+title: Heterarchical Control in Sensorimotor Processing
 author: Spencer R. Wilson
 date: 1/1/2021
 toc-title: Contents
@@ -17,9 +17,11 @@ $include sections/introduction.md
 
 $include sections/motor_physiology.md
 
-$include sections/experimental_methods.md
+$include sections/background_experiment.md
 
-$include sections/data_analysis.md
+$include sections/background_theory.md
+
+$include sections/experiments.md
 
 $include sections/theory.md
 

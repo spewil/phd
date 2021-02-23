@@ -1,3 +1,101 @@
+# patrick
+
+- catch up 
+	- family, congrats, what's new 
+
+phd project
+	- general physiology claim of loops and heterarchy
+		- graziano + strick figure
+		- loops
+		- heterarchy == composition of motor controllers and learning dynamics
+			- we usually say "distributed and hierarchical"
+	- big question is: can we develop tractable, testable, normative models for motor learning? 
+		- place to start is look at motor control models, 
+		- begin to add learning aspects to them
+		- understand what learning computations the system must perform
+		- understand what information the system uses to adapt?
+	- how do we best tie experiment to physiology?
+		- hardware setup -- photos, explanation
+		- calibration -- unsupervised features for a simple decoder
+		- task 
+			- simple goals
+			- no perturbations
+			- careful perturbations
+	- what do you make of the plan in general?
+	- questions
+		- what can we tease out about learning, how can we be careful here?
+		- what's interesting in your team's work in terms of learning?
+		- what kinds of gotchas do i need to think about with EMG? can i really hope to see something hierarchical in the signal and/or heterarchical in the learning?
+
+startup
+	- understanding the exit?
+	- transitioning from phd to venture?
+		- read UCL's guidelines on ventures
+		- no equipment, no emails, don't go AWOL
+		- was this done as part of your studies?
+		- taking uni's resources?
+		- how many uni people were involved?
+	- when to incorporate?
+		- graduated july, incorporated september
+		- multiple people == good to incorporated, formalized
+	- when to patent? what about other IP?
+		- strategy depends on what you're trying to do
+		- novel utility
+	- how much funding?
+		- runway vs. rate vs. equity
+		- spread out valuations over demonstration points
+	- competitive edge
+		- what's preventing apple from just doing it?
+		- what's your leverage in that discussion?
+		- is this difficult to do? why?
+
+feedback
+- ask people to try to control low variance components
+- warning from krakauer: motor not cognitive, add interesting dynamics
+	- figure 8 from arbitrary electrodes
+	- arbitrary PCs of activity
+- control channel orthogonal to existing control
+- 64x2 mapping only has two directions of interest, so it's just a matter of picking those
+	- random
+	- two movements
+	- PCs from movement
+- BMI -- argument that we're removing complexity, but we're also removing spinal cord and muscles
+	- can my experiments set up something for a full-on monkey paper
+
+# ted 
+
+- learn features of the environment 
+- systems level view from the models
+- optimal arbiter between policies/controllers
+
+- predictive system, value system, collection of controllers --> flexible control
+
+- write out LQR internal model updates
+
+- Ted's plans for Neurips
+	- GPS thing (Ted leading, don't worry)
+		- planning?
+	- BGRL (co-lead)
+	- Nat Gradients and exploration on loss surface (lead)
+	- DDC implicit (not lead)
+	- LQR-RL stuff (Spencer lead)
+		- what does this model do?
+
+# peter data club
+
+- if we ask people to move towards a goal in an uncertain world, are we asking them to learn a new (internal?) generative model from goal-->synergies-->motor output?
+- how do we define such a model?
+- we're asking how motor activity / planning is represented
+- what can the data tell us when viewed from the angle?
+
+- peter's "motor" (keyboard) readout
+	- is this "hierarchical"?
+	- how do we define this, how do we analyze
+
+- what kind of algorithms?
+- what kind of computations?
+- do these support bayesian inference?
+
 # andy and dan
 
 - van beers style experiments?
@@ -5,7 +103,7 @@
 	- force pad, eye movements
 - error-drive LQR adaptation?
 
-# andy 5/2/21
+# andy 5/2/21 + 8/2/21
 
 - what is the strick figure of / what kind of visualizastion?
 - posture -- different movement or differnt aparams of same movement?
@@ -21,7 +119,19 @@
 		- LQR-RL 
 		- compositional LQR
 
+feedback on ch1 and ch2
+- im cherry picking evidence for a view of the motor system
+- how does ch2 fit into my hypothesis/thread of the project 
+- editing -- weave in my experiments and models 
+- think: is this sentence/graph useful
+	- for 
+- heterarchical claim isn't clear -- should clarify this a central
 
+- 
+	- email maneesh wolpert
+	- this week
+		- chapter 3 drafted
+		- chapter 4 blocked out
 
 # ted 22/1
 

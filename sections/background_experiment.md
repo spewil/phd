@@ -1,6 +1,171 @@
-## Prior "Myocontrol" Experiments
+# Background Experimental Methods{#sec:experiment}
+
+<!-- doesn't have to be long, explain how we want to extend -->
+
+- what are the most important concepts / results that inform our experiments?
+- What do we think we know from experiments about motor control? motor adaptation? motor learning?
+
+## Control
+
+Is LQR (as it’s claimed to be) a reasonable model for feedback control and error reduction + variability prediction for dimensionality reduction-based motor interface
+
+(task reads out from D muscles, find modes of that data; do PCA to get K < D dimensions, controller only responds to motion in those K directions)—does behavior + motor activity follow LQR? this question has already been asked, but it hasn’t been asked for this kind of high-to-low dim mapping. It’s been asked in tasks where muscles haven’t been directly in control (Bolero 2009). Todorov: do a task, look at muscle signal. Muscles that aren’t necessary for task have higher variability b/c they’re not being optimized for task (but does’t introduce perturbations). Also see Loeb (2012) for a negative result saying that muscle coordination is habitual rather than optimal, but it has issues (low # muscles). Can we replicate previous reaching optimality results in our set-up? What’s unique about our set-up is the PCA/dimensionality reduction in muscle activity space. This is important because you can create arbitrary muscle-cursor mappings, so you have to learn a new skill/mapping. This is different than perturbing a fundamental movement and forcing adaptation, which is what has been previously done. For our task, the participants actually have to learn a new task/mapping, rather than just do what they already know and be robust to perturbations. We test the LQR hypothesis once they’ve learned the task, because LQR isn’t a learning theory, it’s a theory about optimal control. We can see if, once people learn a new skill, their behavior is optimal wrt LQR theory. If we establish this, then we can think about how this LQR model is actually learned (enter RL).
+
+
+
+Our results are consistent with a recently described model in which an optimal feedback control policy is calculated independently for each potential target and a weighted average of these policies (that is, feedback gains) is computed at each point in time based on the relative desirability of each target50. Notably, this model, which pre-dicts averaging of feedback gains, can also account for spatial (that is, trajectory) averaging in go-before-you-know tasks. We submit that our result showing feedback gain averaging, coupled with previous work demonstrating trajectory averaging, provides strong support for the compelling idea that the CNS, under cases of target uncertainty, encodes in parallel multiple motor plans, along with their associated control policies, for competing action options. (Wolpert Nature 2018 competing control policies)
+
+
+
+
+
+
+### Adaptation of Reaching
+
+
+- prisms
+- rotations
+- forcefield
+- nothing -- van Beers variability
+
+
+
+
+
+> The vast majority of research in motor learning studies this capacity through adaptation para- digms in which a systematic perturbation is introduced to disrupt a well-practiced behavior, such as point-to-point reaching. [@adrianTheoreticalModelsMotor2012]
+
+- classic reaching adaptation --> this is a different goal
+	- shadmehr
+	- krakauer
+- unperturbed movements
+	- van beers
+
+[@Krakauer2019;@Shadmehr2008]
+
+There exist a handful of prior studies mapping EMG activity and finger joint angles directly to virtual stimuli, though few are focused on the learning process and none have the input dimensionality we aim to achieve in work proposed here.
+
+[@manleyWhenMoneyNot2014
+@vanbeersMotorLearningOptimally2009
+@vanbeersRandomWalkMotor2013]
+
+
+
+
+
+
+
+
+
+
+### Arbitrary Visuomotor Mappings
+
+[@Mussa-IvaldiSensoryMotorRemapping2011]
+
+
+There are several studies using non-EMG-driven sensorimotor mappings to study human motor control and learning.
+
+* Remapping Hand Movements in a Novel Geometrical Environment
+https://www.ncbi.nlm.nih.gov/pubmed/16148276
+
+[@MosierRemappingHandMovements2005]
+ 
+
+vocoder machine bell labs
+
+Hinton, Fells
+
+palsy study
+
+takehome: humans are really good at learning tasks like these, especially with their hands. this type of dexterity is specific to primates if not humans. let's use this ability to understand and try to model how this learning process unfolds.
+
+**_What does this give us that a force-field reaching task can't?_**
+
+[@nazarpourFlexibleCorticalControl2012]
+
+
+### Skill Learning Tasks
+
+- skill learning tasks
+	- ball and cup
+	- dart throwing tasks
+
+
+
+
+
+
+
+
+
+### Learning in Cortical Interfaces
+
+- cortical BMI work
+	- Batista papers, lee miller papers
+- speech learning -- analogy to speech
+- bird vocal learning
+
+- we're doing the same experiment, at the muscle level
+- try to convince why this is useful, but not too hard
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Properties of Electromyographic Signals
+
+- not actually gaussian, but super-gaussian [@nazarpourNoteProbabilityDistribution2013]
+- some work using bayesian filtering methods to infer the signal envelope [@sangerBayesianFilteringMyoelectric2007]
+- Farina paper on EMG as convolution
+
+> EMG records were rectified, smoothed and averaged before further analysis. [@churchlandNeuralPopulationDynamics2012a]
+
+> EMG activity was recorded using hook-wire electrodes (44 gauge with a 27 gauge cannula; Nicolet Biomedical, Madison, WI) placed in the muscle for the duration of single recording sessions. [...] Electrode voltages were amplified, bandpass filtered (150–500 Hz, four pole, 24 db/octave), sampled at 1000 Hz, and digitized. Off-line, raw traces were differentiated (to remove any remaining baseline), rectified, smoothed with a Gaussian (SD of 15 ms) and averaged. [@churchlandNeuralVariabilityPremotor2006]
+
+
+inter-subject variability is high, but seems to show individual strategies for movement [@crouzierIndividualDifferencesDistribution2019]
+
+
+<!-- Discussion of motor unit convolution -->
+
+The surface EMG signal can be modeled as the convolution of 
+
+
+Can muscle coordination be precisely studied by surface electromyography? [@Hug2011]
+
+This requires first mapping the intrinsic available dynamics of the hand per user.
+
+
+
+
+### Skill Learning in Myolectric Interfaces
+
+
+
+"performance levels and rates of improvement were significantly higher for intrinsic hand muscles relative to muscles of the forearm."
+[@Dyson2018] 
+
+
+
 
 ### Berger et al. 2013
+
+
+[@BergerDifferencesInAdaptationRates2013a]
+
+Berger et al.'s preprocessing
+- lowpassed butterworth at 5Hz
+- normalized to MVC calibration
+- periodic baseline noise substraction
+- choosing synergies by uniformity in force direction (pretty arbitrary)
+
 
 Using EMG in a learning experiment is not unheard of. Berger et al. 2013 use EMG with 13 muscles to test whether learning new synergy combinations for a task is more difficult that recombining existing synergies@Berger2013a. As we would expect, learning new synergy combinations is more difficult. I would argue that the demand in their "incompatible virtual surgeries" is too strict, that we need to more carefully design synergy perturbations to develop a model of learning in such a task.
 
@@ -64,6 +229,9 @@ After 288 trials subjects aren't able to complete the task for some movement dir
 
 ### Nazarpour 2012 J.Neuro
 
+
+[@nazarpourFlexibleCorticalControl2012]
+
 x Flexible Cortical Control of Task-Specific Muscle Synergies
 https://www.jneurosci.org/content/32/36/12349
 
@@ -75,6 +243,9 @@ Feedback processing based on visual errors
 
 
 ### Radhakrishnan 2008
+
+[@radhakrishnanLearningNovelMyoelectricControlled2008]
+
 
 x Learning a Novel Myoelectric-Controlled Interface Task — Radhakrishnan, 2008
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2576223/
@@ -88,6 +259,9 @@ prism adaption requires active movement; efference copy implicated if propriocep
 control models Fig 10
 
 ### de Rugy 2012 - Habitual not Optimal
+
+[@derugyMuscleCoordinationHabitual2012]
+
 
 just because it's harder to adapt to incompatible surgeries doesn't mean that there are fixed synergies, it just means there are multiple timescales of adaptation available in the neural control hierarchy -- diversity in the neural controller depending on context
 
@@ -125,9 +299,6 @@ How do we break a simple gradient model? On a task that is more difficult? will 
 > Although the two-dimensional subspace formed by the first two PCs captured a large fraction of the total variance of body motions, it did not necessarily reflect the natural up-down/left-right orientation of the display monitor. Therefore, following calibration and PC extraction, there was a customization phase in which users were allowed to set the origin, orientation, and scaling of the coordinates in task space, based on their preference.
 
 Subjects have prior knowledge of their directions in task space?
-
-
-### Papers
 
 
 x 90% isn't enough -- Follow-up on the previous paper -- critiques “direct evidence”

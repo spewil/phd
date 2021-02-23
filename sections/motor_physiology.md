@@ -4,6 +4,9 @@
 >
 > &mdash; Bizzi & Ajemian, *2020*
 
+<!-- TODO: streamline this heading towards heterarchy -- every sentence should connect to this pay-off at the end. -->
+<!-- Every piece of this should be heading towards what we're actually measuring and looking for. -->
+
 <!-- In this section, we support the claim that the motor system's organizing principle is redundancy at all levels, and that this redundancy supplies us with flexibility. This flexibility is illustrated in the CNS's demonstrated hierarchy in both planning and execution of action. -->
 
 <!-- - what can physiology tell us about the movement problem?
@@ -31,7 +34,7 @@ As we hope to make progress engineering naturalistic artificial movement, it wil
 
 <!-- motor units to muscles, a spectrum of redundancy -->
 
-<!-- build a picture of the staggering complexity of the hand's neuromuscular control structure -->
+<!-- "fine for thesis, very detailed for upgrade..." -->
 
 Muscles are composed of fibers which contract due to chemical gradients produced at the neuromuscular junction by action potentials emanating from alpha-motoneurons (AMN) in the ventral horn of the spinal cord. The quantum of motor output is the motor unit (MU), which is defined as a single motoneuron axon and the set of junctions its axon branches form with one or more muscle fibers. The innervation ratio of a particular muscle unit is the number of junctions it innervates. In muscles of the arm, the number of MUs and their innervation ratios each range from tens to hundreds per muscle and per motor unit, respectively, decreasing as muscles become more distal.
 
@@ -40,6 +43,8 @@ The MU thus provides the motor system with spatial redundancy at the muscle leve
 Since the innervation ratios of muscles in the forearm and hand are relatively small compared to more proximal muscles (which contain thousands of MUs), the logarithmic recruitment and redundancy of motor units enables the hand to produce movements with very fine spatiotemporal resolution. Paradoxically, however, the well-known signal-dependent noise in models of motor output has been found to be higher for hand muscles than for more proximal muscles, likely due to small numbers of motor units compare to larger muscles[@harrisSignaldependentNoiseDetermines1998;@fuglevandMechanicalPropertiesNeural2011].
 
 Muscle fibers are contained within muscle compartments, and each muscle may have one or more compartments. The fingers of the hand are extended by the extensor digitorum (ED) which contains four compartments, one for each of the tendons the muscle produces. Each tendon connects to the three metaphalangeal joints of each digit. The fingers are flexed by two muscles, the flexor digitorum superficialis (FDS) and the flexor digitorum profundus (FDP). Like the ED, these muscles produce four tendons, one to each finger from each of their four compartments. As such, one must coactivate these agonist and antagonist muscles in order to extend or flex a single finger in isolation[@fuglevandMechanicalPropertiesNeural2011]. Adduction and Abduction of the fingers is produced by the 19 instrinsic muscles of the hand, each of which has their origin and insertion points within the hand itself[@vanduinenConstraintsControlHuman2011]. The instrinisc muscle tendons form a kind of network around each of the digits.
+
+<!-- "This and the next para most useful" -->
 
 The human hand, thumb, and forearm system contains more than 30 muscles and at least 20 degrees of freedom are theoretically available for actuation. However, due to biomechanical coupling, the effective degrees of freedom is presumably less than 20. One study found that tendons of the fingers are arranged in such a way as to perform a kind of anatomical computation which expands the mechanical capabilities of the appendage by sharing force across its tendon network[@Valero-Cuevas2007]. Such computations embedded in the musculoskeletal structure are additional complexity when theorizing about neural control of the hand.
 
@@ -55,7 +60,7 @@ These redundancies at the neurophysiological level play a role in "spillover", w
 
 
 
-
+**FIGURE OF MUSCLES, MOTOR UNITS, CORD, DIFFERENT ARRANGEMENTS -- this can be referenced later for coordinative/fractionative**
 
 
 
@@ -80,15 +85,15 @@ In the framework of Optimal Feedback Control, coordination in both feed-forward 
 >
 > &mdash; Bizzi & Ajemian, *2020*
 
-Nikolai Bernstein coined the phrase "the degrees-of-freedom problem" to describe the challenge the motor system faces in coordinating its many dimension to achieve a goal. Solving this problem requires dexterity [@Bernstein1967]. As we have seen, redundancy is present from joints and muscles to motor units and their upstream synaptic partners. However, rather than asking how the motor control system deals with this "problem" overwhelming complexity, we might instead question why this complexity is evolutionarily advantageous at all. What does the availability of this redundancy afford the motor system? How does this redundancy enable dexterous movement?
+Nikolai Bernstein coined the phrase "the degrees-of-freedom problem" to describe the challenge the motor system faces in coordinating its many dimension to achieve a goal. Solving this problem requires dexterity [@Bernstein1967]. As we have seen, redundancy is present from joints and muscles to motor units and their upstream synaptic partners. However, rather than asking how the motor control system deals with this "problem" overwhelming complexity, we might instead question why this complexity evolved at all. What does the availability of this redundancy afford the motor system? How does this redundancy enable dexterous movement?
 
-A considerable amount of discussion has focused on the existence of synergies as a simplifying structure which allows the motor system to "solve" the redundancy "problem". The term motor synergy can be used descriptively to describe the spatiotemporal coactivation of muscles necessary for an ongoing task. Synergetic control implies control in the space of a low-dimensional set of synergy weights rather than independent control over the actuator dimensions themselves. The control dimensions are functionally coupled as a result of synergetic action, which both simplifies the control task and constrains behavior to the low-dimensional subspace defined by the synergy weights[@merelHierarchicalMotorControl2019]. This is what Bizzi and colleagues refer to as "the puppet's strings". The term can also be used as a normative model of motor coordination which implies a constraint in the dimensionality of the descending supraspinal control signal, the simplifying movements of the puppeteer.
+A considerable amount of discussion has focused on the existence of synergies as a simplifying structure which allows the motor system to "solve" the redundancy "problem". Working to avoid the trap of pure semantics, we might ask whether "synergy" is a descriptive or normative concept. The term motor synergy can be used descriptively to describe the spatiotemporal coactivation of muscles necessary for an ongoing task. Synergetic control implies control in the space of a low-dimensional set of synergy weights rather than independent control over the actuator dimensions themselves. The control dimensions are functionally coupled as a result of synergetic action, which both simplifies the control task and constrains behavior to the low-dimensional subspace defined by the synergy weights[@merelHierarchicalMotorControl2019]. This is what Bizzi and colleagues refer to as "the puppet's strings". The term can also be used as a normative model of motor coordination which implies a constraint in the dimensionality of the descending supraspinal control signal, the simplifying movements of the puppeteer.
 
 Many studies have contributed to the concept of synergies as a hard-wired organizing feature of the motor system[@mussa-ivaldiMotorLearningCombination2000,@DAvella2003] ^[I should really have more studies here, or a really nice review.]. However, these works tend to extrapolate from non-primate preparations, particularly in the frog, and use tasks which are inherently low-dimensional to explain covariance structure in primate and human kinematic and electromyography data[@giszterMotorPrimitivesNew2015;@Gao2017]. That said, it would be foolish to deny the existence of synergistic muscle coactivation even at the structural level. Careful studies of force control by the fingertips present a complex story of dimensionality of control in this regime [@raczSpatiotemporalAnalysisReveals2013]. Constraints exist in the architecture of the hand as well as its control system, though we maintain that concept of synergies, especially in the context of dexterous movement, is often presented as an oversimplification rather than a mere simplification. We believe the story of the hand is more complex.
 
 Studies have attempted to quantify the number of effective degrees of freedom of the hand with various methods. This has primarily been taken to be the number of linear features which contain a desired level of the original signal variance, where the signal is the joint angles of the hand engaged in various behaviors[@Ingram2009;@TodorovDimensionality2005]. These methods have resulted in roughly 8 linear features of hand kinematics to solve a variety of tasks, with subtleties found in inter-task and inter-subject variations.^[It has been argued that the motor repertoire is hardly high-dimensional when compared to the dimensionality of the visual feature extraction system[@yanUnexpectedComplexityEveryday2020]. A recent study found that low-variance linear, kinematic components displayed significantly higher correlation within condition (e.g. grasp of a specific object) than across condition. This suggests that these components carry task-dependent information rather than condition-independent, task-irrelevant noise[@yanUnexpectedComplexityEveryday2020]. This suggests that the control of the hand is more nuanced than a set of fixed synergies.
 
-What Bizzi and colleagues call "the problem of supraspinal pattern formation"--how synergies are activated through time-- we argue, in the context of hand control, is not simplified by the existence of hard-wired or soft-wired synergies[@bizziMotorPlanningExecution2020]. Rather, the CNS produces control signals in a range of contexts and in response to continually changing task demands. Rather than the CNS "simplifying movement" through synergetic action, it is more likely that hand synergies fall out of a optimization strategy which trades off effort and accuracy where effort may, in part, correspond to independent control of individual control dimensions. In this view, synergies, hard-wired or not, reflect the statistics of the environment in which movement is constructed[@brutonSynergiesCoordinationComprehensive2018]. If we limit ourselves to synergetic control, then we have simply passed the problem to a lower-dimensional one of the same fundamental nature. Neural control of the hand likely contains a spectrum of modularity in order to maintain its role as a flexible instrument. Synergetic action is one end of this spectrum resulting from the computation and structure of the human movement machine.
+What Bizzi and colleagues call "the problem of supraspinal pattern formation"--how synergies are activated through time-- we argue, in the context of hand control, is not simplified by the existence of hard-wired or soft-wired synergies[@bizziMotorPlanningExecution2020]. Rather, the CNS produces control signals in a range of contexts and in response to continually changing task demands. Rather than the CNS "simplifying movement" through synergetic action, it is more likely that hand synergies fall out of a optimization strategy which trades off effort and accuracy where effort may, in part, correspond to independent control of individual control dimensions. In this view, synergies, hard-wired or not, reflect the statistics of the environment in which movement is constructed[@brutonSynergiesCoordinationComprehensive2018]. If we limit ourselves to synergetic control, then we have simply passed the problem to a lower-dimensional one of the same fundamental nature. Neural control of the hand likely contains a spectrum of modularity in order to maintain its role as a flexible instrument. Synergetic action is one end of this spectrum resulting from the computations inherent to, along with the structures of the human movement machine.
 
 ## Fractionating Structures
 
@@ -102,7 +107,6 @@ The CM tract thus acts in coordination with synergistic muscle activations of th
 
 <!-- Individual corticomotoneurons contact multiple motor pools, and rarely (if ever) individual motor neurons. -->
 
-
 <!-- > It is generally believed that the direct corticomotoneuronal (CM) pathway, which is a phylogenetically newer pathway in higher primates, plays a critical role in the fractionation of muscle activity during dexterous hand movements. However, the present study demonstrated that PreM-INs, which are phylogenetically older, have spatiotemporal properties that correlate with muscle synergies during voluntary hand movements. Therefore, it is likely that these two systems have specialized functions for the control of primate hand movements, namely “fractionated control” and “synergistic control,” respectively. The interaction of these two putative control systems might be the source of the exceptional versatility of primate hand movements. [...] Optimization of balanced control may be an important factor also for the acquisition of new motor skills [@Takei2017]. -->
 
 The degree to which fractionation of movement is learned is unknown. Skilled piano performers have been found to exhibit a higher degree of independent movement among the fingers compared to control participants. Control groups displayed a hierarchical, presumably lower dimensional, organization of finger movement patterns while pianists showed distinct but individuated movement patterns[@furuyaFlexibilityMovementOrganization2013]. These results are imply that with skilled practice humans can produce finer and more independent movements of the fingers, and construct bespoke coactivations to solve specific goals. Similarly, studies have found that coherence between the index finger and thumb is greater on the dominant hand. This might imply a developmental lateralization, but use-dependent plasticity due to greater precision grip behavior of the dominant hand is also a viable explanation[@fuglevandMechanicalPropertiesNeural2011].
@@ -110,25 +114,7 @@ The degree to which fractionation of movement is learned is unknown. Skilled pia
 The concept of a balanced control may prove to be a fruitful direction for theoretical work on dexterous motor control, the goal being to construct a model which takes into account this spectrum of individuation into account. The experimental challenge is to identify tasks which ostensibly require the direct descending connections to fractionate learned synergies. There is work suggesting that CM connections synapse primarily on low threshold, low force motor units that are recruited first. This would imply a difference in synergy fractionation at lower force as opposed to higher force. This can be tested easily by including a force parameter in a hand control task. The hypothesis stemming from the previously described work is that CM connections override the "consolidated" patterns putatively generated via spinal interneuron circuitry.
 
 
-## Flexibilty in Spinal Circuits
-
-**I added this section on Friday!**
-
-Looking at rapid visuomotor responses, this work found that these reflexive movement were modulated by the value of multiple goals, just as in cognitive tasks. This supports the idea that there exists flexibility at all "levels" of the hierarchy, all recieving similar feedbacks and all similarly modulated by context:
-> If low-level sensorimotor circuits can contribute to value- based decisions through continuous feedback control, rather than merely executing the outcome of discrete action decisions taken in higher-order brain areas, it would support for the hy- pothesis that value-based decision algorithms are distributed throughout multiple levels of sensorimotor and cognitive pro- cessing hierarchies (Hunt et al., 2014; Hunt and Hayden, 2017). This notion differs from the traditional view that decisions arise from a serial process with modular units for choice evaluation, value comparison and action selection. According to the alterna- tive view, the basis for decisions is mutual inhibition between neural representations of alternative options, and these compu- tations occur simultaneously in multiple brain areas along both motor and abstract-value dimensions of tasks (Wang, 2012). Our current evidence that value-based decisions can be implemented through sensorimotor feedback control supports the alternative view, and the general notion that behavior emerges via a distrib- uted consensus between circuits engaged nominally in decision and sensorimotor processes (Cisek, 2012). [@carrollRapidVisuomotorResponses2019]
-
-> When we move, the brain specifies a set of feedback control gains that enable low-level motor areas not only to generate efficient and accurate movement, but also to rapidly and adaptively respond to evolving sensory information in a manner consistent with value-based decision-making.[@carrollRapidVisuomotorResponses2019]
-
-
-Spinal stretch reflexes may also be modulated by posture, like in Graziano's work:
-> We found that changing the arm’s orientation diametrically altered how spinal reflexes in the elbow muscles were evoked, and in such a way that were again efficiently scaled to the hand’s distance from the target. These findings demonstrate that spinal circuits can help efficiently control the hand during dynamic reaching actions, and show that efficient and flexible motor control is not exclusively dependent on processing that occurs within supraspinal regions of the nervous system.[@weiler2020]
-
-This is supported by another paper:
-Our results reveal complex goal-dependent modulation of fast feedback responses in M1 that are present early enough to account for goal-dependent stretch responses in arm muscles [@pruszynski2014]
-
-Feedback and internal dynamics play a role, and models reflect either (in this model they forgo sensory feedback, which we see as integral to modulating feedback control):
-> Sensory feedback takes at least 25 ms to influence cortical responses and >50 ms to reflect the current goal. Thus, during this ~200-ms interval, the neural dynamics are not yet affected by sensory feedback and should presumably be explained via internal dynamics. This is true even of optimal feed- back control architectures, which employ a dynamically varying control policy and internal ‘efference-copy’ recurrence to generate time-varying output patterns before the arrival of feedback. Given the practical choice to use a model without sensory feedback, we verified with additional simulations that the solutions found by the model were robust to the addition of reasonable forms of feedback [@sussillo2015]
-
+**FIGURE -- CARTOON HERE DEPICTING ANATOMY DISCUSSED SO FAR -- spinal circuits, motor cortex, BG, cerebellum**
 
 
 ## Supraspinal Motor Maps
@@ -145,31 +131,111 @@ Recent work identifying movement syllables on a behaviorally relevant timescale 
 
 Muscle activity is, in a sense, a readout from a network transforming state-dependent inputs into movement goals. Rather than playing chords, the motor system is improvisational jazzmaster. The movement machine wields its complexity to construct a movement fit to purpose, to suit its context and the information it receives. Rather than choosing muscle patterns in reconfigurable blocks, it creatively constructs and sculpts movements. That is, the hierarchy of the motor system is not rigidly organized around a particular set of variables. Many loops exist connecting cortex with the spinal cord, the cerebellum, the basal ganglia, and the sensorimotor periphery. Each of these loops contributes information to flexible activate the relevant action maps. Prevailing theory suggests that cerebellar loops provide predictive state information while basal gangliar loops provide state and/or action value information. Along these lines, recent working studying patients with cerebellar ataxia suggests that the cerebellum plays a role in the temporal recruitment of behavioral syllables, while motor cortex may be implicated in the spatial structure of synergetic action, though this study focused on 13 proximal muscles of the shoulder and arm rather than the distal muscles driving the hand[@bergerDoesCerebellumShape2020].
 
+<!-- x Hand Use Predicts Sensorimotor Representation
+https://www.nature.com/articles/nn.4038
+
+[@Ejaz2015]
+
+> We considered the idea that the structure of activation patterns is determined by the way we use our hands in everyday life15. Our everyday activities and interactions with objects impose a strong correlation structure on our finger movements16,17. For example, the middle and the ring fingers often move together to facilitate grasping, whereas the thumb typically moves independently10.
+
+> We predicted that frequently co-occurring finger movements would lead to strong associations between the cortical modules that encode them. When an individual finger is moved, activation would automatically spread to these associated circuits. Thus, the hand- usage model predicts that fingers that often move together would also be associated with similar activation patterns.
+
+> if the cortex had simply evolved to optimally activate neural synergies that are encoded in the spinal cord, then M1 would have to produce two very different activity patterns to individuate two fingers that normally move together
+
+they're saying that natural hand use does dictate both the output (via stimulation) as well as the topographic layout of the representational map in motor cortex-- saying here if its just choosing synergies, the map could be whatever it wanted on the cortical sheet, just needs to choose the right pattern for the right synergies, but these results suggest that the representation is driven by movement statistics, through learning or development 
+
+Motor cortical cells (many of which have corticospinal projections) discharge with movement of more than one digit and those associated with a particular movement are not tightly clustered. The corticospinal projection provides a further complication because the axons branch to supply more than one motor nucleus (Shinoda et al. 1981). These overlapping areas in the motor cortex may be optimal for daily usage of the hand, but also constrain the ability to control the digits independently. -->
+
 ![Similarities between electrical stimulation on behavorial timescales and rabies tracing identification of CM cells. CM cells are largely confined to the caudal half of M1, while this region tends to evokes complex manipulatory movements when electrically stimulated. (Top Left) Corticomotoneuronal (CM) cells traced using rabies from muscles of the elbow and finger. (Top Right) CM cells traced using rabies from muscles of the shoulder and finger. (Bottom) Complex movements evoked by 500ms electrical stimulation pulse trains. *Adapted from Graziano 2005 and Rathelot 2009*](images/physiology/rathelot_graziano.png){width=100%}{#fig:rathelot_graziano}
 
 **I added this on Friday:** {+@fig:rathelot_graziano} depicts the hierarchical nature of the motor system that enables its dexterity. The motor system is tuned to produce varying levels of modularity, and this is shown in Rasthelot's work at a structural level: CM cells evolved to provide modifications to coarse, synergistic action. This is reflectd in Graziano's work where, loosely, more dexterous behaviors are produced when stimulation is applied to the caudal regions of motor cortex. These dexterous behaviors are driven by a hierarchical stack of cellular machinery, each level of which is modulated by estimated state, goals, uncertainty, and value.
 
 The movement machine reasons in the space of feedback control systems and their ensuing trajectories. The phenomenal thing about the motor system is that it is able to tune itself rapidly with both high-dimensional sensory inputs and sparse reward signals[@bahlNeuralDynamicPoliciesfor2020;@ijspeertDynamicalMovementPrimitives2013]. This has some precedence in the literature and will be discussed further in {+@sec:theory}. This section has attempted to illustrate the complexity of the motor control system specifically with regard to dexterous control of the hand, with an eye toward experimental and theoretical avenues for exploration. The goal is to build and test a theoretical scheme for aspects of the compositional nature of the neural hand controller.
 
+<!-- **A central proposal of this book is that different zones in motor cortex emphasize different modes of behavior that probably have different control requirements. It may be that one type of action, such as manipulation of objects, is more slanted toward muscle or joint control whereas another type of action, such as reaching toward objects, is more slanted toward control of spatial variables.** (Graziano2010) -->
+
+<!-- Fine control of the wrist and fingers may have evolved a specialized machinery. In primates that manipulate objects with a high degree of skill, the motor cortex projects directly to the spinal motoneurons that control the hand (Bortoff and Strick, 1993; Heffner and Masterton, 1975, 1983; Maier et al., 1997). The control of other body parts, such as the upper arm, involves mainly projections from the motor cortex to spinal interneurons. (Graziano2010) -->
+
+## Flexibilty in Spinal Circuits
 
 
+### I added this section on Friday!**
+
+Looking at rapid visuomotor responses, this work found that these reflexive movement were modulated by the value of multiple goals, just as in cognitive tasks. This supports the idea that there exists flexibility at all "levels" of the hierarchy, all recieving similar feedbacks and all similarly modulated by context:
+
+> If low-level sensorimotor circuits can contribute to value- based decisions through continuous feedback control, rather than merely executing the outcome of discrete action decisions taken in higher-order brain areas, it would support for the hy- pothesis that value-based decision algorithms are distributed throughout multiple levels of sensorimotor and cognitive pro- cessing hierarchies (Hunt et al., 2014; Hunt and Hayden, 2017). This notion differs from the traditional view that decisions arise from a serial process with modular units for choice evaluation, value comparison and action selection. According to the alterna- tive view, the basis for decisions is mutual inhibition between neural representations of alternative options, and these compu- tations occur simultaneously in multiple brain areas along both motor and abstract-value dimensions of tasks (Wang, 2012). Our current evidence that value-based decisions can be implemented through sensorimotor feedback control supports the alternative view, and the general notion that behavior emerges via a distributed consensus between circuits engaged nominally in decision and sensorimotor processes (Cisek, 2012). [@carrollRapidVisuomotorResponses2019]
 
 
+> When we move, the brain specifies a set of feedback control gains that enable low-level motor areas not only to generate efficient and accurate movement, but also to rapidly and adaptively respond to evolving sensory information in a manner consistent with value-based decision-making.[@carrollRapidVisuomotorResponses2019]
 
 
+Spinal stretch reflexes may also be modulated by posture, like in Graziano's work:
 
+> We found that changing the arm’s orientation diametrically altered how spinal reflexes in the elbow muscles were evoked, and in such a way that were again efficiently scaled to the hand’s distance from the target. These findings demonstrate that spinal circuits can help efficiently control the hand during dynamic reaching actions, and show that efficient and flexible motor control is not exclusively dependent on processing that occurs within supraspinal regions of the nervous system.[@weiler2020]
 
+This is supported by another paper:
 
-<!-- **A central proposal of this book is that different zones in motor cortex emphasize different modes of behavior that probably have different control requirements. It may be that one type of action, such as manipulation of objects, is more slanted toward muscle or joint control whereas another type of action, such as reaching toward objects, is more slanted toward control of spatial variables.** -->
+> Our results reveal complex goal-dependent modulation of fast feedback responses in M1 that are present early enough to account for goal-dependent stretch responses in arm muscles [@pruszynski2014]
 
-<!-- **Fine control of the wrist and fingers may have evolved a specialized machinery. In primates that manipulate objects with a high degree of skill, the motor cortex projects directly to the spinal motoneurons that control the hand (Bortoff and Strick, 1993; Heffner and Masterton, 1975, 1983; Maier et al., 1997). The control of other body parts, such as the upper arm, involves mainly projections from the motor cortex to spinal interneurons.** -->
+Feedback and internal dynamics play a role, and models reflect either (in this model they forgo sensory feedback, which we see as integral to modulating feedback control):
 
+> Sensory feedback takes at least 25 ms to influence cortical responses and >50 ms to reflect the current goal. Thus, during this ~200-ms interval, the neural dynamics are not yet affected by sensory feedback and should presumably be explained via internal dynamics. This is true even of optimal feed- back control architectures, which employ a dynamically varying control policy and internal ‘efference-copy’ recurrence to generate time-varying output patterns before the arrival of feedback. Given the practical choice to use a model without sensory feedback, we verified with additional simulations that the solutions found by the model were robust to the addition of reasonable forms of feedback [@sussillo2015]
 
+Andy has written that sensory and spinal systems work "in parallel", but do we agree with this?
 
+> In terrestrial mammals, the rhythmic and coordinated leg movements during locomotion are controlled by a combination of interconnected neurons in the spinal cord, referred as to the central pattern generator, and sensory feedback from the segmental somatosensory system and supraspinal centers such as the vestibular system. How segmental somatosensory and the vestibular systems work in parallel to enable terrestrial mammals to locomote in a natural environment is still relatively obscure. [@akayRelativeContributionProprioceptive2021]
 
-
-<!-- 
-
-### Muscle Spindles
+<!-- Muscle Spindles -- proprioceptive feedback during movement
 
 Arm  movements  are  sensed  via  distributed  and  individually  ambiguous  activity  patterns  of  muscle  spindles,which depend on relative joint configurations rather than the absolute hand position.  Interpreting this high dimensional  input  (around  50  muscles  for  a  human  arm)  of  distributed information at the relevant behavioral level poses a challenging  decoding  problem  for  the  central  nervous  system. Proprioceptive information from the receptors undergoes several  processing  steps  before  reaching  somatosensory  cortex (3,8) - from the spindles that synapse in Clarke’s nucleus, to cuneate nucleus, thalamus (3,9), and finally to somatosensory cortex (S1).   In cortex,  a number of tuning properties have been observed, such as responsiveness to varied combinations of joints and muscle lengths (10,11), sensitivity to different loads and angles (12), and broad and unimodal tuning for movement direction during arm movements (11,13).The proprioceptive information in S1 is then hypothesized to serve as the basis of a wide variety of tasks, via its connections to motor cortex and higher somatosensory processing regions. (Sandbrink & Mathis, 2020) -->
+
+
+## The Heterarchical Motor System
+
+<!-- Motor circuitsthat support online control are highly distributed, includingmany cortical and subcortical regions. Many different regionslikely contribute to each process, and a single brain regionmay participate in multiple processes.38Thus, it is highly unlikelythat a single brain region is exclusively responsible for a singleparameter or control process.For example, the control policy in which motor commands aregenerated based on the present state of the body likely involvescortical, brainstem, and spinal processing, because each levelcontributes to a certain degree to the final pattern of muscle ac-tivity during a motor action. The final motor command onlyemerges at the motoneuronal level (the final common path)51as some descending projections synapse directly onto moto-neurons.52This distributed and hierarchical organization meansthat the contribution at the highest cortical level will not simplyreflect the pattern of muscle activity for a motor action. Thus,temporary deactivation in any of these brain regions involved infeedback control could lead to impairments that look like areduction in control policy gains. 
+
+PMd [premotor cortex] has strong projectionsto M1, brainstem, and spinal cord.62–64Thus, deactivation inthis cortical region indirectly impacts feedback performanceby altering other regions that are part of the control policy.38Alternatively, PMd may be more directly involved in online con-trol. Previous work highlights that this brain region responds inas little as 25 ms to mechanical disturbances of the limb, andthis pattern of activity is altered based on behavioral context.15
+
+It is also interesting to note that reductions in parameters associated with the forward model led to large errors even forsmall reductions in gain and even oscillatory behavior for reductions at50%
+
+Although OFC models proved useful for cortical circuits, more biological-inspired hierarchicalmodels will likely be necessary to interpret how the disruptionof brainstem and spinal circuits impact control.
+
+Tomohaki, Scott 2021 
+
+Graziano work encompasses motor and premotor cortex!
+
+-->
+
+This distributed view is crucial; a view that sensorimotor processing is a, perhaps, "complex hierarchy", or even a heterarchy...
+
+@cohenRoleHeterarchicalControl1992
+@huntDistributedHierarchicalRecurrent2017
+@huntHierarchicalCompetitionsSubserving2014
+
+This term was first used by McCulloch to describe the wat networks give rise to multiple competing values:
+
+> Cir- cularities in preference instead of indicating inconsistencies, actually demonstrate consistency of a higher order than had been dreamed of in our philosophy. An organism possessed of this nervous system-- six neurons-- is sufficiently endowed to be unpredictable from any theory founded on a scale of values. It has a heterarchy of values, and is thus internectively too rich to submit to a summum bonum. [@mccullochHeterarchyValuesDetermined1945] ^[Supreme Good] 
+
+He's saying that networks without a hierarchy of values, networks that inherently loopy, give rise to "unpredictability", or perhaps flexibility -- implies that if the system is optimizing, there is no Supreme Good, but rather a composite Good comprised of component values.
+
+Summum bonum is a Latin expression meaning the highest or ultimate good, which was introduced by the Roman philosopher Cicero to denote the fundamental principle on which some system of ethics is based — that is, the aim of actions, which, if consistently pursued, will lead to the best possible life. (wiki)
+
+used in social sciences to describe power relations between groups that aren't strictly hierarchical, but exist in a more complex arrangement:
+
+> when a given production mechanism is regulated by multiple control mechanisms without these control mechanisms being themselves sub- sumed under a higher-level controller. To the degree one can distinguish levels of control, there may be more control- lers at higher levels than at lower levels [@crumleyHeterarchyAnalysisComplex2008]
+
+> The addition of the term heterarchy to the vocabulary of power relations reminds us that forms of order exist that are not exclusively hierarchical and that interactive elements in complex systems need not be permanently ranked relative to one another. [@crumleyHeterarchyAnalysisComplex2008]
+
+> many structures, both biological and social, are not organized hierarchically. There is nothing intrinsically hierarchical about an oak tree or a symphony, yet each has undeniable structure and constitutes an orderly repre- sentation of the relations among elements. Nonetheless, few terms identify other kinds of order. Hier- archy—inasmuch as it is often a reductionist metaphor for order—has disproportionately influenced theory building in both social and natural scientific contexts. [@crumleyHeterarchyAnalysisComplex2008]
+
+> control hierarchy: decisions at higher levels affect the operation of lower levels. [@crumleyHeterarchyAnalysisComplex2008] 
+
+is this really a good definition? i suppose it's something about the agency of the decisionmaking, it's more about control -- does the upstream control only the downstream?
+
+in philosophy: 
+> when a given production mechanism is regulated by multiple control mechanisms without these control mechanisms being themselves sub- sumed under a higher-level controller. To the degree one can distinguish levels of control, there may be more control- lers at higher levels than at lower levels [@bechtelGroundingCognitionHeterarchical2021]
+
+> …the formation of a voluntary movement is much more complicated. To think that a voluntary action is formed in the narrow field of the motor cortex would be a mistake similar to an assumption that all the goods exported through a terminal are produced in the terminal. The system of cortical zones participating in the creation of a voluntary movement includes a complex of subcortical and cortical zones, each playing a highly specific role in the whole functional system. 
+
+shift in vernacular can be a shift in knowledge
+point of science is to describe the world concretely, so our words using to do this description matter

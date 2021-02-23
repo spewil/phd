@@ -1,123 +1,35 @@
-# Experimental Methods{#sec:experiment}
+# Experimental Contributions {#sec:experiment}
 
-## Prior Art
+<!-- I would be most interested to hear how u are thinking of approaching the analysis. I.e. u have a bunch of channels, movements, tasks what is the workflow to get from that raw data into something manageable/useful. -->
 
-<!-- doesn't have to be long, explain how we want to extend -->
-
-- what are the most important concepts / results that inform our experiments?
-- What do we think we know from experiments about motor control? motor adaptation? motor learning?
-
-### Control
-
-optimal control theory
-
-### Adaptation
-
-reaching
-- prisms
-- rotations
-- forcefield
-- nothing -- van Beers variability
-
-basic math of state space models
-this has nothing to do with OFC
-
-### Learning 
-
-- myoelectric
-- geometric mappings
+- shape of the data
+- structure of variability in the EMG compared to the structure of variability in the behavior?
 
 
+> we know how to design and interpret experiments that involve many repetitions of the same movement however there is limited role for online optimization in that context. instead we need experiments where subjects are required to come up with new movements all the time. how can we get experimenters to do such experiments? show cool movies of robots doing cool things,and hopefully get the experimenters excited. (todorov online optimization slides)
 
-
-
-
-### Adaptation during Reaching
-
-> The vast majority of research in motor learning studies this capacity through adaptation para- digms in which a systematic perturbation is introduced to disrupt a well-practiced behavior, such as point-to-point reaching. [@adrianTheoreticalModelsMotor2012]
-
-- classic reaching adaptation --> this is a different goal
-	- shadmehr
-	- krakauer
-- unperturbed movements
-	- van beers
-
-[@Krakauer2019;@Shadmehr2008]
-
-There exist a handful of prior studies mapping EMG activity and finger joint angles directly to virtual stimuli, though few are focused on the learning process and none have the input dimensionality we aim to achieve in work proposed here.
-
-[@manleyWhenMoneyNot2014
-@vanbeersMotorLearningOptimally2009
-@vanbeersRandomWalkMotor2013]
-
-### Arbitrary Visuomotor Mappings
-
-[@Mussa-IvaldiSensoryMotorRemapping2011]
-
-
-There are several studies using non-EMG-driven sensorimotor mappings to study human motor control and learning.
-
-* Remapping Hand Movements in a Novel Geometrical Environment
-https://www.ncbi.nlm.nih.gov/pubmed/16148276
-
-[@MosierRemappingHandMovements2005]
-
-vocoder machine bell labs
-
-Hinton, Fells
-
-palsy study
-
-takehome: humans are really good at learning tasks like these, especially with their hands. this type of dexterity is specific to primates if not humans. let's use this ability to understand and try to model how this learning process unfolds.
-
-**_What does this give us that a force-field reaching task can't?_**
-
-[@nazarpourFlexibleCorticalControl2012]
-
-
-### Skill Learning Tasks
-
-- skill learning tasks
-	- ball and cup
-	- dart throwing tasks
-
-
-### Learning in Cortical Interfaces
-
-- cortical BMI work
-	- Batista papers, lee miller papers
-- speech learning -- analogy to speech
-- bird vocal learning
-
-- we're doing the same experiment, at the muscle level
-- try to convince why this is useful, but not too hard
-
-### Skill Learning in Myolectric Interfaces
-
-[@derugyMuscleCoordinationHabitual2012]
-
-[@BergerDifferencesInAdaptationRates2013a]
-
-[@MosierRemappingHandMovements2005]
-
-[@radhakrishnanLearningNovelMyoelectricControlled2008]
-
-[@nazarpourFlexibleCorticalControl2012]
-
-"performance levels and rates of improvement were significantly higher for intrinsic hand muscles relative to muscles of the forearm."
-[@Dyson2018] 
 
 ## Experimental Setup
 
-### Properties of Electromyographic Signals
+My setup records EMG from the forearm.
 
-- not actually gaussian, but super-gaussian [@nazarpourNoteProbabilityDistribution2013]
-- some work using bayesian filtering methods to infer the signal envelope [@sangerBayesianFilteringMyoelectric2007]
-- Farina paper on EMG as convolution
+The goal of the project’s first phase is to develop a high-dimensional surface EMG recording rig to generate datasets with high signal-to-noise ratio and dense coverage over superficial muscles of the arm and hand. The first question of this phase is: what are the limitations of a closed-loop myocontrol experiment, and how can such constraints be avoided or leveraged? To answer this question we will develop a signal processing pipeline and diagnostics suite to identify constraints in the setup and aim to overcome, as much as possible, the limitations inherent in surface EMG recording such as muscle crosstalk and rigorous electrode placement.
 
-> EMG records were rectified, smoothed and averaged before further analysis. [@churchlandNeuralPopulationDynamics2012a]
+The concept of the experimental setup is shown in Figure 1, where 64 monopolar electrodes are attached to a subject’s arm and hand to record muscle activity. The arm and hand are kinematically constrained in a custom fixture and motor activity is recorded during isometric muscle contractions at levels less than 20\% maximum voluntary contraction to lessen the risk of involuntary co-contractions. The setup circumvents the limb biomechanics by mapping muscle output directly to virtual stimuli shown on a computer monitor. Additionally, our study focuses on low-force, isometric contractions to avoid complications due to artifacts in dynamic, high- force movements.
 
-> EMG activity was recorded using hook-wire electrodes (44 gauge with a 27 gauge cannula; Nicolet Biomedical, Madison, WI) placed in the muscle for the duration of single recording sessions. [...] Electrode voltages were amplified, bandpass filtered (150–500 Hz, four pole, 24 db/octave), sampled at 1000 Hz, and digitized. Off-line, raw traces were differentiated (to remove any remaining baseline), rectified, smoothed with a Gaussian (SD of 15 ms) and averaged. [@churchlandNeuralVariabilityPremotor2006]
+We chose 64 channels in order to have at least two electrodes per muscle implicated in control of the hand in the event that we require differential recording. This choice limits our analysis to the motor pool level. If our questions require recording at the motor unit level, we will need to move to a higher channel count system. Literature in this field typically use a much lower number of channels. We believe that using 64 electrodes will help develop a more complete picture of the superficial muscle activity of the arm and hand across learning. A diagram of muscles relevant to thee control of the hand and wrist is shown in Figure 2 on page 4. We are not aware of a rigorous study testing which muscles of the arm and hand can be accurately captured using surface EMG.
+
+
+We aim to extend this prior work using learning algorithms that take into account time- varying dynamics of the signal in addition to common tools like components analysis and matrix factorization. This analysis will help generate an understanding of intersubject, intersession, and intertask variability. Both an analysis of dynamic correlations and a validation of dimensionality using EMG would be a novel contribution to the literature.
+
+We anticipate that quantifying electrode placement and calibrating across sessions will be a major challenge. We aim to develop a mechanical fixture for recording as well as alignment tools to aid in placing electrodes in precisely the same location each session. Properly separating variability due to electrode placement from behavioral and physiological variability will be paramount to establish repeatability in our results. Once we have collected a naturalistic activity dataset, we can begin to design bespoke feedback mappings and perturbations, as discussed in Section .
+
+Goal here is to use the linear dynamics environment to isolate the control strategies of the CNS under these constraints-- how does the CNS adapt to this environment? How does it construct solutions to control problems of various dimensionalities? How does it produce dexterous responses to perturbations of these solutions?
+
+
+
+
+
 
 ### Hardware
 
@@ -142,37 +54,18 @@ i made a thing, it works like this, here's the data
 
 
 
+## Unsupervised Feature Extraction
 
-<!-- Discussion of motor unit convolution -->
-
-The surface EMG signal can be modeled as the convolution of 
-
-
-The goal of the project’s first phase is to develop a high-dimensional surface EMG recording rig to generate datasets with high signal-to-noise ratio and dense coverage over superficial muscles of the arm and hand. The first question of this phase is: what are the limitations of a closed-loop myocontrol experiment, and how can such constraints be avoided or leveraged? To answer this question we will develop a signal processing pipeline and diagnostics suite to identify constraints in the setup and aim to overcome, as much as possible, the limitations inherent in surface EMG recording such as muscle crosstalk and rigorous electrode placement.
-
-Francois Hug. Can muscle coordination be precisely studied by surface electromyography?
-Journal of Electromyography and Kinesiology, 21(1):1–12, February 2011.
-
-The concept of the experimental setup is shown in Figure 1, where 64 monopolar electrodes are attached to a subject’s arm and hand to record muscle activity. The arm and hand are kinematically constrained in a custom fixture and motor activity is recorded during isometric muscle contractions at levels less than 20\% maximum voluntary contraction to lessen the risk of involuntary co-contractions. The setup circumvents the limb biomechanics by mapping muscle output directly to virtual stimuli shown on a computer monitor. Additionally, our study focuses on low-force, isometric contractions to avoid complications due to artifacts in dynamic, high- force movements.
-We chose 64 channels in order to have at least two electrodes per muscle implicated in control of the hand in the event that we require differential recording. This choice limits our analysis to the motor pool level. If our questions require recording at the motor unit level, we will need to move to a higher channel count system. Literature in this field typically use a much lower number of channels. We believe that using 64 electrodes will help develop a more complete picture of the superficial muscle activity of the arm and hand across learning. A diagram of muscles relevant to thee control of the hand and wrist is shown in Figure 2 on page 4. We are not aware of a rigorous study testing which muscles of the arm and hand can be accurately captured using surface EMG.
 
 The second question of this phase is: what is the manifold of activity in electrode space during natural hand use? To answer this question, we will record naturalistic activity by subjects completing a set protocol that covers the naturalistic space of electrode covariance. For comparison, we will record a dataset of naturalistic tasks using a separate, mobile setup with the same electrode placement pattern but without the isometric constraint. These datasets could be collected from a range subjects going throughout their daily tasks, or using a specific set of tasks in the laboratory such as handwriting and the use of various tools. Encouragingly, a recent review noted that “Similarly to the breakthroughs in understanding vision that followed the quantification of statistics of natural scenes, a clear description of the statistics of natural tasks might revolutionize our understanding of the neural basis of high-level learning and decision- making”[18].
+
 By analyzing the structure of these naturalistic datasets, we can compute the dimensionality of naturalistic movement as a subspace within our electrode space, similar to work done using joint angles of the hand[24, 22, 11]. From this work we know that while the hand has 29 joints and is controlled by 34 muscles, the dimensionality of natural hand movements is closer to 8 in joint angle dimension space based on principle components analysis. This analysis will also help us determine the biomechanical constraints on hand output dimensionality. We hypothesize that this will be higher than 8 and lower than 23, which gives us a large task space to work with for generating learning tasks.
-We aim to extend this prior work using learning algorithms that take into account time- varying dynamics of the signal in addition to common tools like components analysis and matrix factorization. This analysis will help generate an understanding of intersubject, intersession, and intertask variability. Both an analysis of dynamic correlations and a validation of dimensionality using EMG would be a novel contribution to the literature.
-We anticipate that quantifying electrode placement and calibrating across sessions will be a major challenge. We aim to develop a mechanical fixture for recording as well as alignment tools to aid in placing electrodes in precisely the same location each session. Properly separating variability due to electrode placement from behavioral and physiological variability will be paramount to establish repeatability in our results. Once we have collected a naturalistic activity dataset, we can begin to design bespoke feedback mappings and perturbations, as discussed in Section .
-
-
-Goal here is to use the linear dynamics environment to isolate the control strategies of the CNS under these constraints-- how does the CNS adapt to this environment? How does it construct solutions to control problems of various dimensionalities? How does it produce dexterous responses to perturbations of these solutions?
 
 
 
-This requires first mapping the intrinsic available dynamics of the hand per user.
-
-We then would like to present fixed mappings between hand output (either through direct muscle activity or through a controller such as a force pad).
 
 
 
-## Unsupervised Feature Extraction
 
 We want to determine a redundant control space from data taken during natural activity. The difficulty with this is that such a natural activity manifold may display spatial (channel-wise) correlations that are possibly physiologically separable. Thus, there are two aims   which must be addressed separately:
 
