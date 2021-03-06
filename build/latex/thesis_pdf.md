@@ -10,22 +10,24 @@ geometry: margin=30mm
 ---
 
 <!-- you MUST have new lines between transcludes! -->
-<!-- 
+
 $include ../../sections/introduction.md
 
 $include ../../sections/motor_physiology.md
 
 $include ../../sections/background_experiment.md
 
-$include ../../sections/background_theory.md
+<!-- $include ../../sections/background_theory.md -->
 
 $include ../../sections/experiments.md
 
-$include ../../sections/theory.md -->
+$include ../../sections/includes/center_hold.md
+
+$include ../../sections/theory.md
 
 $include ../../sections/includes/model_adaptation.md
 
-<!-- $include ../../sections/next_steps.md -->
+$include ../../sections/next_steps.md
 
 \newpage
 

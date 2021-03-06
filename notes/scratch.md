@@ -1,3 +1,13 @@
+## 6/3/20
+
+things to be addressed
+- dropping frames during recording
+- noise in recordings
+- adding eyetracking into the mix
+- recording the data in a stable way
+  - regardless of task
+- 
+
 ## 21/11/20
 
 wolpert 2011:

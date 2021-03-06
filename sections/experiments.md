@@ -19,10 +19,11 @@ The concept of the experimental setup is shown in Figure 1, where 64 monopolar e
 
 We chose 64 channels in order to have at least two electrodes per muscle implicated in control of the hand in the event that we require differential recording. This choice limits our analysis to the motor pool level. If our questions require recording at the motor unit level, we will need to move to a higher channel count system. Literature in this field typically use a much lower number of channels. We believe that using 64 electrodes will help develop a more complete picture of the superficial muscle activity of the arm and hand across learning. A diagram of muscles relevant to thee control of the hand and wrist is shown in Figure 2 on page 4. We are not aware of a rigorous study testing which muscles of the arm and hand can be accurately captured using surface EMG.
 
-
 We aim to extend this prior work using learning algorithms that take into account time- varying dynamics of the signal in addition to common tools like components analysis and matrix factorization. This analysis will help generate an understanding of intersubject, intersession, and intertask variability. Both an analysis of dynamic correlations and a validation of dimensionality using EMG would be a novel contribution to the literature.
 
 We anticipate that quantifying electrode placement and calibrating across sessions will be a major challenge. We aim to develop a mechanical fixture for recording as well as alignment tools to aid in placing electrodes in precisely the same location each session. Properly separating variability due to electrode placement from behavioral and physiological variability will be paramount to establish repeatability in our results. Once we have collected a naturalistic activity dataset, we can begin to design bespoke feedback mappings and perturbations, as discussed in Section .
+
+![Prototype of recording hardware. Monopolar recording with reference electrode at the wrist.](images/hardware/setup.pdf)
 
 Goal here is to use the linear dynamics environment to isolate the control strategies of the CNS under these constraints-- how does the CNS adapt to this environment? How does it construct solutions to control problems of various dimensionalities? How does it produce dexterous responses to perturbations of these solutions?
 
@@ -54,13 +55,28 @@ i made a thing, it works like this, here's the data
 
 
 
-## Unsupervised Feature Extraction
+## Feature Extraction
+
+We want features that are:
+  - smooth; having low spatial frequency
+  - equal in the variance that they capture; equally likely to exist in - future data
+      - Perhaps use CCA to find N features that are maximally dissimilar?
+      - Use ICA to find independent features?
 
 
 The second question of this phase is: what is the manifold of activity in electrode space during natural hand use? To answer this question, we will record naturalistic activity by subjects completing a set protocol that covers the naturalistic space of electrode covariance. For comparison, we will record a dataset of naturalistic tasks using a separate, mobile setup with the same electrode placement pattern but without the isometric constraint. These datasets could be collected from a range subjects going throughout their daily tasks, or using a specific set of tasks in the laboratory such as handwriting and the use of various tools. Encouragingly, a recent review noted that “Similarly to the breakthroughs in understanding vision that followed the quantification of statistics of natural scenes, a clear description of the statistics of natural tasks might revolutionize our understanding of the neural basis of high-level learning and decision- making”[18].
 
 By analyzing the structure of these naturalistic datasets, we can compute the dimensionality of naturalistic movement as a subspace within our electrode space, similar to work done using joint angles of the hand[24, 22, 11]. From this work we know that while the hand has 29 joints and is controlled by 34 muscles, the dimensionality of natural hand movements is closer to 8 in joint angle dimension space based on principle components analysis. This analysis will also help us determine the biomechanical constraints on hand output dimensionality. We hypothesize that this will be higher than 8 and lower than 23, which gives us a large task space to work with for generating learning tasks.
 
+
+
+![Raw EMG data from a minimal finger flexion before preprocessing.](images/data_analysis/fingers/raw_data.pdf)
+
+![Raw EMG data from a minimal finger flexion before preprocessing.](images/data_analysis/fingers/preprocessed_data.pdf)
+
+![Raw EMG data from a minimal finger flexion before preprocessing.](images/data_analysis/fingers/PCA_variances.pdf)
+
+![Raw EMG data from a minimal finger flexion before preprocessing.](images/data_analysis/fingers/PCA_components.pdf)
 
 
 
@@ -128,7 +144,39 @@ The behaviors present in our calibration dataset are crucial, as they determine 
 
 Ultimately, we want to find reproducible features in our data that are due to muscle coordination alone, rather than volitional movements. We want the lowest level covariance that reflects physiology rather than a task-level behavioral description (see *Todorov, Ghahramani 2005* and *Ingram, Wolpert 2009*). The idea is that if we collect data from enough tasks, we can extract the common modes of muscle activity. This is true only if we are sampling uniformly from the space of tasks. Otherwise one task, and therefore one coordination pattern, will be overrepresented.
 
-## Task Formalization
+## Center Hold, Reach Out Task
+
+In this task, the muscles of a subject's arm are recorded using 32 channels of surface EMG. This EMG vector is mapped to a 2D force acting on a point mass shown on the screen. The mapping $M\in\mathbb{R}^{2x32}$ maps 8 "columns" each consisting of 4 electrodes placed in a line down the length of the forearm each to one of 2D root of unity. Each column of electrodes is thus mapped to one of 8 two-dimensional forces. Additionally, the point mass has zero inertia and zero friction and as such displays a direct, though redundant, readout of the EMG signal. The task asks the subject to reach one of 32 equally spaced targets on each trial.
+
+While there are 8 possible force vectors the subject can modulate by controlled the electrode activity on each of her 8 columns, the EMG mapping is ultimately a projection onto the 2D plane. Since the EMG signal is nonnegative, the subject could technically modulate just four modes of electrode activity, the minimum number needed to span the task space, to reach all 32 targets.
+
+We can model the subject as selecting an EMG signal $x$ which minimizes the distance between a target position $b$ and the projection of the EMG signal through the mapping $M$ as well as minimizes the norm of $x$ in order to conserve metabolic energy. This optimization can be written as a regularized least squares problem:  
+
+$$
+\min_x\frac{1}{2}||Mx - b||^2_2 + \frac{\lambda}{2}||x||_2^2.
+$$
+
+This problem is known to have a unique minimum for $\lambda>0$ which is an approximation $Mx\approx b$ regardless of the shape or rank of $M$. This implies that the subject, if they are biophysically capable to do so, will learn distinct motor outputs for each target rather than reusing modes for multiple targets with different activation levels. That is the subject will, over time, learn to fractionate their muscle output to reach their goal in order to minimize effort. For instance, to reach the the target at position $(1,0)$ in Cartesian coordinates, the subject could activate a bespoke activity mode or activity the combination of two modes for targets at $\pm45^\circ$ from this central target. If this is the case, the model predicts that the dimensionality of the EMG signal will increase over the course of training as the subject learns to construct bespoke activity modes for each of the eight targets.
+
+![Point mass position trajectories in two-dimensional task space during the center-hold, reach-out task with 8 targets spaced evenly around the unit circle. Training was conducted over 3 blocks each with 32 trials, 4 trials per target. The first block shows roughly four modes, the second block shows four modes more clearly, and the third blocks may show the beginnings of fractionation.](images/data_analysis/center_hold/trajectories.pdf)
+
+![Raw EMG data from a minimal finger flexion before preprocessing.](images/data_analysis/center_hold/hit_fraction.pdf)
+
+![Raw EMG data from a minimal finger flexion before preprocessing.](images/data_analysis/center_hold/PCA_trial_variance.pdf)
+
+![Raw EMG data from a minimal finger flexion before preprocessing.](images/data_analysis/center_hold/PCA_concat_variance.pdf)
+
+
+Preliminary data for this task, through the mapping: 
+
+$$
+\tilde{M} = \begin{bmatrix}M & M & M & M\end{bmatrix} \\
+M =
+\begin{bmatrix}
+0  & 0.71  & 1   & 0.71   & 0  & -0.71  & -1  & -0.71 \\
+1  & 0.71  & 0  & -0.71  & 1   & -0.71   & 0   & 0.71
+\end{bmatrix}
+$$
 
 In this task, the subject's first goal is to interact through an unknown visuomotor mapping and internalize this model. The second problem is to use this model to solve a control problem.
 
@@ -170,7 +218,6 @@ Learning linear dynamical systems from data is a hot topic of research, most of 
 
 From LQG theory we know that the control law is a linear function of the state:
 
-
 \begin{align*}
 u_t = -L_tx_t
 \end{align*}
@@ -184,43 +231,3 @@ y_t &= M(D-L_t)x_{t-1} + Mw_{t-1} + v_t.
 
 The noise covariance due to the observation Q is unchanged, but the new noise covariance for the latent process is now $MRM^T$. This may make things difficult.
 
-#### Questions
-
-- In a behavioral experiment, how can you disentangle system identification/estimation and control? Is suboptimality due to one or the other?
-- How does the observation mapping relate to the latent state covariance? The task state covariance?
-- How do we formalize this into a probabilistic graphical model? Why would we?
-    - Would this make it easier to reason about what the goals are?
-    - Would learning $M$ become an inference problem?
-    - Would solving the control problem become an inference problem...?
-- What noise assumptions can we make? Can we not make?
-    - How can we incorporate signal-dependent noise?
-
-### Model-based Reinforcement Learning
-
-Since we only have an approximate model of the system dynamic, we could simply work towards an optimal policy directly using gradient derivative-free optimization methods in a model-free approach. Since we have good evidence that humans leverage internal models to make decisions (at least in a motor problem domain), we need to define an algorithm which uses past observations and controls to update our approximation for the system dynamic. Here is a very general algorithm:
-
-0. Define a base policy/controller and base system model ($L_0$ and $\hat{M}_0$)
-1. Collect samples (by interacting with the true environment $M_{true}$) using the current policy/controller (collect $y_t,u_t,y_{t+1}$ triples using $L_i$ for $i \in \{0\dots N\}$
-2. Use sample(s) / trajectories to update current system dynamical model $\hat{M}_i$
-3. Update current policy/controller $L_i$ (using the system dynamics or using a direct policy method)
-
-If the true system dynamics were known, we could solve the Algebraic Riccati Equation with a backwards pass, and compute our controls in a forward pass. This general algorithm structure highlights how the (unknown) system identification and controller design are intertwined: identifying a system appropriately must rely on sampling and fitting regions of the state space pertinent to adequate control in terms of cost (Ross ICML 2012). Otherwise, our approximation to the true system dynamic will only produce a valid controller in regions we have previously explored. The question is how we can effectively (sample and time efficiently) utilize new state transitions we encounter either online as feedback or between trials to update our model and policy. That is, the number of trials and/or trajectories to use before updating either the system model and/or policy is an important parameter.
-
-In the LQG setting, this might be called "adaptive LQG".
-
-#### Questions
-
-- how does a subject sample the state space as to efficiently learn? do they sample optimally? how does controller/policy optimization proceed based on system identification?
-- how does a human subject use error information from each trial and feedback from each time step to update their model and/or policy?
-    - how does a subject balance policy updates with model updates?
-- On what scale (trials, timesteps) is the model altered? the policy?
-    - Replanning at every timestep is a model predictive control algorithm
-    - What prediction can we make for ID/learning every trial?
-- how does a subject avoid "distribution mismatch" between their base policy and their optimal policy? How do they efficiently explore and use this new data to update their internal model?
-    - what exploration strategy does a subject use to avoid mismatch?
-    - what
-- What is a subject's baseline/prior model? $y_{t} = \hat{f}_0(x_t,u_t)$ or $y_{t} \propto p_0(y_t|x_{t},u_t)$
-- What is the base policy / prior policy? $u_t = \pi_0(\hat{x}_t)$
-- How do we think about learning a distribution over trajectories in control law space, or perhaps equivalently, in covariance/precision space?
-- We might hypothesize that a subject will act as randomly as possible while minimizing cost, a maximum entropy solution that converges to an optimal controller? $\mathcal{H}(p(u_t|x_t))$
-- How does a subject penalize changes to their controllers? Do they follow a KL-divergence type of measurement when improving their policy?

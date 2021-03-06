@@ -17,7 +17,8 @@ Our results are consistent with a recently described model in which an optimal f
 
 
 
-
+Nashed 2014 -- short-latency R1 and long-latency R2 responses (60ms; 45–75ms; 75–105 ms)
+stretch responses R1 show dexterity (Andrew Pru 2019,2020) in holding and in reaching
 
 
 ### Adaptation of Reaching
@@ -123,7 +124,15 @@ takehome: humans are really good at learning tasks like these, especially with t
 
 - not actually gaussian, but super-gaussian [@nazarpourNoteProbabilityDistribution2013]
 - some work using bayesian filtering methods to infer the signal envelope [@sangerBayesianFilteringMyoelectric2007]
-- Farina paper on EMG as convolution
+- Farina paper on EMG as convolution 
+
+A window of EMG of length $T$ samples can be modeled like
+
+$$
+\mathbf{z} = \sum_t^T \mathbf{h} * \mathbf{s}
+$$
+
+where $\mathbf{h}$ is a motor unit activation template, which itself is a particular neural spike waveform, and $\mathbf{s}$ is the incidence of a spike, which might be modeled as a point process. 
 
 > EMG records were rectified, smoothed and averaged before further analysis. [@churchlandNeuralPopulationDynamics2012a]
 

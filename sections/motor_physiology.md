@@ -146,7 +146,7 @@ they're saying that natural hand use does dictate both the output (via stimulati
 
 Motor cortical cells (many of which have corticospinal projections) discharge with movement of more than one digit and those associated with a particular movement are not tightly clustered. The corticospinal projection provides a further complication because the axons branch to supply more than one motor nucleus (Shinoda et al. 1981). These overlapping areas in the motor cortex may be optimal for daily usage of the hand, but also constrain the ability to control the digits independently. -->
 
-![Similarities between electrical stimulation on behavorial timescales and rabies tracing identification of CM cells. CM cells are largely confined to the caudal half of M1, while this region tends to evokes complex manipulatory movements when electrically stimulated. (Top Left) Corticomotoneuronal (CM) cells traced using rabies from muscles of the elbow and finger. (Top Right) CM cells traced using rabies from muscles of the shoulder and finger. (Bottom) Complex movements evoked by 500ms electrical stimulation pulse trains. *Adapted from Graziano 2005 and Rathelot 2009*](images/physiology/rathelot_graziano.png){width=100%}{#fig:rathelot_graziano}
+![Similarities between electrical stimulation on behavorial timescales and rabies tracing identification of CM cells. CM cells are largely confined to the caudal half of M1, while this region tends to evokes complex manipulatory movements when electrically stimulated. (Top Left) Corticomotoneuronal (CM) cells traced using rabies from muscles of the elbow and finger. (Top Right) CM cells traced using rabies from muscles of the shoulder and finger. (Bottom) Complex movements evoked by 500ms electrical stimulation pulse trains. *Adapted from Graziano 2005 and Rathelot 2009*](images/physiology/strick_graziano/strick_graziano.pdf){width=100%}{#fig:rathelot_graziano}
 
 **I added this on Friday:** {+@fig:rathelot_graziano} depicts the hierarchical nature of the motor system that enables its dexterity. The motor system is tuned to produce varying levels of modularity, and this is shown in Rasthelot's work at a structural level: CM cells evolved to provide modifications to coarse, synergistic action. This is reflectd in Graziano's work where, loosely, more dexterous behaviors are produced when stimulation is applied to the caudal regions of motor cortex. These dexterous behaviors are driven by a hierarchical stack of cellular machinery, each level of which is modulated by estimated state, goals, uncertainty, and value.
 
@@ -158,6 +158,7 @@ The movement machine reasons in the space of feedback control systems and their 
 
 ## Flexibilty in Spinal Circuits
 
+Renshaw cells -- synergist inhibition, maybe to synchronize synergistic activations
 
 ### I added this section on Friday!**
 
