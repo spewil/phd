@@ -1,3 +1,126 @@
+# peter
+- what scaling factor to use?
+	- would need parameters of noise distributions per channel, over time
+	 - do filtering using these statistics?
+- just do basic filtering + PCA for now, this is the most basic thing to do
+- next steps:
+	- we know something about the EMG signal, can we build a Bayesian filtering approach?
+	- inferring control signals from data?
+
+# andy and dan 4/3/21
+
+- catch up 
+	- 
+- complexity 
+	 - of policy representation?
+	 - representation == linear mapping weights
+	 - entropy is a complexity == probabilistic weights / sampling
+	 	- https://gist.github.com/GaelVaroquaux/ead9898bd3c973c40429
+- regularizers over trials -- dan likes this idea
+	- data driven approach?
+	- hypothesis test -- choose regularizers and do model comparison
+- dPCA
+	- over blocks as the way to break it up
+	- don't lose the within-trial dynamics of the EMG
+	- treat EMG like firing rates are treated in shenoy et al. 
+- hier- vs. heterachy
+	- bouncing between levels 
+	- high-level plan down to low-level, then repeat
+
+# andy 1/3/21
+
+- are you using 4 modes or 8 modes or something else?
+	- can you product activations that span the space to begin with?
+- are you combining modes in parallel or serially?
+	- some transition from serial to parallel to minimal/bespoke?
+- why not five modes?
+	- how many primitives is optimal?
+	- optimal for what cost function?
+- cases
+	- can't span the space -- you're screwed
+	- something is difficult to achieve but not impossible (agonist-antagonist e.g.)
+- modeling
+	- we should be able to fit a model that includes regularization terms
+	- our hypothesis would be that these regularization weights will change over time.
+- nitpicks about muscle interface (starting with a fitted muscle-to-force mapping using a baseline dataset)
+	- extreme perturbations to the mappings, some probably not biophysically available? 
+		- we don't want to fall into this same trap
+		- ideally we need to test what muscle activations are available in a calibration
+	- not many sessions
+
+- !!! what exactly is the mapping?
+	- what are the 32 directions...? 
+
+[ 0.      1.  ]
+[ 0.71    0.71]
+[ 1.      0.  ]
+[ 0.71   -0.71]
+[ 0.     -1.  ]
+[-0.71   -0.71]
+[-1.     -0.  ]
+[-0.71    0.71]
+
+[ 0.      1.  ]
+[ 0.71    0.71]
+[ 1.      0.  ]
+[ 0.71   -0.71]
+[ 0.     -1.  ]
+[-0.71   -0.71]
+[-1.     -0.  ]
+[-0.71    0.71]
+
+[ 0.      1.  ]
+[ 0.71    0.71]
+[ 1.      0.  ]
+[ 0.71   -0.71]
+[ 0.     -1.  ]
+[-0.71   -0.71]
+[-1.     -0.  ]
+[-0.71    0.71]
+
+[ 0.      1.  ]
+[ 0.71    0.71]
+[ 1.      0.  ]
+[ 0.71   -0.71]
+[ 0.     -1.  ]
+[-0.71   -0.71]
+[-1.     -0.  ]
+[-0.71    0.71]
+
+so each column is being mapped to one of eight directions
+there are 32 targets though...
+
+# ted 25/2/21
+
+- fixed random features -- project through random matrix
+- thesis 
+	- two types of movement
+	- first part is jargony
+	- before -- explicitly say what I'm doing -- multiple systems, a little outline
+		- one is rigid, flexible --> then how they interact
+	- why is modularity mean a lack of flexible
+		- operating at a high-level -- could even be a 1D input (graziano), but this needs to be dexterous with ongoing sensory input
+		- high-level flexibility, low-level flexibility
+			- plain language overview
+			- introduce vocab more slowly
+		- what does it mean to be fractionated?
+		- where is the tradeoff?
+	- right before 2.6 -- our system has the following desiderata-- a more precise list of things needed in a system, reflecting the earlier plain language intro
+		- these bullet points could drive experiments/models
+	- weakly interacting, parallel hierarchical systems
+		- the big three-- BG, CRB, spinal --> internal dynamics within these parallel systems is more important 
+		- not a strict hierarchy
+		- simultaneous planning
+- doc of stuff from sharing in chat
+	- LQR OFC 
+	- transfer/generalization --> reduce cognitive load to shift to a new task
+	- neuroscience, control, RL review
+- task phases of learning
+	- known goal (move to X) --> known cost function == control
+		- maybe moving blindly is a good perturbation for internal model?
+	- unknown goal (moving to Y tends to be rewarded) --> RL 
+
+
 # patrick
 
 - catch up 

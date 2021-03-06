@@ -4,7 +4,7 @@
 - how do we use existing controllers to construct movements?
 - how do we construct controllers under dynamical and goal uncertainty?
 
-
+<!-- MODEL ADAPTATION VIA GRADIENT DESCENT -->
 $include includes/model_adaptation.md
 
 
@@ -12,6 +12,8 @@ Think more about subspaces
 - preparatory activity in one subspsce, online control in another? 
 - learning in one subspace but not another?
 - compression of model to a subspace?
+
+
 
 
 ## Policy Selection
@@ -56,3 +58,17 @@ What are rewards?
 What are tasks?
 What are actions?
 
+Is GPI with LQRs / LQR-RL a good model for motor learning? Define a model and see if it recapitulates known motor learning phenomena on existing experiments + accounts for things that previous models don’t. (Similar in spirit to Geerts et al. (2020)). Can this model track the higher-order statistics of trajectories during motor learning?
+
+### Model-based Reinforcement Learning
+
+Since we only have an approximate model of the system dynamic, we could simply work towards an optimal policy directly using gradient derivative-free optimization methods in a model-free approach. Since we have good evidence that humans leverage internal models to make decisions (at least in a motor problem domain), we need to define an algorithm which uses past observations and controls to update our approximation for the system dynamic. Here is a very general algorithm:
+
+0. Define a base policy/controller and base system model ($L_0$ and $\hat{M}_0$)
+1. Collect samples (by interacting with the true environment $M_{true}$) using the current policy/controller (collect $y_t,u_t,y_{t+1}$ triples using $L_i$ for $i \in \{0\dots N\}$
+2. Use sample(s) / trajectories to update current system dynamical model $\hat{M}_i$
+3. Update current policy/controller $L_i$ (using the system dynamics or using a direct policy method)
+
+If the true system dynamics were known, we could solve the Algebraic Riccati Equation with a backwards pass, and compute our controls in a forward pass. This general algorithm structure highlights how the (unknown) system identification and controller design are intertwined: identifying a system appropriately must rely on sampling and fitting regions of the state space pertinent to adequate control in terms of cost (Ross ICML 2012). Otherwise, our approximation to the true system dynamic will only produce a valid controller in regions we have previously explored. The question is how we can effectively (sample and time efficiently) utilize new state transitions we encounter either online as feedback or between trials to update our model and policy. That is, the number of trials and/or trajectories to use before updating either the system model and/or policy is an important parameter.
+
+In the LQG setting, this might be called "adaptive LQG".

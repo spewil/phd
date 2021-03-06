@@ -1,11 +1,15 @@
 # Background Theory{#sec:bg_theory}
 
+From the physiology, we see that the motor system is highly distributed and constructs action based on a variety of state dependence. The theoretical question becomes *when does it make computational sense to construct action by composing control policies rather than selecting or tuning a single policy?* When is policy arbitration computationally advantageous?
+
 **The motor learning field does not yet possess an adequate computational model for practice-induced increases in motor acuity.** (Krakauer Motor Learning 2019)
 
 ## Existing Models of Motor Control and Adaptation
 
 ### Optimal Feedback Control
 
+Stephen Scott review -- https://www.nature.com/articles/nrn1427 
+look at the bullet points there, relate to our experiment
 
 <!-- The UCM is not a hard-and-fast principle, as nothing as in the motor system. Rather, as we've seen elsehwhere, there seems to be a spectrum of control. This could be explained through a composite cost function which penalizes deviations from prior movement strategies[@raczSpatiotemporalAnalysisReveals2013]. There is much research pushing back on optimal control, uncontrolled manifold hypothesis, and this will be addressed in {+@sec:experiment}. -->
 
@@ -26,11 +30,23 @@ What information is used to do this learning?
 Which model variables correspond to muscles? Movements?
 What does the resultant feedback controller compute? How does this relate to cognition?
 
-
-
 This model is lacking in ... 
 
 A key paper is `Valero-Cuevas 2009` which recording EMG from the seven muscles driving the finger in a force-feedback task. The authors found support for the "minimum intervention principle" [@Valero-Cuevas2009].
+
+### nonlinear iLQG models
+
+these are more predictive if we're actually using reaches experimentally
+
+nagengast, braun, etc 2009
+https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000419
+
+
+### Noise in OFC
+
+- Nagengast 2010 https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000857 -- subjects are risk averse in the face of noise. 
+
+
 
 
 ### Intuitive Example of the OFC framework
@@ -46,7 +62,7 @@ PLOT OF APT DATA
 
 ### Error-based Adaptation
 
-Error-based sdaption and state-space models have a great amount of precedent in the sensorimotor learning literature. We will summarize these models briefly and discuss our willingness to depart from them.
+Error-based adaptation and state-space models have a great amount of precedent in the sensorimotor learning literature. We will summarize these models briefly and discuss our willingness to depart from them.
 
 This is pretty much the best model we have that describe learning from error
 
@@ -62,8 +78,19 @@ The downsides of this model are that it describes a small aspect of our data.
 
 
 
+## Adaptive Linear Quadratic Control
 
+Have to be careful about what is termed corrective, adaptive, and learned.
 
+> Mathematically, we can formalize an adaptive control problem as a mapping x t+1 = F(x t , u t , a) with unknown system parameters a that have to be estimated simultaneously with the control process (Sastry and Bodson, 1989; Åström and Wittenmark, 1995). (Braun 2009... Wolpert) 
+
+> In the following we will refer to changes in the control policy that occur within individual movements as “adaptation” to distinguish them from “learning” processes that improve these adaptive responses across trials. (Braun 2009... Wolpert)
+
+> Online correction is, for example, required in the case of an unpredicted target jump. Under this condition the same controller can be used, i.e., the mapping from sensory input to motor output is unaltered. However, unexpectedly changing the hand–cursor relation (e.g., by a visuomotor rotation) requires the computation of adaptive control policies. 
+
+> Strictly speaking, an adaptive control problem is a nonlinear control problem with a hyper-state containing state variables and (unknown) parameters. This means in principle no extra theory of adaptive control is required. In practice, however, there is a well established theory of adaptive control (Sastry and Bodson, 1989; Åström and Wittenmark, 1995) that is built on the (somewhat artificial) distinction between state variables and (unknown) parameters. The two quantities are typically distinct in their properties. In general, the state, for example the position and velocity of the hand, changes rapidly and continuously within a movement. In contrast, other key quantities change discretely, like the identity of a manipulated object, or on a slower timescale, like the mass of the limb.
+
+We're really interested here in the learning problem! And how we can test and model this within the framework of OFC.
 
 
 ## Motor Adaptation

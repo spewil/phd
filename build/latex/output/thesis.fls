@@ -132,6 +132,12 @@ INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/cleveref/cleveref.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/cleveref/cleveref.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/caption/caption.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/caption/caption.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/caption/caption3.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/caption/caption3.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/tools/calc.sty
+INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/tools/calc.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/subfigure/subfigure.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/subfigure/subfigure.sty
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/subfigure/subfigure.cfg
@@ -190,7 +196,9 @@ INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/microtype/mt-msb.cfg
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/microtype/mt-msb.cfg
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmr12.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx12.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmr10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmr7.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmr5.tfm
@@ -206,27 +214,82 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmr7.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmr8.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmr6.tfm
 INPUT /usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT /Users/spencerw/Google Drive/motor_control/phd/images/simulations/gradient_descent_on_A.png
-INPUT /Users/spencerw/Google Drive/motor_control/phd/images/simulations/gradient_descent_on_A.png
-INPUT /Users/spencerw/Google Drive/motor_control/phd/images/simulations/gradient_descent_on_A.png
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx10.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx12.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx7.tfm
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/strick_graziano/strick_graziano.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/strick_graziano/strick_graziano.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/physiology/strick_graziano/strick_graziano.pdf
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/lm/ts1lmr.fd
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/lm/ts1lmr.fd
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ts1-lmr10.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbxi10.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmbx10.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmbx7.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmbx5.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmr5.tfm
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/graphics/desk.png
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/graphics/desk.png
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/graphics/desk.png
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/hardware/setup.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/hardware/setup.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/hardware/setup.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/fingers/raw_data.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/fingers/raw_data.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/fingers/raw_data.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/fingers/preprocessed_data.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/fingers/preprocessed_data.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/fingers/preprocessed_data.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/fingers/PCA_variances.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/fingers/PCA_variances.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/fingers/PCA_variances.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/fingers/PCA_components.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/fingers/PCA_components.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/fingers/PCA_components.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/trajectories.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/trajectories.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/trajectories.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/hit_fraction.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/hit_fraction.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/hit_fraction.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/PCA_trial_variance.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/PCA_trial_variance.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/PCA_trial_variance.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/PCA_concat_variance.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/PCA_concat_variance.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/PCA_concat_variance.pdf
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/simulations/gradient_descent_on_A.png
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/simulations/gradient_descent_on_A.png
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/simulations/gradient_descent_on_A.png
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/simulations/gradient_descent_on_A.png
+INPUT /Users/spencerw/Google Drive/motor_control/phd/images/simulations/gradient_descent_on_A.png
 INPUT thesis.aux
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/stix/STIXGeneral-Italic.pfb
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/stix/STIXGeneral-Regular.pfb
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx7.pfb
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmex10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi7.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr17.pfb
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr6.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr7.pfb
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr8.pfb
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmsy10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmsy7.pfb
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb

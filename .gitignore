@@ -6,3 +6,6 @@ _site/
 
 # osx
 *.DS_Store
+
+# images
+images

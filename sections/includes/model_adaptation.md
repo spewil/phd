@@ -59,7 +59,7 @@ Since the gradient with respect to A is the same as the gradient with respect to
 
 $$
 % 2∑𝑁𝑘=1(𝑀𝑁𝑣−𝑤)𝑇𝑀𝑘−1𝑀𝑁−𝑘𝑣
-\frac{\partial{e}}{\partial{A_{ij}}} = 2\sum_{k=1}^N\left[(M^Nx(0) - x^*)^TM^{k-1}\right]_i\left[M^{N-k}x(0)\right]_j
+\frac{\partial{e}}{\partial{A_{ij}}} = 2\sum_{k=1}^N\left[(C^Nx(0) - x^*)^TC^{k-1}\right]_i\left[C^{N-k}x(0)\right]_j
 $$
 
 Below is a figure showing LQR simulations across gradient descent updates to the A matrix after it is corrupted by Gaussian noise. Each trajectory is a single run of the LQR controlled for 200 time steps. The star shows the target state, the colored circles show the endpoints of the trajectories. The red circle is the initial state. 
