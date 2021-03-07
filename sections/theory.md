@@ -1,8 +1,11 @@
-# Theoretical Contributions {#sec:bg_experiment}
+# Preliminary Theory {#sec:bg_experiment}
 
 - how do we adapt LQR controllers trial-to-trial?
 - how do we use existing controllers to construct movements?
 - how do we construct controllers under dynamical and goal uncertainty?
+
+<!-- OFC MODELING AND DISCUSSION -->
+$include includes/ofc.md
 
 <!-- MODEL ADAPTATION VIA GRADIENT DESCENT -->
 $include includes/model_adaptation.md
@@ -12,7 +15,6 @@ Think more about subspaces
 - preparatory activity in one subspsce, online control in another? 
 - learning in one subspace but not another?
 - compression of model to a subspace?
-
 
 
 
