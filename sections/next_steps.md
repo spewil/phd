@@ -4,7 +4,16 @@ Big Things
 
 First completing a methodsy style piece of owrk about the setup, illlustrating the generation of bespoke control strategies by careful tracking of the EMG modes relative to task performance. 
 
+settle on emg mapping protocol and online data filtering / analysis to start longer term task experiments
+do pilot study over many sessions to test regularization models 
+
+Develop a series of experiments and scale up data collection across a range of tasks
+
+analyze this data against control models?
+
 Next is to work on models of learning by extending the framework of OFC through additions of composition and error-based adaptation.
+
+test those models against data
 
 ## Data Collection at Scale
 

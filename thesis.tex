@@ -63,31 +63,6 @@
 
 %% pandoc-fignos: required package
 \usepackage[capitalise]{cleveref}
-
-%%%% pandoc-fignos: required package
-\usepackage{caption}
-
-%% pandoc-fignos: environment to disable figure caption prefixes
-\makeatletter
-\newcounter{figno}
-\newenvironment{fignos:no-prefix-figure-caption}{
-  \caption@ifcompatibility{}{
-    \let\oldthefigure\thefigure
-    \let\oldtheHfigure\theHfigure
-    \renewcommand{\thefigure}{figno:\thefigno}
-    \renewcommand{\theHfigure}{figno:\thefigno}
-    \stepcounter{figno}
-    \captionsetup{labelformat=empty}
-  }
-}{
-  \caption@ifcompatibility{}{
-    \captionsetup{labelformat=default}
-    \let\thefigure\oldthefigure
-    \let\theHfigure\oldtheHfigure
-    \addtocounter{figure}{-1}
-  }
-}
-\makeatother
 \ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -133,7 +108,7 @@
 --- Sunryu Suzuki, \emph{Zen Mind, Beginner's Mind}
 \end{quote}
 
-The purpose of this thesis is to build a high-dimensional
+The goal of this thesis is to construct a high-dimensional
 electromyography recording setup, and use this to produce a platform for
 closed-loop motor control and learning experiments on which a suite of
 tasks and perturbations can be tested. With this relatively novel setup,
@@ -342,8 +317,40 @@ patterns\textsuperscript{\protect\hyperlink{ref-yanUnexpectedComplexityEveryday2
 of the neuromuscular system that underlies this variety offers many
 clues as to the relevant computations required for dexterous movement.
 
-\textbf{FIGURE OF MUSCLES, MOTOR UNITS, CORD, DIFFERENT ARRANGEMENTS --
-this can be referenced later for coordinative/fractionative}
+\begin{figure}
+\hypertarget{fig:low_variance_PCs}{%
+\centering
+\includegraphics[width=1\textwidth,height=\textheight]{images/physiology/background/low_variance_PCs.png}
+\caption{Taken from Yan et al.~2020. Plots show mean correlations
+between hand joint kinematic trajectories during grasp trials with the
+same (blue) and different (red) objects (a) and ASL signs (b) projected
+onto the same principle components. Correlations are averaged across 8
+subjects. Within-object and within-sign correlations are systematically
+higher than their shuffled counterparts. Error bars denote SEM. This
+data supports the idea that low-variance components of kinematics data
+contain task-specific structure rather than merely reflecting noise.
+This is encouraging for our experiments, which hope to extend this idea
+into careful analyses of task specific features of EMG data across
+learning and in response to perturbations.}\label{fig:low_variance_PCs}
+}
+\end{figure}
+
+\begin{figure}
+\hypertarget{fig:motor_system}{%
+\centering
+\includegraphics[width=1\textwidth,height=\textheight]{images/physiology/motor_system/motor_system.pdf}
+\caption{Overview sketch of the motor system depicting the the
+redundancy of the system both hierarchically (multiple muscle fibers are
+innervated by the same motor neuron, many motor neurons innervate the
+same muscle) as well as heterarchically (parallel spinal,
+corticomotoneuronal, cerebellum, basal gangliar feedback loops).
+Parallel reflex responses can be classified as long latency
+(approximately 60-150ms) and short latency (approximately 60ms). We hope
+to consider the parallelism and redundancy of the motor system to
+inspire our data analyses and models of motor
+computation.}\label{fig:motor_system}
+}
+\end{figure}
 
 \hypertarget{coordinative-structures}{%
 \subsection{Coordinative Structures}\label{coordinative-structures}}
@@ -538,9 +545,6 @@ hypothesis stemming from the previously described work is that CM
 connections override the ``consolidated'' patterns putatively generated
 via spinal interneuron circuitry.
 
-\textbf{FIGURE -- CARTOON HERE DEPICTING ANATOMY DISCUSSED SO FAR --
-spinal circuits, motor cortex, BG, cerebellum}
-
 \hypertarget{supraspinal-motor-maps}{%
 \subsection{Supraspinal Motor Maps}\label{supraspinal-motor-maps}}
 
@@ -561,7 +565,7 @@ we can then ask what kind of functional architecture might have evolved
 in the neuromuscular controller? Graziano and colleagues found that
 500ms electrical stimulation to M1 reliabaly produced stereotyped
 movements in primates, shown in
-\cref{fig:rathelot_graziano}\textsuperscript{\protect\hyperlink{ref-grazianoORGANIZATIONBEHAVIORALREPERTOIRE2006}{\textbf{grazianoORGANIZATIONBEHAVIORALREPERTOIRE2006?}}}.
+\cref{fig:strick_graziano}\textsuperscript{\protect\hyperlink{ref-grazianoORGANIZATIONBEHAVIORALREPERTOIRE2006}{\textbf{grazianoORGANIZATIONBEHAVIORALREPERTOIRE2006?}}}.
 These movements appeared to produce goal-oriented actions pulled out of
 other contexts such as bringing food to the mouth, and seemed to be
 arranged on the cortical sheet topographically in terms of spatial
@@ -620,9 +624,9 @@ the distal muscles driving the
 hand\textsuperscript{\protect\hyperlink{ref-bergerDoesCerebellumShape2020}{38}}.
 
 \begin{figure}
-\hypertarget{fig:rathelot_graziano}{%
+\hypertarget{fig:strick_graziano}{%
 \centering
-\includegraphics{images/physiology/strick_graziano/strick_graziano.pdf}
+\includegraphics[width=1\textwidth,height=\textheight]{images/physiology/strick_graziano/strick_graziano.pdf}
 \caption{Similarities between electrical stimulation on behavorial
 timescales and rabies tracing identification of CM cells. CM cells are
 largely confined to the caudal half of M1, while this region tends to
@@ -631,20 +635,20 @@ Left) Corticomotoneuronal (CM) cells traced using rabies from muscles of
 the elbow and finger. (Top Right) CM cells traced using rabies from
 muscles of the shoulder and finger. (Bottom) Complex movements evoked by
 500ms electrical stimulation pulse trains. \emph{Adapted from Graziano
-2005 and Rathelot 2009}}\label{fig:rathelot_graziano}
+2005 and Rathelot 2009}}\label{fig:strick_graziano}
 }
 \end{figure}
 
-\textbf{I added this on Friday:} \cref{fig:rathelot_graziano} depicts
-the hierarchical nature of the motor system that enables its dexterity.
-The motor system is tuned to produce varying levels of modularity, and
-this is shown in Rasthelot's work at a structural level: CM cells
-evolved to provide modifications to coarse, synergistic action. This is
-reflectd in Graziano's work where, loosely, more dexterous behaviors are
-produced when stimulation is applied to the caudal regions of motor
-cortex. These dexterous behaviors are driven by a hierarchical stack of
-cellular machinery, each level of which is modulated by estimated state,
-goals, uncertainty, and value.
+\textbf{I added this on Friday:} \cref{fig:strick_graziano} depicts the
+hierarchical nature of the motor system that enables its dexterity. The
+motor system is tuned to produce varying levels of modularity, and this
+is shown in Rasthelot's work at a structural level: CM cells evolved to
+provide modifications to coarse, synergistic action. This is reflectd in
+Graziano's work where, loosely, more dexterous behaviors are produced
+when stimulation is applied to the caudal regions of motor cortex. These
+dexterous behaviors are driven by a hierarchical stack of cellular
+machinery, each level of which is modulated by estimated state, goals,
+uncertainty, and value.
 
 The movement machine reasons in the space of feedback control systems
 and their ensuing trajectories. The phenomenal thing about the motor
@@ -860,542 +864,7 @@ describe the world concretely, so our words using to do this description
 matter
 
 \hypertarget{sec:experiment}{%
-\section{Background Experimental Methods}\label{sec:experiment}}
-
-\begin{itemize}
-\tightlist
-\item
-  what are the most important concepts / results that inform our
-  experiments?
-\item
-  What do we think we know from experiments about motor control? motor
-  adaptation? motor learning?
-\end{itemize}
-
-\hypertarget{control}{%
-\subsection{Control}\label{control}}
-
-Is LQR (as it's claimed to be) a reasonable model for feedback control
-and error reduction + variability prediction for dimensionality
-reduction-based motor interface
-
-(task reads out from D muscles, find modes of that data; do PCA to get K
-\textless{} D dimensions, controller only responds to motion in those K
-directions)---does behavior + motor activity follow LQR? this question
-has already been asked, but it hasn't been asked for this kind of
-high-to-low dim mapping. It's been asked in tasks where muscles haven't
-been directly in control (Bolero 2009). Todorov: do a task, look at
-muscle signal. Muscles that aren't necessary for task have higher
-variability b/c they're not being optimized for task (but does't
-introduce perturbations). Also see Loeb (2012) for a negative result
-saying that muscle coordination is habitual rather than optimal, but it
-has issues (low \# muscles). Can we replicate previous reaching
-optimality results in our set-up? What's unique about our set-up is the
-PCA/dimensionality reduction in muscle activity space. This is important
-because you can create arbitrary muscle-cursor mappings, so you have to
-learn a new skill/mapping. This is different than perturbing a
-fundamental movement and forcing adaptation, which is what has been
-previously done. For our task, the participants actually have to learn a
-new task/mapping, rather than just do what they already know and be
-robust to perturbations. We test the LQR hypothesis once they've learned
-the task, because LQR isn't a learning theory, it's a theory about
-optimal control. We can see if, once people learn a new skill, their
-behavior is optimal wrt LQR theory. If we establish this, then we can
-think about how this LQR model is actually learned (enter RL).
-
-Our results are consistent with a recently described model in which an
-optimal feedback control policy is calculated independently for each
-potential target and a weighted average of these policies (that is,
-feedback gains) is computed at each point in time based on the relative
-desirability of each target50. Notably, this model, which pre-dicts
-averaging of feedback gains, can also account for spatial (that is,
-trajectory) averaging in go-before-you-know tasks. We submit that our
-result showing feedback gain averaging, coupled with previous work
-demonstrating trajectory averaging, provides strong support for the
-compelling idea that the CNS, under cases of target uncertainty, encodes
-in parallel multiple motor plans, along with their associated control
-policies, for competing action options. (Wolpert Nature 2018 competing
-control policies)
-
-Nashed 2014 -- short-latency R1 and long-latency R2 responses (60ms;
-45--75ms; 75--105 ms) stretch responses R1 show dexterity (Andrew Pru
-2019,2020) in holding and in reaching
-
-\hypertarget{adaptation-of-reaching}{%
-\subsubsection{Adaptation of Reaching}\label{adaptation-of-reaching}}
-
-\begin{itemize}
-\tightlist
-\item
-  prisms
-\item
-  rotations
-\item
-  forcefield
-\item
-  nothing -- van Beers variability
-\end{itemize}
-
-\begin{quote}
-The vast majority of research in motor learning studies this capacity
-through adaptation para- digms in which a systematic perturbation is
-introduced to disrupt a well-practiced behavior, such as point-to-point
-reaching.\textsuperscript{\protect\hyperlink{ref-adrianTheoreticalModelsMotor2012}{52}}
-\end{quote}
-
-\begin{itemize}
-\tightlist
-\item
-  classic reaching adaptation --\textgreater{} this is a different goal
-
-  \begin{itemize}
-  \tightlist
-  \item
-    shadmehr
-  \item
-    krakauer
-  \end{itemize}
-\item
-  unperturbed movements
-
-  \begin{itemize}
-  \tightlist
-  \item
-    van beers
-  \end{itemize}
-\end{itemize}
-
-\textsuperscript{\protect\hyperlink{ref-Krakauer2019}{53},\protect\hyperlink{ref-Shadmehr2008}{54}}
-
-There exist a handful of prior studies mapping EMG activity and finger
-joint angles directly to virtual stimuli, though few are focused on the
-learning process and none have the input dimensionality we aim to
-achieve in work proposed here.
-
-\textsuperscript{\protect\hyperlink{ref-vanbeersRandomWalkMotor2013}{57}}
-
-\hypertarget{arbitrary-visuomotor-mappings}{%
-\subsubsection{Arbitrary Visuomotor
-Mappings}\label{arbitrary-visuomotor-mappings}}
-
-\textsuperscript{\protect\hyperlink{ref-Mussa-IvaldiSensoryMotorRemapping2011}{58}}
-
-There are several studies using non-EMG-driven sensorimotor mappings to
-study human motor control and learning.
-
-\begin{itemize}
-\tightlist
-\item
-  Remapping Hand Movements in a Novel Geometrical Environment
-  https://www.ncbi.nlm.nih.gov/pubmed/16148276
-\end{itemize}
-
-\textsuperscript{\protect\hyperlink{ref-MosierRemappingHandMovements2005}{59}}
-
-vocoder machine bell labs
-
-Hinton, Fells
-
-palsy study
-
-takehome: humans are really good at learning tasks like these,
-especially with their hands. this type of dexterity is specific to
-primates if not humans. let's use this ability to understand and try to
-model how this learning process unfolds.
-
-\textbf{\emph{What does this give us that a force-field reaching task
-can't?}}
-
-\textsuperscript{\protect\hyperlink{ref-nazarpourFlexibleCorticalControl2012}{60}}
-
-\hypertarget{skill-learning-tasks}{%
-\subsubsection{Skill Learning Tasks}\label{skill-learning-tasks}}
-
-\begin{itemize}
-\tightlist
-\item
-  skill learning tasks
-
-  \begin{itemize}
-  \tightlist
-  \item
-    ball and cup
-  \item
-    dart throwing tasks
-  \end{itemize}
-\end{itemize}
-
-\hypertarget{learning-in-cortical-interfaces}{%
-\subsubsection{Learning in Cortical
-Interfaces}\label{learning-in-cortical-interfaces}}
-
-\begin{itemize}
-\item
-  cortical BMI work
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Batista papers, lee miller papers
-  \end{itemize}
-\item
-  speech learning -- analogy to speech
-\item
-  bird vocal learning
-\item
-  we're doing the same experiment, at the muscle level
-\item
-  try to convince why this is useful, but not too hard
-\end{itemize}
-
-\hypertarget{properties-of-electromyographic-signals}{%
-\subsection{Properties of Electromyographic
-Signals}\label{properties-of-electromyographic-signals}}
-
-\begin{itemize}
-\tightlist
-\item
-  not actually gaussian, but
-  super-gaussian\textsuperscript{\protect\hyperlink{ref-nazarpourNoteProbabilityDistribution2013}{61}}
-\item
-  some work using bayesian filtering methods to infer the signal
-  envelope\textsuperscript{\protect\hyperlink{ref-sangerBayesianFilteringMyoelectric2007}{62}}
-\item
-  Farina paper on EMG as convolution
-\end{itemize}
-
-A window of EMG of length \(T\) samples can be modeled like
-
-\[
-\mathbf{z} = \sum_t^T \mathbf{h} * \mathbf{s}
-\]
-
-where \(\mathbf{h}\) is a motor unit activation template, which itself
-is a particular neural spike waveform, and \(\mathbf{s}\) is the
-incidence of a spike, which might be modeled as a point process.
-
-\begin{quote}
-EMG records were rectified, smoothed and averaged before further
-analysis.\textsuperscript{\protect\hyperlink{ref-churchlandNeuralPopulationDynamics2012a}{63}}
-\end{quote}
-
-\begin{quote}
-EMG activity was recorded using hook-wire electrodes (44 gauge with a 27
-gauge cannula; Nicolet Biomedical, Madison, WI) placed in the muscle for
-the duration of single recording sessions. {[}\ldots{]} Electrode
-voltages were amplified, bandpass filtered (150--500 Hz, four pole, 24
-db/octave), sampled at 1000 Hz, and digitized. Off-line, raw traces were
-differentiated (to remove any remaining baseline), rectified, smoothed
-with a Gaussian (SD of 15 ms) and
-averaged.\textsuperscript{\protect\hyperlink{ref-churchlandNeuralVariabilityPremotor2006}{64}}
-\end{quote}
-
-inter-subject variability is high, but seems to show individual
-strategies for
-movement\textsuperscript{\protect\hyperlink{ref-crouzierIndividualDifferencesDistribution2019}{65}}
-
-The surface EMG signal can be modeled as the convolution of
-
-Can muscle coordination be precisely studied by surface
-electromyography?\textsuperscript{\protect\hyperlink{ref-Hug2011}{66}}
-
-This requires first mapping the intrinsic available dynamics of the hand
-per user.
-
-\hypertarget{skill-learning-in-myolectric-interfaces}{%
-\subsubsection{Skill Learning in Myolectric
-Interfaces}\label{skill-learning-in-myolectric-interfaces}}
-
-``performance levels and rates of improvement were significantly higher
-for intrinsic hand muscles relative to muscles of the
-forearm.''\textsuperscript{\protect\hyperlink{ref-Dyson2018}{67}}
-
-\hypertarget{berger-et-al.-2013}{%
-\subsubsection{Berger et al.~2013}\label{berger-et-al.-2013}}
-
-\textsuperscript{\protect\hyperlink{ref-BergerDifferencesInAdaptationRates2013a}{68}}
-
-Berger et al.'s preprocessing - lowpassed butterworth at 5Hz -
-normalized to MVC calibration - periodic baseline noise substraction -
-choosing synergies by uniformity in force direction (pretty arbitrary)
-
-Using EMG in a learning experiment is not unheard of. Berger et al.~2013
-use EMG with 13 muscles to test whether learning new synergy
-combinations for a task is more difficult that recombining existing
-synergies@Berger2013a. As we would expect, learning new synergy
-combinations is more difficult. I would argue that the demand in their
-``incompatible virtual surgeries'' is too strict, that we need to more
-carefully design synergy perturbations to develop a model of learning in
-such a task.
-
-Berger et al.~fit a muscle-space to force-space mapping \(H\) using a
-force-driven calibration task, and a synergy-space to muscle-space
-mapping \(W\) using NMF.
-
-\begin{align*}
-    f &= Hm \\
-    m &= Wc
-\end{align*}
-
-\(\dim(m)=M\) muscles, \(\dim(c)=N\) synergies, and \(\dim(f)=D\)
-dimensions of task space where \(M>N>D\). Because \(H\) and \(W\) are
-rectangular, they have at most rank \(D\) and \(N\), and we constrain
-these matrices to be full rank. There are three key subspaces: the
-nullspace of \(H\) mapping muscle activations to 0, the column space or
-range of \(W\) mapping synergy activations to muscle activations, and
-the common subspace between these two. That is, there are synergy
-activations which generate muscle activations which lie in the null
-space of \(H\). The paper uses this fact to develop mappings that
-specifically rotate muscle activations produced by synergies into the
-null space of \(H\) which were not there prior to rotation. The
-dimensionalities of these subspaces are defined:
-
-\begin{align*}
-\dim(\mathrm{null}(H)) &= M - D && \text{muscle vectors $\rightarrow$ 0} \\
-\dim(\mathrm{col}(W)) &= N && \text{synergy activations $\rightarrow$ muscle subspace}\\
-\dim(\mathrm{null}(H)\cap\mathrm{col}(W)) &= N - D && \text{synergy activations $\rightarrow$ 0} \\
-\end{align*}
-
-In the paper, the authors find an orthonormal basis \(W_o\) for the
-range (column space) of the synergy weight matrix \(W\) (presumably
-using a QR factorization) and find the nullspace \(H_{null}\) of \(H\).
-These computations are done presumably through QR factorizations (an
-orthonormal basis multiplied by a rotation and scaling) by finding \(Q\)
-in the first case and finding the latter \(M-D\) columns \(Q_2\) of
-\(Q = [Q_1 \, Q_2]\) which are \(H_{null}\) in the second case:
-
-\begin{align*}
-    W &= Q_W^{M\times M}R_W^{M\times N} \\
-      &= \left[Q_{W,1}^{M\times N}\,Q_{W,2}^{M\times M-N}\right]\begin{bmatrix}R_{W,1} \\ 0 \end{bmatrix} \\
-    W_o &= Q_{W,1}^{M\times N} \\
-    W_o^T &= Q_{W,1}^{T, N\times M} \\
-    H^T_{M\times D} &= Q_H^{M\times M}R_H = \left[Q_{H,1}^{M\times D}\,Q_{H,2}^{M\times M-D}\right]\begin{bmatrix}R_{H,1} \\ 0 \end{bmatrix} \\
-    H^T_{null} &= Q_{H,2}^{M\times M-D}
-\end{align*}
-
-To find each of the three subspace, we take the SVD of the composition
-\(W^TH^T\)
-
-\begin{align*}
-    W_o^TH^T_{null} &= Q_{W,1}^{T, N\times M} Q_{H,2}^{M\times M-D} \\
-    &= Q^T_WQ_H && \dim(N \times M-D) \\
-    &= U_{N\times N}\Sigma_{N \times M-D} V^T_{M-D\times M-D} \\
-    H^T_{null}V &= W_oU\Sigma
-\end{align*}
-
-Now we can pick out the three subspaces using the SVD
-
-\begin{align*}
-    W_c &= W_oU[1:N-D] && \text{synergy activations $\rightarrow$ muscle activations in task null space}\\
-    H_c &= H_{null}[1:N-D] && \text{synergetic muscle activations $\rightarrow$ 0} \\
-    W_{nc} &= W_oU[N-D+1:N] && \text{synergy activations $\rightarrow$ nonzero muscle activations}\\
-    H_{nc} &= H_{null}V[N-D+1:M-D && \text{non-synergetic muscle activations $\rightarrow$ 0} \\
-\end{align*}
-
-To construct new mappings, the authors construct rotations to alter
-muscle activation vectors by rotating them from \(W_nc\) and remaining
-in \(W_nc\) and from \(W_nc\) into \(H_nc\). In the first case this
-alters the mapping by changing the effective muscle activations produced
-by the existing (learned) synergetic actions. That is, muscle
-activations putatively produced by synergetic action will be altered to
-produce different forces in task space (compatible rotations). In the
-second case, muscle activations putatively produced by existing
-synergetic action (via W) will be mapped into the null space of \(H\)
-and produce zero force in task space (incompatible rotations).
-
-A key critique of this paper is that such a transformation is too harsh.
-The compatible rotation allows you to recombine the same muscle
-patterns, the incompatible doesn't allow you to use existing
-coactivation patterns at all. The authors do see new synergies emerging
-even after their training session, consisting of:
-
-\begin{itemize}
-\tightlist
-\item
-  16 trials of maximum voluntary contraction in 8 directions
-  (calibration)
-\item
-  72 trials using force control (calibration)
-\item
-  24 trials familiarization
-\item
-  144 trials baseline
-\item
-  288 trials surgery
-\item
-  144 trials washout
-\item
-  144 trials baseline
-\end{itemize}
-
-After 288 trials subjects aren't able to complete the task for some
-movement directions.
-
-\hypertarget{nazarpour-2012-j.neuro}{%
-\subsubsection{Nazarpour 2012 J.Neuro}\label{nazarpour-2012-j.neuro}}
-
-\textsuperscript{\protect\hyperlink{ref-nazarpourFlexibleCorticalControl2012}{60}}
-
-x Flexible Cortical Control of Task-Specific Muscle Synergies
-https://www.jneurosci.org/content/32/36/12349
-
-Fig. 4A -- cursor controlled muscles begin to dissociate from non cursor
-controlled muscles.
-
-Feedforward processing to muscle fields / tunings in the presence of
-signal dependent noise
-
-Feedback processing based on visual errors
-
-\hypertarget{radhakrishnan-2008}{%
-\subsubsection{Radhakrishnan 2008}\label{radhakrishnan-2008}}
-
-\textsuperscript{\protect\hyperlink{ref-radhakrishnanLearningNovelMyoelectricControlled2008}{69}}
-
-x Learning a Novel Myoelectric-Controlled Interface Task ---
-Radhakrishnan, 2008
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2576223/
-
-proprioception is not required to learn nonintuitive MCI mappings
-
-several hundred trials subjects learned pointing with six muscles
-
-prism adaption requires active movement; efference copy implicated if
-proprioception doesn't seem to be required
-
-control models Fig 10
-
-\hypertarget{de-rugy-2012---habitual-not-optimal}{%
-\subsubsection{de Rugy 2012 - Habitual not
-Optimal}\label{de-rugy-2012---habitual-not-optimal}}
-
-\textsuperscript{\protect\hyperlink{ref-derugyMuscleCoordinationHabitual2012}{70}}
-
-just because it's harder to adapt to incompatible surgeries doesn't mean
-that there are fixed synergies, it just means there are multiple
-timescales of adaptation available in the neural control hierarchy --
-diversity in the neural controller depending on context
-
-learning inverse model may be separate from learning to optimize
-trajectories on top of that model -- some type of ``fine tuning''
-
-skill acquisition (slow, constructing novel synergies) vs.~motor
-adaptation (less slow, adapting existing synergy activations)
-
-It's a good test, but it pushes the optimal control framework too hard?
-perhaps we need a model for what ``good enough'' is? If we penalize
-moving to a new controller from a previously optimized movement, the
-findings make sense. An optimal control model would predict the exactly
-optimal coordination patterns for the new scenario, it wouldn't say
-anything about adaptation from an old solution to a new one. This is why
-we need to develop a model of adaptation that formalizes this scenario
-not of kinematic perturbations (noise during movement), but to a drastic
-change in the plant itself (e.g.~muscle failure).
-
-\hypertarget{mussa-ivaldi-2019}{%
-\subsubsection{Mussa-Ivaldi 2019}\label{mussa-ivaldi-2019}}
-
-\begin{quote}
-Earlier theoretical work by Jordan and Rumelhart {[}14{]} considered how
-the learning of actions can be viewed as the concurrent learning of for-
-ward and inverse models of actions. \textbf{They introduced the concept
-of distal learning, where the learner has to find a mapping from desired
-outcomes to actions in order to achieve a desired outcome. To do so, the
-subject begins by forming a predictive forward model of the
-transformation from actions to distal outcomes. Such transformations are
-often not known a priori, thus the forward model must generally be
-learned by exploring the outcomes associated with particular choices of
-action. Once the forward model has been at least partially learned, it
-can be used to guide the learning of an inverse model that predicts the
-action needed to achieve the distal outcome.} Mussa-Ivaldi2019
-\end{quote}
-
-\begin{quote}
-Our findings are consistent with the hypothesis that learning proceeds
-through the concurrent evolution of cou- pled forward and inverse models
-of the body-to-object mapping established by the BoMI. Mussa-Ivaldi2019
-\end{quote}
-
-\begin{quote}
-Not being square, the matrix H does not have a unique inverse. But there
-exist infinite ``right inverses'' that combined with H yield the K x K
-identity matrix in the task space of exter- nal control signals. Each
-such right inverse transforms a desired position of the controlled
-object into one particular set of values for the body signals. We
-consider users to be competent when they are able to move their body
-successfully in response to a presented target for the controlled
-object. Mathematically, we consider this as finding one right inverse G
-of the map- ping H, out of a multitude of possible and equally valid
-choices. Mussa-Ivaldi2019
-\end{quote}
-
-Gradient learning of a forward and inverse model (mapping):
-
-\begin{align*}
-    \hat{H}_{n+1} &= \hat{H}_n + \epsilon(p_n - H_nq_n)q_n^T  \\
-    G_{n+1} &= G_n - \eta\hat{H}_n^Te_nu_n^T \\
-    e_n &= p_n - u_n
-\end{align*}
-
-\begin{quote}
-The comparison between model predictions and actual data in Fig 3
-indicates that our proposed model of learning is sufficient to explain
-the data. However, the mechanism we propose is not necessary; we cannot
-rule out other possibilities, such as reinforcement learning.
-{[}\ldots{]} This agreement between model and experimental results does
-not exclude the possibility of alternative learning mechanisms, such as
-a direct learning of the inverse model {[}24{]} or the use of
-reinforcement learning {[}25{]} to acquire an action policy that would
-play the role of the inverse model. Mussa-Ivaldi2019
-\end{quote}
-
-How do we break a simple gradient model? On a task that is more
-difficult? will learning take longer? - savings phenomenon -
-
-\begin{quote}
-Although the interface forward map is linear (Methods, Eq (5)), this is
-a many-to-one map admitting a multitude of inverses. This ``redundancy''
-opens the possibility of successful linear and nonlinear inverse maps.
-Redundancy also leads to an important consideration about gradient
-descent learning. The reaching error surface in the space of the inverse
-model elements does not have a unique minimum, but a continuously
-connected set of minima corresponding to the null space of the forward
-map. In the metaphor of a skier descending from a mountain following the
-gradient, this space of equivalent inverse models corresponds to a flat
-elongated valley at the bot- tom of the mountain. Anywhere along the
-valley is a valid end to the ride, as it corresponds to a valid inverse
-model. The inverse model on which the steepest descent ends depends on
-the initial conditions, as predicted by the dynamical model (see Fig
-3b--evolution of the norm of the inverse model error), as well as on the
-realization of the noise employed in any given simulation of the
-learning model.
-\end{quote}
-
-\begin{quote}
-Although the two-dimensional subspace formed by the first two PCs
-captured a large fraction of the total variance of body motions, it did
-not necessarily reflect the natural up-down/left-right orientation of
-the display monitor. Therefore, following calibration and PC extraction,
-there was a customization phase in which users were allowed to set the
-origin, orientation, and scaling of the coordinates in task space, based
-on their preference.
-\end{quote}
-
-Subjects have prior knowledge of their directions in task space?
-
-x 90\% isn't enough -- Follow-up on the previous paper -- critiques
-``direct evidence'' https://www.biorxiv.org/content/10.1101/634758v1
-
-\begin{itemize}
-\tightlist
-\item
-  Structured variability of muscle activations supports the minimal
-  intervention principle of motor control
-  https://www.ncbi.nlm.nih.gov/pubmed/19369362
-\end{itemize}
-
-\hypertarget{sec:experiment}{%
-\section{Experimental Contributions}\label{sec:experiment}}
+\section{Preliminary Experimental Contributions}\label{sec:experiment}}
 
 \begin{itemize}
 \tightlist
@@ -1456,16 +925,6 @@ shown in Figure 2 on page 4. We are not aware of a rigorous study
 testing which muscles of the arm and hand can be accurately captured
 using surface EMG.
 
-\begin{fignos:no-prefix-figure-caption}
-
-\begin{figure}
-\centering
-\includegraphics{images/graphics/desk.png}
-\caption{Sketch of the experimental concept}
-\end{figure}
-
-\end{fignos:no-prefix-figure-caption}
-
 We aim to extend this prior work using learning algorithms that take
 into account time- varying dynamics of the signal in addition to common
 tools like components analysis and matrix factorization. This analysis
@@ -1484,16 +943,29 @@ in our results. Once we have collected a naturalistic activity dataset,
 we can begin to design bespoke feedback mappings and perturbations, as
 discussed in Section .
 
-\begin{fignos:no-prefix-figure-caption}
-
 \begin{figure}
+\hypertarget{fig:setup}{%
 \centering
-\includegraphics{images/hardware/setup.pdf}
-\caption{Prototype of recording hardware. Monopolar recording with
-reference electrode at the wrist.}
+\includegraphics[width=1\textwidth,height=\textheight]{images/hardware/setup.pdf}
+\caption{(a) Graphic depicting the closed-loop EMG interface concept in
+the center-hold, reach-out type task. The multidimensional EMG signal is
+transformed online by a mapping \(F\) into a task space representation.
+In experiments shown here the task space is a two-dimensional, though
+the EMG interface can be extended to tasks with higher-dimensional
+inputs. (b) First prototype of custom recording hardware consisting of
+four bands of eight electrodes each, and a spherical hand constraint.
+Our recordings are 32 channel monopolar recording with reference
+electrode at the wrist. (c) Example cup-style monopolar recording
+electrodes, 5mm in diameter. (d) Side view of the recording hardware.
+Also pictured is the arm restraint frame to ensure isometric
+contractions. The frame obscures the subject's arm from view and
+contains adjustable elbow and wrist rests. (d) Recording hardware shown
+off the arm with wireless amplifier and connection
+board.}\label{fig:setup}
+}
 \end{figure}
 
-\end{fignos:no-prefix-figure-caption}
+\cref{fig:setup}
 
 Goal here is to use the linear dynamics environment to isolate the
 control strategies of the CNS under these constraints-- how does the CNS
@@ -1549,49 +1021,84 @@ the biomechanical constraints on hand output dimensionality. We
 hypothesize that this will be higher than 8 and lower than 23, which
 gives us a large task space to work with for generating learning tasks.
 
-\begin{fignos:no-prefix-figure-caption}
-
 \begin{figure}
+\hypertarget{fig:raw_data}{%
 \centering
-\includegraphics{images/data_analysis/fingers/raw_data.pdf}
-\caption{Raw EMG data from a minimal finger flexion before
-preprocessing.}
+\includegraphics[width=1\textwidth,height=\textheight]{images/data_analysis/fingers/raw_data.pdf}
+\caption{10 seconds of raw 32-channel EMG data taken during a minimal
+finger flexion trial. Note that some channels include a nontrivial
+amount of line noise. This noise will be drastically reduced through
+changes being made in the next recording hardware revision which include
+shielding, shorter cables, and better cable routing. Note that some
+channels (e.g.~channel 24) show very low noise and single motor unit
+action potentials can clearly be seen.}\label{fig:raw_data}
+}
 \end{figure}
 
-\end{fignos:no-prefix-figure-caption}
-
-\begin{fignos:no-prefix-figure-caption}
+\cref{fig:raw_data}
 
 \begin{figure}
+\hypertarget{fig:preprocessing_steps}{%
 \centering
-\includegraphics{images/data_analysis/fingers/preprocessed_data.pdf}
-\caption{Raw EMG data from a minimal finger flexion before
-preprocessing.}
+\includegraphics[width=1\textwidth,height=\textheight]{images/data_analysis/fingers/preprocessing_steps.pdf}
+\caption{Data from a single trial showing each step of preprocessing.
+The prototype preprocessing pipeline is highpass at 50Hz, rectification,
+and lowpass at 5Hz. The then subtract the mean of each trial. This
+matches what is typically done in the literature to find a correlate of
+intended force. There is significant room for improvement on this
+workflow, as discussed in the text.}\label{fig:preprocessing_steps}
+}
 \end{figure}
 
-\end{fignos:no-prefix-figure-caption}
-
-\begin{fignos:no-prefix-figure-caption}
+\cref{fig:preprocessing_steps}
 
 \begin{figure}
+\hypertarget{fig:preprocessed_data}{%
 \centering
-\includegraphics{images/data_analysis/fingers/PCA_variances.pdf}
-\caption{Raw EMG data from a minimal finger flexion before
-preprocessing.}
+\includegraphics[width=1\textwidth,height=\textheight]{images/data_analysis/fingers/preprocessed_data.pdf}
+\caption{All channels of data from a single trial after preprocessing.
+Note the difference in baseline for each channel. Ideally, each channel
+has a clear baseline of no activity, as further discussed in the main
+text.}\label{fig:preprocessed_data}
+}
 \end{figure}
 
-\end{fignos:no-prefix-figure-caption}
-
-\begin{fignos:no-prefix-figure-caption}
+\cref{fig:preprocessed_data}
 
 \begin{figure}
+\hypertarget{fig:PCA_variances}{%
 \centering
-\includegraphics{images/data_analysis/fingers/PCA_components.pdf}
-\caption{Raw EMG data from a minimal finger flexion before
-preprocessing.}
+\includegraphics[width=1\textwidth,height=\textheight]{images/data_analysis/fingers/PCA_variances.pdf}
+\caption{Fraction of variance captured by the top 5 principle components
+for trials of single finger extensions and flexions. PCs were computed
+for individual trials. Trials were recorded from one subject for 10s
+each trial with finger movement frequency approximately 1Hz. Three
+blocks each with one trial per finger movement were recorded per day for
+5 days for a total of 15 trials per finger. Electrodes were not removed
+between blocks but were removed between days. Each trial displays a
+single high-variance PC component.}\label{fig:PCA_variances}
+}
 \end{figure}
 
-\end{fignos:no-prefix-figure-caption}
+\cref{fig:PCA_variances}
+
+\begin{figure}
+\hypertarget{fig:PCA_components}{%
+\centering
+\includegraphics[width=1\textwidth,height=\textheight]{images/data_analysis/fingers/PCA_components.pdf}
+\caption{The top principle component from each single finger movement
+trials plotted as weights across channels. PCA was computed for each
+trial individually. White horizontal lines show breaks between days when
+electrodes were removed and reapplied. Each trial's top component is
+relatively stable across trials and across days, though there is drift
+and dropout of weights. Measures to increase cross-session stability are
+discussed in the main text. Movements appear to vary between strong
+localization on single channels and broad activation across
+channels.}\label{fig:PCA_components}
+}
+\end{figure}
+
+\cref{fig:PCA_components}
 
 We want to determine a redundant control space from data taken during
 natural activity. The difficulty with this is that such a natural
@@ -1804,64 +1311,81 @@ dimensionality of the EMG signal will increase over the course of
 training as the subject learns to construct bespoke activity modes for
 each of the eight targets.
 
-\begin{fignos:no-prefix-figure-caption}
-
 \begin{figure}
+\hypertarget{fig:trajectories}{%
 \centering
-\includegraphics{images/data_analysis/center_hold/trajectories.pdf}
+\includegraphics[width=0.6\textwidth,height=\textheight]{images/data_analysis/center_hold/trajectories.pdf}
 \caption{Point mass position trajectories in two-dimensional task space
-during the center-hold, reach-out task with 8 targets spaced evenly
-around the unit circle. Training was conducted over 3 blocks each with
-32 trials, 4 trials per target. The first block shows roughly four
-modes, the second block shows four modes more clearly, and the third
-blocks may show the beginnings of fractionation.}
+during the center-hold, reach-out task with 32 targets spaced evenly
+around the unit circle (shown with red borders). Color corresponds to
+target numbers, with target zero located at (0,1). Target order was
+randomized. Training was conducted over 3 blocks each with 32 trials, 1
+trial per target.}\label{fig:trajectories}
+}
 \end{figure}
 
-\end{fignos:no-prefix-figure-caption}
-
-\begin{fignos:no-prefix-figure-caption}
+\cref{fig:trajectories}
 
 \begin{figure}
+\hypertarget{fig:hit_fraction}{%
 \centering
-\includegraphics{images/data_analysis/center_hold/hit_fraction.pdf}
-\caption{Raw EMG data from a minimal finger flexion before
-preprocessing.}
+\includegraphics[width=0.7\textwidth,height=\textheight]{images/data_analysis/center_hold/hit_fraction.pdf}
+\caption{Fractions of trial outcome types for each block of the
+center-hold, reach-out task. Hit fraction increases on each trial,
+suggesting the beginnings of task learning. Hold timeout failure
+increases over trials as well, perhaps suggesting increased baseline
+excitation of muscles during the hold period. Part of learning to
+activate certain muscle modes is learning to inhibit
+others.}\label{fig:hit_fraction}
+}
 \end{figure}
 
-\end{fignos:no-prefix-figure-caption}
-
-\begin{fignos:no-prefix-figure-caption}
+\cref{fig:hit_fraction}
 
 \begin{figure}
+\hypertarget{fig:PCA_trial_variance}{%
 \centering
-\includegraphics{images/data_analysis/center_hold/PCA_trial_variance.pdf}
-\caption{Raw EMG data from a minimal finger flexion before
-preprocessing.}
+\includegraphics[width=0.7\textwidth,height=\textheight]{images/data_analysis/center_hold/PCA_trial_variance.pdf}
+\caption{Fraction of variance captured by the top five principle
+components when PCA is run on the EMG time series' of individual trials
+of the center-hold, reach-out task. Error bars are standard deviation.
+Over blocks, we see a slight decrease in the mean of the top component's
+variance fraction, though with high variance. This may suggest greater
+exploration within-trial, as less variance is captured by a single
+component over blocks, though it could reflect more varied dynamics
+across trials as the subject discovers new, task-relevant
+activations.}\label{fig:PCA_trial_variance}
+}
 \end{figure}
 
-\end{fignos:no-prefix-figure-caption}
-
-\begin{fignos:no-prefix-figure-caption}
+\cref{fig:PCA_trial_variance}
 
 \begin{figure}
+\hypertarget{fig:PCA_concat_variance}{%
 \centering
-\includegraphics{images/data_analysis/center_hold/PCA_concat_variance.pdf}
-\caption{Raw EMG data from a minimal finger flexion before
-preprocessing.}
+\includegraphics[width=0.7\textwidth,height=\textheight]{images/data_analysis/center_hold/PCA_concat_variance.pdf}
+\caption{Fraction of variance captured by PCA computed on concatenated
+EMG time series concatenated over trials. Over blocks, we see variance
+shifting from the top component to other components. We hypothesize that
+across learning we would see the development of bespoke modes used in
+combination to reach individual targets. This would predict an increase
+in the complexity of the EMG time series over learning. Here we see
+suggestions of this prediction.}\label{fig:PCA_concat_variance}
+}
 \end{figure}
 
-\end{fignos:no-prefix-figure-caption}
+\cref{fig:PCA_concat_variance}
 
-Preliminary data for this task, through the mapping:
+Preliminary data for this task, through the \(32x2\) mapping:
 
-\[
-\tilde{M} = \begin{bmatrix}M & M & M & M\end{bmatrix} \\
-M =
+\begin{align*}
+\tilde{M} &= \begin{bmatrix}M & M & M & M\end{bmatrix} \\
+M &=
 \begin{bmatrix}
 0  & 0.71  & 1   & 0.71   & 0  & -0.71  & -1  & -0.71 \\
 1  & 0.71  & 0  & -0.71  & 1   & -0.71   & 0   & 0.71
 \end{bmatrix}
-\]
+\end{align*}
 
 In this task, the subject's first goal is to interact through an unknown
 visuomotor mapping and internalize this model. The second problem is to
@@ -1965,7 +1489,7 @@ noise covariance for the latent process is now \(MRM^T\). This may make
 things difficult.
 
 \hypertarget{sec:bg_experiment}{%
-\section{Theoretical Contributions}\label{sec:bg_experiment}}
+\section{Preliminary Theory}\label{sec:bg_experiment}}
 
 \begin{itemize}
 \tightlist
@@ -1976,6 +1500,85 @@ things difficult.
 \item
   how do we construct controllers under dynamical and goal uncertainty?
 \end{itemize}
+
+\hypertarget{optimal-feedback-control}{%
+\subsection{Optimal Feedback Control}\label{optimal-feedback-control}}
+
+\begin{itemize}
+\tightlist
+\item
+  prove that K is invariant to goal
+
+  \begin{itemize}
+  \tightlist
+  \item
+    just feed back the task error to reach a set point!
+
+    \begin{itemize}
+    \tightlist
+    \item
+      the cost want's the state, whatever it is, to go to zero.
+    \end{itemize}
+  \item
+    K, S, etc is translation invariant to the goal state
+  \item
+    to build this translation into the state/dynamics, we augment the
+    state/cost with the target
+
+    \begin{itemize}
+    \tightlist
+    \item
+      this just computes the error from that state internally
+    \end{itemize}
+  \item
+    write about this:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      L is linear in state, we can apply linear operations to it?
+    \item
+      S is quadratic in state, but we can also linearly transform it?
+    \item
+      value functions and controllers are additive\ldots{} but still
+      linear/quadratic
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+Infinite horizon control
+
+You can use the same controller and just feed back a different error, or
+you can build this error into your cost directly. You can change between
+one and the other through a a change of variable.
+
+\begin{figure}
+\hypertarget{fig:control_field}{%
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{images/simulations/control_field.pdf}
+\caption{Simulation of trajectories from uniform random initial
+positions for the simplest LQR controller. The diffusions are controlled
+such that their inputs are proportional to the positional error. The
+plain LQR controller is invariant (up to a translation) to the goal
+state, as explained in the text. Here the goal state is (0.5,0.5)
+denoted by a white star. red circles denote the initial position of the
+trajectory and green circles denote the endpoint after 200 increments.
+Arrows show the state-dependent control signal (force) vector
+\(u = [f_x,f_y]\).}\label{fig:control_field}
+}
+\end{figure}
+
+\begin{figure}
+\hypertarget{fig:cost_field}{%
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{images/simulations/cost_field.pdf}
+\caption{The same trajectory simulations as in \cref{fig:control_field}
+atop the quadratic cost field.}\label{fig:cost_field}
+}
+\end{figure}
+
+The question is: when would you need composition? When would you need to
+learn a new controller?
 
 \hypertarget{internal-model-adaptation-for-linear-quadratic-control}{%
 \subsection{Internal Model Adaptation for Linear Quadratic
@@ -2071,14 +1674,22 @@ the trajectories. The red circle is the initial state.
 \begin{figure}
 \hypertarget{fig:gradient_descent}{%
 \centering
-\includegraphics{images/simulations/gradient_descent_on_A.png}
+\includegraphics[width=0.75\textwidth,height=\textheight]{images/simulations/gradient_descent.pdf}
 \caption{Iterations of gradient descent on the \(A\) matrix of an
-infinite-horizon LQR. Each dotted line in a trajectory with a different
-\(A\) matrix. The red circle denotes the initial state, the star denotes
-the goal state, and the colored circles denote the endpoints of each
-iteration.}\label{fig:gradient_descent}
+infinite-horizon LQR where the original A is corrupted with Gaussian
+noise. Each dotted line is a sampled trajectory using a recomputed
+control gain with an updated \(A\) matrix. Red circles denote the
+initial state, the star denotes the goal state, and the colored circles
+denote the endpoints of each trajectory sampled at each iteration. Note
+that the initial solution diffuses directly towards the target, and the
+gradient updates for the dynamics model \(A\) alter this trajectory in a
+nontrivial way. As discussed in the main text, the gradient descent is
+optimizing for a different cost than the controller optimization, and
+thus this divergence might be expected.}\label{fig:gradient_descent}
 }
 \end{figure}
+
+\cref{fig:gradient_descent}
 
 The descent is converging in endpoint error in position, velocity, and
 force space. Unfortunately, this optimization is causing the dynamics to
@@ -2210,135 +1821,6 @@ either the system model and/or policy is an important parameter.
 
 In the LQG setting, this might be called ``adaptive LQG''.
 
-\hypertarget{internal-model-adaptation-for-linear-quadratic-control}{%
-\subsection{Internal Model Adaptation for Linear Quadratic
-Control}\label{internal-model-adaptation-for-linear-quadratic-control}}
-
-Here I investigate the effects of approximating internal dynamical
-models for movement and using the resulting endpoint error to update
-this approximation over trials.
-
-Our state space is denoted \(x\) and our control space \(u\) where
-\(dim(x) < dim(u)\). Each trial, we move from state \(x(0)\) to x(N) in
-\(N\) timesteps. Each trial, we have a goal state \(x^*\) and a
-resulting endpoint error \(e(N) = |x(N) - x^*|^2\).
-
-We use a deterministic linear dynamical system to model our within-trial
-state dynamics:
-
-\[
-x(t) = Ax(t-1) + Bu(t-1).
-\]
-
-For this system, we assume there exists a linear feedback control law
-optimal under a given quadratic state and control cost:
-
-\[
-u(t) = Kx(t).
-\]
-
-We can write the controlled, closed-loop system dynamics for the final
-time step \(N\):
-
-\[
-\begin{aligned} 
-x(N) &= (A - BK)x(N-1) = Cx(N-1) \\
-x(N) &= Cx(N-1) = C(Cx(N-2)) \\
-x(N) &= C^Nx(0).
-\end{aligned} 
-\]
-
-where \(C^N\) might be called the trajectory dynamic. If the trajectory
-dynamic \(C^N\) is an approximation to the true trajectory dynamic
-\(C^{N*}\), we can use the error of a given trajectory to find an
-incremental update. The error at the final time step \(N\) for trial
-\(r\) is
-
-\[
-e(r) = |C^N(r)x(0) - x^*|^2.
-\]
-
-This error may be due to several sources. Our internal dynamics model
-\(A\) might have error relative to the true dynamic \(A^*\). Our control
-gain \(K\) may be optimal relative to our internal model \(A\) but not
-with respect to the true dynamic \(A^*\). Finally, we might have an
-approximate model \(A\) and a suboptimal control gain \(K\). Note that
-since this is still deterministic system, we have yet to include any
-source of variability in state or control.
-
-If we assume that our computation of the control gain \(K\) is optimal
-for our approximate internal model \(A\) (we can compute a controller
-given only our internal representation of the system dynamic being
-controlled), we can use our endpoint error to derive a gradient descent
-update for \(A\) on trial \(r\):
-
-\[
-A(r+1) = A(r) - \eta\frac{\partial{e(r)}}{\partial{A}}
-\]
-
-We might think about this as an internal simulation of trial \(r\)'s
-trajectory, and a subsequent post hoc evaluation of the movement. To
-compute \(\delta\), we must take the gradient with respect to A of the
-error:
-
-\[
-\begin{aligned}
-\frac{\partial{e(r)}}{\partial{A}} &= \frac{\partial{}}{\partial{A}}{|C^N(r)x(0) - x^*|^2}
-\end{aligned}
-\]
-
-Since the gradient with respect to A is the same as the gradient with
-respect to \(C\), we can compute the gradient with respect to C to find:
-
-\[
-% 2∑𝑁𝑘=1(𝑀𝑁𝑣−𝑤)𝑇𝑀𝑘−1𝑀𝑁−𝑘𝑣
-\frac{\partial{e}}{\partial{A_{ij}}} = 2\sum_{k=1}^N\left[(C^Nx(0) - x^*)^TC^{k-1}\right]_i\left[C^{N-k}x(0)\right]_j
-\]
-
-Below is a figure showing LQR simulations across gradient descent
-updates to the A matrix after it is corrupted by Gaussian noise. Each
-trajectory is a single run of the LQR controlled for 200 time steps. The
-star shows the target state, the colored circles show the endpoints of
-the trajectories. The red circle is the initial state.
-
-\begin{figure}
-\hypertarget{fig:gradient_descent}{%
-\centering
-\includegraphics{images/simulations/gradient_descent_on_A.png}
-\caption{Iterations of gradient descent on the \(A\) matrix of an
-infinite-horizon LQR. Each dotted line in a trajectory with a different
-\(A\) matrix. The red circle denotes the initial state, the star denotes
-the goal state, and the colored circles denote the endpoints of each
-iteration.}\label{fig:gradient_descent}
-}
-\end{figure}
-
-The descent is converging in endpoint error in position, velocity, and
-force space. Unfortunately, this optimization is causing the dynamics to
-change. The routine is also very fragile to parameter changes. Next
-steps:
-
-\begin{itemize}
-\tightlist
-\item
-  Gain a better understanding of the loss landscape, including it's
-  degeneracy. It may be possible to compute the optimum analytically.
-\item
-  Corrupt the \(A\) matrix in a more principled way, working to alter
-  the passive dynamics in a physically realistic manner.
-\item
-  Explore the action of the resulting gradient through it's eigenvalues
-  and vectors. This can be done in two dimensions as a starting point.
-\item
-  Compute second-order derivatives and work towards a Newton's method.
-\item
-  Compute derivatives with respect to the control law \(K\) as a
-  comparison.
-\item
-  Analyze results of the routine in comparison with the reaching
-  adaptation literature.
-\end{itemize}
-
 \hypertarget{next-steps}{%
 \section{Next Steps}\label{next-steps}}
 
@@ -2348,8 +1830,19 @@ First completing a methodsy style piece of owrk about the setup,
 illlustrating the generation of bespoke control strategies by careful
 tracking of the EMG modes relative to task performance.
 
+settle on emg mapping protocol and online data filtering / analysis to
+start longer term task experiments do pilot study over many sessions to
+test regularization models
+
+Develop a series of experiments and scale up data collection across a
+range of tasks
+
+analyze this data against control models?
+
 Next is to work on models of learning by extending the framework of OFC
 through additions of composition and error-based adaptation.
+
+test those models against data
 
 \hypertarget{data-collection-at-scale}{%
 \subsection{Data Collection at Scale}\label{data-collection-at-scale}}
@@ -2379,7 +1872,8 @@ very low noise relative to our signal.
   \tightlist
   \item
     autoencoders (farina
-    paper)\textsuperscript{\protect\hyperlink{ref-vujaklijaOnlineMappingEMG2018}{71}}
+    paper)\textsuperscript{\protect\hyperlink{ref-vujaklijaOnlineMappingEMG2018}{52}}
+  \item
   \item
     bayesian inference techniques bespoke for EMG signals -- pull out
     control modes
@@ -2398,6 +1892,22 @@ very low noise relative to our signal.
         experiment\ldots{}
       \end{itemize}
     \end{itemize}
+  \item
+    estimating kurtosis might be useful for
+    inference\textsuperscript{\protect\hyperlink{ref-nazarpourNoteProbabilityDistribution2013}{53}}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      claims that higher order statistics may improve inference as EMG
+      distribution as for low contration levels the distribution is far
+      from gaussian, though it tends to a Gaussian as more motor units
+      are recruited. This may influence the our choice of noise model
+      for simulations if we wish to make predictions in EMG space.
+    \end{itemize}
+  \item
+    Sanger assumes a Laplacian
+    distribution\textsuperscript{\protect\hyperlink{ref-sangerBayesianFilteringMyoelectric2007}{54}}
   \end{itemize}
 \item
   better techniques for developing mappings
@@ -2407,7 +1917,7 @@ very low noise relative to our signal.
   \begin{itemize}
   \tightlist
   \item
-    \textsuperscript{\protect\hyperlink{ref-crevecoeurGoldstandardApproachAddress2010}{72}}
+    \textsuperscript{\protect\hyperlink{ref-crevecoeurGoldstandardApproachAddress2010}{55}}
   \end{itemize}
 \item
   Dynamical modes in the data using dynamical systems analysis
@@ -2465,7 +1975,7 @@ of this + predictions? mapping perturbation, noise perturbations
 stochastic control vs.~robust control vs.~adaptive control
 
 learning control over trials learning control via reward
-(RL)\textsuperscript{\protect\hyperlink{ref-vanderkooijLearningReachTrajectory2021}{73}}
+(RL)\textsuperscript{\protect\hyperlink{ref-vanderkooijLearningReachTrajectory2021}{56}}
 constructing control from primitives for transfer (GPS, KL-control)
 
 \hypertarget{eye-tracking}{%
@@ -2883,140 +2393,34 @@ Heterarchical control mechanisms in biology. \emph{Philosophical
 Transactions of the Royal Society B: Biological Sciences} \textbf{376},
 20190751 (2021).}
 
-\leavevmode\hypertarget{ref-adrianTheoreticalModelsMotor2012}{}%
+\leavevmode\hypertarget{ref-vujaklijaOnlineMappingEMG2018}{}%
 \CSLLeftMargin{52. }
-\CSLRightInline{Adrian, M. H. \& John, W. K. Theoretical {Models} of
-{Motor Control} and {Motor Learning}. in \emph{Routledge {Handbook} of
-{Motor Control} and {Motor Learning}} ({Routledge}, 2012).
-doi:\href{https://doi.org/10.4324/9780203132746.ch1}{10.4324/9780203132746.ch1}.}
-
-\leavevmode\hypertarget{ref-Krakauer2019}{}%
-\CSLLeftMargin{53. }
-\CSLRightInline{Krakauer, J. W., Hadjiosif, A. M., Xu, J., Wong, A. L.
-\& Haith, A. M. Motor learning. \emph{Comprehensive Physiology}
-\textbf{9}, 613--663 (2019).}
-
-\leavevmode\hypertarget{ref-Shadmehr2008}{}%
-\CSLLeftMargin{54. }
-\CSLRightInline{Shadmehr, R. \& Krakauer, J. W. A computational
-neuroanatomy for motor control. \emph{Experimental Brain Research}
-\textbf{185}, 359--381 (2008).}
-
-\leavevmode\hypertarget{ref-manleyWhenMoneyNot2014}{}%
-\CSLLeftMargin{55. }
-\CSLRightInline{Manley, H., Dayan, P. \& Diedrichsen, J. When {Money Is
-Not Enough}: {Awareness}, {Success}, and {Variability} in {Motor
-Learning}. \emph{PLoS ONE} \textbf{9}, e86580 (2014).}
-
-\leavevmode\hypertarget{ref-vanbeersMotorLearningOptimally2009}{}%
-\CSLLeftMargin{56. }
-\CSLRightInline{van Beers, R. J. Motor {Learning Is Optimally Tuned} to
-the {Properties} of {Motor Noise}. \emph{Neuron} \textbf{63}, 406--417
-(2009).}
-
-\leavevmode\hypertarget{ref-vanbeersRandomWalkMotor2013}{}%
-\CSLLeftMargin{57. }
-\CSLRightInline{van Beers, R. J., Brenner, E. \& Smeets, J. B. J. Random
-walk of motor planning in task-irrelevant dimensions. \emph{Journal of
-Neurophysiology} \textbf{109}, 969--977 (2013).}
-
-\leavevmode\hypertarget{ref-Mussa-IvaldiSensoryMotorRemapping2011}{}%
-\CSLLeftMargin{58. }
-\CSLRightInline{Mussa-Ivaldi, F. A., Casadio, M., Danziger, Z. C.,
-Mosier, K. M. \& Scheidt, R. A. Sensory motor remapping of space in
-human-machine interfaces. \emph{Progress in Brain Research}
-\textbf{191}, 45--64 (2011).}
-
-\leavevmode\hypertarget{ref-MosierRemappingHandMovements2005}{}%
-\CSLLeftMargin{59. }
-\CSLRightInline{Mosier, K. M., Scheidt, R. A., Acosta, S. \&
-Mussa-Ivaldi, F. A. Remapping {Hand Movements} in a {Novel Geometrical
-Environment}. \emph{Journal of Neurophysiology} \textbf{94}, 4362--4372
-(2005).}
-
-\leavevmode\hypertarget{ref-nazarpourFlexibleCorticalControl2012}{}%
-\CSLLeftMargin{60. }
-\CSLRightInline{Nazarpour, K., Barnard, A. \& Jackson, A. Flexible
-{Cortical Control} of {Task}-{Specific Muscle Synergies}. \emph{Journal
-of Neuroscience} \textbf{32}, 12349--12360 (2012).}
+\CSLRightInline{Vujaklija, I. \emph{et al.} Online mapping of {EMG}
+signals into kinematics by autoencoding. \emph{Journal of
+NeuroEngineering and Rehabilitation} \textbf{15}, 21 (2018).}
 
 \leavevmode\hypertarget{ref-nazarpourNoteProbabilityDistribution2013}{}%
-\CSLLeftMargin{61. }
+\CSLLeftMargin{53. }
 \CSLRightInline{Nazarpour, K., Al-Timemy, A. H., Bugmann, G. \& Jackson,
 A. A note on the probability distribution function of the surface
 electromyogram signal. \emph{Brain Research Bulletin} \textbf{90},
 88--91 (2013).}
 
 \leavevmode\hypertarget{ref-sangerBayesianFilteringMyoelectric2007}{}%
-\CSLLeftMargin{62. }
+\CSLLeftMargin{54. }
 \CSLRightInline{Sanger, T. D. Bayesian {Filtering} of {Myoelectric
 Signals}. \emph{Journal of Neurophysiology} \textbf{97}, 1839--1845
 (2007).}
 
-\leavevmode\hypertarget{ref-churchlandNeuralPopulationDynamics2012a}{}%
-\CSLLeftMargin{63. }
-\CSLRightInline{Churchland, M. M. \emph{et al.} Neural population
-dynamics during reaching. \emph{Nature} \textbf{487}, 51--56 (2012).}
-
-\leavevmode\hypertarget{ref-churchlandNeuralVariabilityPremotor2006}{}%
-\CSLLeftMargin{64. }
-\CSLRightInline{Churchland, M. M. Neural {Variability} in {Premotor
-Cortex Provides} a {Signature} of {Motor Preparation}. \emph{Journal of
-Neuroscience} \textbf{26}, 3697--3712 (2006).}
-
-\leavevmode\hypertarget{ref-crouzierIndividualDifferencesDistribution2019}{}%
-\CSLLeftMargin{65. }
-\CSLRightInline{Crouzier, M. \emph{et al.} Do individual differences in
-the distribution of activation between synergist muscles reflect
-individual strategies? \emph{Experimental Brain Research} \textbf{237},
-625--635 (2019).}
-
-\leavevmode\hypertarget{ref-Hug2011}{}%
-\CSLLeftMargin{66. }
-\CSLRightInline{Hug, F. Can muscle coordination be precisely studied by
-surface electromyography? \emph{Journal of Electromyography and
-Kinesiology} \textbf{21}, 1--12 (2011).}
-
-\leavevmode\hypertarget{ref-Dyson2018}{}%
-\CSLLeftMargin{67. }
-\CSLRightInline{Dyson, M., Barnes, J. \& Nazarpour, K. Myoelectric
-control with abstract decoders. \emph{Journal of Neural Engineering}
-\textbf{15}, (2018).}
-
-\leavevmode\hypertarget{ref-BergerDifferencesInAdaptationRates2013a}{}%
-\CSLLeftMargin{68. }
-\CSLRightInline{Berger, D. J., Gentner, R., Edmunds, T., Pai, D. K. \&
-d'Avella, A. Differences in {Adaptation Rates} after {Virtual Surgeries
-Provide Direct Evidence} for {Modularity}. \emph{Journal of
-Neuroscience} \textbf{33}, 12384--12394 (2013).}
-
-\leavevmode\hypertarget{ref-radhakrishnanLearningNovelMyoelectricControlled2008}{}%
-\CSLLeftMargin{69. }
-\CSLRightInline{Radhakrishnan, S. M., Baker, S. N. \& Jackson, A.
-Learning a {Novel Myoelectric}-{Controlled Interface Task}.
-\emph{Journal of Neurophysiology} \textbf{100}, 2397--2408 (2008).}
-
-\leavevmode\hypertarget{ref-derugyMuscleCoordinationHabitual2012}{}%
-\CSLLeftMargin{70. }
-\CSLRightInline{de Rugy, A., Loeb, G. E. \& Carroll, T. J. Muscle
-{Coordination Is Habitual Rather} than {Optimal}. \emph{Journal of
-Neuroscience} \textbf{32}, 7384--7391 (2012).}
-
-\leavevmode\hypertarget{ref-vujaklijaOnlineMappingEMG2018}{}%
-\CSLLeftMargin{71. }
-\CSLRightInline{Vujaklija, I. \emph{et al.} Online mapping of {EMG}
-signals into kinematics by autoencoding. \emph{Journal of
-NeuroEngineering and Rehabilitation} \textbf{15}, 21 (2018).}
-
 \leavevmode\hypertarget{ref-crevecoeurGoldstandardApproachAddress2010}{}%
-\CSLLeftMargin{72. }
+\CSLLeftMargin{55. }
 \CSLRightInline{Crevecoeur, F., Bollens, B., Detrembleur, C. \& Lejeune,
 T. M. Towards a {`gold-standard'} approach to address the presence of
 long-range auto-correlation in physiological time series. \emph{Journal
 of Neuroscience Methods} 11 (2010).}
 
 \leavevmode\hypertarget{ref-vanderkooijLearningReachTrajectory2021}{}%
-\CSLLeftMargin{73. }
+\CSLLeftMargin{56. }
 \CSLRightInline{van der Kooij, K., van Mastrigt, N. M., Crowe, E. M. \&
 Smeets, J. B. J. Learning a reach trajectory based on binary reward
 feedback. \emph{Scientific Reports} \textbf{11}, 2667 (2021).}

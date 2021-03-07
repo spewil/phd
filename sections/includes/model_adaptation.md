@@ -64,7 +64,9 @@ $$
 
 Below is a figure showing LQR simulations across gradient descent updates to the A matrix after it is corrupted by Gaussian noise. Each trajectory is a single run of the LQR controlled for 200 time steps. The star shows the target state, the colored circles show the endpoints of the trajectories. The red circle is the initial state. 
 
-![Iterations of gradient descent on the $A$ matrix of an infinite-horizon LQR. Each dotted line in a trajectory with a different $A$ matrix. The red circle denotes the initial state, the star denotes the goal state, and the colored circles denote the endpoints of each iteration.](images/simulations/gradient_descent_on_A.png){width=100%}{#fig:gradient_descent}
+![Iterations of gradient descent on the $A$ matrix of an infinite-horizon LQR where the original A is corrupted with Gaussian noise. Each dotted line is a sampled trajectory using a recomputed control gain with an updated $A$ matrix. Red circles denote the initial state, the star denotes the goal state, and the colored circles denote the endpoints of each trajectory sampled at each iteration. Note that the initial solution diffuses directly towards the target, and the gradient updates for the dynamics model $A$ alter this trajectory in a nontrivial way. As discussed in the main text, the gradient descent is optimizing for a different cost than the controller optimization, and thus this divergence might be expected.](images/simulations/gradient_descent.pdf){width=75% #fig:gradient_descent}
+
+{+@fig:gradient_descent}
 
 The descent is converging in endpoint error in position, velocity, and force space. Unfortunately, this optimization is causing the dynamics to change. The routine is also very fragile to parameter changes. Next steps:
 

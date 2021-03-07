@@ -1,4 +1,4 @@
-# Experimental Contributions {#sec:experiment}
+# Preliminary Experimental Contributions {#sec:experiment}
 
 <!-- I would be most interested to hear how u are thinking of approaching the analysis. I.e. u have a bunch of channels, movements, tasks what is the workflow to get from that raw data into something manageable/useful. -->
 
@@ -23,7 +23,9 @@ We aim to extend this prior work using learning algorithms that take into accoun
 
 We anticipate that quantifying electrode placement and calibrating across sessions will be a major challenge. We aim to develop a mechanical fixture for recording as well as alignment tools to aid in placing electrodes in precisely the same location each session. Properly separating variability due to electrode placement from behavioral and physiological variability will be paramount to establish repeatability in our results. Once we have collected a naturalistic activity dataset, we can begin to design bespoke feedback mappings and perturbations, as discussed in Section .
 
-![Prototype of recording hardware. Monopolar recording with reference electrode at the wrist.](images/hardware/setup.pdf)
+![(a) Graphic depicting the closed-loop EMG interface concept in the center-hold, reach-out type task. The multidimensional EMG signal is transformed online by a mapping $F$ into a task space representation. In experiments shown here the task space is a two-dimensional, though the EMG interface can be extended to tasks with higher-dimensional inputs. (b) First prototype of custom recording hardware consisting of four bands of eight electrodes each, and a spherical hand constraint. Our recordings are 32 channel monopolar recording with reference electrode at the wrist. (c) Example cup-style monopolar recording electrodes, 5mm in diameter. (d) Side view of the recording hardware. Also pictured is the arm restraint frame to ensure isometric contractions. The frame obscures the subject's arm from view and contains adjustable elbow and wrist rests. (d) Recording hardware shown off the arm with wireless amplifier and connection board.](images/hardware/setup.pdf){width=100% #fig:setup}
+
+{+@fig:setup}
 
 Goal here is to use the linear dynamics environment to isolate the control strategies of the CNS under these constraints-- how does the CNS adapt to this environment? How does it construct solutions to control problems of various dimensionalities? How does it produce dexterous responses to perturbations of these solutions?
 
@@ -69,14 +71,30 @@ The second question of this phase is: what is the manifold of activity in electr
 By analyzing the structure of these naturalistic datasets, we can compute the dimensionality of naturalistic movement as a subspace within our electrode space, similar to work done using joint angles of the hand[24, 22, 11]. From this work we know that while the hand has 29 joints and is controlled by 34 muscles, the dimensionality of natural hand movements is closer to 8 in joint angle dimension space based on principle components analysis. This analysis will also help us determine the biomechanical constraints on hand output dimensionality. We hypothesize that this will be higher than 8 and lower than 23, which gives us a large task space to work with for generating learning tasks.
 
 
+![10 seconds of raw 32-channel EMG data taken during a minimal finger flexion trial. Note that some channels include a nontrivial amount of line noise. This noise will be drastically reduced through changes being made in the next recording hardware revision which include shielding, shorter cables, and better cable routing. Note that some channels (e.g. channel 24) show very low noise and single motor unit action potentials can clearly be seen.](images/data_analysis/fingers/raw_data.pdf){width=100% #fig:raw_data}
 
-![Raw EMG data from a minimal finger flexion before preprocessing.](images/data_analysis/fingers/raw_data.pdf)
+{+@fig:raw_data}
 
-![Raw EMG data from a minimal finger flexion before preprocessing.](images/data_analysis/fingers/preprocessed_data.pdf)
 
-![Raw EMG data from a minimal finger flexion before preprocessing.](images/data_analysis/fingers/PCA_variances.pdf)
+![Data from a single trial showing each step of preprocessing. The prototype preprocessing pipeline is highpass at 50Hz, rectification, and lowpass at 5Hz. The then subtract the mean of each trial. This matches what is typically done in the literature to find a correlate of intended force. There is significant room for improvement on this workflow, as discussed in the text.](images/data_analysis/fingers/preprocessing_steps.pdf){width=100% #fig:preprocessing_steps}
 
-![Raw EMG data from a minimal finger flexion before preprocessing.](images/data_analysis/fingers/PCA_components.pdf)
+{+@fig:preprocessing_steps}
+
+
+![All channels of data from a single trial after preprocessing. Note the difference in baseline for each channel. Ideally, each channel has a clear baseline of no activity, as further discussed in the main text.](images/data_analysis/fingers/preprocessed_data.pdf){width=100% #fig:preprocessed_data}
+
+{+@fig:preprocessed_data}
+
+
+![Fraction of variance captured by the top 5 principle components for trials of single finger extensions and flexions. PCs were computed for individual trials. Trials were recorded from one subject for 10s each trial with finger movement frequency approximately 1Hz. Three blocks each with one trial per finger movement were recorded per day for 5 days for a total of 15 trials per finger. Electrodes were not removed between blocks but were removed between days. Each trial displays a single high-variance PC component.](images/data_analysis/fingers/PCA_variances.pdf){width=100% #fig:PCA_variances}
+
+{+@fig:PCA_variances}
+
+
+![The top principle component from each single finger movement trials plotted as weights across channels. PCA was computed for each trial individually. White horizontal lines show breaks between days when electrodes were removed and reapplied. Each trial's top component is relatively stable across trials and across days, though there is drift and dropout of weights. Measures to increase cross-session stability are discussed in the main text. Movements appear to vary between strong localization on single channels and broad activation across channels.](images/data_analysis/fingers/PCA_components.pdf){width=100% #fig:PCA_components}
+
+{+@fig:PCA_components}
+
 
 
 
@@ -158,25 +176,33 @@ $$
 
 This problem is known to have a unique minimum for $\lambda>0$ which is an approximation $Mx\approx b$ regardless of the shape or rank of $M$. This implies that the subject, if they are biophysically capable to do so, will learn distinct motor outputs for each target rather than reusing modes for multiple targets with different activation levels. That is the subject will, over time, learn to fractionate their muscle output to reach their goal in order to minimize effort. For instance, to reach the the target at position $(1,0)$ in Cartesian coordinates, the subject could activate a bespoke activity mode or activity the combination of two modes for targets at $\pm45^\circ$ from this central target. If this is the case, the model predicts that the dimensionality of the EMG signal will increase over the course of training as the subject learns to construct bespoke activity modes for each of the eight targets.
 
-![Point mass position trajectories in two-dimensional task space during the center-hold, reach-out task with 8 targets spaced evenly around the unit circle. Training was conducted over 3 blocks each with 32 trials, 4 trials per target. The first block shows roughly four modes, the second block shows four modes more clearly, and the third blocks may show the beginnings of fractionation.](images/data_analysis/center_hold/trajectories.pdf)
+![Point mass position trajectories in two-dimensional task space during the center-hold, reach-out task with 32 targets spaced evenly around the unit circle (shown with red borders). Color corresponds to target numbers, with target zero located at (0,1). Target order was randomized. Training was conducted over 3 blocks each with 32 trials, 1 trial per target.](images/data_analysis/center_hold/trajectories.pdf){width=60% #fig:trajectories}
 
-![Raw EMG data from a minimal finger flexion before preprocessing.](images/data_analysis/center_hold/hit_fraction.pdf)
+{+@fig:trajectories}
 
-![Raw EMG data from a minimal finger flexion before preprocessing.](images/data_analysis/center_hold/PCA_trial_variance.pdf)
+![Fractions of trial outcome types for each block of the center-hold, reach-out task. Hit fraction increases on each trial, suggesting the beginnings of task learning. Hold timeout failure increases over trials as well, perhaps suggesting increased baseline excitation of muscles during the hold period. Part of learning to activate certain muscle modes is learning to inhibit others.](images/data_analysis/center_hold/hit_fraction.pdf){width=70% #fig:hit_fraction}
 
-![Raw EMG data from a minimal finger flexion before preprocessing.](images/data_analysis/center_hold/PCA_concat_variance.pdf)
+{+@fig:hit_fraction}
+
+![Fraction of variance captured by the top five principle components when PCA is run on the EMG time series' of individual trials of the center-hold, reach-out task. Error bars are standard deviation. Over blocks, we see a slight decrease in the mean of the top component's variance fraction, though with high variance. This may suggest greater exploration within-trial, as less variance is captured by a single component over blocks, though it could reflect more varied dynamics across trials as the subject discovers new, task-relevant activations.](images/data_analysis/center_hold/PCA_trial_variance.pdf){width=70% #fig:PCA_trial_variance}
+
+{+@fig:PCA_trial_variance}
+
+![Fraction of variance captured by PCA computed on concatenated EMG time series concatenated over trials. Over blocks, we see variance shifting from the top component to other components. We hypothesize that across learning we would see the development of bespoke modes used in combination to reach individual targets. This would predict an increase in the complexity of the EMG time series over learning. Here we see suggestions of this prediction.](images/data_analysis/center_hold/PCA_concat_variance.pdf){width=70% #fig:PCA_concat_variance}
+
+{+@fig:PCA_concat_variance}
 
 
-Preliminary data for this task, through the mapping: 
+Preliminary data for this task, through the $32x2$ mapping: 
 
-$$
-\tilde{M} = \begin{bmatrix}M & M & M & M\end{bmatrix} \\
-M =
+\begin{align*}
+\tilde{M} &= \begin{bmatrix}M & M & M & M\end{bmatrix} \\
+M &=
 \begin{bmatrix}
 0  & 0.71  & 1   & 0.71   & 0  & -0.71  & -1  & -0.71 \\
 1  & 0.71  & 0  & -0.71  & 1   & -0.71   & 0   & 0.71
 \end{bmatrix}
-$$
+\end{align*}
 
 In this task, the subject's first goal is to interact through an unknown visuomotor mapping and internalize this model. The second problem is to use this model to solve a control problem.
 
