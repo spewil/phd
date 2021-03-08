@@ -18,6 +18,51 @@ look at the bullet points there, relate to our experiment
 
 <!-- A solution to the algebraic Riccati equation can be obtained by matrix factorizations or by iterating on the Riccati equation. One type of iteration can be obtained in the discrete time case by using the dynamic Riccati equation that arises in the finite-horizon problem: in the latter type of problem each iteration of the value of the matrix is relevant for optimal choice at each period that is a finite distance in time from a final time period, and if it is iterated infinitely far back in time it converges to the specific matrix that is relevant for optimal choice an infinite length of time prior to a final period—that is, for when there is an infinite horizon.  wiki riccati equation-->
 
+<!-- The unknown mapping $M$ from muscle to task space looks like the observation matrix $H$ in the LQG problem:
+
+\begin{align*}
+y_t &= Hx_t + v_t\,\,\,(\mathrm{LQG}) \\
+y_t &= Mx_t + v_t. \,\,\,(\mathrm{experiment})
+\end{align*}
+
+The state dynamics in the task are of the form:
+
+\begin{align*}
+x_{t} &= Ax_{t-1} + Bu_{t-1} + w_{t-1} \,\,\,(\mathrm{LQG}) \\
+x_t &= Dx_{t-1} + Iu_{t-1} + w_{t-1} \,\,\,(\mathrm{experiment})
+\end{align*}
+
+where $D$ is a diagonal decay matrix of with terms $\mathrm{e}^{-\lambda}$ and $I$ is the identity. The subject produces muscle contractions which add to the current latent (unobserved) state. In the absence of control signals, the state decays back to $0$ in line with the physics of your arm returning to a passive state in the absence of muscle contractions. The terms $w$ and $v$ are gaussian noise vectors with distributions $\mathcal{N}(0,Q)$ and $\mathcal{N}(0,R)$. If we combine the transition and observation models:
+
+\begin{align*}
+y_t &= MDx_{t-1} + Mu_{t-1} + Mw_{t-1} + v_t \\
+&= A^\prime x_{t-1} + B^\prime u_{t-1} + Mw_{t-1} + v_t.
+\end{align*}
+
+We can think of this as the combined system identification problem where $A^\prime=MD$ and $B^\prime=M$ are unknown and must be estimated. The noise covariances of this altered system are now non-trivial, however. We could also assume that the transition dynamic $D$ is known and that the identification problem is learning the mapping $M$ only. This might not be a poor assumption since the exponential decay is meant to serve as an intuitive passive dynamic.
+
+In each trial of the task, a subject will have some internal representation of the observation dynamic $M$ which may or may not be accurate. In order to make accurate predictions, $M$ must be estimated.
+
+Learning linear dynamical systems from data is a hot topic of research, most of which seems to focus on learning in the context of complete state observation ($M=I$, $y=x$). Algorithms to determine parameters of $A$ and $B$ are proposed (see Dean, Recht 2018).
+
+From LQG theory we know that the control law is a linear function of the state:
+
+\begin{align*}
+u_t = -L_tx_t
+\end{align*}
+
+and thus our combined system dynamic is:
+
+\begin{align*}
+y_t &= M(D-L_t)x_{t-1} + Mw_{t-1} + v_t.
+\end{align*}
+
+
+The noise covariance due to the observation Q is unchanged, but the new noise covariance for the latent process is now $MRM^T$. This may make things difficult. -->
+
+
+
+
 
 OFC is the best we got for motor coordination, but there's no adaptation or learning
 

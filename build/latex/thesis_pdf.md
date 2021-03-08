@@ -1,5 +1,6 @@
 ---
-title: Heterarchical Control in Sensorimotor Processing
+# title: Heterarchical Control in Sensorimotor Processing
+title: Sensorimotor Learning with Virtual Muscles
 author: Spencer R. Wilson
 date: \today
 xnos-cleveref: true
@@ -13,7 +14,11 @@ geometry: margin=30mm
 
 $include ../../sections/introduction.md
 
+\clearpage
+
 $include ../../sections/motor_physiology.md
+
+\clearpage
 
 <!-- $include ../../sections/background_experiment.md -->
 
@@ -21,10 +26,14 @@ $include ../../sections/motor_physiology.md
 
 $include ../../sections/experiments.md
 
+\clearpage
+
 $include ../../sections/theory.md
+
+\clearpage
 
 $include ../../sections/next_steps.md
 
-\newpage
+\clearpage
 
 ## Bibliography
