@@ -13,7 +13,7 @@ Is LQR (as it’s claimed to be) a reasonable model for feedback control and err
 
 
 
-Our results are consistent with a recently described model in which an optimal feedback control policy is calculated independently for each potential target and a weighted average of these policies (that is, feedback gains) is computed at each point in time based on the relative desirability of each target50. Notably, this model, which pre-dicts averaging of feedback gains, can also account for spatial (that is, trajectory) averaging in go-before-you-know tasks. We submit that our result showing feedback gain averaging, coupled with previous work demonstrating trajectory averaging, provides strong support for the compelling idea that the CNS, under cases of target uncertainty, encodes in parallel multiple motor plans, along with their associated control policies, for competing action options. (Wolpert Nature 2018 competing control policies)
+> Our results are consistent with a recently described model in which an optimal feedback control policy is calculated independently for each potential target and a weighted average of these policies (that is, feedback gains) is computed at each point in time based on the relative desirability of each target50. Notably, this model, which pre-dicts averaging of feedback gains, can also account for spatial (that is, trajectory) averaging in go-before-you-know tasks. We submit that our result showing feedback gain averaging, coupled with previous work demonstrating trajectory averaging, provides strong support for the compelling idea that the CNS, under cases of target uncertainty, encodes in parallel multiple motor plans, along with their associated control policies, for competing action options. (Wolpert Nature 2018 competing control policies)
 
 
 
@@ -120,36 +120,7 @@ takehome: humans are really good at learning tasks like these, especially with t
 
 
 
-## Properties of Electromyographic Signals
 
-- not actually gaussian, but super-gaussian [@nazarpourNoteProbabilityDistribution2013]
-- some work using bayesian filtering methods to infer the signal envelope [@sangerBayesianFilteringMyoelectric2007]
-- Farina paper on EMG as convolution 
-
-A window of EMG of length $T$ samples can be modeled like
-
-$$
-\mathbf{z} = \sum_t^T \mathbf{h} * \mathbf{s}
-$$
-
-where $\mathbf{h}$ is a motor unit activation template, which itself is a particular neural spike waveform, and $\mathbf{s}$ is the incidence of a spike, which might be modeled as a point process. 
-
-> EMG records were rectified, smoothed and averaged before further analysis. [@churchlandNeuralPopulationDynamics2012a]
-
-> EMG activity was recorded using hook-wire electrodes (44 gauge with a 27 gauge cannula; Nicolet Biomedical, Madison, WI) placed in the muscle for the duration of single recording sessions. [...] Electrode voltages were amplified, bandpass filtered (150–500 Hz, four pole, 24 db/octave), sampled at 1000 Hz, and digitized. Off-line, raw traces were differentiated (to remove any remaining baseline), rectified, smoothed with a Gaussian (SD of 15 ms) and averaged. [@churchlandNeuralVariabilityPremotor2006]
-
-
-inter-subject variability is high, but seems to show individual strategies for movement [@crouzierIndividualDifferencesDistribution2019]
-
-
-<!-- Discussion of motor unit convolution -->
-
-The surface EMG signal can be modeled as the convolution of 
-
-
-Can muscle coordination be precisely studied by surface electromyography? [@Hug2011]
-
-This requires first mapping the intrinsic available dynamics of the hand per user.
 
 
 

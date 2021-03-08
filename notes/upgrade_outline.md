@@ -12,7 +12,7 @@ TODO:
 - combine all writing into here from overleaf
 
 
-# intro & aims (1 day) (2 days)
+# intro & aims 
 - what are we interested in?
   - why can't robots move like humans?
   - What is special about human movement?
@@ -36,7 +36,7 @@ TODO:
   
 
 
-# human motor physiology (why is it special?)(1 day) (4 days)
+# human motor physiology
  engineering problem for movement 
 	- what can physiology tell us about the movement problem?
 		- can it inform theory to describe motor solutions?
@@ -63,7 +63,7 @@ TODO:
 	- how does this inform theory?
 
 
-# what has been done experimentally? (1 day) 
+# what has been done experimentally?
 experimental methods
 prior work on human motor control and learning (doesn't have to be long!)
 	- what theory doesn't exist?
@@ -88,7 +88,7 @@ prior work on human motor control and learning (doesn't have to be long!)
 	- bird vocal learning
 
 
-# what experiments do we need to do? (1 day)
+# what experiments do we need to do?
 experimental setup
 i made a thing, it works like this, here's the data
 	- detail how this works
@@ -167,7 +167,7 @@ models
 		- discuss how these might predict behavior?
 
 
-# next steps (1 day)
+# next steps
 
 our own selection model
 the idea behind it

@@ -1,8 +1,8 @@
-# Preliminary Theory {#sec:bg_experiment}
+# Preliminary Theory {#sec:theory}
 
-- how do we adapt LQR controllers trial-to-trial?
-- how do we use existing controllers to construct movements?
-- how do we construct controllers under dynamical and goal uncertainty?
+> *An interesting open question is how to relate trial-to-trial dynamics of learning to asymptotic predictions regarding optimal adaptation.*
+>
+> &mdash; Todorov, *2007*
 
 <!-- OFC MODELING AND DISCUSSION -->
 $include includes/ofc.md
@@ -11,12 +11,7 @@ $include includes/ofc.md
 $include includes/model_adaptation.md
 
 
-Think more about subspaces 
-- preparatory activity in one subspsce, online control in another? 
-- learning in one subspace but not another?
-- compression of model to a subspace?
-
-
+<!-- 
 
 ## Policy Selection
 
@@ -40,9 +35,9 @@ Composable policies
 
 PLOT OF INTUITIVE EXAMPLE
 
-<!-- ### Multiplicative Policy Composition
+### Multiplicative Policy Composition
 
-Policies are distributionally weighted, as opposed to chosen each timestep? -->
+Policies are distributionally weighted, as opposed to chosen each timestep? 
 
 ### Temporal Composition
 
@@ -73,4 +68,4 @@ Since we only have an approximate model of the system dynamic, we could simply w
 
 If the true system dynamics were known, we could solve the Algebraic Riccati Equation with a backwards pass, and compute our controls in a forward pass. This general algorithm structure highlights how the (unknown) system identification and controller design are intertwined: identifying a system appropriately must rely on sampling and fitting regions of the state space pertinent to adequate control in terms of cost (Ross ICML 2012). Otherwise, our approximation to the true system dynamic will only produce a valid controller in regions we have previously explored. The question is how we can effectively (sample and time efficiently) utilize new state transitions we encounter either online as feedback or between trials to update our model and policy. That is, the number of trials and/or trajectories to use before updating either the system model and/or policy is an important parameter.
 
-In the LQG setting, this might be called "adaptive LQG".
+In the LQG setting, this might be called "adaptive LQG". -->
