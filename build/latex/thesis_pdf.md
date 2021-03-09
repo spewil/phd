@@ -1,6 +1,6 @@
 ---
 # title: Heterarchical Control in Sensorimotor Processing
-title: Sensorimotor Learning with Virtual Muscles
+title: Sensorimotor Learning of a Virtual Skill
 author: Spencer R. Wilson
 date: \today
 xnos-cleveref: true
