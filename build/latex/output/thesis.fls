@@ -266,20 +266,17 @@ INPUT /Users/spencerw/Google Drive/motor_control/phd/images/simulations/cost_fie
 INPUT /Users/spencerw/Google Drive/motor_control/phd/images/simulations/gradient_descent.pdf
 INPUT /Users/spencerw/Google Drive/motor_control/phd/images/simulations/gradient_descent.pdf
 INPUT /Users/spencerw/Google Drive/motor_control/phd/images/simulations/gradient_descent.pdf
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmbx10.tfm
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmbx7.tfm
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmbx5.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx10.tfm
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx7.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/lm/ts1lmr.fd
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/lm/ts1lmr.fd
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ts1-lmr10.tfm
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx10.tfm
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx7.tfm
 INPUT thesis.aux
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/stix/STIXGeneral-Italic.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/stix/STIXGeneral-Regular.pfb

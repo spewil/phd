@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1615214543 "../../../thesis.tex" "thesis.pdf" "thesis" 1615214546
-  "../../../thesis.tex" 1615214540 81550 61dc25587ae33b6503ac4a0b96a9f47d ""
+["pdflatex"] 1615294365 "../../../thesis.tex" "thesis.pdf" "thesis" 1615294367
+  "../../../thesis.tex" 1615294365 76744 5c35b78d14cb03afbefd43e2a5717ac8 ""
   "/Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/PCA_concat_variance.pdf" 1615214403 14789 5b87ce71a16f8473092e92f77d2b2357 ""
   "/Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/PCA_trial_variance.pdf" 1615214403 49365 0faa29fea5e8b0c17e5868f22ed679c1 ""
   "/Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/hit_fraction.pdf" 1615214400 12535 16bef67061a756ea0642d1be7f90a91f ""
@@ -53,9 +53,6 @@
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/lmsy6.tfm" 1148093231 1300 b0605d44c16c22d99dc001808e4f24ea ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/lmsy7.tfm" 1148093231 1304 32f22a15acc296b2a4e15698403dcb88 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/lmsy8.tfm" 1148093231 1304 cdc9a17df9ef0d2dc320eff37bbab1c4 ""
-  "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmbx10.tfm" 1254269338 11880 35fcf136a2198418dfc53c83e9e2a07f ""
-  "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmbx5.tfm" 1254269338 11828 9b1880528bdbe7e6035fd1b46bff1bbb ""
-  "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmbx7.tfm" 1254269338 11864 44cdb751af976143ebc0bed7eb1df9f4 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmr10.tfm" 1254269338 11868 4f81e9b6033c032bdaf9884f4d7ef412 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmr12.tfm" 1254269338 11888 6841b91e46b65cf41a49b160e6e74130 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/rm-lmr5.tfm" 1254269338 11804 aefb10c002e6492c25236524a447f969 ""
@@ -165,8 +162,8 @@
   "/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1586288239 4811913 0be9a7e86c70a26e5e3042966bcd7097 ""
   "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1589375146 2432461 7449c2cbac6fa8aa2a8c3013932a6ad2 ""
   "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
-  "thesis.aux" 1615214545 35464 b77c338da42ecefe6d5f17208d2d9051 "pdflatex"
+  "thesis.aux" 1615294367 36139 fdfa6260f833f390da0a9778d361a18b "pdflatex"
   (generated)
-  "thesis.log"
   "thesis.aux"
+  "thesis.log"
   "thesis.pdf"
