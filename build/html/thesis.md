@@ -17,9 +17,9 @@ $include sections/introduction.md
 
 $include sections/motor_physiology.md
 
-$include sections/background_experiment.md
+<!-- $include sections/background_experiment.md -->
 
-$include sections/background_theory.md
+<!-- $include sections/background_theory.md -->
 
 $include sections/experiments.md
 

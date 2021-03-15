@@ -1,3 +1,62 @@
+# wolpert + maneesh upgrade meeting
+- questions
+	- theory
+		- do we learn OFC?
+		- or do we learn primitives and construct OFC?
+		- what kinds of learning to model? how to approach?
+		- why are there no solid normative motor learning models? 
+	- experiment
+		- what tasks will be highest impact?
+		- what mappings? what calibration?
+		- analysis within-trial
+		- analysis across-trial
+
+
+# andy 15/3/21
+
+- ethics forms, research log
+- upgrade meeting goals
+	- recap, summary in mind (bullet points)
+		- don't assume too much knowledge
+	- high-level goals, questions, aims 
+		- three prior EMG tasks, mine is way more advanced
+		- so what do we do with it?
+	- left on my own, I would do XYZ... what would you have me do?
+		- freeform dataset + PCA + pick components + reach to targets
+		- validation experiments?
+			- holes you could poke in our rig
+			- how to validate these during our data collection
+			- baseline recordings? 
+		- taskwise how do we get the biggest bang for our buck on the setup
+			- i have these high-level questions
+				- what is the underlying algorithms of motor skill learning?
+					- use trial-level information
+				- how can theory best complement this task?
+			- push them to be specific
+				- what calibrations? what tasks? what perturbations?
+				- if i take dataset X, pick components Y, what are the pitfalls of this?
+- sania bioinformatics roadmap
+	- thousands of AAV capsid sequences with minute differences
+	- visualizations of 
+	- sequence (with uncertainty) --> contig --> compare with reference --> point mutation --> protein level effects
+
+	- inputs 
+		- original sequences (known wild AAVs)
+		- reasonable ideas of regions of the sequence (e.g. binding sites, approx nine regions)
+		- sequences we have and their mutations
+	- output
+		- did it infect?
+		- how efficiently did it infect?
+	- alba post-experiment
+		- 100 sequences --> 20 of these random sequence popped up exactly the same
+			- that sequence could be overrepresented in the library
+
+	- input space -- sequence/mutation + infection efficiency
+	- output space -- sequence regions of interest (variability entails interest)
+	- way of doing that is clunky
+		- streamline this process
+		- missing out on sequences
+
 # peter
 - what scaling factor to use?
 	- would need parameters of noise distributions per channel, over time
