@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1615294365 "../../../thesis.tex" "thesis.pdf" "thesis" 1615294367
-  "../../../thesis.tex" 1615294365 76744 5c35b78d14cb03afbefd43e2a5717ac8 ""
+["pdflatex"] 1615373196 "../../../thesis.tex" "thesis.pdf" "thesis" 1615373199
+  "../../../thesis.tex" 1615373196 77031 9975dc481f996b326ded4c3ec5f0279c ""
   "/Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/PCA_concat_variance.pdf" 1615214403 14789 5b87ce71a16f8473092e92f77d2b2357 ""
   "/Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/PCA_trial_variance.pdf" 1615214403 49365 0faa29fea5e8b0c17e5868f22ed679c1 ""
   "/Users/spencerw/Google Drive/motor_control/phd/images/data_analysis/center_hold/hit_fraction.pdf" 1615214400 12535 16bef67061a756ea0642d1be7f90a91f ""
@@ -33,7 +33,6 @@
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1246382020 940 228d6584342e91276bf566bcf9716b83 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx10.tfm" 1254269338 12076 b54175e02101bea1addf6b2d0197ed12 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx12.tfm" 1254269338 12088 d750ac78274fa7c9f73ba09914c04f8a ""
-  "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmbx7.tfm" 1254269338 12072 feea2d4511ce6b67cf0049876d122c6b ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmr10.tfm" 1254269338 12056 7e13df7fe4cbce21b072ba7c4f4deb6e ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmr12.tfm" 1254269338 12092 7b1546e2d096cfd5dcbd4049b0b1ec2e ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmr17.tfm" 1254269338 12156 ca1ae6a3c8564e89597f1f993fba1608 ""
@@ -63,7 +62,6 @@
   "/usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx10.pfb" 1255129361 121021 1bf809ce4a594679006bd72263eba59b ""
   "/usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb" 1255129361 116908 1fca96723793882c2e0160350c192fc8 ""
-  "/usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx7.pfb" 1255129361 119461 4a38ff487952cdeffc81de782e40a4a0 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmex10.pfb" 1254269338 23055 2e5b42921de910eaa97b85df04ca4891 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi10.pfb" 1254269338 30388 702fae6a5f0e6e9c48a1d872b442ffcf ""
   "/usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi7.pfb" 1254269338 30789 be3ebdf20b6442cc4aaf81a81e17daf4 ""
@@ -162,8 +160,8 @@
   "/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1586288239 4811913 0be9a7e86c70a26e5e3042966bcd7097 ""
   "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1589375146 2432461 7449c2cbac6fa8aa2a8c3013932a6ad2 ""
   "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
-  "thesis.aux" 1615294367 36139 fdfa6260f833f390da0a9778d361a18b "pdflatex"
+  "thesis.aux" 1615373198 36139 fdfa6260f833f390da0a9778d361a18b "pdflatex"
   (generated)
-  "thesis.aux"
   "thesis.log"
+  "thesis.aux"
   "thesis.pdf"

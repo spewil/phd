@@ -23,6 +23,19 @@ stretch responses R1 show dexterity (Andrew Pru 2019,2020) in holding and in rea
 
 ### Adaptation of Reaching
 
+Sinusoidal over trials visuomotor rotations allowed experimenters to disentangle perturbation error sequence over trials in "driven" and "undriven" dimensions by knowing the frequencies of the rotational perturbation. Explicit strategies were given by participants before moving, all errors based off this [@miyamotoImplicitAdaptationCompensates2020]. This is a very clever experimental design but leaves many questions. Particularly, implicit adaptation seems to be driven by a combination of performance error and sensory prediction error, but how can we tease this apart?
+
+> Although little is known about the specific error signals that drive these different processes, an intriguing possibility is that distinct components of implicit learning are driven by performance errors and sensory-prediction errors.
+
+> The convergent findings of the SEM and time lag analyses, based on the amplitudes and temporal structure of implicit and strategic adaptive responses, point to an implicit learning process that actively responds to compensate low-fidelity explicit strategy.
+
+> Our simulation also reproduced the results of the SEM analysis and the temporal lag analysis, which demonstrates that the low-noise process (which models implicit learning) lags behind and effectively compensates for the inappropriate behavior of the high-noise process (which models strategy), a result that can be predicted by mathematical derivation (Supplementary Math Note).
+
+In our experiment, we might call all learning implicit, since there is so much unknown what would we constitute as a strategy? Think we need to make clear the difference between learning and adaptation. Adaption, as used here, is correction to a perturbation over trials of a well-practiced movement. Learning is the discovery of unfamiliar movement patterns through trial and error.
+
+> An important idea in motor skill learning research is that motor learning proceeds from predominantly explicit to implicit states as a learner develops from novice to expert.
+
+This is interesting, as in our experiment we might think the opposite? Depends on how we define explicit and implicit. Here the definition is loosely deliberate and effortful versus automatic and intuitive. Their point here might be mirrored in overall muscle activation, early on it's actively searching. But what for? And how? We might think of this as a foraging task, searching for information about the unknown mapping-- movements as hypotheses.
 
 - prisms
 - rotations

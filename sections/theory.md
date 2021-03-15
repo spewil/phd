@@ -13,6 +13,20 @@ $include includes/model_adaptation.md
 
 <!-- 
 
+adaptive is within trial, as you move
+episodic has endless access to a simulator
+
+## List of variants, etc 
+
+- LQR + SDN
+- robust control (?)
+- KL-control + composition
+- game theoretic control-- compare solutions
+
+## Distributed Control
+
+> The hierarchical organization typical of earlier sensory areas is not adhered to everywhere. On the contrary, the anatomy of associative areas and prefrontal  cortex suggests a more "democratic"  organization, and  processing  appears to take place  in webs of strongly interacting networks (8). Decisions to act and the execution of plans and  choices  could be the outcome of a  system with  distributed control rather than  a single control center. Coming to grips  with systems having distributed control will require both new experimental techniques and new  conceptual advances. Perhaps more  appropriate  metaphors for this  type of processing will emerge from studying  models of interacting  networks of neurons. [@sejnowskiPerspectivesCognitiveNeuroscience1988]
+
 ## Policy Selection
 
 each timestep you combine actions from component policies to choose an action

@@ -1001,17 +1001,17 @@ subjects may use endpoint error in each trial to update or adjust their
 internal approximations of the environment's dynamics.
 
 Our state space is denoted \(x\) and our control space \(u\) where
-\(dim(x) < dim(u)\). Each trial, we move from state \(x(0)\) to x(N) in
+\(dim(x) < dim(u)\). Each trial, we move from state \(x_0\) to x(N) in
 \(N\) timesteps. Each trial, we have a goal state \(x^*\) and a
-resulting endpoint error \(e(N) = |x(N) - x^*|^2\). We follow the same
-LQR setup as defined in the previous section. We can write the
-controlled, closed-loop system dynamics for the final time step \(N\):
+resulting endpoint error \(e_N = |x_N - x^*|^2\). We follow the same LQR
+setup as defined in the previous section. We can write the controlled,
+closed-loop system dynamics for the final time step \(N\):
 
 \[
 \begin{aligned}
-x(N) &= (A - BL)x(N-1) = Cx(N-1) \\
-x(N) &= Cx(N-1) = C(Cx(N-2)) \\
-x(N) &= C^Nx(0).
+x_N &= (A - BL)x_{N-1} = Cx_{N-1} \\
+x_N &= Cx_{N-1} = C(Cx_{N-2}) \\
+x_N &= C^Nx_0.
 \end{aligned}
 \]
 
@@ -1022,7 +1022,7 @@ incremental update. The error at the final time step \(N\) for trial
 \(r\) is
 
 \[
-e(r) = |C^N(r)x(0) - x^*|^2.
+e(r) = |C^N(r)x_{0} - x^*|^2.
 \]
 
 This error may be due to several sources. Our internal dynamics model
@@ -1050,7 +1050,7 @@ error:
 
 \[
 \begin{aligned}
-\frac{\partial{e(r)}}{\partial{A}} &= \frac{\partial{}}{\partial{A}}{|C^N(r)x(0) - x^*|^2}
+\frac{\partial{e(r)}}{\partial{A}} &= \frac{\partial{}}{\partial{A}}{|C^N(r)x_0 - x^*|^2}
 \end{aligned}
 \]
 
@@ -1059,7 +1059,7 @@ respect to \(C\), we can compute the gradient with respect to C to find:
 
 \[
 % 2∑𝑁𝑘=1(𝑀𝑁𝑣−𝑤)𝑇𝑀𝑘−1𝑀𝑁−𝑘𝑣
-\frac{\partial{e}}{\partial{A_{ij}}} = 2\sum_{k=1}^N\left[(C^Nx(0) - x^*)^TC^{k-1}\right]_i\left[C^{N-k}x(0)\right]_j
+\frac{\partial{e}}{\partial{A_{ij}}} = 2\sum_{k=1}^N\left[(C^Nx_0 - x^*)^TC^{k-1}\right]_i\left[C^{N-k}x_0\right]_j
 \]
 
 \cref{fig:gradient_descent} shows the LQR simulations across gradient
@@ -1166,14 +1166,14 @@ design a calibration task which asks subjects to actively explore the
 biophysical limits of EMG space that can be captured by our electrodes.
 This is akin to extracting features of spontaneous activity and passive
 viewing used in cortical BMI experiments to generate ``intuitive''
-mappings.\textsuperscript{\protect\hyperlink{ref-sadtlerNeuralConstraintsLearning2014}{43},\protect\hyperlink{ref-Clancy2014}{\textbf{Clancy2014?}}}
+mappings.\textsuperscript{\protect\hyperlink{ref-Clancy2014}{43},\protect\hyperlink{ref-sadtlerNeuralConstraintsLearning2014}{44}}
 
 With high-dimensional EMG, we would ideally devise a principled method
 of extracting modes from raw EMG that accurately reflect modes of neural
 drive, demixing neural modes across channels. Here we used PCA as a
 first step. One starting point would be to align with the cortical BMI
 literature and use factor analysis and Kalman
-filtering\textsuperscript{\protect\hyperlink{ref-sadtlerNeuralConstraintsLearning2014}{43}}.
+filtering\textsuperscript{\protect\hyperlink{ref-sadtlerNeuralConstraintsLearning2014}{44}}.
 The issue, however, is how to design a task which evokes the available
 modes of possible EMG activity before using dimensionality reduction to
 generate learnable yet non-intuitive mappings.
@@ -1193,7 +1193,7 @@ dataset with which we can test hypotheses concerning the evolution of
 complexity and correlations across learning. This will also give us an
 opportunity to study inter-subject variability, for which there is
 precedent in the literature which suggests individual
-strategies\textsuperscript{\protect\hyperlink{ref-crouzierIndividualDifferencesDistribution2019}{44}}.
+strategies\textsuperscript{\protect\hyperlink{ref-crouzierIndividualDifferencesDistribution2019}{45}}.
 
 \hypertarget{modeling-control}{%
 \subsection{Modeling Control}\label{modeling-control}}
@@ -1216,7 +1216,7 @@ control policy? When might they need to internalize multiple control
 policies? We hope to work towards answers of these questions alongside
 models of compositional control. Such control models could deal with,
 for example, target uncertainty as well as multiple competing
-targets\textsuperscript{\protect\hyperlink{ref-gallivanActionPlanCooptimization2015}{45},\protect\hyperlink{ref-gallivanParallelSpecificationCompeting2016}{46}}.
+targets\textsuperscript{\protect\hyperlink{ref-gallivanActionPlanCooptimization2015}{46},\protect\hyperlink{ref-gallivanParallelSpecificationCompeting2016}{47}}.
 
 \hypertarget{modeling-learning}{%
 \subsection{Modeling Learning}\label{modeling-learning}}
@@ -1531,27 +1531,34 @@ A. A note on the probability distribution function of the surface
 electromyogram signal. \emph{Brain Research Bulletin} \textbf{90},
 88--91 (2013).}
 
-\leavevmode\hypertarget{ref-sadtlerNeuralConstraintsLearning2014}{}%
+\leavevmode\hypertarget{ref-Clancy2014}{}%
 \CSLLeftMargin{43. }
+\CSLRightInline{Clancy, K. B., Koralek, A. C., Costa, R. M., Feldman, D.
+E. \& Carmena, J. M. Volitional modulation of optically recorded calcium
+signals during neuroprosthetic learning. \emph{Nature Neuroscience}
+\textbf{17}, 807--809 (2014).}
+
+\leavevmode\hypertarget{ref-sadtlerNeuralConstraintsLearning2014}{}%
+\CSLLeftMargin{44. }
 \CSLRightInline{Sadtler, P. T. \emph{et al.} Neural constraints on
 learning. \emph{Nature} \textbf{512}, 423--426 (2014).}
 
 \leavevmode\hypertarget{ref-crouzierIndividualDifferencesDistribution2019}{}%
-\CSLLeftMargin{44. }
+\CSLLeftMargin{45. }
 \CSLRightInline{Crouzier, M. \emph{et al.} Do individual differences in
 the distribution of activation between synergist muscles reflect
 individual strategies? \emph{Experimental Brain Research} \textbf{237},
 625--635 (2019).}
 
 \leavevmode\hypertarget{ref-gallivanActionPlanCooptimization2015}{}%
-\CSLLeftMargin{45. }
+\CSLLeftMargin{46. }
 \CSLRightInline{Gallivan, J. P., Barton, K. S., Chapman, C. S., Wolpert,
 D. M. \& Randall Flanagan, J. Action plan co-optimization reveals the
 parallel encoding of competing reach movements. \emph{Nature
 Communications} \textbf{6}, 7428 (2015).}
 
 \leavevmode\hypertarget{ref-gallivanParallelSpecificationCompeting2016}{}%
-\CSLLeftMargin{46. }
+\CSLLeftMargin{47. }
 \CSLRightInline{Gallivan, J. P., Logan, L., Wolpert, D. M. \& Flanagan,
 J. R. Parallel specification of competing sensorimotor control policies
 for alternative action options. \emph{Nature Neuroscience} \textbf{19},

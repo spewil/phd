@@ -4,6 +4,12 @@
 >
 > &mdash; Bizzi & Ajemian, *2020*
 
+## Goals
+
+- measure across learning
+- analyze this learning sequence to find traces of what's being learned at a trajectory level
+- gain inspiration for what might be modeled
+
 ## Recording Setup
 
 <!-- I would be most interested to hear how u are thinking of approaching the analysis. I.e. u have a bunch of channels, movements, tasks what is the workflow to get from that raw data into something manageable/useful. -->
