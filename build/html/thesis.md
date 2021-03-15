@@ -1,5 +1,5 @@
 ---
-title: Heterarchical Control in Sensorimotor Processing
+title: Heterarchical Control<br>in Sensorimotor Processing
 author: Spencer R. Wilson
 date: 1/1/2021
 toc-title: Contents
