@@ -12,28 +12,30 @@ geometry: margin=30mm
 
 <!-- you MUST have new lines between transcludes! -->
 
-$include ../../sections/introduction.md
+<!-- $include ../../sections/introduction.md -->
 
-\clearpage
+<!-- \clearpage -->
 
-$include ../../sections/motor_physiology.md
+<!-- $include ../../sections/motor_physiology.md -->
 
-\clearpage
+<!-- \clearpage -->
 
 <!-- $include ../../sections/background_experiment.md -->
 
 <!-- $include ../../sections/background_theory.md -->
 
-$include ../../sections/experiments.md
+<!-- $include ../../sections/experiments.md -->
 
-\clearpage
+<!-- \clearpage -->
 
-$include ../../sections/theory.md
+<!-- $include ../../sections/theory.md -->
 
-\clearpage
+<!-- \clearpage -->
 
-$include ../../sections/next_steps.md
+<!-- $include ../../sections/next_steps.md -->
 
-\clearpage
+<!-- \clearpage -->
 
-## Bibliography
+$include /Users/spencer/motor-control/thesis/sections/data_analysis.md
+
+<!-- ## Bibliography -->
