@@ -7,6 +7,9 @@ from matplotlib.markers import MarkerStyle
 def log(x, a, b):
     return b * np.log(x) + a
 
+def calculate_hit_percentage(num_hits):
+    num_targets = 12
+    return 100 * num_hits / num_targets
 
 def get_outcomes(experiment, subject):
     session_path_list = files.get_session_path_list(experiment, subject)
@@ -84,10 +87,12 @@ def plot_circle(x,y,r,ax,style="k"):
     theta = np.linspace(0, 2*np.pi, 100)
     ax.plot(r*np.cos(theta)+x, r*np.sin(theta)+y,style)
     
-def plot_targets(ax,style="ko",markersize=5):
+def plot_targets(ax,style="ko",markersize=5, target=None):
     m = MarkerStyle("o", fillstyle="none")
-    theta = np.linspace(0, 2*np.pi, 12)
+    theta = np.linspace(0, 2*np.pi, 13) + np.pi
     ax.plot(np.cos(theta), np.sin(theta), style, marker=m, markersize=markersize, color="grey")
+    if not target is None: 
+        ax.plot(target[0], target[1], "ro", markersize=markersize)
     
     
 def plot_box(ax):
@@ -189,7 +194,6 @@ class Trial():
         
     def parse_outcome(self, outcome):
         self.target_coordinate = outcome["target"]
-        
         self.outcome = outcome["outcome"]
         self.hold_time = outcome["hold_time"]
         self.reach_time = outcome["reach_time"]
