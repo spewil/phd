@@ -18,3 +18,7 @@ what predictions are we making?
 questions
 - what is the sample rate? how long in time is a single step in the data?
     -  I think it's 1/60th of a second, because it's driven by the framerate of the game
+
+slow!
+- pulling anything from s3 is slow
+- switch to local data store for speed!

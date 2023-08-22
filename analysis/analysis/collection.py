@@ -64,6 +64,9 @@ class Collection():
         for subject_name in self.subject_names:
             self.subjects.update({subject_name: Subject(self.name, subject_name)})
 
+    def alphabetically_sorted_subjects(self):
+        return sorted(list(self.subjects.values()), key= lambda s: s.name)
+
 
 class Subject():
     def __init__(self, collection_name, subject_name) -> None:
@@ -71,6 +74,7 @@ class Subject():
         self.name = subject_name 
         self.get_decoder() # /metadata/collection/subject/decoder.bin
         self.get_task_names()
+        self.get_tasks()
     
     def get_task_names(self):
         object_prefix = f"rawdata/{self.collection_name}/{self.name}/"
@@ -79,12 +83,20 @@ class Subject():
             self.task_names = [p.get("Prefix").split("/")[-2] for p in paths.get("CommonPrefixes")]
         except:
             raise ValueError(f"Unable to find object with prefix {object_prefix}")
+    
+    def get_tasks(self):
         self.tasks = {}
         for task_name in self.task_names:
             if task_name == "center_hold":
                 self.tasks[task_name] = Task(self.collection_name, self.name, task_name)
 
     def get_decoder(self):
+        # load subject's decoder and store in memory as numpy array 
+        # decoders are 6x64 dimensional
+        # decoder_object_name = f"metadata/{self.collection_name}/{self.subject_name}/decoder.bin"
+        # decoder_object = s3.get_object(Bucket='motorlearning', Key=decoder_object_name)
+        # binblob = decoder_object["Body"].read()
+        # self.decoder = np.frombuffer(binblob, dtype='<f4').reshape(-1,64)
         pass
 
 class Task():
@@ -107,25 +119,22 @@ class Task():
         self.sessions = {}        
         for session_name in self.session_names:
             session_number = int(session_name.split("_")[-1])
-            # no sessions past 45
-            if session_number <= 44:
-                # svenja's session numbering is +1 (1,2,3 .. 45)
-                # hyewon's first session was ended early, so we skip it
-                # andrei's session_11 is empty, so we skip it by going one higher than 11
-                if self.subject_name == "svenja" or \
-                self.subject_name == "hyewon" or \
-                (self.subject_name == "andrei" and session_number >= 11):
-                    self.sessions[session_name] = Session(self.collection_name, self.subject_name, self.name, f"session_{session_number+1}")
-                else:
-                    self.sessions[session_name] = Session(self.collection_name, self.subject_name, self.name, f"session_{session_number}")
+            # exceptions for the center hold dataset
+            if self.name == "center_hold":
+                # no sessions past 45
+                if session_number <= 44:
+                    # svenja's session numbering is +1 (1,2,3 .. 45)
+                    # hyewon's first session was ended early, so we skip it
+                    # andrei's session_11 is empty, so we skip it by going one higher than 11
+                    if self.subject_name == "svenja" or \
+                    self.subject_name == "hyewon" or \
+                    (self.subject_name == "andrei" and session_number >= 11):
+                        self.sessions[session_name] = Session(self.collection_name, self.subject_name, self.name, f"session_{session_number+1}")
+                    else:
+                        self.sessions[session_name] = Session(self.collection_name, self.subject_name, self.name, f"session_{session_number}")
 
-    def get_decoder(self):
-        # load subject's decoder and store in memory as numpy array 
-        # decoders are 6x64 dimensional
-        decoder_object_name = f"metadata/{self.collection_name}/{self.subject_name}/decoder.bin"
-        decoder_object = s3.get_object(Bucket='motorlearning', Key=decoder_object_name)
-        binblob = decoder_object["Body"].read()
-        self.decoder = np.frombuffer(binblob, dtype='<f4').reshape(-1,64)
+    def sorted_sessions(self):
+        return sorted(list(self.sessions.values()),key= lambda s: s.number)
 
 class Session():
     def __init__(self, collection_name, subject_name, task_name, session_name) -> None:
@@ -223,6 +232,9 @@ class Session():
             self.outcome_counts["misses"] = 0
         if "No Hold" not in outcomes:
             self.outcome_counts["noholds"] = 0
+    
+    def sorted_trials(self):
+        return sorted(list(self.trials.values()),key= lambda t: t.number)
         
 
 class Trial():
