@@ -2,12 +2,19 @@ import boto3
 import numpy as np 
 from io import StringIO 
 from analysis import analysis
+from pathlib import Path
+
+# TODO
+# - make "local" data inteface accessible, currently buried in function kwarg
+# 
 
 s3_resource = boto3.resource('s3')
 s3 = boto3.client("s3")
 bucket_name = "motorlearning"
 bucket = s3_resource.Bucket(name=bucket_name)
 
+ROOT_RAWDATA_PATH = Path("/Users/spencer/motor-control/data/rawdata/")
+ROOT_METADATA_PATH = Path("/Users/spencer/motor-control/data/metadata/")
 
 def get_subject_names(collection_name):
     # get all subject names in an experiment
@@ -48,19 +55,21 @@ class Collection():
         self.get_subject_names() # subject_name : session_dict
         self.get_subjects()
 
-    def get_subject_names(self):
-        object_prefix = f"rawdata/{self.name}/"
-        try:
-            paths = s3.list_objects_v2(Bucket='motorlearning', Prefix=object_prefix, Delimiter="/")
-            self.subject_names = [p.get("Prefix").split("/")[-2] for p in paths.get("CommonPrefixes")]
-        except:
-            raise ValueError(f"Unable to find object with prefix {object_prefix}")
+    def get_subject_names(self, local=True):
+        if local:
+            self.subject_names = [p.stem for p in (ROOT_RAWDATA_PATH / self.name).iterdir() if not "DS_Store" in p.name]
+        else:
+            object_prefix = f"rawdata/{self.name}/"
+            try:
+                paths = s3.list_objects_v2(Bucket='motorlearning', Prefix=object_prefix, Delimiter="/")
+                self.subject_names = [p.get("Prefix").split("/")[-2] for p in paths.get("CommonPrefixes")]
+            except:
+                raise ValueError(f"Unable to find object with prefix {object_prefix}")
         self.subject_names.sort()
-        self.subjects = {}
-        for subject_name in self.subject_names:
-            self.subjects[subject_name] = None
+
 
     def get_subjects(self):
+        self.subjects = {}
         for subject_name in self.subject_names:
             self.subjects.update({subject_name: Subject(self.name, subject_name)})
 
@@ -72,17 +81,23 @@ class Subject():
     def __init__(self, collection_name, subject_name) -> None:
         self.collection_name = collection_name
         self.name = subject_name 
+        self.decoder = None
         self.get_decoder() # /metadata/collection/subject/decoder.bin
+        self.get_variance()
+        self.get_offsets()
         self.get_task_names()
         self.get_tasks()
     
-    def get_task_names(self):
-        object_prefix = f"rawdata/{self.collection_name}/{self.name}/"
-        try:
-            paths = s3.list_objects_v2(Bucket='motorlearning', Prefix=object_prefix, Delimiter="/")
-            self.task_names = [p.get("Prefix").split("/")[-2] for p in paths.get("CommonPrefixes")]
-        except:
-            raise ValueError(f"Unable to find object with prefix {object_prefix}")
+    def get_task_names(self, local=True):
+        if local:
+            self.task_names = [p.stem for p in (ROOT_RAWDATA_PATH / self.collection_name / self.name).iterdir() if not "DS_Store" in p.name]
+        else:
+            object_prefix = f"rawdata/{self.collection_name}/{self.name}/"
+            try:
+                paths = s3.list_objects_v2(Bucket='motorlearning', Prefix=object_prefix, Delimiter="/")
+                self.task_names = [p.get("Prefix").split("/")[-2] for p in paths.get("CommonPrefixes")]
+            except:
+                raise ValueError(f"Unable to find object with prefix {object_prefix}")
     
     def get_tasks(self):
         self.tasks = {}
@@ -90,14 +105,26 @@ class Subject():
             if task_name == "center_hold":
                 self.tasks[task_name] = Task(self.collection_name, self.name, task_name)
 
-    def get_decoder(self):
+    def get_decoder(self, local=True):
         # load subject's decoder and store in memory as numpy array 
         # decoders are 6x64 dimensional
         # decoder_object_name = f"metadata/{self.collection_name}/{self.subject_name}/decoder.bin"
         # decoder_object = s3.get_object(Bucket='motorlearning', Key=decoder_object_name)
         # binblob = decoder_object["Body"].read()
         # self.decoder = np.frombuffer(binblob, dtype='<f4').reshape(-1,64)
-        pass
+        if local:
+            decoder_path = ROOT_METADATA_PATH / self.collection_name / self.name / "decoder.bin"
+            self.decoder = np.fromfile(decoder_path, dtype='<f4').reshape(-1,64)
+
+    def get_variance(self):
+        # load subject's recorded variance file and store in memory as numpy array
+        variance_path = ROOT_METADATA_PATH / self.collection_name / self.name / "variance.bin"
+        self.variance = np.fromfile(variance_path, dtype='<f4').reshape(-1,64)
+
+    def get_offsets(self):
+        # load subject's recorded variance file and store in memory as numpy array
+        offsets_path = ROOT_METADATA_PATH / self.collection_name / self.name / "offsets.bin"
+        self.offsets = np.fromfile(offsets_path, dtype='<f4').reshape(-1,64)
 
 class Task():
     def __init__(self, collection_name, subject_name, task_name) -> None:
@@ -107,13 +134,16 @@ class Task():
         self.get_session_names()
         self.get_sessions()
 
-    def get_session_names(self):
-        object_prefix = f"rawdata/{self.collection_name}/{self.subject_name}/{self.name}/"
-        try:
-            paths = s3.list_objects_v2(Bucket='motorlearning', Prefix=object_prefix, Delimiter="/")
-            self.session_names = [p.get("Prefix").split("/")[-2] for p in paths.get("CommonPrefixes")]
-        except:
-            raise ValueError(f"Unable to find object with prefix {object_prefix}")
+    def get_session_names(self, local=True):
+        if local:
+            self.session_names = [p.stem for p in (ROOT_RAWDATA_PATH / self.collection_name / self.subject_name / self.name).iterdir() if not "DS_Store" in p.name]
+        else:
+            object_prefix = f"rawdata/{self.collection_name}/{self.subject_name}/{self.name}/"
+            try:
+                paths = s3.list_objects_v2(Bucket='motorlearning', Prefix=object_prefix, Delimiter="/")
+                self.session_names = [p.get("Prefix").split("/")[-2] for p in paths.get("CommonPrefixes")]
+            except:
+                raise ValueError(f"Unable to find object with prefix {object_prefix}")
 
     def get_sessions(self):
         self.sessions = {}        
@@ -121,13 +151,14 @@ class Task():
             session_number = int(session_name.split("_")[-1])
             # exceptions for the center hold dataset
             if self.name == "center_hold":
-                # no sessions past 45
+                if self.subject_name == "svenja":
+                # svenja's session numbering is +1 (1,2,3 .. 45) so grab all of these
+                    self.sessions[session_name] = Session(self.collection_name, self.subject_name, self.name, f"session_{session_number}")
+                # only for sessions below 45
                 if session_number <= 44:
-                    # svenja's session numbering is +1 (1,2,3 .. 45)
                     # hyewon's first session was ended early, so we skip it
                     # andrei's session_11 is empty, so we skip it by going one higher than 11
-                    if self.subject_name == "svenja" or \
-                    self.subject_name == "hyewon" or \
+                    if self.subject_name == "hyewon" or \
                     (self.subject_name == "andrei" and session_number >= 11):
                         self.sessions[session_name] = Session(self.collection_name, self.subject_name, self.name, f"session_{session_number+1}")
                     else:
@@ -149,7 +180,7 @@ class Session():
         self.get_outcome_array()
         self.parse_outcomes_into_trials()
 
-    def get_outcome_array(self):
+    def get_outcome_array(self, local=True):
         '''
             get the behavior file for the session
             use this to generate trial names
@@ -163,21 +194,31 @@ class Session():
         # if data is there, return
         else:
             return
+        
+        if local:
+            directory = ROOT_RAWDATA_PATH / self.collection_name / self.subject_name / self.task_name / self.name
+            prefix = f"{ROOT_RAWDATA_PATH / self.collection_name / self.subject_name / self.task_name / self.name}/session_result"
+            try:
+                outcome_path = [f for f in directory.iterdir() if str(f).startswith(prefix)][0]
+            except IndexError:
+                raise ValueError(f"No file found with prefix {prefix}") 
+            self.outcome_array = np.genfromtxt(str(outcome_path), delimiter=",", skip_header=1, dtype=None, encoding=None)
         # pull session behavior data from s3
-        object_prefix = f"rawdata/{self.collection_name}/{self.subject_name}/{self.task_name}/{self.name}/session_result_"    
-        try:
-            object_key = s3.list_objects(Bucket='motorlearning', Prefix=object_prefix)["Contents"][0]["Key"]
-        except:
-            print(f"Unable to find object with name {self.subject_name} and prefix {object_prefix}.")
-            return None
-        try:
-            blob = s3.get_object(Bucket='motorlearning', Key=object_key)["Body"].read()
-        except:
-            print(f"Unable to find object with key {object_key}.")
-            return None
-        self.outcome_array = np.genfromtxt(StringIO(blob.decode('utf-8')), delimiter=',', skip_header=1, dtype=None, encoding=None)
-        if self.outcome_array.size == 0:
-            print(f"the file with key {object_key} is empty!")
+        else:
+            object_prefix = f"rawdata/{self.collection_name}/{self.subject_name}/{self.task_name}/{self.name}/session_result_"    
+            try:
+                object_key = s3.list_objects(Bucket='motorlearning', Prefix=object_prefix)["Contents"][0]["Key"]
+            except:
+                print(f"Unable to find object with name {self.subject_name} and prefix {object_prefix}.")
+                return None
+            try:
+                blob = s3.get_object(Bucket='motorlearning', Key=object_key)["Body"].read()
+            except:
+                print(f"Unable to find object with key {object_key}.")
+                return None
+            self.outcome_array = np.genfromtxt(StringIO(blob.decode('utf-8')), delimiter=',', skip_header=1, dtype=None, encoding=None)
+            if self.outcome_array.size == 0:
+                print(f"the file with key {object_key} is empty!")
 
     def parse_outcomes_into_trials(self):
         for trial_idx, line in enumerate(self.outcome_array):
@@ -187,6 +228,8 @@ class Session():
             trial.set_number(trial_idx)
             trial.set_outcome(line[0])
             trial.set_target_coords([line[-2],line[-1]])
+            # the "no hold number" is the number within the set of files with the same recorded number prefix
+            # i.e. there may be more than one file with the prefix "10_behavior" due to a no hold
             # first trial sync up the numbers
             if trial_idx == 0:
                 target_coords = [0,0]
@@ -249,7 +292,10 @@ class Trial():
         self.outcome = None # "No Hold"
         self.trajectory_filename = None # XXXX.bin
         self.trajectory = None # ndarray
-        self.emg_filename = None # XXXX.bin
+        self.filtered_emg_filename = None # XXXX.bin
+        self.filtered_emg = None # ndarray
+        self.raw_emg_filename = None # XXXX.bin
+        self.raw_emg = None # ndarray
 
     def set_outcome(self, outcome):
         self.outcome = outcome
@@ -279,10 +325,16 @@ class Trial():
             self.set_trajectory_filename()
         return self.trajectory_filename
 
-    def set_trajectory_filename(self):
-        object_prefix = f"rawdata/{self.collection_name}/{self.subject_name}/{self.task_name}/{self.session_name}/{self.recorded_number}_behavior_"
-        filename_list = list_objects(prefix=object_prefix)
-        # index by the number of the no hold block (almost always 0)
+    def set_trajectory_filename(self, local=True):
+        if local: 
+            directory = ROOT_RAWDATA_PATH / self.collection_name / self.subject_name / self.task_name / self.session_name
+            prefix = f"{ROOT_RAWDATA_PATH / self.collection_name / self.subject_name / self.task_name / self.session_name / str(self.recorded_number)}_behavior_"
+            filename_list = [f for f in directory.iterdir() if str(f).startswith(prefix)]
+            filename_list.sort()
+        else:
+            object_prefix = f"rawdata/{self.collection_name}/{self.subject_name}/{self.task_name}/{self.session_name}/{self.recorded_number}_behavior_"
+            filename_list = list_objects(prefix=object_prefix)
+            # index by the number of the no hold block (almost always 0)
         self.trajectory_filename = filename_list[self.no_hold_number]
 
     def get_trajectory(self):
@@ -292,60 +344,105 @@ class Trial():
             self.set_trajectory()
         return self.trajectory
 
-    def set_trajectory(self):
+    def set_trajectory(self, local=True):
         # get task space trajectory for a given experiment, subject, task, session, trial
         # time [sec], x, y [screen coords]
-        try:
-            blob = s3.get_object(Bucket='motorlearning', Key=self.trajectory_filename)["Body"].read()
-        except:
-            raise ValueError(f"Unable to find object with prefix {self.trajectory_filename}")
-        self.trajectory = np.genfromtxt(StringIO(blob.decode('utf-8')), delimiter=',', skip_header=1, dtype=float, usecols=(1,2,3), encoding=None)
+        if local:
+            self.trajectory = np.genfromtxt(self.trajectory_filename, delimiter=",", skip_header=1, dtype=float, usecols=(1,2,3), encoding=None)
+        else:
+            try:
+                blob = s3.get_object(Bucket='motorlearning', Key=self.trajectory_filename)["Body"].read()
+            except:
+                raise ValueError(f"Unable to find object with prefix {self.trajectory_filename}")
+            self.trajectory = np.genfromtxt(StringIO(blob.decode('utf-8')), delimiter=',', skip_header=1, dtype=float, usecols=(1,2,3), encoding=None)
 
-    # def set_emg_filename(self, emg_filename):
-    #     self.emg_filename = emg_filename
+    # # # # 
 
-    # def get_emg(self, emg):
-    #     self.emg = emg
+    def get_filtered_emg_filename(self):
+        if self.filtered_emg_filename is None:
+            self.set_filtered_emg_filename()
+        return self.filtered_emg_filename
 
-    # def set_emg(self, emg):
-    #     self.emg = emg
+    def set_filtered_emg_filename(self, local=True):
+        # looks like: 11_emg_filtered_2021-09-16T18_10_31.bin
+        if local: 
+            directory = ROOT_RAWDATA_PATH / self.collection_name / self.subject_name / self.task_name / self.session_name 
+            prefix = f"{ROOT_RAWDATA_PATH / self.collection_name / self.subject_name / self.task_name / self.session_name / str(self.recorded_number)}_emg_filtered_"
+            filename_list = [f for f in directory.iterdir() if str(f).startswith(prefix)]
+            filename_list.sort()
+        else:
+            raise NotImplementedError("s3 access isn't implemented")
+        self.filtered_emg_filename = filename_list[self.no_hold_number]
 
-    # def set_filtered_emg_filename(self, filtered_emg_filename):
-    #     self.filtered_emg_filename = filtered_emg_filename
+    def get_filtered_emg(self):
+        if self.filtered_emg_filename is None:
+            self.set_filtered_emg_filename()
+        if self.filtered_emg is None:
+            self.set_filtered_emg()
+        return self.filtered_emg
 
-    # def set_filtered_emg(self, filtered_emg):
-    #     self.filtered_emg = filtered_emg
+    def set_filtered_emg(self, local=True):
+        """
+            load subject's filtered EMG 
+            from a particular collection, experiment, trial 
+            and store in memory as numpy array
+            data is num_samples X 64 dimensional
+        """
+        if local:
+            self.filtered_emg = np.fromfile(self.filtered_emg_filename, dtype=np.float32).reshape(-1,64)
+        else:
+            emg_object_name = f"rawdata/{self.collection_name}/{self.subject_name}/{self.task_name}/session_{self.session_name}/{self.name}_emg_filtered"
+            matching_emg_objects = s3.list_objects(Bucket='motorlearning', Prefix=emg_object_name)
+            if len(matching_emg_objects["Contents"]) > 1:
+                raise ValueError(f"More than one object found with prefix {emg_object_name}")
+            emg_object_name = matching_emg_objects["Contents"][0]["Key"]
+            emg_object = s3.get_object(Bucket="motorlearning", Key=emg_object_name)
+            binblob = emg_object["Body"].read()
+            return np.frombuffer(binblob, dtype='<f4').reshape(-1,64)
 
-    # def get_raw_emg_file(self, collection_name: str, task_name:str, session_num: str, trial_num: str) -> np.array:
-    #     """
-    #         load subject's raw (unfiltered) EMG 
-    #         from a particular collection, experiment, trial 
-    #         and store in memory as numpy array
-    #         data is num_samples X 68 dimensional
-    #         last four dimensions are from recording device
-    #         and include a counter channel to show dropped samples
-    #     """
-    #     emg_object_name = f"rawdata/{collection_name}/{self.name}/{task_name}/session_{session_num}/{trial_num}_emg_2021"
-    #     matching_emg_objects = s3.list_objects(Bucket='motorlearning', Prefix=emg_object_name)
-    #     if len(matching_emg_objects["Contents"]) > 1:
-    #         raise ValueError(f"More than one object found with prefix {emg_object_name}")
-    #     emg_object_name = matching_emg_objects["Contents"][0]["Key"]
-    #     emg_object = s3.get_object(Bucket="motorlearning", Key=emg_object_name)
-    #     binblob = emg_object["Body"].read()
-    #     return np.frombuffer(binblob, dtype='<f4').reshape(-1,68)
+    # # # # 
 
-    # def get_filtered_emg_file(self, collection_name: str, task_name:str, session_num: str, trial_num: str) -> np.array:
-    #     """
-    #         load subject's filtered EMG 
-    #         from a particular collection, experiment, trial 
-    #         and store in memory as numpy array
-    #         data is num_samples X 64 dimensional
-    #     """
-    #     emg_object_name = f"rawdata/{collection_name}/{self.name}/{task_name}/session_{session_num}/{trial_num}_emg_filtered"
-    #     matching_emg_objects = s3.list_objects(Bucket='motorlearning', Prefix=emg_object_name)
-    #     if len(matching_emg_objects["Contents"]) > 1:
-    #         raise ValueError(f"More than one object found with prefix {emg_object_name}")
-    #     emg_object_name = matching_emg_objects["Contents"][0]["Key"]
-    #     emg_object = s3.get_object(Bucket="motorlearning", Key=emg_object_name)
-    #     binblob = emg_object["Body"].read()
-    #     return np.frombuffer(binblob, dtype='<f4').reshape(-1,64)
+    def get_raw_emg_filename(self):
+        if self.raw_emg_filename is None:
+            self.set_raw_emg_filename()
+        return self.raw_emg_filename
+    
+    def set_raw_emg_filename(self, local=True):
+        # looks like: 11_emg_2021-09-16T18_10_31.bin
+        if local: 
+            directory = ROOT_RAWDATA_PATH / self.collection_name / self.subject_name / self.task_name / self.session_name 
+            prefix = f"{ROOT_RAWDATA_PATH / self.collection_name / self.subject_name / self.task_name / self.session_name / str(self.recorded_number)}_emg_2021"
+            filename_list = [f for f in directory.iterdir() if str(f).startswith(prefix)]
+            filename_list.sort()
+        else:
+            raise NotImplementedError("s3 access isn't implemented")
+        self.raw_emg_filename = filename_list[self.no_hold_number]
+
+    def get_raw_emg(self):
+        if self.raw_emg_filename is None:
+            self.set_raw_emg_filename()
+        if self.raw_emg is None:
+            self.set_raw_emg()
+        return self.raw_emg
+
+    def set_raw_emg(self, local=True):
+        """
+            load subject's raw (unfiltered) EMG 
+            from a particular collection, experiment, trial 
+            and store in memory as numpy array
+            data is num_samples X 68 dimensional
+            last four dimensions are from recording device
+            and include a counter channel to show dropped samples
+        """
+        if local:
+            self.raw_emg = np.fromfile(self.raw_emg_filename, dtype=np.int32).reshape(-1,68).astype(np.float32)
+
+        else:
+            emg_object_name = f"rawdata/{self.collection_name}/{self.subject_name}/{self.task_name}/session_{self.session_name}/{self.name}_emg_2021"
+            matching_emg_objects = s3.list_objects(Bucket='motorlearning', Prefix=emg_object_name)
+            if len(matching_emg_objects["Contents"]) > 1:
+                raise ValueError(f"More than one object found with prefix {emg_object_name}")
+            emg_object_name = matching_emg_objects["Contents"][0]["Key"]
+            emg_object = s3.get_object(Bucket="motorlearning", Key=emg_object_name)
+            binblob = emg_object["Body"].read()
+            return np.frombuffer(binblob, dtype='<f4').reshape(-1,68)

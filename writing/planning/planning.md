@@ -25,7 +25,7 @@
 * [ ] enter exam in Portico https://www.ucl.ac.uk/students/exams-and-assessments/research-assessments/examination-entry https://www.ucl.ac.uk/students/exams-and-assessments/research-assessments/viva
 
 
-# Week 1 - Jul 31
+# Week 1 - Jul 31 - Aug 6
 * [x] email Klara, touch base about plans
 * [x] recruit Brett for research eng, analysis (max \~6hrs a week)
 * [x] upload data to s3 for collaboration
@@ -36,36 +36,37 @@
 * [x] put latest analysis code into git repo
 * [x] write up null space variability thoughts as a next concrete step to test "full stack" data analysis, visualization, etc.
 
-# Week 2 - Aug 7
+# Week 2 - Aug 7 - 13
 * [X] Write draft outline of results, questions, hypotheses-- send to Brett and Tiago
 * [X] Recreate behavior plots with s3 data -- trajectories
 
-
-# Week 3 - Aug 14
+# Week 3 - Aug 14 - 20
 * [X] plot outcomes, learning curves
 * [X] Filter for subjects with certain outcomes (best, worst peformers)
-* [ ] Filter for trials with a particular target location
-* [ ] Success metrics -- trajectory length
-* [ ] Decoder -- plot decoder directions
-* [ ] Segmenting trajectories, figure out how to do this and start testing
-* [ ] Success metrics -- trajectory curviness (define this, number of segments?)
-* [ ] Confirm -- can I recreate the behavioral data with the decoder? How do the dynamics work?
-* [ ] Confirm -- what are the dynamics of the task? does the dot return to the center if there's no force? (i.e. gravity, spring)
-* [ ] Controlled/Uncontrolled manifold variability plots, writing
-    Admin
-* [ ] Review last week's results with Tiago
-* [ ] Get back on the payroll
+* [X] Success metrics -- trajectory length
+* [X] Segmenting trajectories, figure out how to do this and start testing
 
 # Week 4 - Aug 21
-* [] basic LQR comparison
-* [] LQR with regularizer - how do you solve this numerically?
-* [] system ID - how is this done?
+* [X] Struggle mentally
 
 # Week 5 - Aug 28
-* [] 
+* [X] Struggle mentally
+
+# BACKLOG
+* [ ] Filter for trials with a particular target location
+* [ ] Decoder -- plot decoder directions
+* [ ] Success metrics -- trajectory curviness (define this, number of segments?)
+* [ ] Controlled/Uncontrolled manifold variability plots, writing
+* [ ] basic LQR comparison
+* [ ] LQR with regularizer - how do you solve this numerically?
+* [ ] system ID - how is this done?
 
 # Week 6 - Sep 4
-* [] 
+* [X] Get back on the payroll
+* [ ] Be able to access data locally instead of s3 to work offline
+* [ ] Confirm -- can I recreate the behavioral data with the decoder?
+* [ ] Confirm -- what are the dynamics of the task? Does the dot return to the center if there's no force? (i.e. gravity, spring)
+* [ ] Review results with Tiago
 
 # Week 7 - Sep 11
 * [] 
