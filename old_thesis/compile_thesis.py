@@ -3,6 +3,11 @@
 # status: working for pdf
 # usage: in the thesis directory, run p3 compile_thesis.py -o pdf
 
+# how to install pandoc-include
+#  https://hackage.haskell.org/package/pandoc-include-0.0.1#readme
+# you need ghc / cabal 
+# https://www.haskell.org/cabal/ -- `brew install cabal-install`
+
 # pandoc templates
 # https://pandoc.org/MANUAL.html#templates
 # using two filters from pypi:

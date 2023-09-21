@@ -1,0 +1,28 @@
+% using this tutorial:
+% https://www.overleaf.com/learn/latex/Multi-file_LaTeX_projects#The_subfiles
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{float}
+\graphicspath{{../images/}}
+\usepackage{blindtext}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[capitalize]{cleveref}
+\usepackage{subfiles} % Best loaded last in the preamble
+
+\title{Sensorimotor Learning in Virtual Environments}
+\author{Spencer Wilson}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\subfile{sections/Learning_metrics}
+
+\newpage
+
+\bibliographystyle{naturemag}
+\bibliography{bib/bibliography}
+
+\end{document}
