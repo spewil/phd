@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.28)  21 SEP 2023 14:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.28)  13 OCT 2023 12:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -124,114 +124,7 @@ File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count282
 \l__pdf_internal_box=\box53
 )
-(./main.aux
-
-LaTeX Warning: Label `fig:behavior' multiply defined.
-
-
-LaTeX Warning: Label `fig:behavior@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:behavior' multiply defined.
-
-
-LaTeX Warning: Label `fig:behavior@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:behavior' multiply defined.
-
-
-LaTeX Warning: Label `fig:behavior@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:behavior' multiply defined.
-
-
-LaTeX Warning: Label `fig:behavior@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:path_length_learning_rates' multiply defined.
-
-
-LaTeX Warning: Label `fig:path_length_learning_rates@cref' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:path_length_learning_rates' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:path_length_learning_rates@cref' multiply defined
-.
-
-
-LaTeX Warning: Label `fig:behavior' multiply defined.
-
-
-LaTeX Warning: Label `fig:behavior@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:behavior' multiply defined.
-
-
-LaTeX Warning: Label `fig:behavior@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:hit_learning_rates' multiply defined.
-
-
-LaTeX Warning: Label `fig:hit_learning_rates@cref' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:hit_learning_rates' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:hit_learning_rates@cref' multiply defined.
-
-
-LaTeX Warning: Label `fig:reach_time_learning_rates' multiply defined.
-
-
-LaTeX Warning: Label `fig:reach_time_learning_rates@cref' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:reach_time_learning_rates' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:reach_time_learning_rates@cref' multiply defined.
-
-
-
-LaTeX Warning: Label `fig:path_length_learning_rates' multiply defined.
-
-
-LaTeX Warning: Label `fig:path_length_learning_rates@cref' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:path_length_learning_rates' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:path_length_learning_rates@cref' multiply defined
-.
-
-
-LaTeX Warning: Label `fig:path_length_learning_rates' multiply defined.
-
-
-LaTeX Warning: Label `fig:path_length_learning_rates@cref' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:path_length_learning_rates' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:path_length_learning_rates@cref' multiply defined
-.
-
-
-LaTeX Warning: Label `fig:three graphs' multiply defined.
-
-
-LaTeX Warning: Label `fig:three graphs@cref' multiply defined.
-
-)
+(./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -248,7 +141,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
- (/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count283
 \scratchdimen=\dimen151
@@ -372,13 +266,19 @@ d on input line 92.
 s//analysis/reach_time_learning_rates.pdf> <../images/../images//analysis/path_
 length_learning_rates.pdf> <../images/../images//analysis/segment_learning_rate
 s.pdf>]
+File: ../images/../images//analysis/example_decoder.pdf Graphic file (type pdf)
+
+<use ../images/../images//analysis/example_decoder.pdf>
+Package pdftex.def Info: ../images/../images//analysis/example_decoder.pdf  use
+d on input line 101.
+(pdftex.def)             Requested size: 482.9979pt x 241.49342pt.
 <../images/../images//analysis/hit_count_decoder_cosine.pdf, id=470, 722.7pt x 
 722.7pt>
 File: ../images/../images//analysis/hit_count_decoder_cosine.pdf Graphic file (
 type pdf)
 <use ../images/../images//analysis/hit_count_decoder_cosine.pdf>
 Package pdftex.def Info: ../images/../images//analysis/hit_count_decoder_cosine
-.pdf  used on input line 101.
+.pdf  used on input line 110.
 (pdftex.def)             Requested size: 258.75pt x 258.74925pt.
  [7 <../images/../images//analysis/example_decoder.pdf>]
 <../images/../images//analysis/hit_lr_decoder_cosine.pdf, id=518, 722.7pt x 722
@@ -387,7 +287,7 @@ File: ../images/../images//analysis/hit_lr_decoder_cosine.pdf Graphic file (typ
 e pdf)
 <use ../images/../images//analysis/hit_lr_decoder_cosine.pdf>
 Package pdftex.def Info: ../images/../images//analysis/hit_lr_decoder_cosine.pd
-f  used on input line 121.
+f  used on input line 130.
 (pdftex.def)             Requested size: 241.49895pt x 241.50224pt.
 <../images/../images//analysis/reach_time_lr_decoder_cosine.pdf, id=519, 722.7p
 t x 722.7pt>
@@ -395,7 +295,7 @@ File: ../images/../images//analysis/reach_time_lr_decoder_cosine.pdf Graphic fi
 le (type pdf)
 <use ../images/../images//analysis/reach_time_lr_decoder_cosine.pdf>
 Package pdftex.def Info: ../images/../images//analysis/reach_time_lr_decoder_co
-sine.pdf  used on input line 121.
+sine.pdf  used on input line 130.
 (pdftex.def)             Requested size: 241.49895pt x 241.50224pt.
 <../images/../images//analysis/path_length_lr_decoder_cosine.pdf, id=520, 722.7
 pt x 722.7pt>
@@ -403,7 +303,7 @@ File: ../images/../images//analysis/path_length_lr_decoder_cosine.pdf Graphic f
 ile (type pdf)
 <use ../images/../images//analysis/path_length_lr_decoder_cosine.pdf>
 Package pdftex.def Info: ../images/../images//analysis/path_length_lr_decoder_c
-osine.pdf  used on input line 136.
+osine.pdf  used on input line 145.
 (pdftex.def)             Requested size: 241.49895pt x 241.50224pt.
 <../images/../images//analysis/segment_lr_decoder_cosine.pdf, id=521, 722.7pt x
  722.7pt>
@@ -411,38 +311,189 @@ File: ../images/../images//analysis/segment_lr_decoder_cosine.pdf Graphic file
 (type pdf)
 <use ../images/../images//analysis/segment_lr_decoder_cosine.pdf>
 Package pdftex.def Info: ../images/../images//analysis/segment_lr_decoder_cosin
-e.pdf  used on input line 136.
+e.pdf  used on input line 145.
 (pdftex.def)             Requested size: 241.49895pt x 241.50224pt.
  [8 <../images/../images//analysis/hit_count_decoder_cosine.pdf>])
-[9 <../images/../images//analysis/hit_lr_decoder_cosine.pdf> <../images/../imag
-es//analysis/reach_time_lr_decoder_cosine.pdf> <../images/../images//analysis/p
-ath_length_lr_decoder_cosine.pdf> <../images/../images//analysis/segment_lr_dec
-oder_cosine.pdf>] (./main.bbl
+(./sections/Reconstruct_emg.tex
+<../images/../images//analysis/reconstructed_emg.pdf, id=570, 1445.4pt x 722.7p
+t>
+File: ../images/../images//analysis/reconstructed_emg.pdf Graphic file (type pd
+f)
+<use ../images/../images//analysis/reconstructed_emg.pdf>
+Package pdftex.def Info: ../images/../images//analysis/reconstructed_emg.pdf  u
+sed on input line 11.
+(pdftex.def)             Requested size: 448.50105pt x 224.2442pt.
+ [9 <../images/../images//analysis/hit_lr_decoder_cosine.pdf> <../images/../ima
+ges//analysis/reach_time_lr_decoder_cosine.pdf> <../images/../images//analysis/
+path_length_lr_decoder_cosine.pdf> <../images/../images//analysis/segment_lr_de
+coder_cosine.pdf>]
+<../images/../images//analysis/reconstructed_trajectory.pdf, id=764, 1084.05pt 
+x 1084.05pt>
+File: ../images/../images//analysis/reconstructed_trajectory.pdf Graphic file (
+type pdf)
+<use ../images/../images//analysis/reconstructed_trajectory.pdf>
+Package pdftex.def Info: ../images/../images//analysis/reconstructed_trajectory
+.pdf  used on input line 19.
+(pdftex.def)             Requested size: 448.50105pt x 448.49945pt.
+ [10 <../images/../images//analysis/reconstructed_emg.pdf>]) (./sections/Nullsp
+ace_variability.tex
+<../images/../images//analysis/ratio_vs_hits.pdf, id=799, 1806.75pt x 1084.05pt
+>
+File: ../images/../images//analysis/ratio_vs_hits.pdf Graphic file (type pdf)
+<use ../images/../images//analysis/ratio_vs_hits.pdf>
+Package pdftex.def Info: ../images/../images//analysis/ratio_vs_hits.pdf  used 
+on input line 11.
+(pdftex.def)             Requested size: 448.50105pt x 269.09305pt.
+ [11 <../images/../images//analysis/reconstructed_trajectory.pdf>]
+<../images/../images//analysis/ratio_grand_mean.pdf, id=825, 1084.05pt x 1084.0
+5pt>
+File: ../images/../images//analysis/ratio_grand_mean.pdf Graphic file (type pdf
+)
+<use ../images/../images//analysis/ratio_grand_mean.pdf>
+Package pdftex.def Info: ../images/../images//analysis/ratio_grand_mean.pdf  us
+ed on input line 19.
+(pdftex.def)             Requested size: 448.50105pt x 448.49945pt.
+ [12 <../images/../images//analysis/ratio_vs_hits.pdf>]
+<../images/../images//analysis/ratio_over_trials.pdf, id=873, 1806.75pt x 1806.
+75pt>
+File: ../images/../images//analysis/ratio_over_trials.pdf Graphic file (type pd
+f)
+<use ../images/../images//analysis/ratio_over_trials.pdf>
+Package pdftex.def Info: ../images/../images//analysis/ratio_over_trials.pdf  u
+sed on input line 27.
+(pdftex.def)             Requested size: 448.50105pt x 448.48842pt.
+ [13 <../images/../images//analysis/ratio_grand_mean.pdf>]
+<../images/../images//analysis/path_length_vs_ratio_linear.pdf, id=918, 1445.4p
+t x 1084.05pt>
+File: ../images/../images//analysis/path_length_vs_ratio_linear.pdf Graphic fil
+e (type pdf)
+<use ../images/../images//analysis/path_length_vs_ratio_linear.pdf>
+Package pdftex.def Info: ../images/../images//analysis/path_length_vs_ratio_lin
+ear.pdf  used on input line 35.
+(pdftex.def)             Requested size: 448.50105pt x 336.36632pt.
+ [14 <../images/../images//analysis/ratio_over_trials.pdf>]
+<../images/../images//analysis/path_length_vs_ratio_log.pdf, id=960, 1445.4pt x
+ 1084.05pt>
+File: ../images/../images//analysis/path_length_vs_ratio_log.pdf Graphic file (
+type pdf)
+<use ../images/../images//analysis/path_length_vs_ratio_log.pdf>
+Package pdftex.def Info: ../images/../images//analysis/path_length_vs_ratio_log
+.pdf  used on input line 43.
+(pdftex.def)             Requested size: 448.50105pt x 336.36632pt.
+ [15 <../images/../images//analysis/path_length_vs_ratio_linear.pdf>]
+<../images/../images//analysis/ratio_over_blocks.pdf, id=1013, 1806.75pt x 1084
+.05pt>
+File: ../images/../images//analysis/ratio_over_blocks.pdf Graphic file (type pd
+f)
+<use ../images/../images//analysis/ratio_over_blocks.pdf>
+Package pdftex.def Info: ../images/../images//analysis/ratio_over_blocks.pdf  u
+sed on input line 51.
+(pdftex.def)             Requested size: 448.50105pt x 269.09305pt.
+ [16 <../images/../images//analysis/path_length_vs_ratio_log.pdf>]
+<../images/../images//analysis/ratio_over_subjects.pdf, id=1067, 1806.75pt x 10
+84.05pt>
+File: ../images/../images//analysis/ratio_over_subjects.pdf Graphic file (type 
+pdf)
+<use ../images/../images//analysis/ratio_over_subjects.pdf>
+Package pdftex.def Info: ../images/../images//analysis/ratio_over_subjects.pdf 
+ used on input line 59.
+(pdftex.def)             Requested size: 448.50105pt x 269.09305pt.
+ [17 <../images/../images//analysis/ratio_over_blocks.pdf>]
+<../images/../images//analysis/ratio_hit_vs_miss.pdf, id=1139, 1806.75pt x 1084
+.05pt>
+File: ../images/../images//analysis/ratio_hit_vs_miss.pdf Graphic file (type pd
+f)
+<use ../images/../images//analysis/ratio_hit_vs_miss.pdf>
+Package pdftex.def Info: ../images/../images//analysis/ratio_hit_vs_miss.pdf  u
+sed on input line 67.
+(pdftex.def)             Requested size: 448.50105pt x 269.09305pt.
+ [18 <../images/../images//analysis/ratio_over_subjects.pdf>]) (./sections/Per_
+target_learning.tex
+<../images/../images//analysis/example_decoder_arrows.pdf, id=1268, 1445.4pt x 
+1445.4pt>
+File: ../images/../images//analysis/example_decoder_arrows.pdf Graphic file (ty
+pe pdf)
+<use ../images/../images//analysis/example_decoder_arrows.pdf>
+Package pdftex.def Info: ../images/../images//analysis/example_decoder_arrows.p
+df  used on input line 11.
+(pdftex.def)             Requested size: 448.50105pt x 448.48842pt.
+ [19 <../images/../images//analysis/ratio_hit_vs_miss.pdf>]
+<../images/../images//analysis/decoder_target_cosine.pdf, id=1305, 1445.4pt x 1
+084.05pt>
+File: ../images/../images//analysis/decoder_target_cosine.pdf Graphic file (typ
+e pdf)
+<use ../images/../images//analysis/decoder_target_cosine.pdf>
+Package pdftex.def Info: ../images/../images//analysis/decoder_target_cosine.pd
+f  used on input line 19.
+(pdftex.def)             Requested size: 448.50105pt x 336.36632pt.
+ [20 <../images/../images//analysis/example_decoder_arrows.pdf>]
+<../images/../images//analysis/hits_over_targets.pdf, id=1314, 867.24pt x 867.2
+4pt>
+File: ../images/../images//analysis/hits_over_targets.pdf Graphic file (type pd
+f)
+<use ../images/../images//analysis/hits_over_targets.pdf>
+Package pdftex.def Info: ../images/../images//analysis/hits_over_targets.pdf  u
+sed on input line 27.
+(pdftex.def)             Requested size: 448.50105pt x 448.50607pt.
+ [21 <../images/../images//analysis/decoder_target_cosine.pdf>]
+
+LaTeX Warning: File `analysis/decoder_target_cosine_vs_hits_subject_mean.pdf' n
+ot found on input line 35.
+
+
+! Package pdftex.def Error: File `analysis/decoder_target_cosine_vs_hits_subjec
+t_mean.pdf' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.35         }
+              
+? 
+[22 <../images/../images//analysis/hits_over_targets.pdf>]
+
+LaTeX Warning: File `analysis/decoder_target_cosine_vs_hits.pdf' not found on i
+nput line 43.
+
+
+! Package pdftex.def Error: File `analysis/decoder_target_cosine_vs_hits.pdf' n
+ot found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.43         }
+              
+? 
+[23]) [24] (./main.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 8.
 
-) [10] (./main.aux)
+) [25] (./main.aux)
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 5047 strings out of 476025
- 104228 string characters out of 5790017
- 1852388 words of memory out of 5000000
- 25480 multiletter control sequences out of 15000+600000
- 516533 words of font info for 46 fonts, out of 8000000 for 9000
+ 5265 strings out of 476025
+ 114533 string characters out of 5790017
+ 1853388 words of memory out of 5000000
+ 25655 multiletter control sequences out of 15000+600000
+ 516701 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,9n,63p,240b,579s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
 /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
 sr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr
-/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb>
-Output written on main.pdf (10 pages, 465655 bytes).
+/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/lo
+cal/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (25 pages, 1293843 bytes).
 PDF statistics:
- 788 PDF objects out of 1000 (max. 8388607)
- 140 compressed objects within 2 object streams
+ 1466 PDF objects out of 1728 (max. 8388607)
+ 249 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -89,7 +89,7 @@ def plot_circle(x,y,r,ax,style="k"):
     
 def plot_targets(ax,style="ko",markersize=5, target=None):
     m = MarkerStyle("o", fillstyle="none")
-    theta = np.linspace(0, 2*np.pi, 13) + np.pi
+    theta = (np.linspace(0, 2*np.pi, 13) + np.pi)[:-1]
     ax.plot(np.cos(theta), np.sin(theta), style, marker=m, markersize=markersize, color="grey")
     if not target is None: 
         ax.plot(target[0], target[1], "ro", markersize=markersize)
