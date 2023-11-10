@@ -15,17 +15,26 @@ How to get the ideal trajectory
 - Use the data itself -- try taking a mean from the best trials?
 - Find the "best" trial -- the one closest to the ideal?
     - common for the subject not to have any perfect trials for a target
+        - confine ourselves first to trials that DO have a "perfect" activation
+        - activations are SINGLE timepoints, not trajectories
+        - **find the single EMG timepoint (or a short mean)**
+        - **compare these timepoints across hits for that trial**
+        - how does this comparison look? are they making the same activity?
+        - if they are, we can use this as our "ideal" activation to use to compute residuals
     - If we can do this for all/most subjects, codify this into steps
     - if we can't, can we limit ourselves to just these subject and targets for which they have "ideal" trajectories?
     - this can be at specific time points-- instantaneous EMG activities, nothing temporal
     - all the data can be treated *spatially*, we don't care about the time courses right now, make it simple!
-        - imagine each set of trials (without the hold period) as samples from force/emg distrubution
+        - imagine each set of trials (without the hold period) as samples from force/emg distribution-- subjects are throwing darts
+            - maybe only take the data that is "active"-- not just low activations, actual movements
         - any samples that aren't the target force level is error-- what is the shape of that error?
         - how do we get around the fact that it takes time, some dynamic, to produce the target activation?
+            - maybe filter out the rest? only take activity above a certain variance threshold, then compute residuals from that?
 - what if the "best" trial is defined as an optimal control solution? so we're explicitly defining a cost function?
     - we can quadratically penalize the position and control vectors
     - we can hack this to make it into something we expect in our task
     - can we try this, and compare it with the "best" subjects+targets?
+    - this doesn't really make sense, the OFC is LDS, meant to produce trajectories
 - Compare the data-driven with the handmade
 - Use that trajectory's corresponding EMG signal as the "mean"-- are we taking the mean of EMG?
     - this could work... we'd average out any activity that isn't task-relevant? but also means we're removing "idiosyncratic" movements if they're repeated, which we would like to see?
@@ -37,7 +46,6 @@ How to get the ideal trajectory
 - a definition for ideal trajectory
 - pulling this ideal out of our data
 - viz of using this to produce residuals
-- 
 
 - Bigger chunks of work right now
     - intro, motivation
@@ -72,3 +80,9 @@ what big chunks do we have?
 review chunks
 organize these into the PDF document
 start writing simple bullets about each as we go, building up the document, like a lab notebook
+
+---
+
+what can I show tiago?
+- explain what an ideal trajectory is -- just the pure activation
+- 

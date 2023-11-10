@@ -55,6 +55,88 @@ def get_objects(key):
         print(f"Unable to find object with key {key}.")
 
 
+def mean_quadratic_form(C, subspace_basis):
+    """
+    used to find the mean variance in subspace dimensions
+    for each row in x, compute x.T@A@x
+    take the average over these quadratics
+
+    subspace_basis : an orthonorm basis for subspace, vecs are in rows
+    C : covariance or other matrix
+    """
+    # C is square, dimensions should align
+    assert subspace_basis.shape[1] == C.shape[0]
+    assert subspace_basis.shape[1] == C.shape[1]
+    mean = 0
+    dim_subspace = subspace_basis.shape[0]
+    for u in subspace_basis:
+        # convert to column vector
+        u = u.reshape(-1, 1)
+        # flatten the quadratic form into a number
+        mean += (u.T @ C @ u).ravel()
+    # flatten mean into a number
+    return (mean / dim_subspace).ravel()
+
+
+def generate_target_angles():
+    return (np.linspace(0, 2 * np.pi, 13))[:-1]
+
+
+def compute_theta(vec):
+    vec = np.array(vec)
+    if vec.shape[0] != 2:
+        raise ValueError(f"array has incorrect shape, {vec.shape}")
+    angle = np.arctan2(vec[1], vec[0])
+    if vec[1] < 0:
+        angle += 2 * np.pi
+    return angle
+
+
+def compute_target_vec_from_number(target_number):
+    angles = generate_target_angles()
+    return np.round(
+        np.array(
+            [np.cos(angles[target_number - 1]), np.sin(angles[target_number - 1])]
+        ),
+        2,
+    )
+
+
+def compute_target_number_from_vec(vec):
+    angles = generate_target_angles()
+    theta = compute_theta(vec)
+    return np.abs(angles - theta).argmin() + 1
+
+
+### NATURAL MOVEMENT DATA
+
+ROOT_RAWDATA_PATH = Path("/Users/spencer/motor-control/data/rawdata/")
+ROOT_METADATA_PATH = Path("/Users/spencer/motor-control/data/metadata/")
+
+def get_movement_filenames(collection_name, subject_name, task_name, session_name):
+    filenames = []
+    with open(ROOT_METADATA_PATH / collection_name / "natural_movement.json") as fp:
+        movements = json.load(fp)["movements"]
+
+    for movement in movements:
+        directory = (
+            ROOT_RAWDATA_PATH
+            / collection_name
+            / subject_name
+            / task_name
+            / session_name
+        )
+        prefix = str(ROOT_RAWDATA_PATH / collection_name / subject_name / task_name / session_name / movement)
+        for filename in directory.iterdir(): 
+            if str(filename).startswith(prefix) and str(filename).split(".")[-1] == "bin":
+                filenames.append(filename)
+    return filenames
+
+def load_movement_emg(filename):
+    return np.fromfile(filename, dtype=np.int32).reshape(-1, 68).astype(np.float32)[:,:64]
+
+
+
 class Collection:
     # TODO
     # - get metadata here for the collection as well (ITI, etc. ) + metadata/collection/.JSONs
@@ -67,9 +149,7 @@ class Collection:
         self.get_subjects()
 
     def get_metadata(self):
-        collection_metadata_path = (
-            ROOT_METADATA_PATH / self.name / "metadata.json"
-        )
+        collection_metadata_path = ROOT_METADATA_PATH / self.name / "metadata.json"
         with open(collection_metadata_path) as f:
             return json.load(f)
 
@@ -110,9 +190,24 @@ class Subject:
         self.variance = self.get_variance()  # /metadata/collection/subject/variance.bin
         self.offsets = self.get_offsets()  # /metadata/collection/subject/offsets.bin
         self.dynamics = self.get_dynamics()  # /metadata/collection/subject/dynamics.bin
-        self.nmf_components = self.get_nmf_components() # /metadata/collection/subject/metadata.json
+        self.nmf_components = (
+            self.get_nmf_components()
+        )  # /metadata/collection/subject/metadata.json
+        self.task_subspace, self.null_subspace = self.compute_subspaces()
         self.get_task_names()
         self.get_tasks()
+
+    def compute_subspaces(self):
+        # https://math.stackexchange.com/questions/1771013/how-is-the-null-space-related-to-singular-value-decomposition?rq=1
+        # the first two eigenvectors are the subspace spanning Col(D), the rest are Null(D)
+        assert len(self.decoder.shape) == 2
+        assert self.decoder.shape[0] < self.decoder.shape[1]
+        # make sure to truncate the full decoder
+        _, _, Vt = np.linalg.svd(self.decoder[-2:,:], full_matrices=True, compute_uv=True)
+        # the short side of the decoder, 2x64 in our task
+        decoder_dim = 2
+        # task space and null space transposed
+        return Vt.T[:, :decoder_dim].T, Vt.T[:, decoder_dim:].T
 
     def get_task_names(self, local=True):
         if local:
@@ -377,6 +472,8 @@ class Session:
                 trial.set_reach_time(line[2])
             else:
                 trial.set_reach_time(None)
+            if trial.outcome != "No Hold":
+                trial.active_indices, trial.trajectory_low_point, _ = trial.find_active_indices()
             self.trials.update({trial_name: trial})
 
         # count unique outcomes
@@ -403,36 +500,6 @@ class Session:
         return sorted(list(self.trials.values()), key=lambda t: t.number)
 
 
-def generate_target_angles():
-    return (np.linspace(0, 2 * np.pi, 13))[:-1]
-
-
-def compute_theta(vec):
-    vec = np.array(vec)
-    if vec.shape[0] != 2:
-        raise ValueError(f"array has incorrect shape, {vec.shape}")
-    angle = np.arctan2(vec[1], vec[0])
-    if vec[1] < 0:
-        angle += 2 * np.pi
-    return angle
-
-
-def compute_target_vec_from_number(target_number):
-    angles = generate_target_angles()
-    return np.round(
-        np.array(
-            [np.cos(angles[target_number - 1]), np.sin(angles[target_number - 1])]
-        ),
-        2,
-    )
-
-
-def compute_target_number_from_vec(vec):
-    angles = generate_target_angles()
-    theta = compute_theta(vec)
-    return np.abs(angles - theta).argmin() + 1
-
-
 class Trial:
     def __init__(
         self, collection_name, subject_name, task_name, session_name, trial_name
@@ -451,6 +518,40 @@ class Trial:
         self.filtered_emg = None  # ndarray
         self.raw_emg_filename = None  # XXXX.bin
         self.raw_emg = None  # ndarray
+        self.active_indices = None
+
+    def find_active_indices(self, std_multiple=1.0, min_indices=10):
+        assert self.outcome != "No Hold"
+        # get trial signals
+        hold_steps = int(200 * self.hold_time)
+        traj = self.get_trajectory()[:, -2:].copy()
+        sig = self.get_filtered_emg().copy()
+        # adjust lengths to match
+        min_length = np.min([traj.shape[0], sig.shape[0]])
+        traj = traj[:min_length, :]
+        sig = sig[:min_length, :]
+        # get rid of channel 56, it's garbage
+        sig[:, 56] = 0
+        # find location of min trajectory norm (closest to zero)
+        low_point = np.argmin(np.linalg.norm(traj[:hold_steps, :], axis=1))
+        # find signal norm value at this point
+        sig_norms = np.linalg.norm(sig, axis=1)
+        sig_norm_std = np.std(sig_norms)
+        # compute the threshold, mean of a short range
+        mean_norm_threshold = np.mean(
+            sig_norms[np.max([0, low_point - 5]) : low_point + 5], axis=0
+        )
+        # mask -- one std above the lowest norm point
+        mask = sig_norms > mean_norm_threshold + sig_norm_std * std_multiple
+        # ignore the hold period
+        mask[:hold_steps] = False
+        # return the indices
+        min_num_indices = min_indices
+        if np.sum(mask) < min_num_indices:
+            indices = np.arange(sig.shape[0])[-min_num_indices:]
+        else:
+            indices = np.arange(sig.shape[0])[mask]
+        return indices, low_point, mean_norm_threshold
 
     def set_outcome(self, outcome):
         self.outcome = outcome
@@ -538,8 +639,7 @@ class Trial:
                 usecols=(1, 2, 3),
                 encoding=None,
             )
-
-    # # # #
+        self.trajectory = self.trajectory[:,-2:]
 
     def get_filtered_emg_filename(self):
         if self.filtered_emg_filename is None:

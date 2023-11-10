@@ -44,25 +44,30 @@ i think there is a better metric, since we expect a priori for most of the signa
 
 just look at task space variance over trials? just at null space?
 
-what is a perfect trial?
+what is a perfect trial? (in terms of variance)
 
 -- 
 
 todos
 
 - X make movies of the trajectories for a subject, split into targets, etc.
-- plot just task variance and null variance separately over trials
-- redo decoder correlation without normalizing length 
-- look at pairwise correlations between subject decoders
+- X plot just task variance and null variance separately over trials
+- X redo decoder correlation without normalizing length 
+- look at calibration task PCA, measure of spread / variance -- distribution along axes
+
 - fix target specific plots
     - means over subjects -- only need one quadrant
     - plot target specific -- 
-- look at calibration task PCA, measure of spread / variance -- distribution along axes
+- look at pairwise correlations between subject decoders -- why?
 
 --- 
 
-looking at all trajectories:
+after looking at all trajectories:
 
 - what correlates with task success? hits is a poor metric, looking at the plots, some subjects are all over the map, some are really honing their movements
-- look at PCA over all trials, spatially, to see what the dominant modes are. then compare each trial to those overall modes
-- look just at best subjects for trial / task ratio
+- look at PCA over all trials, spatially, to see what the dominant spatial modes. compare each trial's spatial modes to the overall modes-- are we getting closer to "ideal"?
+- look just at best subjects for trial / task ratio -- what happens for the "best" subjects? 
+
+variance ratio
+- the analysis doesn't make sense-- we dont want difference from the mean, we want dispersion around the mean of the residual between the "instructed" actvity and the activity produced. if we believe that the "desired" activity is constant, then we might be ok. but the analysis as-is basically just says that the activity in the task space is larger because that's what affects the task. we want to remove the task activity and just look at the "noise" between the two spaces. maybe if we somehow compute activity that's in the direction of the target and subtract this off, that would give us a kind of residual to look at?
+    - each timestep, what "direction" are we pointing spatially? (is this the force_X, force_Y? or the derivative?)
