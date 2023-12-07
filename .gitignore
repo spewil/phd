@@ -13,3 +13,6 @@ images/*
 
 # numpy data
 *.npy
+
+# pickle
+*.pkl
