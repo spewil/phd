@@ -1,13 +1,9 @@
 import boto3
 import numpy as np
 from io import StringIO
-from analysis import analysis
 from pathlib import Path
 import json
 
-# TODO
-# - make "local" data inteface accessible, currently buried in function kwarg
-#
 
 s3_resource = boto3.resource("s3")
 s3 = boto3.client("s3")
@@ -16,6 +12,8 @@ bucket = s3_resource.Bucket(name=bucket_name)
 
 ROOT_RAWDATA_PATH = Path("/Users/spencer/motor-control/data/rawdata/")
 ROOT_METADATA_PATH = Path("/Users/spencer/motor-control/data/metadata/")
+
+### S3
 
 
 def get_subject_names(collection_name):
@@ -55,27 +53,7 @@ def get_objects(key):
         print(f"Unable to find object with key {key}.")
 
 
-def mean_quadratic_form(C, subspace_basis):
-    """
-    used to find the mean variance in subspace dimensions
-    for each row in x, compute x.T@A@x
-    take the average over these quadratics
-
-    subspace_basis : an orthonorm basis for subspace, vecs are in rows
-    C : covariance or other matrix
-    """
-    # C is square, dimensions should align
-    assert subspace_basis.shape[1] == C.shape[0]
-    assert subspace_basis.shape[1] == C.shape[1]
-    mean = 0
-    dim_subspace = subspace_basis.shape[0]
-    for u in subspace_basis:
-        # convert to column vector
-        u = u.reshape(-1, 1)
-        # flatten the quadratic form into a number
-        mean += (u.T @ C @ u).ravel()
-    # flatten mean into a number
-    return (mean / dim_subspace).ravel()
+### TARGETS
 
 
 def generate_target_angles():
@@ -93,6 +71,8 @@ def compute_theta(vec):
 
 
 def compute_target_vec_from_number(target_number):
+    # targets numbered 1..12
+    assert target_number > 0 and target_number < 13
     angles = generate_target_angles()
     return np.round(
         np.array(
@@ -108,33 +88,7 @@ def compute_target_number_from_vec(vec):
     return np.abs(angles - theta).argmin() + 1
 
 
-### NATURAL MOVEMENT DATA
-
-ROOT_RAWDATA_PATH = Path("/Users/spencer/motor-control/data/rawdata/")
-ROOT_METADATA_PATH = Path("/Users/spencer/motor-control/data/metadata/")
-
-def get_movement_filenames(collection_name, subject_name, task_name, session_name):
-    filenames = []
-    with open(ROOT_METADATA_PATH / collection_name / "natural_movement.json") as fp:
-        movements = json.load(fp)["movements"]
-
-    for movement in movements:
-        directory = (
-            ROOT_RAWDATA_PATH
-            / collection_name
-            / subject_name
-            / task_name
-            / session_name
-        )
-        prefix = str(ROOT_RAWDATA_PATH / collection_name / subject_name / task_name / session_name / movement)
-        for filename in directory.iterdir(): 
-            if str(filename).startswith(prefix) and str(filename).split(".")[-1] == "bin":
-                filenames.append(filename)
-    return filenames
-
-def load_movement_emg(filename):
-    return np.fromfile(filename, dtype=np.int32).reshape(-1, 68).astype(np.float32)[:,:64]
-
+### COLLECTION
 
 
 class Collection:
@@ -203,7 +157,9 @@ class Subject:
         assert len(self.decoder.shape) == 2
         assert self.decoder.shape[0] < self.decoder.shape[1]
         # make sure to truncate the full decoder
-        _, _, Vt = np.linalg.svd(self.decoder[-2:,:], full_matrices=True, compute_uv=True)
+        _, _, Vt = np.linalg.svd(
+            self.decoder[-2:, :], full_matrices=True, compute_uv=True
+        )
         # the short side of the decoder, 2x64 in our task
         decoder_dim = 2
         # task space and null space transposed
@@ -473,7 +429,11 @@ class Session:
             else:
                 trial.set_reach_time(None)
             if trial.outcome != "No Hold":
-                trial.active_indices, trial.trajectory_low_point, _ = trial.find_active_indices()
+                (
+                    trial.active_indices,
+                    trial.low_point,
+                    _,
+                ) = trial.find_active_indices()
             self.trials.update({trial_name: trial})
 
         # count unique outcomes
@@ -519,6 +479,7 @@ class Trial:
         self.raw_emg_filename = None  # XXXX.bin
         self.raw_emg = None  # ndarray
         self.active_indices = None
+        self.low_point = None
 
     def find_active_indices(self, std_multiple=1.0, min_indices=10):
         assert self.outcome != "No Hold"
@@ -533,6 +494,7 @@ class Trial:
         # get rid of channel 56, it's garbage
         sig[:, 56] = 0
         # find location of min trajectory norm (closest to zero)
+        # only from the hold step period
         low_point = np.argmin(np.linalg.norm(traj[:hold_steps, :], axis=1))
         # find signal norm value at this point
         sig_norms = np.linalg.norm(sig, axis=1)
@@ -639,7 +601,7 @@ class Trial:
                 usecols=(1, 2, 3),
                 encoding=None,
             )
-        self.trajectory = self.trajectory[:,-2:]
+        self.trajectory = self.trajectory[:, -2:]
 
     def get_filtered_emg_filename(self):
         if self.filtered_emg_filename is None:
