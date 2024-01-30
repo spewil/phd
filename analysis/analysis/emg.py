@@ -3,6 +3,7 @@ import numpy as np
 import scipy.signal
 import scipy.ndimage
 
+
 def make_kernel(kernel_length, cutoff_hz, sample_rate_hz, mode="lowpass"):
     # based on https://github.com/bonsai-rx/bonsai/blob/9c4db22dfa43a7b20fb8de7cb4eb079b19cfa027/Bonsai.Dsp/FrequencyFilter.cs#L153
     # Low-pass windowed-sinc filter: http://www.dspguide.com/ch16/4.htm
@@ -10,13 +11,17 @@ def make_kernel(kernel_length, cutoff_hz, sample_rate_hz, mode="lowpass"):
     kernel = np.zeros((kernel_length + 1, 1))
     for i in range(kernel_length):
         normalizer = i - (kernel_length // 2)
-        if normalizer == 0: 
+        if normalizer == 0:
             kernel[i] = cutoffRadians
         else:
             kernel[i] = np.sin(cutoffRadians * normalizer) / normalizer
 
         # Blackman window: http://www.dspguide.com/ch16/1.htm
-        kernel[i] = kernel[i] * (0.42 - 0.5 * np.cos(2 * np.pi * i / kernel_length) + 0.08 * np.cos(4 * np.pi * i / kernel_length))
+        kernel[i] = kernel[i] * (
+            0.42
+            - 0.5 * np.cos(2 * np.pi * i / kernel_length)
+            + 0.08 * np.cos(4 * np.pi * i / kernel_length)
+        )
 
     # Normalize for unit gain
     sum = np.sum(kernel)
@@ -31,29 +36,54 @@ def make_kernel(kernel_length, cutoff_hz, sample_rate_hz, mode="lowpass"):
 
     return kernel[:-1]
 
+
 def highpass(a):
-    highpass_kernel = make_kernel(250, 0.1, 2000, mode='highpass')
+    highpass_kernel = make_kernel(250, 0.1, 2000, mode="highpass")
     # cut off the end where it's extended for the "full" convolution
-    return scipy.signal.convolve2d(a, highpass_kernel, mode="full", boundary="symm")[:-highpass_kernel.shape[0]+2]
+    return scipy.signal.convolve2d(a, highpass_kernel, mode="full", boundary="symm")[
+        : -highpass_kernel.shape[0] + 2
+    ]
+
 
 def standardize(a, var):
     return (var @ a.T).T
 
+
 def rectify(a):
     return np.abs(a)
 
+
 def lowpass(a):
-    lowpass_kernel = make_kernel(750, 5.0, 2000, mode='lowpass')
-    return scipy.signal.convolve2d(a, lowpass_kernel, mode="full", boundary="symm")[:-lowpass_kernel.shape[0]+2]
+    lowpass_kernel = make_kernel(750, 5.0, 2000, mode="lowpass")
+    return scipy.signal.convolve2d(a, lowpass_kernel, mode="full", boundary="symm")[
+        : -lowpass_kernel.shape[0] + 2
+    ]
+
 
 def subsample(a):
     return a[::10, :]
 
+
 def filter_emg(a, var):
-    if a.shape[1] != 64:
-        raise ValueError(f"incorrect shape for input array: {a.shape}")
+    assert a.shape[1] == 64
     return subsample(lowpass(rectify(standardize(highpass(a), var))))
 
+
+def offline_highpass(sig, cutoff=50):
+    b, a = scipy.signal.butter(2, cutoff, "highpass", analog=False, fs=2000)
+    return scipy.signal.filtfilt(b, a, sig, axis=0)
+
+
+def offline_lowpass(sig, cutoff=500):
+    b, a = scipy.signal.butter(2, cutoff, "lowpass", analog=False, fs=2000)
+    return scipy.signal.filtfilt(b, a, sig, axis=0)
+
+
+def offline_filter_emg(a, var):
+    assert var.shape == (64,64)
+    assert a.shape[0] > a.shape[1]
+    filtered = rectify(offline_lowpass(rectify(standardize(offline_highpass(a, cutoff=5), var)), cutoff=5))
+    return filtered
 
 # THIS STUFF IS OLD, NOT EVEN SURE WHERE IT'S USED?
 
@@ -73,32 +103,9 @@ def filter_emg(a, var):
 #         out = data_subset - mean
 #     return out[:, start - 1 : end]
 
-# def filter_emg(a, cutoff=5):
-#     filtered = lowpass(rectify(a), cutoff=cutoff)
-#     # print(np.min(filtered), np.max(filtered))
-#     min_channel = np.argmin(np.min(filtered, axis=0))
-#     # print("min channel: ", min_channel)
-#     filtered = rectify(filtered)
-#     # print(np.min(filtered), np.max(filtered))
-#     # print(filtered.shape)
-#     return filtered
-
-# def rectify(a):
-#     return np.abs(a)
-
 
 # def get_axis():
 #     return 0
-
-
-# def highpass(sig, cutoff=50):
-#     b, a = scipy.signal.butter(2, cutoff, "highpass", analog=False, fs=2000)
-#     return scipy.signal.filtfilt(b, a, sig, axis=get_axis())
-
-
-# def lowpass(sig, cutoff=500):
-#     b, a = scipy.signal.butter(2, cutoff, "lowpass", analog=False, fs=2000)
-#     return scipy.signal.filtfilt(b, a, sig, axis=get_axis())
 
 
 # def notch(sig, freq=50):

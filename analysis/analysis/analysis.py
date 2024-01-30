@@ -91,7 +91,7 @@ def count_not_nan(data):
 ## NATURAL MOVEMENT DATA
 
 
-def get_movement_filenames(collection_name, subject_name, task_name, session_name):
+def get_movement_filenames(collection_name, subject_name, session_name):
     filenames = []
     with open(ROOT_METADATA_PATH / collection_name / "natural_movement.json") as fp:
         movements = json.load(fp)["movements"]
@@ -101,14 +101,14 @@ def get_movement_filenames(collection_name, subject_name, task_name, session_nam
             ROOT_RAWDATA_PATH
             / collection_name
             / subject_name
-            / task_name
+            / "natural_movement"
             / session_name
         )
         prefix = str(
             ROOT_RAWDATA_PATH
             / collection_name
             / subject_name
-            / task_name
+            / "natural_movement"
             / session_name
             / movement
         )
@@ -178,6 +178,49 @@ def load_movement_mean_stack(subject):
     c[1::2, :] = movement_emg[1]
 
     return c
+
+
+### CALIBRATION
+
+def get_calibration_emg_filenames(collection_name, subject_name, session_name):
+    directory = (
+        ROOT_RAWDATA_PATH
+        / collection_name
+        / subject_name
+        / "calibration_bars"
+        / session_name
+    )
+    filenames = []
+    for filename in directory.iterdir():
+        if ("_emg_" in str(filename) and not "csv" in str(filename)):
+            filenames.append(filename)
+    filenames.sort(key=lambda x: int(x.name.split("/")[-1].split("_")[0]))
+    return filenames
+
+def get_calibration_bar_filenames(collection_name, subject_name, session_name):
+    directory = (
+        ROOT_RAWDATA_PATH
+        / collection_name
+        / subject_name
+        / "calibration_bars"
+        / session_name
+    )
+    filenames = []
+    for filename in directory.iterdir():
+        if ("_bars_" in str(filename) and not "csv" in str(filename)):
+            filenames.append(filename)
+    filenames.sort(key=lambda x: int(x.name.split("/")[-1].split("_")[0]))
+    return filenames
+
+def load_calibration_emg(filename):
+    return (
+        np.fromfile(filename, dtype=np.int32).reshape(-1, 68)[:,:64]
+    )
+
+def load_calibration_bar(filename):
+    return (
+        np.fromfile(filename, dtype=np.float32).reshape(-1, 64)
+    )
 
 
 ### OLD STUFF

@@ -1,5 +1,11 @@
 # motor learning papers
 
+## Hand function: peripheral and central constraints on performance [https://journals.physiology.org/doi/full/10.1152/japplphysiol.01063.2003]
+
+- most daily use of the hand is for grasping
+- even performances as sophisticated as playing the piano require only that one finger move more than the others.
+- adjacent digits tend to be more highly correlated than nonadjacent digits
+
 ## random 
 
 The brain seems a thoroughfare for nerve-action passing on its way to the motor animal. It has been remarked that Life’s aim is an act, not a thought. Today the dictum must be modified to admit that, often, to refrain from an act is no less an act than to commit one, because inhibition is co-equally with excitation a nervous activity. (Sherrington, Rede Lecture, 1933)
