@@ -1,9 +1,38 @@
 import numpy as np
 from pathlib import Path
 import json
+import sys
+import pickle
+import scipy as sp
 
-ROOT_RAWDATA_PATH = Path("/Users/spencer/motor-control/data/rawdata/")
-ROOT_METADATA_PATH = Path("/Users/spencer/motor-control/data/metadata/")
+if sys.platform == "linux":
+    ROOT_RAWDATA_PATH = Path("/home/spencer/motor-control/data/rawdata/")
+    ROOT_METADATA_PATH = Path("/home/spencer/motor-control/data/metadata/")  
+else:   
+    ROOT_RAWDATA_PATH = Path("/Users/spencer/motor-control/data/rawdata/")
+    ROOT_METADATA_PATH = Path("/Users/spencer/motor-control/data/metadata/")
+
+def linear_fit(x_data, y_data):
+    result = sp.stats.linregress(x_data, y_data)
+    return result
+
+def linspace(data):
+    return np.linspace(np.min(data),np.max(data),100,endpoint=True)
+
+def cosine_distance(A,B):
+    # insensitive to magnitude, "directional"
+    return 1 - (np.trace(np.dot(A,B)) / (np.linalg.norm(A,ord='fro') * np.linalg.norm(B,ord='fro')))
+
+def frobenius_difference(A,B):
+    # sensitive to magnitudes
+    return np.linalg.norm(A-B,ord='fro')
+
+def load_subjects():
+    with open('olympics_subjects.pkl', 'rb') as handle:
+        return pickle.load(handle)
+
+def load_trial_stack(subject_idx):
+    return np.load(f"filtered_stacks/filtered_stack_{subject_idx}.npy")
 
 ### TASK / NUll SPACE
 

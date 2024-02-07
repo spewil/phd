@@ -37,11 +37,12 @@ def make_kernel(kernel_length, cutoff_hz, sample_rate_hz, mode="lowpass"):
     return kernel[:-1]
 
 
-def highpass(a):
-    highpass_kernel = make_kernel(250, 0.1, 2000, mode="highpass")
+def highpass(a, kernel=None):
+    if kernel is None:
+        kernel = make_kernel(250, 0.1, 2000, mode="highpass")
     # cut off the end where it's extended for the "full" convolution
-    return scipy.signal.convolve2d(a, highpass_kernel, mode="full", boundary="symm")[
-        : -highpass_kernel.shape[0] + 2
+    return scipy.signal.convolve2d(a, kernel, mode="full", boundary="symm",)[
+        : -kernel.shape[0] + 2
     ]
 
 
@@ -53,21 +54,36 @@ def rectify(a):
     return np.abs(a)
 
 
-def lowpass(a):
-    lowpass_kernel = make_kernel(750, 5.0, 2000, mode="lowpass")
-    return scipy.signal.convolve2d(a, lowpass_kernel, mode="full", boundary="symm")[
-        : -lowpass_kernel.shape[0] + 2
+def lowpass(a, kernel=None):
+    if kernel is None:
+        kernel = make_kernel(750, 5.0, 2000, mode="lowpass")
+    return scipy.signal.convolve2d(a, kernel, mode="full", boundary="symm")[
+        : -kernel.shape[0] + 2
     ]
 
 
 def subsample(a):
     return a[::10, :]
 
+def fast_lowpass(a, kernel=None):
+    if kernel is None:
+        kernel = make_kernel(750, 5.0, 2000, mode="lowpass")
+    return scipy.signal.fftconvolve(a, kernel, mode="valid",axes=(0))
 
-def filter_emg(a, var):
+def fast_highpass(a, kernel=None):
+    if kernel is None:
+        kernel = make_kernel(250, 0.1, 2000, mode="highpass")
+    return scipy.signal.fftconvolve(a, kernel, mode="valid",axes=(0))
+
+
+def filter_emg(a, var, lowpass_kernel=None, highpass_kernel=None):
     assert a.shape[1] == 64
-    return subsample(lowpass(rectify(standardize(highpass(a), var))))
-
+    # return subsample(lowpass(rectify(standardize(highpass(a,highpass_kernel), var)),lowpass_kernel))
+    # changed the line above to what's below for speedup!
+    # we need to refect the beginning of the signal to have a valid length
+    # 1000 is the length of the two kernels combined
+    reflected = np.concatenate([a[:1000][::-1], a],axis=0)
+    return subsample(fast_lowpass(rectify(standardize(fast_highpass(reflected,highpass_kernel), var)),lowpass_kernel))
 
 def offline_highpass(sig, cutoff=50):
     b, a = scipy.signal.butter(2, cutoff, "highpass", analog=False, fs=2000)

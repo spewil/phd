@@ -3,6 +3,7 @@ import numpy as np
 from io import StringIO
 from pathlib import Path
 import json
+import sys
 
 
 s3_resource = boto3.resource("s3")
@@ -10,9 +11,12 @@ s3 = boto3.client("s3")
 bucket_name = "motorlearning"
 bucket = s3_resource.Bucket(name=bucket_name)
 
-ROOT_RAWDATA_PATH = Path("/Users/spencer/motor-control/data/rawdata/")
-ROOT_METADATA_PATH = Path("/Users/spencer/motor-control/data/metadata/")
-
+if sys.platform == "linux":
+    ROOT_RAWDATA_PATH = Path("/home/spencer/motor-control/data/rawdata/")
+    ROOT_METADATA_PATH = Path("/home/spencer/motor-control/data/metadata/")  
+else:   
+    ROOT_RAWDATA_PATH = Path("/Users/spencer/motor-control/data/rawdata/")
+    ROOT_METADATA_PATH = Path("/Users/spencer/motor-control/data/metadata/")
 ### S3
 
 

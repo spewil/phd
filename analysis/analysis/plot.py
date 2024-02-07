@@ -5,6 +5,10 @@ from matplotlib.markers import MarkerStyle
 import matplotlib
 import analysis
 
+from matplotlib.markers import MarkerStyle
+from matplotlib.patches import Ellipse
+import matplotlib.transforms as transforms
+
 matplotlib.use("TkAgg")
 
 # from utils import analysis, plot, utils
@@ -105,6 +109,88 @@ def plot_preprocessing_steps(signal, ax=None):
     ax.set_xlabel("sample")
     ax.set_ylabel("EMG activation [AU]")
     return fig, ax
+
+
+
+
+def plot_weighted_targets(ax, weights):
+    m = MarkerStyle("o", fillstyle="none")
+    theta = (np.linspace(0, 2 * np.pi, 13) + np.pi)[:-1]
+    for t, w in zip(theta, weights):
+        ax.plot(
+            np.cos(t),
+            np.sin(t),
+            marker=m,
+            markersize=np.exp(w*30),
+            color="grey",
+        )
+
+def plot_linear_fit(x, result, ax):
+    ax.plot(x, result.intercept + result.slope*x,"--", color="tab:red", label=f"Linear Fit, $R^2$={np.round(result.rvalue**2, 5)}")
+
+def plot_confidence_ellipse(center, cov, ax, n_std=3.0, edgecolor="k", facecolor='none', **kwargs):
+    pearson = cov[0, 1] / np.sqrt(cov[0, 0] * cov[1, 1])
+    # Using a special case to obtain the eigenvalues of this
+    # two-dimensionl dataset.
+    ell_radius_x = np.sqrt(1 + pearson)
+    ell_radius_y = np.sqrt(1 - pearson)
+    ellipse = Ellipse((0, 0),
+        width=ell_radius_x * 2,
+        height=ell_radius_y * 2,
+        facecolor=facecolor,
+        edgecolor=edgecolor,
+        **kwargs)
+    # Calculating the stdandard deviation of x from
+    # the squareroot of the variance and multiplying
+    # with the given number of standard deviations.
+    scale_x = np.sqrt(cov[0, 0]) * n_std
+
+    # calculating the stdandard deviation of y ...
+    scale_y = np.sqrt(cov[1, 1]) * n_std
+
+    transf = transforms.Affine2D() \
+        .rotate_deg(45) \
+        .scale(scale_x, scale_y) \
+        .translate(center[0], center[1])
+
+    ellipse.set_transform(transf + ax.transData)
+    return ax.add_patch(ellipse)
+
+def plot_model(means, covariances, ax=None):
+    for mean, covariance in zip(means, covariances):
+        if ax is None:
+            plt.plot(mean[0],mean[1],"ro")
+            plot_confidence_ellipse(mean,covariance,ax=plt.gca())
+        else:
+            ax.plot(mean[0],mean[1],"ro")
+            plot_confidence_ellipse(mean,covariance,ax=ax)
+
+def plot_pairs(pairs, locs1, locs2, ax=None,style="k-"):
+    if ax is None:
+        for pair in pairs:
+            plt.plot([locs1[pair[0]][0],locs2[pair[1]][0]],[locs1[pair[0]][1],locs2[pair[1]][1]],style)
+    else:
+        for pair in pairs:
+            ax.plot([locs1[pair[0]][0],locs2[pair[1]][0]],[locs1[pair[0]][1],locs2[pair[1]][1]],style)
+def plot_means(means,color="k",ax=None):
+    assert means.shape[0] == 2 or means.shape[1] == 2
+    if means.shape[0] == 2:
+        means = means.T
+    if ax is None:
+        ax = plt.gca()
+    for p in means:
+        ax.plot(p[0],p[1],"o",color=color)
+
+def plot_covs(means,covs,color="k",ax=None):
+    assert means.shape[0] == 2 or means.shape[1] == 2
+    if means.shape[0] == 2:
+        means = means.T
+    if covs.shape[0] == 2:
+        covs = covs.reshape(-1,2,2)
+    if ax is None:
+        ax = plt.gca()
+    for m, c in zip(means, covs):
+        plot_confidence_ellipse(m,c,ax,n_std=0.5,edgecolor=color)
 
 
 # def plot_psd(data, freq=2000, legend=False, fig=None):
