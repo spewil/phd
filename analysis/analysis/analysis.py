@@ -99,7 +99,7 @@ def insert_into_1d(x, idx, val):
 def remove_nan_rows(x, return_idx=False):
     mask = ~np.isnan(x).any(axis=1)
     if return_idx:
-        return x[mask, :], np.where(~mask)[0]
+        return x[mask, :], np.where(mask)[0]
     else:
         return x[mask, :]
 

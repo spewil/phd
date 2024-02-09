@@ -5,6 +5,7 @@ from pathlib import Path
 import json
 import sys
 
+### S3
 
 s3_resource = boto3.resource("s3")
 s3 = boto3.client("s3")
@@ -17,8 +18,9 @@ if sys.platform == "linux":
 else:   
     ROOT_RAWDATA_PATH = Path("/Users/spencer/motor-control/data/rawdata/")
     ROOT_METADATA_PATH = Path("/Users/spencer/motor-control/data/metadata/")
-### S3
 
+def get_decoder(subject):
+    return subject.decoder[-2:,:]
 
 def get_subject_names(collection_name):
     # get all subject names in an experiment
