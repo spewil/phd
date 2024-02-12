@@ -1,0 +1,11 @@
+\@doanenote {2}
+macro:->lipsum[1]
+\@endanenote 
+\@doanenote {3}
+macro:->test
+a
+\@endanenote 
+\@doanenote {4}
+macro:->test
+a
+\@endanenote 

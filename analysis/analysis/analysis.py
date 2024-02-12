@@ -12,6 +12,8 @@ else:
     ROOT_RAWDATA_PATH = Path("/Users/spencer/motor-control/data/rawdata/")
     ROOT_METADATA_PATH = Path("/Users/spencer/motor-control/data/metadata/")
 
+### Modeling
+
 def linear_fit(x_data, y_data):
     result = sp.stats.linregress(x_data, y_data)
     return result
@@ -26,6 +28,10 @@ def cosine_distance(A,B):
 def frobenius_difference(A,B):
     # sensitive to magnitudes
     return np.linalg.norm(A-B,ord='fro')
+
+
+
+### FILES
 
 def load_subjects():
     with open('olympics_subjects.pkl', 'rb') as handle:
@@ -225,6 +231,7 @@ def get_calibration_emg_filenames(collection_name, subject_name, session_name):
             filenames.append(filename)
     filenames.sort(key=lambda x: int(x.name.split("/")[-1].split("_")[0]))
     return filenames
+
 
 def get_calibration_bar_filenames(collection_name, subject_name, session_name):
     directory = (

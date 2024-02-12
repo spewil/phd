@@ -1,32 +1,37 @@
-% using this tutorial:
-% https://www.overleaf.com/learn/latex/Multi-file_LaTeX_projects#The_subfiles
-\documentclass{article}
+\documentclass[12pt,phd,a4paper,twoside]{ucl_thesis}
+\pagestyle{plain}
 \usepackage{graphicx}
-\usepackage{float}
 \graphicspath{{../images/}}
+\usepackage{float}
 \usepackage{blindtext}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{setspace}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{purple}{rgb}{0.44, 0.16, 0.39}
+\usepackage{lipsum}
+\usepackage[colorlinks]{hyperref}\hypersetup{citecolor=purple,linkcolor=purple}
 \usepackage[capitalize]{cleveref}
+\usepackage{enotez}
+\setenotez{backref=true}
+\let\footnote=\endnote%
 \usepackage{subfiles} % Best loaded last in the preamble
-
-\title{Sensorimotor Learning in Virtual Environments}
-\author{Spencer Wilson}
-\date{\today}
 
 \begin{document}
 
-\maketitle
+\include{preamble}
 
-\subfile{sections/Learning_metrics}
+\subfile{chapters/Introduction}
+\subfile{chapters/Background_experiments}
+\subfile{chapters/Background_theory}
+\subfile{chapters/Methods}
+\subfile{chapters/Basic_Results}
 
-\subfile{sections/Reconstruct_emg}
-
-\subfile{sections/Nullspace_variability}
-
-\subfile{sections/Per_target_learning}
-
-\newpage
+% \subfile{chapters/Reconstruct_emg}
+% \subfile{chapters/Nullspace_variability}
+% \subfile{chapters/Per_target_learning}
 
 \bibliographystyle{naturemag}
 \bibliography{bib/bibliography}

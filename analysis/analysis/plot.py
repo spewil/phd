@@ -63,6 +63,7 @@ def save_figure(fig, name, folder="."):
         format="pdf",
         transparent=False,
     )
+    print(f"Figure saved to {savepath}")
 
 
 def plot_circle(x, y, r, ax, style="k"):

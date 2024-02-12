@@ -4,7 +4,40 @@ import scipy.signal
 import scipy.ndimage
 
 
+
+
+
+
+
+
+
 def make_kernel(kernel_length, cutoff_hz, sample_rate_hz, mode="lowpass"):
+    """
+        filter delay is (window - 1)/(2 * sample_rate)
+        (((1000 - 1) / 2) samples) / 2000 samples/sec 
+
+        Output delay is the amount of time it takes for a change 
+        on the input to fully reflect on the output. It can also be
+        expressed in samples and is equal to filter order 
+        (window-1). 
+
+        To be precise the group delay of a linear phase FIR filter is (𝑁−1)/2 samples, where 𝑁 is 
+        the filter length (i.e. the number of taps). The group delay is constant for all 
+        frequencies, because the filter has a linear phase, i.e. its impulse response is symmetrical 
+        (or asymmetric). A linear phase means that all frequency components of the input signal 
+        experience the same delay, i.e. there are no phase distortions. So for a frequency selective 
+        filter (e.g., a low pass filter), if the input signal is in the passband of the filter, the 
+        output signal is approximately equal to the input signal delayed by the group delay of the 
+        filter. Note that in general FIR filters do not have a linear phase response. In this case, 
+        the group delay is a function of frequency.
+        https://dsp.stackexchange.com/questions/18435/group-delay-of-the-fir-filter 
+
+        Group delay is the time lag of the amplitude envelopes of 
+        the various sinusoidal components of the input signal through 
+        the filter. It can also be expressed in samples and is 
+        equal to half the filter order ((window-1)/2). 
+
+    """
     # based on https://github.com/bonsai-rx/bonsai/blob/9c4db22dfa43a7b20fb8de7cb4eb079b19cfa027/Bonsai.Dsp/FrequencyFilter.cs#L153
     # Low-pass windowed-sinc filter: http://www.dspguide.com/ch16/4.htm
     cutoffRadians = 2 * np.pi * cutoff_hz / sample_rate_hz
@@ -100,6 +133,13 @@ def offline_filter_emg(a, var):
     assert a.shape[0] > a.shape[1]
     filtered = rectify(offline_lowpass(rectify(standardize(offline_highpass(a, cutoff=5), var)), cutoff=5))
     return filtered
+
+
+
+
+
+
+
 
 # THIS STUFF IS OLD, NOT EVEN SURE WHERE IT'S USED?
 
