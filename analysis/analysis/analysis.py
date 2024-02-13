@@ -12,6 +12,23 @@ else:
     ROOT_RAWDATA_PATH = Path("/Users/spencer/motor-control/data/rawdata/")
     ROOT_METADATA_PATH = Path("/Users/spencer/motor-control/data/metadata/")
 
+def nonzeros_over_rows(samples):
+    # samples x channels
+    return np.where(np.all(samples > 0,axis=1))[0]
+
+def log_emg_data(samples,mean_56=True):
+    # samples x channels
+    assert len(samples.shape) == 2, samples.shape
+    assert samples.shape[0] > samples.shape[1], samples.shape
+    if mean_56:
+        samples[:,56] = np.mean(samples[:,(56-8,56-16)],axis=1)
+    greater_than_zero_idxs = nonzeros_over_rows(samples)
+    sample_diff = samples.shape[0] - greater_than_zero_idxs.shape[0]
+    if sample_diff > 0:        
+        samples = samples[greater_than_zero_idxs,:]
+        print(f"cut {sample_diff} samples")
+    return np.log(samples)
+
 ### Modeling
 
 def linear_fit(x_data, y_data):
