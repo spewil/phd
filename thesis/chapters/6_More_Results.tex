@@ -1,0 +1,85 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../../images/}}}
+\begin{document}
+
+\chapter{CHAPTER NAME}\label{chap:LABEL}
+
+\bigskip
+\begin{quote}
+  \emph{QUOTE}
+  
+  \raggedleft{--- AUTHOR, \emph{SOURCE}}
+\end{quote}
+
+\cleardoublepage%
+
+% \begin{figure}
+%     \centering
+%     \begin{minipage}{0.8\textwidth}
+%       \includegraphics[width=\textwidth]{introduction/voder_schematic.jpg}
+%       \subcaption{}
+%     \end{minipage}\\%
+%     \begin{minipage}{0.5\textwidth}
+%       \includegraphics[width=\textwidth]{introduction/voder.png}
+%       \subcaption{}
+%     \end{minipage}
+%     \caption{CAPTION}\label{fig:voder}
+%   \end{figure}
+
+\begin{itemize}
+  \item 
+\end{itemize}
+
+
+\section[short]{PCA Dimensionality}
+
+Show dimensionality of different tasks
+
+show two-dimensional projections of activity
+
+Look at these PCA modes, compare them to natural movement...? Are these modes relevant to the task? Hmm....
+
+\section[short]{Structure of the Data Manifold}
+
+UMAP
+Toy GMM model showing x-pattern
+failure of PCA to capture these statistics
+motivate gaussian mixture model, even if "overfit" as a descriptor -- we don't need to generalize, just summarize
+
+\section{Gaussian Mixtures}
+
+PDF when transforming gaussian rv to log-gaussian rv https://stats.stackexchange.com/questions/214997/multivariate-log-normal-probabiltiy-density-function-pdf
+PDF when exponentiating gaussian to get lognormal? gauhttps://stats.stackexchange.com/questions/89970/exponential-of-a-standard-normal-random-variable
+
+
+\section[short]{Nullspace Optimization}
+
+Compare subject EMG solutions to optimization solutions
+NB https://math.stackexchange.com/questions/2028698/
+Hypothesis: subject error ratio of err_pinv / err_weighted will be > 1 as subjects tend to minimize their error to the prior-weighted solution rather than the pinv solution.
+Todo – use a metric
+Check if fitting different subsets of the prior data with GMMs makes the distance thing work out! 
+Try calibration only
+Try movement only
+There is a result here regardless of the outcome!!!
+This is about choosing a cost function and comparing to the data
+Can I fit a cost function to the data? This is like fitting a model… 
+We know subject solutions hit the target, but what do they minimize over time?
+Can we regress these solutions against potential regressors?
+
+How do subjects’ EMG solutions compare to optimization-derived solutions with varying levels of prior influence? I.e. Are subjects biased towards their prior data?
+
+\section[short]{Nullspace Noise}
+
+Do the variances of subject errors (subject solution - optimization solution) lie in the null space directions on average or not? I.e. Where do subjects expend most of their variance beyond achieving the requirements of the task 
+
+Nonnegative min-norm solution - activity = mostly in the null space or task space? This says something about the error! Does the error live in the null space or task space, does this change over time?
+
+\section[short]{Nullspace Task Relevance}
+
+What do subjects learn? Do they learn specific rote movements, or are they flexible in their solutions?
+
+Look at the null space for task relevant information-- think about this, have we removed all the task relevant information before looking at this "noise" ? 
+
+\include{end_of_chapter}
+\end{document}

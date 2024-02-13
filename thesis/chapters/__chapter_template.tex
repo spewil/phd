@@ -1,0 +1,30 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../../images/}}}
+\begin{document}
+
+\chapter{CHAPTER NAME}\label{chap:LABEL}
+
+\bigskip
+\begin{quote}
+  \emph{QUOTE}
+  
+  \raggedleft{--- AUTHOR, \emph{SOURCE}}
+\end{quote}
+
+\cleardoublepage%
+
+\begin{figure}
+    \centering
+    \begin{minipage}{0.8\textwidth}
+      \includegraphics[width=\textwidth]{introduction/voder_schematic.jpg}
+      \subcaption{}
+    \end{minipage}\\%
+    \begin{minipage}{0.5\textwidth}
+      \includegraphics[width=\textwidth]{introduction/voder.png}
+      \subcaption{}
+    \end{minipage}
+    \caption{CAPTION}\label{fig:voder}
+  \end{figure}
+
+\include{end_of_chapter}
+\end{document}

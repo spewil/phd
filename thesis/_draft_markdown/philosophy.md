@@ -27,39 +27,3 @@ what do our learning curves look like? plateaus? discontinuities?
 can we measure performance within trial? (movement towards target at each time step?)
 
 what you're learning is dimensions of goal-relevance... as these dimensions are learned, we see changes in variability and in performance
-
----
-
-"To view skilled performance as being the product of underlying component
-processes is to see a learning curve as a macrocosm of many individual
-learning experiences. Performance at one point in time reflects what has been
-learned at some previous time that is able to impact on performance at the
-moment. Thus, although a learning curve may be viewed as reflecting an
-incremental improvement process that leads to a smooth transition from
-novice to expert performance, it is actually a summary of the operation of a
-vast number of component processes, each with their own improvement
-functions, and each with varying histories of application with or without
-success."
-
--- Speelman, Kirsner *Beyond the Learning Curve*
-
-"Because some
-tasks require that certain components be mastered before other components
-can be performed or even attempted, there is likely to be a typical develop-
-mental sequence in acquiring certain skills. Furthermore, if substantial work is
-required for component processes to reach a level of mastery before higher
-level tasks can be attempted, then there is likely to be some period of consolida-
-tion in the acquisition of the higher level skill. That is, there will be periods in
-which there appears to be little progress being made in performance of the
-task. Closer scrutiny, however, may reveal that performance is improving, but
-only on lower level components of the task. According to this view of skill
-acquisition, then, the processes that underlie plateaus in learning curves may
-also underlie the stages that are characteristic of cognitive development
-(Piaget, 1953)."
-
--- Speelman, Kirsner *Beyond the Learning Curve*
-
-"Learning is not like a coin, which remains physically whole even through the most
-infamous transactions; it is, rather, like a very handsome dress, which is worn out
-through use and ostentation."
--- Umberto Eco (‘The Name of the Rose’)

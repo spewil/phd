@@ -3,23 +3,72 @@
 \begin{document}
 
 
+\chapter{Basic Results}\label{chap:basic_results}
+
+\begin{quote}
+    \emph{Perception is not something that happens to us, or in us, \[\ldots\] It is something we do.} \\ 
+    \raggedleft{--- Alva Noë, Perception in Action}
+\end{quote}
+
+% What are the results that tell us the task is working?
  
- 1. System Identification: learning a transition function $p(y_t|x_t, u_t)$
-    - How do you learn the unknown observation model from data?
+- What separates learners into high and low performers? What predicts differences in performance?
+- We want to look at intersubject variability– do people use similar “strategies”?
+- Do subjects end up using statistically similar solutions?
+- Explain learning from a statistical point of view– what is actually being learned? Is there a general learning principle across subjects?
 
-1. Policy Optimization
-    - Once dynamics are learned (or at least stable?), how do we form a policy that is generalizable to new tasks under these dynamics?
-    - This is the control problem.
+\section{Task Performance}
 
-It's safe to assume that these processes are happening in parallel. Because we have complete and arbitrary control over the observation mapping, we can ask the subject to interact through a  dynamic that is intuitive (informative prior) or unintuitive (uninformative or inhibitive prior). Each scenario, we hypothesize, will elicit different strategies for learning and control.
+"To view skilled performance as being the product of underlying component
+processes is to see a learning curve as a macrocosm of many individual
+learning experiences. Performance at one point in time reflects what has been
+learned at some previous time that is able to impact on performance at the
+moment. Thus, although a learning curve may be viewed as reflecting an
+incremental improvement process that leads to a smooth transition from
+novice to expert performance, it is actually a summary of the operation of a
+vast number of component processes, each with their own improvement
+functions, and each with varying histories of application with or without
+success."
+-- Speelman, Kirsner *Beyond the Learning Curve*
+
+"Because some
+tasks require that certain components be mastered before other components
+can be performed or even attempted, there is likely to be a typical develop-
+mental sequence in acquiring certain skills. Furthermore, if substantial work is
+required for component processes to reach a level of mastery before higher
+level tasks can be attempted, then there is likely to be some period of consolida-
+tion in the acquisition of the higher level skill. That is, there will be periods in
+which there appears to be little progress being made in performance of the
+task. Closer scrutiny, however, may reveal that performance is improving, but
+only on lower level components of the task. According to this view of skill
+acquisition, then, the processes that underlie plateaus in learning curves may
+also underlie the stages that are characteristic of cognitive development
+(Piaget, 1953)."
+
+-- Speelman, Kirsner *Beyond the Learning Curve*
+
+"Learning is not like a coin, which remains physically whole even through the most
+infamous transactions; it is, rather, like a very handsome dress, which is worn out
+through use and ostentation."
+-- Umberto Eco (‘The Name of the Rose’)
 
 
 
+we see an interaction between learning systems -- cortex, cerebellum, basal ganglia -- strategy / unsupervised prediction / supervised, RL / policies?
+this leads to multiple learning rates, fast and slow learning, discontinuities in learning
 
+questions -- what information influences learning?
+that is, what projection of the data best explains performance increases?
+is this projection / this information the same across participants?
 
+skill learning will lead to hierarchy, and different levels of the hierarchy may be learned at different times by different means/systems
 
-\section{Performance and its Potential Correlates}
+what is the mostly likely deconvolution of the learning curve?
 
+what do our learning curves look like? plateaus? discontinuities?
+can we measure performance within trial? (movement towards target at each time step?)
+
+what you're learning is dimensions of goal-relevance... as these dimensions are learned, we see changes in variability and in performance
 
 
 
@@ -29,8 +78,6 @@ It's safe to assume that these processes are happening in parallel. Because we h
     \includegraphics[width=0.2\textwidth]{images/data_analysis/center_hold/hit_fraction.pdf}
     \caption{Fractions of trial outcome types for each block of the center-hold, reach-out task. Hit fraction increases on each trial, suggesting the beginnings of task learning. Hold timeout failure increases over trials as well, perhaps suggesting increased baseline excitation of muscles during the hold period. Part of learning to activate certain muscle modes is learning to inhibit others.}\label{fig:hit_fraction}
     \end{figure}
-    
-
 
 In this task, the subject's first goal is to interact through the mapping $M$ and learn the consequences of various motor activations. That is, they must internalize a model of the virtual environment, what might be called a system identification problem. Subjects must collect data containing motor outputs and their sensory consequences. To do this, they must explore the space of activity. We predict that over trials, subjects' EMG activities over channels will become more varied as they attempt new movement patterns to achieve their twin goals of learning to move in this new environment and reaching the target. Running PCA on each individual trial's EMG time series, we hypothesize that initially we will see multiple components share signal variance as subjects explore. Eventually, we would expect to see a decrease in this measure of movement complexity a subjects hone their reaching skill. Trial-level PCA component variance fractions are shown in \Cref{fig:PCA_trial_variance}. We find an initial decrease in the top component's variance fraction, though we expect many more trials will be needed to see skill acquisition in the form of a dominant movement mode per trial.
 
@@ -48,6 +95,14 @@ We might model this task as the subject selecting an EMG signal $x$ which minimi
 \end{align}
 
 This problem is known to have a unique minimum for $\lambda>0$ which is an approximation $Mx\approx b$ regardless of the shape or rank of $M$. This implies that the subject, if they are biophysically capable to do so, will learn distinct motor outputs for each target rather than reusing modes for multiple targets with different activation levels. That is the subject will, over time, learn to fractionate their muscle output to reach their goal in order to minimize effort. For instance, to reach the the target at position $(1,0)$ in Cartesian coordinates, the subject could activate a bespoke activity mode and activate a combination of two or more modes for targets at $\pm45^\circ$ from this central target. If this is the case, the model predicts that the dimensionality of the EMG signal will increase over the course of training as the subject learns to construct bespoke activity modes for each target.
+
+
+
+\section{Policy Complexity}
+
+PCA subspace dimensionality
+Entropy!
+
 
 In \Cref{fig:PCA_concat_variance} we compute PCA on the concatenation of all trials within blocks for which we predict an increase in the number of dominant EMG modes as subjects learn multiple movements to reach individual targets. We expect subjects to, over time, develop some number of bespoke movement modes to activate independently and as a composition to reach each target. We find a suggestion of this idea in the data with our basic PCA analysis. More trials, session, and subjects will be required to explore this idea, and we are investigating probabilistic measures of signal complexity such as entropy to formalize this hypothesis. One direction might be to further define this task a regularized regression with different regularization terms chosen normatively for different sections of the learning and control process, and fitting data to these predictions. For instance, early in training subjects may not optimize for target accuracy as much as for signal sparsity, whereas later in learning subjects may optimize for target accuracy and output signal magnitude.
 
@@ -80,7 +135,12 @@ We next asked, since each trial appeared to be dominated by a single principle c
 The results here suggest that, at least up to linear decompositions, the features of low-contraction movements is relatively robust across sessions. As discussed in {section:next\_steps}, we will construct more reliable means to place electrodes on subjects' forearms to further increase repeatability. Another aspect of these results is our assumption subjects are producing the same contraction each time they move their finger, and at the same contraction level. That is, we assume they are recruiting the same motor units each movement. This may not be the case, and constructing new analyses which infer motor unit activations may be useful to mitigate this issue.
 
 
+\section[short]{Task Space}
 
+Visualize trajectories and their statistics nicely
+Visualize trajectories
+Figure out how to compare across targets (rotating?)
+Trends in trajectory stats? Means and variances of histograms
 
 
 
@@ -175,6 +235,149 @@ to understand how subjects manage the variability of their activity to
 acheive task success, and how this evolves over
 trials.}\label{fig:behavior}
 \end{figure}
+
+% \begin{figure}[H]
+%     \makebox[\linewidth][c]{%
+%         \centering
+%         \includegraphics[width=1.3\textwidth]{analysis/hits_and_noholds_over_blocks.pdf}
+%         }
+%     \caption{Blah blah blah blah}\label{fig:behavior}
+% \end{figure}
+
+
+% \begin{figure}[H]
+%     \makebox[\linewidth][c]{%
+%         \centering
+%         \includegraphics[width=1.3\textwidth]{analysis/reach_times_over_blocks.pdf}
+%         }
+%     \caption{Blah blah blah blah}\label{fig:behavior}
+% \end{figure}
+
+
+% \begin{figure}[H]
+%     \makebox[\linewidth][c]{%
+%         \centering
+%         \includegraphics[width=1.3\textwidth]{analysis/path_length_over_blocks.pdf}
+%         }
+%     \caption{Blah blah blah blah}\label{fig:behavior}
+% \end{figure}
+
+
+% \begin{figure}[H]
+%     \makebox[\linewidth][c]{%
+%         \centering
+%         \includegraphics[width=\textwidth]{analysis/example_path_segments.pdf}
+%     }
+%     \caption{Blah blah blah blah}\label{fig:behavior}
+%     \end{figure}
+
+
+% \begin{figure}[H]
+%     \makebox[\linewidth][c]{%
+%         \centering
+%         \includegraphics[width=1.3\textwidth]{analysis/segments_over_blocks.pdf}
+%     }
+%     \caption{Blah blah blah blah}\label{fig:behavior}
+% \end{figure}
+
+
+% \begin{figure}[H]
+%     \makebox[\linewidth][c]{%
+%         \centering
+%         \begin{subfigure}{.5\textwidth}
+%             \centering
+%             \includegraphics[width=\textwidth]{analysis/hits_learning_rates.pdf}
+%             \caption{}
+%             \label{fig:hit_learning_rates}
+%         \end{subfigure}%
+%         \begin{subfigure}{.5\textwidth}
+%             \centering
+%             \includegraphics[width=\textwidth]{analysis/reach_time_learning_rates.pdf}
+%             \caption{}            
+%             \label{fig:reach_time_learning_rates}
+%         \end{subfigure}%
+%     }
+
+%     \makebox[\linewidth][c]{%
+%         \begin{subfigure}{.5\textwidth}
+%             \centering
+%             \includegraphics[width=\textwidth]{analysis/path_length_learning_rates.pdf}
+%             \caption{}            
+%             \label{fig:path_length_learning_rates}
+%         \end{subfigure}
+%         \begin{subfigure}{.5\textwidth}
+%             \centering
+%             \includegraphics[width=\textwidth]{analysis/segment_learning_rates.pdf}
+%             \caption{}            
+%             \label{fig:path_length_learning_rates}
+%         \end{subfigure}
+%     }
+%     \caption{Learning rates for different measures of performance}
+%     \label{fig:three graphs}
+% \end{figure}
+
+
+% \begin{figure}[H]
+%     \makebox[\linewidth][c]{%
+%         \centering
+%         \includegraphics[width=1.4\textwidth]{analysis/example_decoder.pdf}
+%     }
+%     \caption{Blah blah blah blah}\label{fig:behavior}
+% \end{figure}
+
+
+% \begin{figure}[H]
+%     \makebox[\linewidth][c]{%
+%         \centering
+%         \includegraphics[width=1.4\textwidth]{analysis/example_decoder.pdf}
+%     }
+%     \caption{Blah blah blah blah}\label{fig:behavior}
+% \end{figure}
+
+
+% \begin{figure}[H]
+%     \makebox[\linewidth][c]{%
+%         \centering
+%         \includegraphics[width=.75\textwidth]{analysis/hit_count_decoder_cosine.pdf}
+%     }
+%     \caption{Blah blah blah blah}\label{fig:behavior}
+% \end{figure}
+
+
+% \begin{figure}[H]
+%     \makebox[\linewidth][c]{%
+%         \centering
+%         \begin{subfigure}{0.7\textwidth}
+%             \centering
+%             \includegraphics[width=\textwidth]{analysis/hit_lr_decoder_cosine.pdf}
+%             \caption{}
+%             \label{fig:hit_learning_rates}
+%         \end{subfigure}%
+%         \begin{subfigure}{0.7\textwidth}
+%             \centering
+%             \includegraphics[width=\textwidth]{analysis/reach_time_lr_decoder_cosine.pdf}
+%             \caption{}            
+%             \label{fig:reach_time_learning_rates}
+%         \end{subfigure}
+%     }
+
+%     \makebox[\linewidth][c]{%
+%         \begin{subfigure}{0.7\textwidth}
+%             \centering
+%             \includegraphics[width=\textwidth]{analysis/path_length_lr_decoder_cosine.pdf}
+%             \caption{}            
+%             \label{fig:path_length_learning_rates}
+%         \end{subfigure}%
+%         \begin{subfigure}{0.7\textwidth}
+%             \centering
+%             \includegraphics[width=\textwidth]{analysis/segment_lr_decoder_cosine.pdf}
+%             \caption{}            
+%             \label{fig:path_length_learning_rates}
+%         \end{subfigure}%
+%     }
+%     \caption{Learning rates for different measures of performance}
+%     \label{fig:three graphs}
+% \end{figure}
 
 \newpage
 

@@ -3,10 +3,7 @@
 \{\#sec:theory\}
 
 \begin{quote}
-\emph{An interesting open question is how to relate trial-to-trial
-dynamics of learning to asymptotic predictions regarding optimal
-adaptation.}
-
+\emph{An interesting open question is how to relate trial-to-trial dynamics of learning to asymptotic predictions regarding optimal adaptation.}
 --- Todorov, \emph{2007}
 \end{quote}
 
