@@ -9,10 +9,11 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{setspace}
-\usepackage[dvipsnames]{xcolor}
+\usepackage[dvipsnames,table]{xcolor}
 \definecolor{purple}{rgb}{0.44, 0.16, 0.39}
 \usepackage{lipsum}
 \usepackage[colorlinks]{hyperref}\hypersetup{citecolor=purple,linkcolor=purple}
+% have to load cleverref after hyperref
 \usepackage[capitalize]{cleveref}
 \usepackage{enotez}
 \setenotez{backref=true}
@@ -23,15 +24,11 @@
 
 \include{preamble}
 
-\subfile{chapters/Introduction}
-% \subfile{chapters/Background_experiments}
-% \subfile{chapters/Background_theory}
-% \subfile{chapters/Methods}
-% \subfile{chapters/Basic_Results}
-
-% \subfile{chapters/Reconstruct_emg}
-% \subfile{chapters/Nullspace_variability}
-% \subfile{chapters/Per_target_learning}
+\subfile{chapters/1_Introduction}
+\subfile{chapters/2_Background_theory}
+\subfile{chapters/3_Background_experiments}
+\subfile{chapters/4_Methods}
+\subfile{chapters/5_Basic_Results}
 
 \bibliographystyle{naturemag}
 \bibliography{bib/bibliography}

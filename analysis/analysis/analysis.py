@@ -12,6 +12,32 @@ else:
     ROOT_RAWDATA_PATH = Path("/Users/spencer/motor-control/data/rawdata/")
     ROOT_METADATA_PATH = Path("/Users/spencer/motor-control/data/metadata/")
 
+def compute_hit_fractions(subjects):
+    hit_fractions = []
+    for subject in subjects:
+        hits = 0
+        trials = 0
+        for s in subject.tasks["center_hold"].sorted_sessions():
+            for t in s.sorted_trials():
+                trials += 1
+                if t.outcome == "Hit":                    
+                    hits += 1
+        hit_fractions.append(hits/trials)
+    return hit_fractions
+
+def get_subject_target_hits(subject_idx):
+    target_hits = np.zeros(shape=(12))
+    subjects = load_subjects()
+    sessions = subjects[subject_idx].tasks["center_hold"].sorted_sessions()
+    for target_no in range(1,13):
+        target_hit_count = 0
+        for session in sessions:
+            for trial in session.sorted_trials():
+                if target_no == trial.target_number and trial.outcome == "Hit":
+                    target_hit_count += 1
+        target_hits[target_no-1] = target_hit_count
+    return target_hits
+
 def nonzeros_over_rows(samples):
     # samples x channels
     return np.where(np.all(samples > 0,axis=1))[0]
@@ -51,7 +77,7 @@ def frobenius_difference(A,B):
 ### FILES
 
 def load_subjects():
-    with open('olympics_subjects.pkl', 'rb') as handle:
+    with open('../olympics_subjects.pkl', 'rb') as handle:
         return pickle.load(handle)
 
 def load_trial_stack(subject_idx):
@@ -278,9 +304,6 @@ def load_calibration_bar(filename):
 
 ### OLD STUFF
 
-
-# def log(x, a, b):
-#     return b * np.log(x) + a
 
 
 # def calculate_hit_percentage(num_hits):

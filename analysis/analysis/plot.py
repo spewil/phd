@@ -1,13 +1,16 @@
 from pathlib import Path
 import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.markers import MarkerStyle
-import matplotlib
-import analysis
 
+import matplotlib
+import matplotlib.pyplot as plt
 from matplotlib.markers import MarkerStyle
 from matplotlib.patches import Ellipse
 import matplotlib.transforms as transforms
+from matplotlib import cm
+from matplotlib.colors import ListedColormap, LinearSegmentedColormap
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+
+import analysis
 
 matplotlib.use("TkAgg")
 
@@ -48,13 +51,62 @@ matplotlib.use("TkAgg")
 #     return ax, hf, stats
 
 
+def annotated_heatmap(array, labels_x, labels_y):
+    assert array.shape[0] == array.shape[1]
+    assert array.shape[0] == len(labels_x)
+    assert array.shape[0] == len(labels_y)
+
+    map = cm.get_cmap('afmhot', 256)
+    newmap = map(np.linspace(0,1,256,endpoint=True))
+    short_map = cm.get_cmap('afmhot')
+
+    newmap[0:26, :] = short_map(0.5)
+    newmap[26:52, :] = short_map(.6)
+    newmap[52:128, :] = short_map(.8)
+    newmap[128: :] = short_map(1.0)
+    newmap = ListedColormap(newmap)
+
+    fig, ax = plt.subplots()
+    for i,j in zip(*np.triu_indices(array.shape[0])):
+        array[i,j] = 10
+    divider = make_axes_locatable(ax)
+    cax = divider.append_axes('right', size='5%', pad=0.05)
+    im = ax.imshow(array,vmax=0.1,vmin=0.0001,cmap=newmap)
+
+    fig.colorbar(im, cax=cax, orientation='vertical', ticks=[0.0, 0.01 , 0.02, 0.05, 0.1])
+
+    # Show all ticks and label them with the respective list entries
+    ax.set_xticks(np.arange(len(labels_x)), labels=labels_x)
+    ax.set_yticks(np.arange(len(labels_y)), labels=labels_y)
+
+    # Rotate the tick labels and set their alignment.
+    plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
+            rotation_mode="anchor")
+
+    # Loop over data dimensions and create text annotations.
+    for i,j in zip(*np.tril_indices(array.shape[0],-1)):
+        text = ax.text(j, i, format_scientific(array[i, j]),
+                        ha="center", va="center", color="k")
+
+    fig.tight_layout()
+    return fig, (ax, cax)
+
+
+def format_scientific(n):
+    return np.format_float_scientific(n, precision=3, trim="k", unique=False)
+
+
+def format_positional(n):
+    return np.format_float_positional(n, precision=2, trim="k", unique=False, fractional=False)
+
+
 def save_figure(fig, name, folder="."):
     # if folder doesn't exist, make it
     if folder != ".":
         Path(folder).mkdir(exist_ok=True, parents=True)
         savepath = Path(folder) / Path(name + ".pdf")
     else:
-        savepath = Path(name + "pdf")
+        savepath = Path(name + ".pdf")
     fig.savefig(
         savepath,
         pad_inches=0.1,
@@ -112,22 +164,20 @@ def plot_preprocessing_steps(signal, ax=None):
     return fig, ax
 
 
-
-
 def plot_weighted_targets(ax, weights):
     m = MarkerStyle("o", fillstyle="none")
-    theta = (np.linspace(0, 2 * np.pi, 13) + np.pi)[:-1]
+    theta = np.linspace(0, 2 * np.pi, 13)
     for t, w in zip(theta, weights):
         ax.plot(
             np.cos(t),
             np.sin(t),
             marker=m,
-            markersize=np.exp(w*30),
+            markersize=w,
             color="grey",
         )
 
-def plot_linear_fit(x, result, ax):
-    ax.plot(x, result.intercept + result.slope*x,"--", color="tab:red", label=f"Linear Fit, $R^2$={np.round(result.rvalue**2, 5)}")
+def plot_linear_fit(x, result, ax, color="tab:red"):
+    ax.plot(x, result.intercept + result.slope*x,"--", color=color, label=f"Linear Fit, $R^2$={np.round(result.rvalue**2, 5)}, $p$={np.round(result.pvalue,5)}")
 
 def plot_confidence_ellipse(center, cov, ax, n_std=3.0, edgecolor="k", facecolor='none', **kwargs):
     pearson = cov[0, 1] / np.sqrt(cov[0, 0] * cov[1, 1])

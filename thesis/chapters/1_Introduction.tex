@@ -13,19 +13,23 @@
 
 \cleardoublepage%
 
-Why do this? Why fund or support this? Broadly, why is this topic interesting?
 
-Why motor? Why be interested in this?
-- isn't motor just spinal modules being played like keys?
-- no, it's all about the dynamics-- the rich correlations between movement variables, prediction, feedback...
-- motor actions are complex and extended across time and space
+\begin{itemize}
+  \item Why do this? Why fund or support this? Broadly, why is this topic interesting?
+  \item isn't motor just spinal modules being played like keys?
+  \item Why motor? Why be interested in this?
+  \item motor actions are complex and extended across time and space
+  \item no, it's all about the dynamics-- the rich correlations between movement variables, prediction, feedback...
+  \item What are our goals? What are we trying to achieve? Why are we setting up this task? 
+  \item Voder
+  \item Basmajian
+  \item RL muscle work
+  \item Bernstein
+  \item 
+\end{itemize}
 
-What are our goals? What are we trying to achieve? Why are we setting up this task? 
 
-% Voder
-% Basmajian
-% RL muscle work
-% Bernstein
+
 
 In 1939, a Bell Labs researcher, Homer Dudley, engineered a demonstration device he named the ``Voice Operation Demonstrator'' or ``Voder'' for the New York World's Fair\cite{Dudley}. Dudley explains:
 
@@ -44,7 +48,7 @@ In 1939, a Bell Labs researcher, Homer Dudley, engineered a demonstration device
     \includegraphics[width=\textwidth]{introduction/voder.png}
     \subcaption{}
   \end{minipage}
-  \caption{Voder}\label{fig:voder}
+  \caption[Voder]{Longer voder caption}\label{fig:voder}
 \end{figure}
 
 
@@ -84,14 +88,12 @@ In the 1960s and 70s, there was a surge of interest in this quantum of behavior.
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{introduction/basmajian_63.png}
-  \caption{???}
-  \label{fig:basmajian_63}
+  \caption[Basmajian experimental method]{CAPTION}\label{fig:basmajian_63}
 \end{figure}
 
 Over the last few decades, there has been considerable amount of work done to untangle the abilities of the motor system to flexibly control the body including through optimal control theory\cite{Todorov2004}, reinforcement learning in continuous action spaces\cite{koberReinforcementLearningRobotics2013}, and detailed physiological studies\cite{sauerbreiCorticalPatternGeneration2019}. Despite a wealth of painstaking and impressive work, a holistic understanding of the computations underlying the construction of skilled movement remains an incredibly exciting and fruitful direction of research. Our aim is to progress understanding of skilled movement by studying the solutions produced by human subjects to motor tasks in dynamically rich, yet experimentally manipulable, virtual environments. Our goal is to reverse-engineer the ability to acquire and perform novel motor skills.
 
 Humans produce a great variety of movements every day, often without conscious thought. For example, movements like bringing a cup of coffee to our lips for a sip are generally out of reach for state-of-the-art robotic systems. We claim that this ``motor gap'' between biological and artificial motor systems is due to a lack of \emph{dexterity}. Soviet neuroscientist Nikolai Bernstein defined dexterity as the ability to ``find a motor solution in any situation and in any condition\cite{Bernstein1967}''. The crux of this definition is the flexibility of such solutions. This flexibility, or robustness\endnote{Kitano defines robustness as ``the maintenance of specific functionalities of the system against perturbations, and it often requires the system to change its mode of operation in a flexible way''. He claims that robustness requires control, alternative mechanisms, modularity and decoupling between high and low level variability.}\cite{kitanoBiologicalRobustness2004}, is the ability to optimize internal parameters in response to external perturbations and adapt to new information to achieve the goals of an ongoing plan.
-
 
 Using data from our experimental setup, we wish to understand both how the structure of muscle activation variability evolves during skill acquisition and how the motor system constructs skilled movement through the composition of component muscle activations. To begin, we review a  sampling of current motor physiology research relevant to dexterous motor computations in \cref{sec:physiology}. In \cref{sec:experiment}, we cover our prototype hardware and experiments. With inspiration from physiology and our experiments, we hope to make progress in modeling sensorimotor control and learning in our experimental setup. We cover preliminary work in this direction in \cref{sec:theory}, and discuss possible future directions in \cref{sec:next_steps}.
 
@@ -112,7 +114,6 @@ Why is this the most interesting problem? Because we are so far from creating ma
 The physiology of the human hand is unique from an evolutionary perspective, so we focus on use of the hand.
 
 We want to set up a specific experiment will help us to track muscle-level changes
-
 
 We need to get a little messy, collect and analyze data in a decidely exploratory manner to then inspire hypotheses that can be modeled. We want these hypotheses to be inspired by theoretical work in control and learning theory.
 

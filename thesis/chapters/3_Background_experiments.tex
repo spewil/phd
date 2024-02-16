@@ -34,20 +34,13 @@ reduction-based motor interface
 Our results are consistent with a recently described model in which an optimal feedback control policy is calculated independently for each potential target and a weighted average of these policies (that is, feedback gains) is computed at each point in time based on the relative desirability of each target50. Notably, this model, which pre-dicts averaging of feedback gains, can also account for spatial (that is, trajectory) averaging in go-before-you-know tasks. We submit that our result showing feedback gain averaging, coupled with previous work demonstrating trajectory averaging, provides strong support for the compelling idea that the CNS, under cases of target uncertainty, encodes in parallel multiple motor plans, along with their associated control policies, for competing action options. (Wolpert Nature 2018 competing control policies)
 \end{quote}
 
-Nashed 2014 -- short-latency R1 and long-latency R2 responses (60ms;
-45--75ms; 75--105 ms) stretch responses R1 show dexterity (Andrew Pru
-2019,2020) in holding and in reaching
+Nashed 2014 --- short-latency R1 and long-latency R2 responses (60ms; 45--75ms; 75--105 ms) stretch responses R1 show dexterity (Andrew Pru 2019,2020) in holding and in reaching
 
-{[}@takeiTransientDeactivationDorsal2021{]} cooled areas of motor cortex
-and mapped them onto OFC-- limitation of this is the behavior, it's a
-postural maintenance task, not a reach or a complex movement\ldots OFC
-is definitely the best model here. We should be mindful about modeling
-things that go beyond this model, they should in some way be able to
-reduce down to OFC in the limit of postural maintenance, perhaps\ldots{}
+\cite{@takeiTransientDeactivationDorsal2021} cooled areas of motor cortex and mapped them onto OFC-- limitation of this is the behavior, it's a postural maintenance task, not a reach or a complex movement\ldots OFC is definitely the best model here. We should be mindful about modeling things that go beyond this model, they should in some way be able to reduce down to OFC in the limit of postural maintenance, perhaps\ldots{}
 
 \subsubsection{Adaptation of Reaching}\label{adaptation-of-reaching}
 
-Sinusoidal over trials visuomotor rotations allowed experimenters to disentangle perturbation error sequence over trials in ``driven'' and ``undriven'' dimensions by knowing the frequencies of the rotational perturbation. Explicit strategies were given by participants before moving, all errors based off this {[}@miyamotoImplicitAdaptationCompensates2020{]}. This is a very clever experimental design but leaves many questions. Particularly, implicit adaptation seems to be driven by a combination of performance error and sensory prediction error, but how can we tease this apart?
+Sinusoidal over trials visuomotor rotations allowed experimenters to disentangle perturbation error sequence over trials in ``driven'' and ``undriven'' dimensions by knowing the frequencies of the rotational perturbation. Explicit strategies were given by participants before moving, all errors based off this \cite{@miyamotoImplicitAdaptationCompensates2020}. This is a very clever experimental design but leaves many questions. Particularly, implicit adaptation seems to be driven by a combination of performance error and sensory prediction error, but how can we tease this apart?
 
 \begin{quote}
 Although little is known about the specific error signals that drive these different processes, an intriguing possibility is that distinct components of implicit learning are driven by performance errors and sensory-prediction errors.
@@ -70,7 +63,6 @@ An important idea in motor skill learning research is that motor learning procee
 This is interesting, as in our experiment we might think the opposite? Depends on how we define explicit and implicit. Here the definition is loosely deliberate and effortful versus automatic and intuitive. Their point here might be mirrored in overall muscle activation, early on it's actively searching. But what for? And how? We might think of this as a foraging task, searching for information about the unknown mapping-- movements as hypotheses.
 
 \begin{itemize}
-\tightlist
 \item
   prisms
 \item
@@ -78,20 +70,18 @@ This is interesting, as in our experiment we might think the opposite? Depends o
 \item
   forcefield
 \item
-  nothing -- van Beers variability
+  nothing --- van Beers variability
 \end{itemize}
 
 \begin{quote}
-The vast majority of research in motor learning studies this capacity through adaptation para- digms in which a systematic perturbation is introduced to disrupt a well-practiced behavior, such as point-to-point reaching. {[}@adrianTheoreticalModelsMotor2012{]}
+The vast majority of research in motor learning studies this capacity through adaptation para- digms in which a systematic perturbation is introduced to disrupt a well-practiced behavior, such as point-to-point reaching. \cite{@adrianTheoreticalModelsMotor2012}
 \end{quote}
 
 \begin{itemize}
-\tightlist
 \item
   classic reaching adaptation --\textgreater{} this is a different goal
 
-  \begin{itemize}
-  \tightlist
+  \begin{itemize}  
   \item
     shadmehr
   \item
@@ -100,24 +90,23 @@ The vast majority of research in motor learning studies this capacity through ad
 \item
   unperturbed movements
 
-  \begin{itemize}
-  \tightlist
+  \begin{itemize}  
   \item
     van beers
   \end{itemize}
 \end{itemize}
 
 
-{[}@manleyWhenMoneyNot2014 @vanbeersMotorLearningOptimally2009
-@vanbeersRandomWalkMotor2013{]}
+\cite{@manleyWhenMoneyNot2014 @vanbeersMotorLearningOptimally2009
+@vanbeersRandomWalkMotor2013}
 
 \subsubsection{Arbitrary Visuomotor Mappings}\label{arbitrary-visuomotor-mappings}
 
 There exist a handful of prior studies mapping EMG activity and finger joint angles directly to virtual stimuli, though few are focused on the learning process and none have the input dimensionality we aim to achieve in work proposed here.
 
-{[}@Mussa-IvaldiSensoryMotorRemapping2011{]}
+\cite{@Mussa-IvaldiSensoryMotorRemapping2011}
 
-\begin{quote} The null space generated by our glove-cursor map had effectively 17 dimensions (19 􏰇 2). We observed a marked tendency of subjects to reduce the amount of motion in this null space (Fig. 4). The selective reduction of null-space motion is particularly important because it may reveal how the Euclidean metric of the task space (the monitor) is effectively ``imported'' into the coordination of hand. The tendency to generate finger motions with smaller null-space components suggests that the movements tend to remain confined to subspaces that are minimum-norm images of the cursor space. This observation provides us with further evidence that the motor system is effectively capturing the metric structure of the controlled space and that it uses this metric as a basis to form coordinated motions of the fingers. {[}@MosierRemappingHandMovements2005{]}
+\begin{quote} The null space generated by our glove-cursor map had effectively 17 dimensions $(19 - 2)$. We observed a marked tendency of subjects to reduce the amount of motion in this null space (Fig. 4). The selective reduction of null-space motion is particularly important because it may reveal how the Euclidean metric of the task space (the monitor) is effectively ``imported'' into the coordination of hand. The tendency to generate finger motions with smaller null-space components suggests that the movements tend to remain confined to subspaces that are minimum-norm images of the cursor space. This observation provides us with further evidence that the motor system is effectively capturing the metric structure of the controlled space and that it uses this metric as a basis to form coordinated motions of the fingers. \cite{@MosierRemappingHandMovements2005}
 \end{quote}
 
 \begin{quote}
@@ -133,7 +122,6 @@ what is the natural space of motor activations? what do these spaces look like? 
 There are several studies using non-EMG-driven sensorimotor mappings to study human motor control and learning.
 
 \begin{itemize}
-\tightlist
 \item
   Remapping Hand Movements in a Novel Geometrical Environment
   https://www.ncbi.nlm.nih.gov/pubmed/16148276
@@ -146,17 +134,15 @@ takehome: humans are really good at learning tasks like these, especially with t
 
 \textbf{\emph{What does this give us that a force-field reaching task can't?}}
 
-{[}@nazarpourFlexibleCorticalControl2012{]}
+\cite{@nazarpourFlexibleCorticalControl2012}
 
 \subsubsection{Skill Learning Tasks}\label{skill-learning-tasks}
 
 \begin{itemize}
-\tightlist
 \item
   skill learning tasks
 
-  \begin{itemize}
-  \tightlist
+  \begin{itemize}  
   \item
     ball and cup
   \item
@@ -169,8 +155,7 @@ takehome: humans are really good at learning tasks like these, especially with t
 \begin{itemize}
 \item
   cortical BMI work
-  \begin{itemize}
-  \tightlist
+  \begin{itemize}  
   \item
     Batista papers, lee miller papers
   \end{itemize}
@@ -226,7 +211,7 @@ task-specific correlation structure
 \end{quote}
 
 \begin{quote}
-{[}CM connections{]} bypass synergies hard-wired into subcortical and spinal circuitry, allowing the motor cortex considerable fine control over specific muscles. The distal bias of cortico-motoneuronal connections likely explains why these muscles are better suited to control of abstract myoelectric interfaces than proximal muscles.
+\cite{CM connections} bypass synergies hard-wired into subcortical and spinal circuitry, allowing the motor cortex considerable fine control over specific muscles. The distal bias of cortico-motoneuronal connections likely explains why these muscles are better suited to control of abstract myoelectric interfaces than proximal muscles.
 \end{quote}
 
 \begin{quote}
@@ -242,13 +227,13 @@ We have already seen how redundancy in the mapping from muscles to movement can 
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-Ctrl-labs motor BMI {[}@mendezguerraNoninvasiveRealtimeAccess2021{]} -- decoding motor units and tendon electric fields at the wrist, but nothing really about learning\ldots{}
+Ctrl-labs motor BMI \cite{@mendezguerraNoninvasiveRealtimeAccess2021} -- decoding motor units and tendon electric fields at the wrist, but nothing really about learning\ldots{}
 
 \begin{quote}
-Due to the unstructured nature of the exploration period, we first decomposed motor unit firing rates into separate components via non-negative matrix factorization (NMF) to identify groups of units that were often mutually active. We fixed this number of components to 3, aligning with the instructions given to the participant to ultimately select 3 representative motor units. {[}@formentoNoninvasiveBrainmachineInterface2021{]}
+Due to the unstructured nature of the exploration period, we first decomposed motor unit firing rates into separate components via non-negative matrix factorization (NMF) to identify groups of units that were often mutually active. We fixed this number of components to 3, aligning with the instructions given to the participant to ultimately select 3 representative motor units. \cite{@formentoNoninvasiveBrainmachineInterface2021}
 \end{quote}
 
-NMF is X \approx WH
+NMF is $X \approx WH$
 
 \begin{quote}
 Since the relative scales of the projections (W) and its components (H) are typically arbitrary, we resolved ambiguity by scaling each component to unit L2-norm and scaling its corresponding transformation by the appropriate reciprocal factor.
@@ -259,7 +244,7 @@ We trained 8 participants over 6 consecutive days using this system on a center-
 \end{quote}
 
 \begin{quote}
-Taken together, these results reveal the center-out task enabled both a significant, population-level increase in dimensionality relative to during stereotyped, isometric contractions and an increase in unexplained variability in the unselected motor unit population. {[}@formentoNoninvasiveBrainmachineInterface2021{]}
+Taken together, these results reveal the center-out task enabled both a significant, population-level increase in dimensionality relative to during stereotyped, isometric contractions and an increase in unexplained variability in the unselected motor unit population. \cite{@formentoNoninvasiveBrainmachineInterface2021}
 \end{quote}
 
 Dimensionality here is the ``participation ratio'':
@@ -268,17 +253,17 @@ Dimensionality here is the ``participation ratio'':
 The participation ratio (PR) was computed to quantify the dimensionalityof the iEMG and firing rate data83--85. The PR is a metric computed onthe covariance matrix of a feature and represents the approximatedimensionality of the manifold spanned by that feature; a higherparticipation ratio means more principal components are needed toexplain a given proportion of the feature's variance.
 \end{quote}
 
-``performance levels and rates of improvement were significantly higher for intrinsic hand muscles relative to muscles of the forearm.'' {[}@Dyson2018{]}
+``performance levels and rates of improvement were significantly higher for intrinsic hand muscles relative to muscles of the forearm.'' \cite{@Dyson2018}
 
 \subsubsection{synergies and learning}\label{synergies-and-learning}
 
 \begin{quote}
-the motor system can acquire new muscle synergies during motor skill learning, especially for skills that cannot be adequately accomplished by deploying preexisting synergies\ldots{} The exact mechanism responsible for 581 this learning has not been established. But during early skill learning, the motor system may 582 discover the direction of synergy change by exploiting and modulating the intrinsic variability 583 of the synergies and of their temporal activations, and subsequently drive this change by 584 reinforcing the synergy patterns that lead to reward-producing actions (Cheung et al., 2020b) in 585 a manner analogous to how reinforcement learning relies on action exploration {[}@cheungApproachesRevealingNeural2021{]}
+the motor system can acquire new muscle synergies during motor skill learning, especially for skills that cannot be adequately accomplished by deploying preexisting synergies\ldots{} The exact mechanism responsible for 581 this learning has not been established. But during early skill learning, the motor system may 582 discover the direction of synergy change by exploiting and modulating the intrinsic variability 583 of the synergies and of their temporal activations, and subsequently drive this change by 584 reinforcing the synergy patterns that lead to reward-producing actions (Cheung et al., 2020b) in 585 a manner analogous to how reinforcement learning relies on action exploration \cite{@cheungApproachesRevealingNeural2021}
 \end{quote}
 
 \subsubsection{Berger et al.~2013}\label{berger-et-al.-2013}
 
-{[}@BergerDifferencesInAdaptationRates2013a{]}
+\cite{@BergerDifferencesInAdaptationRates2013a}
 
 Berger et al.'s preprocessing - lowpassed butterworth at 5Hz - normalized to MVC calibration - periodic baseline noise substraction - choosing synergies by uniformity in force direction (pretty arbitrary)
 
@@ -333,7 +318,6 @@ To construct new mappings, the authors construct rotations to alter muscle activ
 A key critique of this paper is that such a transformation is too harsh. The compatible rotation allows you to recombine the same muscle patterns, the incompatible doesn't allow you to use existing coactivation patterns at all. The authors do see new synergies emerging even after their training session, consisting of:
 
 \begin{itemize}
-\tightlist
 \item
   16 trials of maximum voluntary contraction in 8 directions (calibration)
 \item
@@ -354,7 +338,7 @@ After 288 trials subjects aren't able to complete the task for some movement dir
 
 \subsubsection{Nazarpour 2012 J.Neuro}\label{nazarpour-2012-j.neuro}
 
-{[}@nazarpourFlexibleCorticalControl2012{]}
+\cite{@nazarpourFlexibleCorticalControl2012}
 
 Flexible Cortical Control of Task-Specific Muscle Synergies https://www.jneurosci.org/content/32/36/12349
 
@@ -366,7 +350,7 @@ Feedback processing based on visual errors
 
 \subsubsection{Radhakrishnan 2008}\label{radhakrishnan-2008}
 
-{[}@radhakrishnanLearningNovelMyoelectricControlled2008{]}
+\cite{@radhakrishnanLearningNovelMyoelectricControlled2008}
 
 x Learning a Novel Myoelectric-Controlled Interface Task --- Radhakrishnan, 2008 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2576223/
 
@@ -380,7 +364,7 @@ control models Fig 10
 
 \subsubsection{de Rugy 2012 - Habitual not Optimal}\label{de-rugy-2012---habitual-not-optimal}
 
-{[}@derugyMuscleCoordinationHabitual2012{]}
+\cite{@derugyMuscleCoordinationHabitual2012}
 
 just because it's harder to adapt to incompatible surgeries doesn't mean that there are fixed synergies, it just means there are multiple timescales of adaptation available in the neural control hierarchy -- diversity in the neural controller depending on context
 
@@ -393,7 +377,7 @@ It's a good test, but it pushes the optimal control framework too hard? perhaps 
 \subsubsection{Mussa-Ivaldi 2019}\label{mussa-ivaldi-2019}
 
 \begin{quote}
-Earlier theoretical work by Jordan and Rumelhart {[}14{]} considered how the learning of actions can be viewed as the concurrent learning of for- ward and inverse models of actions. \textbf{They introduced the concept of distal learning, where the learner has to find a mapping from desired outcomes to actions in order to achieve a desired outcome. To do so, the subject begins by forming a predictive forward model of the transformation from actions to distal outcomes. Such transformations are often not known a priori, thus the forward model must generally be learned by exploring the outcomes associated with particular choices of action. Once the forward model has been at least partially learned, it can be used to guide the learning of an inverse model that predicts the action needed to achieve the distal outcome.} Mussa-Ivaldi2019
+Earlier theoretical work by Jordan and Rumelhart \cite{14} considered how the learning of actions can be viewed as the concurrent learning of for- ward and inverse models of actions. \textbf{They introduced the concept of distal learning, where the learner has to find a mapping from desired outcomes to actions in order to achieve a desired outcome. To do so, the subject begins by forming a predictive forward model of the transformation from actions to distal outcomes. Such transformations are often not known a priori, thus the forward model must generally be learned by exploring the outcomes associated with particular choices of action. Once the forward model has been at least partially learned, it can be used to guide the learning of an inverse model that predicts the action needed to achieve the distal outcome.} Mussa-Ivaldi2019
 \end{quote}
 
 \begin{quote}
@@ -401,7 +385,7 @@ Our findings are consistent with the hypothesis that learning proceeds through t
 \end{quote}
 
 \begin{quote}
-Not being square, the matrix H does not have a unique inverse. But there exist infinite ``right inverses'' that combined with H yield the K x K identity matrix in the task space of exter- nal control signals. Each such right inverse transforms a desired position of the controlled object into one particular set of values for the body signals. We consider users to be competent when they are able to move their body successfully in response to a presented target for the controlled object. Mathematically, we consider this as finding one right inverse G of the map- ping H, out of a multitude of possible and equally valid choices. Mussa-Ivaldi2019
+Not being square, the matrix H does not have a unique inverse. But there exist infinite ``right inverses'' that combined with H yield the K x K identity matrix in the task space of external control signals. Each such right inverse transforms a desired position of the controlled object into one particular set of values for the body signals. We consider users to be competent when they are able to move their body successfully in response to a presented target for the controlled object. Mathematically, we consider this as finding one right inverse G of the map- ping H, out of a multitude of possible and equally valid choices. Mussa-Ivaldi2019
 \end{quote}
 
 Gradient learning of a forward and inverse model (mapping):
@@ -413,7 +397,7 @@ Gradient learning of a forward and inverse model (mapping):
 \end{align*}
 
 \begin{quote}
-The comparison between model predictions and actual data in Fig 3 indicates that our proposed model of learning is sufficient to explain the data. However, the mechanism we propose is not necessary; we cannot rule out other possibilities, such as reinforcement learning. {[}\ldots{]} This agreement between model and experimental results does not exclude the possibility of alternative learning mechanisms, such as a direct learning of the inverse model {[}24{]} or the use of reinforcement learning {[}25{]} to acquire an action policy that would play the role of the inverse model. Mussa-Ivaldi2019
+The comparison between model predictions and actual data in Fig 3 indicates that our proposed model of learning is sufficient to explain the data. However, the mechanism we propose is not necessary; we cannot rule out other possibilities, such as reinforcement learning. \cite{}   This agreement between model and experimental results does not exclude the possibility of alternative learning mechanisms, such as a direct learning of the inverse model \cite{Mussa-Ivaldi2019} or the use of reinforcement learning \cite{Mussa-Ivaldi2019} to acquire an action policy that would play the role of the inverse model. 
 \end{quote}
 
 How do we break a simple gradient model? On a task that is more difficult? will learning take longer? - savings phenomenon -
@@ -431,7 +415,6 @@ Subjects have prior knowledge of their directions in task space?
 x 90\% isn't enough -- Follow-up on the previous paper -- critiques ``direct evidence'' https://www.biorxiv.org/content/10.1101/634758v1
 
 \begin{itemize}
-\tightlist
 \item
   Structured variability of muscle activations supports the minimal intervention principle of motor control https://www.ncbi.nlm.nih.gov/pubmed/19369362
 \end{itemize}
