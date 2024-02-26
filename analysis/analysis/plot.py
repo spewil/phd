@@ -164,20 +164,22 @@ def plot_preprocessing_steps(signal, ax=None):
     return fig, ax
 
 
-def plot_weighted_targets(ax, weights):
+def plot_weighted_targets(ax, weights, color="grey",**kwargs):
     m = MarkerStyle("o", fillstyle="none")
     theta = np.linspace(0, 2 * np.pi, 13)
     for t, w in zip(theta, weights):
-        ax.plot(
+        h, = ax.plot(
             np.cos(t),
             np.sin(t),
             marker=m,
             markersize=w,
-            color="grey",
+            color=color,
+            **kwargs
         )
+    return h
 
 def plot_linear_fit(x, result, ax, color="tab:red"):
-    ax.plot(x, result.intercept + result.slope*x,"--", color=color, label=f"Linear Fit, $R^2$={np.round(result.rvalue**2, 5)}, $p$={np.round(result.pvalue,5)}")
+    ax.plot(x, result.intercept + result.slope*x,"--", color=color, label=f"Linear Fit, $R^2$={format_positional(result.rvalue**2)}, $p$={format_scientific(result.pvalue)}")
 
 def plot_confidence_ellipse(center, cov, ax, n_std=3.0, edgecolor="k", facecolor='none', **kwargs):
     pearson = cov[0, 1] / np.sqrt(cov[0, 0] * cov[1, 1])
@@ -216,13 +218,14 @@ def plot_model(means, covariances, ax=None):
             ax.plot(mean[0],mean[1],"ro")
             plot_confidence_ellipse(mean,covariance,ax=ax)
 
-def plot_pairs(pairs, locs1, locs2, ax=None,style="k-"):
+def plot_pairs(pairs, locs1, locs2, ax=None,style="k-",**kwargs):
     if ax is None:
         for pair in pairs:
-            plt.plot([locs1[pair[0]][0],locs2[pair[1]][0]],[locs1[pair[0]][1],locs2[pair[1]][1]],style)
+            plt.plot([locs1[pair[0]][0],locs2[pair[1]][0]],[locs1[pair[0]][1],locs2[pair[1]][1]],style,**kwargs)
     else:
         for pair in pairs:
-            ax.plot([locs1[pair[0]][0],locs2[pair[1]][0]],[locs1[pair[0]][1],locs2[pair[1]][1]],style)
+            ax.plot([locs1[pair[0]][0],locs2[pair[1]][0]],[locs1[pair[0]][1],locs2[pair[1]][1]],style,**kwargs)
+            
 def plot_means(means,color="k",ax=None):
     assert means.shape[0] == 2 or means.shape[1] == 2
     if means.shape[0] == 2:

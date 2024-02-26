@@ -4,21 +4,31 @@ import ot
 import pickle
 
 def load_log_trial_models(subject_idx):
-    with open(f"gmm_models_log_trial/subject_{subject_idx}.pkl","rb") as handle:
+    with open(f"../gmm_models_log_trial/subject_{subject_idx}.pkl","rb") as handle:
         return pickle.load(handle)
 
 def load_trial_models(subject_idx):
-    with open(f"gmm_models_trial/subject_{subject_idx}.pkl","rb") as handle:
+    with open(f"../gmm_models_trial/subject_{subject_idx}.pkl","rb") as handle:
         return pickle.load(handle)
     
 def load_log_calibration_models(subject_idx):
-    with open(f"gmm_models_log_calibration/subject_{subject_idx}.pkl","rb") as handle:
+    with open(f"../gmm_models_log_calibration/subject_{subject_idx}.pkl","rb") as handle:
         return pickle.load(handle)
     
 def load_log_movement_models(subject_idx):
-    with open(f"gmm_models_log_movement/subject_{subject_idx}.pkl","rb") as handle:
+    with open(f"../gmm_models_log_movement/subject_{subject_idx}.pkl","rb") as handle:
         return pickle.load(handle)
-    
+
+def gaussian_entropy(cov):
+    # https://gregorygundersen.com/blog/2020/09/01/gaussian-entropy/
+    assert cov.shape == (64,64)
+    # (D/2)*(1 + log(2pi)) + (1/2)*log(det(C))
+    return 32*(1 + np.log(2*np.pi)) + 0.5*np.log(np.linalg.det(cov))
+
+def total_gmm_entropy(model):
+    assert len(model.covariances_) > 0
+    return np.sum([gaussian_entropy(c)*w for c, w in zip(model.covariances_,model.weights_)])
+
 def transform_mean(decoder, mean):
     return decoder @ mean
 
@@ -90,6 +100,17 @@ def GaussianW2(m0,m1,Sigma0,Sigma1):
 #     wstar     = ot.emd(pi0,pi1,M)         # discrete transport plan
 #     distGW2   = np.sum(wstar*M)
 #     return wstar,distGW2
+
+def closest_pairs_euclidean(models,mean_weight=1.0, weight_weight=0.0,cov_weight=0.0):
+    model_mean_pairs = []
+    for model_1, model_2 in zip(models[:-1],models[1:]):
+        lower_tris1 =  np.array([cov[np.tril_indices(64)] for cov in model_1.covariances_])
+        lower_tris2 =  np.array([cov[np.tril_indices(64)] for cov in model_2.covariances_])
+        model_1_vec = np.concatenate([model_1.means_*mean_weight,lower_tris1*cov_weight,model_1.weights_.reshape(-1,1)*weight_weight],axis=1)
+        model_2_vec = np.concatenate([model_2.means_*mean_weight,lower_tris2*cov_weight,model_2.weights_.reshape(-1,1)*weight_weight],axis=1)
+        pairs, distance_sum = closest_pairs(model_1_vec, model_2_vec)
+        model_mean_pairs.append(pairs)
+    return np.array(model_mean_pairs)
 
 def wasserstein_matrix(mu0,mu1,S0,S1):
     # Compute the distance matrix between all Gaussians pairwise

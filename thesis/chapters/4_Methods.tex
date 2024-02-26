@@ -2,7 +2,7 @@
 \graphicspath{{\subfix{../../images/}}}
 \begin{document}
 
-\chapter{Experimental Methods}\label[chapter]{methods}
+\chapter{Experimental Methods}\label{chap:methods}
 
 % Okay, what decisions are we going to make for our experiment? What are we going to do and why, and how are are we going to do it?
 
@@ -16,7 +16,8 @@
     }
 \end{quote}
 
-\cleardoublepage
+\cleardoublepage%
+
 
 \section{Methodological Aims}\label{methods_aims}
 
@@ -28,7 +29,7 @@ what we want:
 We want the subject to embody, as much as possible, a infant-like state of ignorance, not intellectually, but within their bodies, a small-k knowledge of themselves.
 
 - We think this will “stretch out” learning and let us look at the redundancy problem from a new perspective. We want to give subjects a more naturalistic environment in which to solve a motor problem.
-- This is at odds with typical motor tasks, gives us more control at the redundnancy problem 
+- This is at odds with typical motor tasks, gives us more control at the redundancy problem 
 
 - While motor control has many results, most of which focus on optimal control, we’re interested in motor learning– how can we stretch learning to get from “zero” (or do we ever start at zero?) to performant? How do we develop a new skill? How do we learn to control in a new context/environment/contingency? If subjects in motor tasks tend to reach certain definitions of optimal performance, what comes before optimality?
 
@@ -38,6 +39,8 @@ We want the subject to embody, as much as possible, a infant-like state of ignor
 To explore dexterous movement, we will leverage recordings of muscles controlling the hand as a readout of flexible motor behavior. This is a step beyond recording hand kinematics as electromyography provides a physiological output of the nervous system. Surface electromyography recordings taken from the forearms controlling subjects' dominant hands allows us to track the sequential selection of muscle activations during both skill acquisition and subsequent performance of that skill to achieve desired goal. As we are interested in subjects' abilities to acquire new skills, we design tasks that require subjects to use available, but uncommon, motor activations. We then track the selection and execution of these activation during virtual tasks. Preliminary work in this direction is described in \cref{sec:experiment}.
 
 The concept of the experimental setup is shown in \Cref{fig:setup}, where 32 monopolar electrodes are attached to a subject's forearm to record muscle activity. The arm and hand are kinematically constrained in a custom fixture and motor activity is recorded during low-level isometric muscle contractions. The setup circumvents the limb biomechanics by mapping muscle output directly to virtual stimuli shown on a screen. By focusing on low-force, isometric contractions we intend to avoid complications due to artifacts in dynamic, high-force movements.
+
+The concept of redundancy is common: in the human perception of color, we have a 3-dimensional plane of perception red, green, blue, while the space of physical colors is an infinite-dimensional spectrum. Thus, we can perceive some colors (e.g. yellow light vs. green+red light) with different spectra as identical, as they are identical when ``projected'' onto our perceptual plane (this is known as metamerism).
 
 
 \section{Recording Setup}\label{hardware}
@@ -84,7 +87,8 @@ As far as we are aware, this setup is novel in combining a high number of channe
 \end{figure}
 
 
-\subsection{Raw Data}
+
+\section{Raw Data}
 
 \begin{figure}
   \centering
@@ -92,13 +96,9 @@ As far as we are aware, this setup is novel in combining a high number of channe
   \caption[Example raw EMG data]{Notice: highly correlated across channels, artefacts and noise. \\ 10 seconds of raw 64-channel EMG data taken during a minimal finger flexion trial. Note that some channels include a nontrivial amount of line noise. This noise will be drastically reduced through changes being made in the next recording hardware revision which include shielding, shorter cables, and better cable routing. Note that some channels (e.g. channel 24) show very low noise and putative single motor unit action potentials can be seen on many channels.}\label{fig:raw_data}
 \end{figure}
 
-% \begin{figure}
-%   \centering
-%   \includegraphics[width=1.0\textwidth]{methods/example_trajectories.pdf}
-%   \caption{}\label{fig:example_trajectories}
-% \end{figure}
 
-\subsection{Natural Movement Task}
+
+\section{Natural Movement Task}
 
 In our first preliminary experiment, a single subject produced flexions and extensions of each finger in the recording setup without any kind of artificial feedback. One trial was collected per finger movement in three blocks per session and one session per day over five days for a total of fifteen trials per finger movement. The purpose of this experiment is to determine the robustness over trials and sessions of EMG features for a simple low-contraction movement, as well as to determine the level of noise and artifacts in the data. Such baseline measurements are important to properly decompose variability due to electrode placement and exogenous noise from behavioral and physiological variability in order to ensure reproducibility of our results. Additionally, this baseline task may prove useful as a benchmark for later tasks in terms of testing analysis and decomposition techniques. A plot of all 32 channels for a single trial after preprocessing is shown in \Cref{fig:preprocessed_data}.
 
@@ -116,9 +116,32 @@ In our first preliminary experiment, a single subject produced flexions and exte
 \end{figure}
 
 
+\begin{table}[H]
+  \begin{center}
+      \caption[List of movement commands]{List of movement commands issued during the ``Natural Movement'' task.}\label{tab:movement_commands}
+      \begin{tabular}{l}
+          Movement \\ 
+          \hline
+          index finger down \\ 
+          index finger up \\ 
+          middle finger down \\ 
+          middle finger up \\ 
+          ring finger down \\ 
+          ring finger up \\ 
+          little finger down \\ 
+          little finger up \\ 
+          hand open \\ 
+          hand closed \\ 
+          wrist up \\ 
+          wrist down \\ 
+          wrist in \\ 
+          wrist out \\ 
+      \end{tabular}
+  \end{center}
+\end{table}
 
 
-\subsection{Calibration Task}
+\section{Calibration Task}
 
 Goal: What is the best calibration task to find the boundaries of the available EMG space? 
 
@@ -132,28 +155,21 @@ To preprocessing the data, simple filtering and rectification were applied, as i
     \caption{Calibration task visual feedback}\label{fig:calibration_task_screen}
   \end{figure}
 
-\subsection{Target Task}
 
-``I would be most interested to hear how u are thinking of approaching the analysis. I.e. you have a bunch of channels, movements, tasks what is the workflow to get from that raw data into something manageable/useful?''
+\subsection{Does the Calibration Task Encourage Exploration?}
 
-\begin{figure}
-  \centering
-    \includegraphics[width=1.0\textwidth]{methods/task_screen.pdf}
-    \caption[Center-hold, Reach-out task visual feedback]{}\label{fig:task_task_screen}
-  \end{figure}
+Compare to the Movement task! Calibration will show higher variance (maybe look at the determinant of the covariance? across subjects?)
 
-\begin{figure}
-  \centering
-  \includegraphics[width=1.0\textwidth]{methods/filtering_steps.pdf}
-  \caption[Data filtering steps]{Data from a single trial showing each step of preprocessing. The prototype preprocessing pipeline is highpass at 50Hz, rectification, and lowpass at 5Hz. The within-trial, per-channel means are subtracted from each trial. This matches what is typically done in the literature to find a correlate of intended force[@sangerBayesianFilteringMyoelectric2007;@churchlandNeuralPopulationDynamics2012a;@churchlandNeuralVariabilityPremotor2006;@sussillo2015]. There is significant room for improvement on this workflow, as discussed in the text.}\label{fig:filtering}
-\end{figure}
+Are people “better” than random EMG at the calibration task? How do we define the “null” hypothesis here, what is comparable random EMG? (E.g. sample from a distribution with the same statistics)
 
-In this task, the 32-dimensional EMG electrode activity vector is mapped to a 2D force acting on a point mass shown on the screen. The mapping $M\in\mathbb{R}^{2 x 32}$ maps 8 ``columns'' each consisting of 4 electrodes placed in a line down the length of the forearm each to one of 2D root of unity. Each column of electrodes is thus mapped to one of 8 two-dimensional force vectors. In this experiment, the point mass has zero inertia and zero friction and as such displays a direct, though redundant, readout of the EMG signal. The task asks the subject to reach one of 32 equally spaced targets on each trial. Subjects must hold in the center of the task space for a designated period of time, after which the target appears. Subjects then have a time window reach the target. Data from one subject was recorded for three blocks in one session. Each block consisted of 32 trials, one per target in a randomized order.
+Hypothesis: subjects aren’t moving randomly in this task. They are goal-oriented and are using feedback to solve this search problem.
+  
+  
+ 
+\section{Decoder Fitting}
 
-A graphic showing the mappings from electrodes to force directions is shown in \Cref{fig:columns}. While there are 8 possible force vectors the subject can modulate by controlling the electrode activity on each of her 8 columns, the EMG mapping is ultimately a projection onto the 2D plane. Since the EMG signal is nonnegative, the subject could technically modulate just four modes of electrode activity, the minimum number needed to span the task space, to reach all 32 targets. This mapping was chosen in order to provide a simple starting point to explore the virtual EMG task. There are no added environmental dynamics, only a redundant readout of force, and the signal is processed online in the same manner as in the offline analyses. This task or a variant we think can serve as a foundation upon which we can build more complex mappings and virtual environments. Task space trajectories from each block are shown in \Cref{fig:trajectories}. The fraction of trials resulting in hold timeouts, reach timeouts, and target hits are shown over blocks in \Cref{fig:hit_fraction}.
+\textbf{How is the decoder derived? Why this way? What does this mean geometrically?}
 
-
-\subsubsection{Decoder Fitting}
 
 Electrode data from a single trial of a single session is held in a data matrix $X$ (n\_electrodes, n\_samples), and we wish to find a latent weight matrix $W$ (n\_electrodes, n\_components) which reconstructs $X$ by projecting latent trajectories $H$ (n\_components, n\_samples) into electrode space:
 
@@ -187,14 +203,24 @@ This way, forget about orthonormality and solve for an encoder and decoder direc
 
 Each row of $D$ might be called a **spatial filter**, a linear combination of electrode activities into a surrogate, hopefully more intuitive space.
 
-\subsubsection{Trajectories}
 
-% \begin{figure}
-%   \phantomsection\label{fig:trajectories}
-%   \centering
-%   \includegraphics[width=0.2\textwidth]{images/data_analysis/center_hold/trajectories.pdf}
-%   \caption{Point mass position trajectories in two-dimensional task space during the center-hold, reach-out task with 32 targets spaced evenly around the unit circle (shown with red borders). Color corresponds to target numbers, with target zero located at (0,1). Target order was randomized. Training was conducted over 3 blocks each with 32 trials, 1 trial per target.}\label{fig:trajectories}
-% \end{figure}
+$$WH   =  X$$
+
+TxK x Kx64 = Tx64
+
+transformation x components = data
+
+factors x weights = data
+
+inverse:
+
+$$W = XH^{-1}$$
+$$W^T = H^{-T}X^T$$
+
+KxT = Kx64 x 64xT
+We're not regularizing here, so the cost function for the fit looks like:
+
+$$\min{||X - WH||^{2}_{loss}}$$
 
 
 The mapping between EMG and task space $M$ can be written as
@@ -216,12 +242,62 @@ each ``column'' of the 4 EMG electrode bands around the subject's arm:
 
 A graphic showing the mappings from electrodes to force directions is shown in \Cref{fig:columns}. While there are 8 possible force vectors the subject can modulate by controlling the electrode activity on each of her 8 columns, the EMG mapping is ultimately a projection onto the 2D plane. Since the EMG signal is nonnegative, the subject could technically modulate just four modes of electrode activity, the minimum number needed to span the task space, to reach all 32 targets. This mapping was chosen in order to provide a simple starting point to explore the virtual EMG task. There are no added environmental dynamics, only a redundant readout of force, and the signal is processed online in the same manner as in the offline analyses. This task or a variant we think can serve as a foundation upon which we can build more complex mappings and virtual environments. Task space trajectories from each block are shown in \Cref{fig:trajectories}. The fraction of trials resulting in hold timeouts, reach timeouts, and target hits are shown over blocks in \Cref{fig:hit_fraction}.
 
-% \begin{figure}
-%   \phantomsection\label{fig:columns}
-%   \centering
-%   \includegraphics[width=0.2\textwidth]{images/hardware/columns.pdf}
-%   \caption{Graphic showing the mapping between electrodes in the 32-channel center-hold reach-out experiment to eight 2D force directions in the virtual task space. Each of the eight columns consists of four electrodes each mapped to the same force direction (denoted with matching color) acting on a virtual point particle.}\label{fig:columns}
-% \end{figure}
+
+\textbf{Run NMF on the second calibration and compare – does similarity here correlate with performance?}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\textwidth]{methods/example_decoder.pdf}
+  \caption[Example subject decoder]{Example EMG-to-force decoders from a single subject. The ``center hold, reach out'' task works by mapping 64 channels of EMG activity from subjects' forearms to a 2-dimensional force vector, a component acting in the $x$ and $y$ directions within the task's linear dynamics. Depicted here are the two 64-dimensional ``decoders'' arranged as the EMG electrodes were arranged on subjects' arms (along the arm, longitudinally, and around the arm, radially). The left plot shows the $x$ force decoder, and the right plot the $y$.}\label{fig:example_decoder}
+\end{figure}
+
+
+
+\section{Target Task}
+
+``I would be most interested to hear how u are thinking of approaching the analysis. I.e. you have a bunch of channels, movements, tasks what is the workflow to get from that raw data into something manageable/useful?''
+
+What does the basic data look like, discuss the shape of the data we have
+46 Subjects x 12 targets x 45 trials x ~5k timepoints x 64 channels + 2 x 14 x Movements task + 2x Calibration task
+
+\begin{figure}
+  \centering
+    \includegraphics[width=1.0\textwidth]{methods/task_screen.pdf}
+    \caption[Center-hold, Reach-out task visual feedback]{}\label{fig:task_task_screen}
+  \end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=1.0\textwidth]{methods/filtering_steps.pdf}
+  \caption[Data filtering steps]{Data from a single trial showing each step of preprocessing. The prototype preprocessing pipeline is highpass at 50Hz, rectification, and lowpass at 5Hz. The within-trial, per-channel means are subtracted from each trial. This matches what is typically done in the literature to find a correlate of intended force[@sangerBayesianFilteringMyoelectric2007;@churchlandNeuralPopulationDynamics2012a;@churchlandNeuralVariabilityPremotor2006;@sussillo2015]. There is significant room for improvement on this workflow, as discussed in the text.}\label{fig:filtering}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=1.0\textwidth]{methods/example_trajectories.pdf}
+  \caption{Point mass position trajectories in two-dimensional task space during the center-hold, reach-out task with 32 targets spaced evenly around the unit circle (shown with red borders). Color corresponds to target numbers, with target zero located at (0,1). Target order was randomized. Training was conducted over 3 blocks each with 32 trials, 1 trial per target.}\label{fig:example_trajectories}
+\end{figure}
+
+In this task, the 32-dimensional EMG electrode activity vector is mapped to a 2D force acting on a point mass shown on the screen. The mapping $M\in\mathbb{R}^{2 x 32}$ maps 8 ``columns'' each consisting of 4 electrodes placed in a line down the length of the forearm each to one of 2D root of unity. Each column of electrodes is thus mapped to one of 8 two-dimensional force vectors. In this experiment, the point mass has zero inertia and zero friction and as such displays a direct, though redundant, readout of the EMG signal. The task asks the subject to reach one of 32 equally spaced targets on each trial. Subjects must hold in the center of the task space for a designated period of time, after which the target appears. Subjects then have a time window reach the target. Data from one subject was recorded for three blocks in one session. Each block consisted of 32 trials, one per target in a randomized order.
+
+A graphic showing the mappings from electrodes to force directions is shown in \Cref{fig:columns}. While there are 8 possible force vectors the subject can modulate by controlling the electrode activity on each of her 8 columns, the EMG mapping is ultimately a projection onto the 2D plane. Since the EMG signal is nonnegative, the subject could technically modulate just four modes of electrode activity, the minimum number needed to span the task space, to reach all 32 targets. This mapping was chosen in order to provide a simple starting point to explore the virtual EMG task. There are no added environmental dynamics, only a redundant readout of force, and the signal is processed online in the same manner as in the offline analyses. This task or a variant we think can serve as a foundation upon which we can build more complex mappings and virtual environments. Task space trajectories from each block are shown in \Cref{fig:trajectories}. The fraction of trials resulting in hold timeouts, reach timeouts, and target hits are shown over blocks in \Cref{fig:hit_fraction}.
+
+
+
+\section{Data Validity}
+
+Show that we can reproduce the data offline
+
+Compare calibration to movement in terms of variance, rank, some metric of dispersion in EMG space.
+How uniformly can subjects reach their EMG space? E.g. compared to a gaussian with the same statistics?
+The calibration task defines the decoder, and thus it is worth confirming that it is successful in encouraging subjects to explore their EMG space. We can compare their activity to the natural movement datasets as a baseline.
+
+Hypothesis: Variance in the calibration datasets is higher than in the natural movement dataset, even taking all natural movements together. This implies that the calibration dataset encourages exploration of a wider EMG space than that of natural movement.
+
+We used NMF to produce decoders from one of the calibration task datasets. If we run NMF on the second calibration task dataset and compare the results to what was used in the task, are the results similar? This would confirm that the EMG space was adequately captured. We can define a distance metric between the two decoders and test if this correlates with performance. Differences in the decoders implies that our experimental decoder did not capture the EMG space adequately enough to provide a reasonable learning challenge.
+Hypothesis: we will see similar results from the second NMF run, which will reject the hypothesis that our decoder does not well-represent subjects’ EMG movement space.
+Hypothesis: inter-decoder distance within subjects will correlate negatively with performance (different decoders, less performant). This implies that the decoder’s capturing of whole EMG space, opposed to a subspace, enables subjects to perform better on the task. We expect a crossover point here– you want an EMG search space large enough to encompass the task itself, but small enough not to provide too great of a search task for subjects.
 
 % \begin{figure}[H]
 %   \makebox[\linewidth][c]{%
@@ -240,10 +316,12 @@ A graphic showing the mappings from electrodes to force directions is shown in \
 % \end{figure}
 
 
-\section{Task Feedback}
-
 
 \section{Activity Filter}
+
+
+Explain log filtering here?
+
 
 Work back through the activity filter thing to make sure it makes sense statistically and we can defend it
 
@@ -259,6 +337,10 @@ Remove offsets from EMG – show test
 Capture “active” parts of EMG signal based on spatial norm – show test compared densities of movement before and after filtering?
 Remove artifacts and outliers from EMG – Mahalanobis compared to active mean – show test
 Use these “masks” on subsequent analyses
+
+
+
+
 
 \include{end_of_chapter}
 \end{document}

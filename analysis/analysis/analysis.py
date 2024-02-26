@@ -12,6 +12,29 @@ else:
     ROOT_RAWDATA_PATH = Path("/Users/spencer/motor-control/data/rawdata/")
     ROOT_METADATA_PATH = Path("/Users/spencer/motor-control/data/metadata/")
 
+def make_chunk_indices():
+    return np.array(list(zip(np.arange(0,45,9),np.arange(9,46,9))))
+
+def make_lognormal_mean(normal_mean, normal_covariance):
+    dim = normal_mean.shape[0]
+    assert dim >= normal_mean.shape[1]
+    assert dim == normal_covariance.shape[0] and dim == normal_covariance.shape[1]
+    return np.exp(normal_mean + 0.5*np.diag(normal_covariance).reshape(-1,1))
+
+def make_lognormal_covariance(normal_mean, normal_covariance):
+    dim = normal_mean.shape[0]
+    assert dim >= normal_mean.shape[1]
+    assert dim == normal_covariance.shape[0] and dim == normal_covariance.shape[1]
+    cov = np.zeros(shape=(dim,dim))
+    cov[:] = np.nan
+    for i in range(dim):
+        for j in range(dim):
+            cov[i,j] = (np.exp(normal_mean[i] + normal_mean[j] + 0.5*(normal_covariance[i,i] + normal_covariance[j,j]))*(np.exp(normal_covariance[i,j]) - 1)).reshape(-1)[0]
+    assert np.all(np.isfinite(cov))
+    return cov
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
 def compute_hit_fractions(subjects):
     hit_fractions = []
     for subject in subjects:
@@ -81,7 +104,7 @@ def load_subjects():
         return pickle.load(handle)
 
 def load_trial_stack(subject_idx):
-    return np.load(f"filtered_stacks/filtered_stack_{subject_idx}.npy")
+    return np.load(f"../filtered_stacks/filtered_stack_{subject_idx}.npy")
 
 ### TASK / NUll SPACE
 
@@ -300,6 +323,18 @@ def load_calibration_bar(filename):
     return (
         np.fromfile(filename, dtype=np.float32).reshape(-1, 64)
     )
+
+def subject_hits_per_target(subject):
+    target_hits = np.zeros(shape=(12))
+    sessions = subject.tasks["center_hold"].sorted_sessions()
+    for target_no in range(1,13):
+        target_hit_count = 0
+        for session in sessions:
+            for trial in session.sorted_trials():
+                if target_no == trial.target_number and trial.outcome == "Hit":
+                    target_hit_count += 1
+        target_hits[target_no-1] = target_hit_count
+    return target_hits
 
 
 ### OLD STUFF

@@ -1,0 +1,120 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../../images/}}}
+\begin{document}
+
+\chapter{CHAPTER NAME}\label{chap:LABEL}
+
+\bigskip
+\begin{quote}
+\emph{QUOTE QUOTE QUOTE QUOTE QUOTE QUOTE QUOTE QUOTE }
+
+\raggedleft{--- AUTHOR, \emph{SOURCE}}
+\end{quote}
+
+\cleardoublepage%
+
+\section{GMM Null Space}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \includegraphics[width=\textwidth]{more_results/gmms/nullspace_ratios_models.pdf}
+    \subcaption{}
+  \end{minipage}\\%
+  \begin{minipage}{0.49\textwidth}
+    \includegraphics[width=\textwidth]{more_results/gmms/nullspace_pvalues_models.pdf}
+    \subcaption{}
+  \end{minipage}
+  \caption[Nullspace activity for GMMs]{CAPTION}\label{fig:nullspace_gmms}
+\end{figure}
+
+
+\section{Nullspace Ratio of Task Error}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/example_error.pdf}
+    \caption[Example Error]{CAPTION}\label{fig:example_error}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/error_ratio.pdf}
+    \caption[Error Nullspace]{CAPTION}\label{fig:error_nullspace_subjects}
+\end{figure}
+
+
+\section{Nullspace Optimization Solutions}
+
+Compare subject EMG solutions to optimization solutions
+NB https://math.stackexchange.com/questions/2028698/
+Hypothesis: subject error ratio of err-pinv / err-weighted will be > 1 as subjects tend to minimize their error to the prior-weighted solution rather than the pinv solution.
+Todo – use a metric
+Check if fitting different subsets of the prior data with GMMs makes the distance thing work out! 
+Try calibration only
+Try movement only
+There is a result here regardless of the outcome!!!
+This is about choosing a cost function and comparing to the data
+Can I fit a cost function to the data? This is like fitting a model… 
+We know subject solutions hit the target, but what do they minimize over time?
+Can we regress these solutions against potential regressors?
+
+How do subjects EMG solutions compare to optimization-derived solutions with varying levels of prior influence? I.e. Are subjects biased towards their prior data?
+
+Do the variances of subject errors (subject solution - optimization solution) lie in the null space directions on average or not? I.e. Where do subjects expend most of their variance beyond achieving the requirements of the task 
+
+Nonnegative min-norm solution - activity = mostly in the null space or task space? This says something about the error! Does the error live in the null space or task space, does this change over time?
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/computed_solutions_6.png}
+    \caption[Computed solutions]{CAPTION}\label{fig:computed_solutions}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/distance_from_solutions.png}
+    \caption[Distance from computed solutions]{CAPTION}\label{fig:computed_distances}
+\end{figure}
+
+
+\section{Classifying Nullspace Noise}
+
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/regression_scores.pdf}
+    \caption[regression scores]{CAPTION}\label{fig:regression_scores}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/classification_scores.pdf}
+    \caption[classification scores]{CAPTION}\label{fig:classification_scores}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/pca_2d_full.pdf}
+    \caption[pca 2d full]{CAPTION}\label{fig:pca_2d_full}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/pca_2d_null.pdf}
+    \caption[pca 2d null]{CAPTION}\label{fig:pca_2d_null}
+\end{figure}
+
+
+What do subjects learn? Do they learn specific rote movements, or are they flexible in their solutions?
+
+Look at the null space for task relevant information-- think about this, have we removed all the task relevant information before looking at this noise?
+
+
+
+
+
+
+
+\include{end_of_chapter}
+\end{document}
