@@ -17,3 +17,6 @@ images/*
 # pickle
 *.pkl
 *joblib
+
+# pdf
+thesis/main.pdf
