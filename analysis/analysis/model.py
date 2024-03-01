@@ -30,9 +30,11 @@ def total_gmm_entropy(model):
     return np.sum([gaussian_entropy(c)*w for c, w in zip(model.covariances_,model.weights_)])
 
 def transform_mean(decoder, mean):
+    assert decoder.shape == (2,64)
     return decoder @ mean
 
 def transform_covariance(decoder, covariance):
+    assert decoder.shape == (2,64)
     return decoder @ covariance @ decoder.T
 
 def make_lognormal_mean(normal_mean, normal_covariance):

@@ -1,0 +1,188 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../../images/}}}
+\begin{document}
+
+\chapter{Mixture Modeling}\label{chap:gmms}
+
+\bigskip
+\begin{quote}
+  \emph{My view is that language and the hand have a certain common agenda--- that is, they enable us to \textbf{grasp} things: to pin them down and make them useful. And we cannot deny that they have done that in spades. They have helped us to use the world and, by doing so, to develop many of the things of which we are most justly proud, the fruits of civilization.}\\
+  \raggedleft{--- Iain McGilchrist, \emph{Ways of Attending, 2016}}
+\end{quote}
+
+\cleardoublepage%
+
+
+
+
+\section{Gaussian Mixtures}
+
+
+% Mixture Modeling
+  % GMMs as an attempt to overcome the spikiness of the data manifold
+  % Do GMMs live mostly on or off manifold? I.e. what happens with the off-manifold activity over learning? Increase, decrease, or stay the same?
+  % Does variance increase / decrease / non-monotonic?
+  % Do models become more self-similar? (derivative/ difference)
+  % Do models become more or less similar to prior?
+
+
+\subsection{GMMs vs PCA}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[height=0.8\textheight]{more_results/gmms/gmm_vs_pca.pdf}
+    \caption[GMMs and PCA Covariance]{Compare the covariances of GMM fits to the covariances of individual PCA modes.}\label{fig:gmm_vs_pca}
+\end{figure}
+
+
+\subsection{Example GMMs}
+
+% PRIOR %
+\begin{figure}[tph]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \includegraphics[width=\textwidth]{more_results/gmms/subject_10_movement_gmm.pdf}
+    \subcaption{}
+  \end{minipage}%
+  \begin{minipage}{0.49\textwidth}
+    \includegraphics[width=\textwidth]{more_results/gmms/subject_9_calibration_gmm.pdf}
+    \subcaption{}
+  \end{minipage}
+  \caption[Example prior GMMs]{CAPTION}\label{fig:example_prior_gmms}
+\end{figure}
+
+% TRIAL %
+\begin{figure}[tph]
+  \centering
+    \includegraphics[height=0.8\textheight]{more_results/gmms/subject_1_trial_gmm.pdf}
+    \caption[Subject 1 trial GMMs overlayed on trajectories]{CAPTION}\label{fig:example_1_trial_data_gmms}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[height=0.8\textheight]{more_results/gmms/subject_35_trial_gmm.pdf}
+    \caption[Subject 35 trial GMMs overlayed on trajectories]{CAPTION}\label{fig:example_35_trial_data_gmms}
+\end{figure}
+
+
+\begin{figure}[tph]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \includegraphics[width=\textwidth]{more_results/gmms/subject_1_gmms.pdf}
+    \subcaption{}
+  \end{minipage}%
+  \begin{minipage}{0.49\textwidth}
+    \includegraphics[width=\textwidth]{more_results/gmms/subject_14_gmms.pdf}
+    \subcaption{}
+  \end{minipage}
+  \caption[Example GMMs for subjects 1 and 14]{CAPTION}\label{fig:example_gmms}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \includegraphics[width=\textwidth]{more_results/gmms/subject_37_trial_gmms.pdf}
+    \subcaption{}
+  \end{minipage}%
+  \begin{minipage}{0.49\textwidth}
+    \includegraphics[width=\textwidth]{more_results/gmms/subject_42_trial_gmms.pdf}
+    \subcaption{}
+  \end{minipage}
+  \caption[Example trial GMMs for subjects 37 and 42]{CAPTION}\label{fig:example_trial_gmms}
+\end{figure}
+
+
+\subsection{GMM Pseudo-derivative}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/gmm_diffs/mean_gmm_differences.pdf}
+    \caption[Mean GMM differences over subjects]{CAPTION}\label{fig:gmm_diffs}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/gmms/gmm_wasserstein.pdf}
+    \caption[Wasserstein distance between GMMs]{CAPTION}\label{fig:gmm_w2}
+\end{figure}
+
+
+\subsection{GMM Effective Rank}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/gmms/gmm_rank.pdf}
+    \caption[Effective rank of GMMs]{CAPTION}\label{fig:gmm_rank}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/gmms/gmm_rank_pvalues.png}
+    \caption[Effective GMM rank significance matrix]{CAPTION}\label{fig:gmm_rank_pvalues}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/gmms/rank_vs_reward.pdf}
+    \caption[Effective rank]{CAPTION}\label{fig:rank_vs_reward}
+\end{figure}
+
+
+\subsection{GMM Entropy}
+
+This is a function of the log of the determinant! That's why it's negatively
+
+Sum over components: (64/2)*(1 + np.log(2*np.pi)) + 0.5*np.log(np.linalg.det(cov))
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/gmms/entropy_gmms.pdf}
+    \caption[Entropy of subject GMMs]{CAPTION}\label{fig:gmm_entropy_vs_reward}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/gmms/entropy_over_models.pdf}
+    \caption[Entropy of subject GMMs]{CAPTION}\label{fig:gmm_entropies}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/gmms/model_entropy_pvalues.png}
+    \caption[Entropy of subject GMMs]{CAPTION}\label{fig:gmm_entropy_pvalues}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/gmms/entropy_diffs.pdf}
+    \caption[Successive GMM entropy differences]{CAPTION}\label{fig:gmm_entropy_diffs}
+\end{figure}
+
+
+\subsection{Log Transforming the Data}
+
+Show gaussian mixture fitting, show how they compare to data, show how stats of these change over trials
+
+% PDF when transforming gaussian rv to log-gaussian rv https://stats.stackexchange.com/questions/214997/multivariate-log-normal-probabiltiy-density-function-pdf
+% PDF when exponentiating gaussian to get lognormal? gauhttps://stats.stackexchange.com/questions/89970/exponential-of-a-standard-normal-random-variable
+
+
+\subsection{Influence of Natural Repertoire}
+
+Statistical distance between prior data and trial data
+Mahalanobis distance, but this breaks down for multi-model data
+Is there a metric we can use to measure similarity between these two datasets?
+Subjects are hard-constrained by their hands physiology, but we think theyre also soft-constrained by their natural movement repertoire. We suggest casting this as a constrained policy optimization problem, where there is a regularization of the policy based on the prior movement data, which we suggest captures these natural constraints. The alternative we offer here is a norm-minimizing solution.
+This is connected to the task-space vs. null-space activity as the norm-minimizing solution effectively ceases to move in the nullspace of the task
+Fit GMMs to the trial and prior data, visualization these fits
+
+
+Do we see a bias from natural statistics to trial statistics?
+Do subjects avoid distribution mismatch between their base/prior/default policy and their optimal policy? How do they efficiently explore and use this new data to update their internal model?
+What exploration strategy does a subject use to avoid mismatch? I.e. does variability in control/task space help or hurt subjects?
+
+
+
+
+\include{end_of_chapter}
+\end{document}

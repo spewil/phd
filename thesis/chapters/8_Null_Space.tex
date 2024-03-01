@@ -1,0 +1,154 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../../images/}}}
+\begin{document}
+
+\chapter{Activity in the Null Space}\label{chap:nullspace}
+
+\begin{quote}
+  \emph{To view skilled performance as being the product of underlying component processes is to see a learning curve as a macrocosm of many individual learning experiences. Performance at one point in time reflects what has been learned at some previous time that is able to impact on performance at the moment. Thus, although a learning curve may be viewed as reflecting an incremental improvement process that leads to a smooth transition from novice to expert performance, it is actually a summary of the operation of a vast number of component processes, each with their own improvement functions, and each with varying histories of application with or without success.}\\
+  \raggedleft{--- Speelman \& Kirsner, Beyond the Learning Curve}
+\end{quote}
+
+\begin{quote}
+  \emph{Dexterity is finding a motor solution for any situation and in any condition.}\\
+  \raggedleft{--- Nicolai Bernstein, 1967}
+\end{quote}
+
+
+\cleardoublepage%
+
+\section{GMM Null Space}
+
+% \begin{figure}[tph]
+%   \centering
+%   \begin{minipage}{\textwidth}
+%     \includegraphics[width=\textwidth]{more_results/gmms/nullspace_ratios_models.pdf}
+%     \subcaption{}
+%   \end{minipage}\\%
+%   \begin{minipage}{0.49\textwidth}
+%     \includegraphics[width=\textwidth]{more_results/gmms/nullspace_pvalues_models.png}
+%     \subcaption{}
+%   \end{minipage}
+%   \caption[Nullspace activity for GMMs]{CAPTION}\label{fig:nullspace_gmms}
+% \end{figure}
+
+\begin{figure}[tph]
+  \centering
+  \includegraphics[width=\textwidth]{more_results/gmms/nullspace_ratios_models.pdf}
+  \caption[Nullspace activity for GMMs]{CAPTION}\label{fig:nullspace_gmms}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+  \includegraphics[width=\textwidth]{more_results/gmms/nullspace_pvalues_models.png}
+  \caption[GMM nullspace significance matrix]{CAPTION}\label{fig:nullspace_pvalues_gmms}
+\end{figure}
+
+\section{Hit and Miss Nullspace Ratio}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/hit_miss_task_null_ratio.pdf}
+    \caption[Task-null variance ratio of hits and misses]{CAPTION}\label{fig:hit_miss_nullspace}
+\end{figure}
+
+
+\section{Nullspace Ratio of Task Error}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/example_error.pdf}
+    \caption[Example Error]{CAPTION}\label{fig:example_error}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/error_ratio.pdf}
+    \caption[Error Nullspace]{CAPTION}\label{fig:error_nullspace_subjects}
+\end{figure}
+
+
+\section{Nullspace Optimization Solutions}
+
+Compare subject EMG solutions to optimization solutions
+NB https://math.stackexchange.com/questions/2028698/
+Hypothesis: subject error ratio of err-pinv / err-weighted will be > 1 as subjects tend to minimize their error to the prior-weighted solution rather than the pinv solution.
+Todo – use a metric
+Check if fitting different subsets of the prior data with GMMs makes the distance thing work out! 
+Try calibration only
+Try movement only
+There is a result here regardless of the outcome!!!
+This is about choosing a cost function and comparing to the data
+Can I fit a cost function to the data? This is like fitting a model… 
+We know subject solutions hit the target, but what do they minimize over time?
+Can we regress these solutions against potential regressors?
+
+How do subjects EMG solutions compare to optimization-derived solutions with varying levels of prior influence? I.e. Are subjects biased towards their prior data?
+
+Do the variances of subject errors (subject solution - optimization solution) lie in the null space directions on average or not? I.e. Where do subjects expend most of their variance beyond achieving the requirements of the task 
+
+Nonnegative min-norm solution - activity = mostly in the null space or task space? This says something about the error! Does the error live in the null space or task space, does this change over time?
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/example_computed_solutions.pdf}
+    \caption[Computed solutions]{CAPTION}\label{fig:computed_solutions}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/example_cost_functions.pdf}
+    \caption[Example Cost Functions for Optimal Solutions]{CAPTION}\label{fig:cost_functions}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/cosine_distance_solutions.pdf}
+    \caption[Distance from computed solutions]{CAPTION}\label{fig:computed_distances}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/optimization_pvalues.png}
+    \caption[Significance matrix for optimization solutions]{CAPTION}\label{fig:optimization_pvalues}
+\end{figure}
+
+
+
+
+\section{Classifying Nullspace Noise}
+
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/regression_scores.pdf}
+    \caption[regression scores]{CAPTION}\label{fig:regression_scores}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/classification_scores.pdf}
+    \caption[classification scores]{CAPTION}\label{fig:classification_scores}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/pca_2d_reconstructions.pdf}
+    \caption[PCA projections of null space into two dimensions]{CAPTION}\label{fig:pca_null}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/nullspace/pca_scores.pdf}
+    \caption[Classification scores of PCA reconstructions]{CAPTION}\label{fig:pca_scores}
+\end{figure}
+
+
+What do subjects learn? Do they learn specific rote movements, or are they flexible in their solutions?
+
+Look at the null space for task relevant information-- think about this, have we removed all the task relevant information before looking at this noise?
+
+
+
+\include{end_of_chapter}
+\end{document}

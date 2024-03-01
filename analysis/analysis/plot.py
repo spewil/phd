@@ -80,8 +80,9 @@ def annotated_heatmap(array, labels_x, labels_y):
     ax.set_yticks(np.arange(len(labels_y)), labels=labels_y)
 
     # Rotate the tick labels and set their alignment.
-    plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
+    plt.setp(ax.get_xticklabels(), rotation=60, ha="right",
             rotation_mode="anchor")
+    plt.setp(ax.get_yticklabels(), ha="right")
 
     # Loop over data dimensions and create text annotations.
     for i,j in zip(*np.tril_indices(array.shape[0],-1)):
@@ -100,19 +101,19 @@ def format_positional(n):
     return np.format_float_positional(n, precision=2, trim="k", unique=False, fractional=False)
 
 
-def save_figure(fig, name, folder="."):
+def save_figure(fig, name, folder=".",format="pdf"):
     # if folder doesn't exist, make it
     if folder != ".":
         Path(folder).mkdir(exist_ok=True, parents=True)
-        savepath = Path(folder) / Path(name + ".pdf")
+        savepath = Path(folder) / Path(name + f".{format}")
     else:
-        savepath = Path(name + ".pdf")
+        savepath = Path(name + f".{format}")
     fig.savefig(
         savepath,
         pad_inches=0.1,
         bbox_inches="tight",
         dpi=300,
-        format="pdf",
+        format=format,
         transparent=False,
     )
     print(f"Figure saved to {savepath}")
@@ -165,7 +166,7 @@ def plot_preprocessing_steps(signal, ax=None):
 
 
 def plot_weighted_targets(ax, weights, color="grey",**kwargs):
-    m = MarkerStyle("o", fillstyle="none")
+    m = MarkerStyle("o")
     theta = np.linspace(0, 2 * np.pi, 13)
     for t, w in zip(theta, weights):
         h, = ax.plot(

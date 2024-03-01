@@ -12,7 +12,8 @@
 \usepackage[dvipsnames,table]{xcolor}
 \definecolor{purple}{rgb}{0.44, 0.16, 0.39}
 \usepackage{lipsum}
-\usepackage[colorlinks]{hyperref}\hypersetup{citecolor=purple,linkcolor=purple}
+\usepackage[superscript,biblabel]{cite}
+\usepackage[colorlinks,pagebackref=true]{hyperref}\hypersetup{citecolor=purple,linkcolor=purple}
 % have to load cleverref after hyperref
 \usepackage[capitalize]{cleveref}
 \usepackage{enotez}
@@ -24,14 +25,15 @@
 
 \include{preamble}
 
-\subfile{chapters/1_Introduction}
-\subfile{chapters/2_Background_theory}
-\subfile{chapters/3_Background_experiments}
+% \subfile{chapters/1_Introduction}
+% \subfile{chapters/2_Background_theory}
+% \subfile{chapters/3_Background_experiments}
 \subfile{chapters/4_Methods}
-\subfile{chapters/5_Basic_Results}
-\subfile{chapters/6_More_Results}
-\subfile{chapters/7_Null_Space.tex}
-\subfile{chapters/8_Next_Steps}
+\subfile{chapters/5_Task_Performance.tex}
+\subfile{chapters/6_Mixture_Modeling.tex}
+\subfile{chapters/7_Data_Manifold.tex}
+\subfile{chapters/8_Null_Space.tex}
+% \subfile{chapters/9_Next_Steps}
 
 \bibliographystyle{naturemag}
 \bibliography{bib/bibliography}
