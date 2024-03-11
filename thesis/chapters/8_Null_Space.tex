@@ -19,6 +19,26 @@
 
 \section{GMM Null Space}
 
+
+\begin{itemize}
+  \setlength\itemsep{0em}
+  \item Introduce the null and task space: the task space is a two-dimensional plane passing through the origin within the ambient 64D EMG space. The null space is the 62D space that is not task relevant. Any activity in the null space has no bearing on the task outcome
+  \item Hypotheses: as a null hypothesis, we might expect subjects to identify the task and null spaces over learning, and disregard activity in the null space. This might predict that subjects would not contribute at all to their null space activation. That is, if we were to project EMG activity in 64D into the 62D nullspace, we might see that its magnitude is very small relative to the task space, as its useless to the subject in reaching the target. However, we know that the EMG signal has inherent muscle correlations within it, so subjects will be unable to completely remove their nullspace activity. However, they might reduce it as much as possible.
+  \item An alternative to this idea would be that subjects, since the nullspace activity is irrelevant, subjects may ``accumulate'' their variance there. However, we know that subjects, overall, reduce their variance. Thus task space variance, null space variance, or both must decrease to explain this. Since we know that task space variance decreases as subjects learn, we expect null space variance to decrease with it or to remain the same. We might predict that it remains the same since it is ``task-irrelevant''. 
+  \item The literature \lbrack{REF}\rbrack{} hypothesizes that subjects should attend to variability in the task-relevant subspace of their muscle activity and allow null space variability\cite{Valero-Cuevas2009}.
+  \item We gather evidence to test this. In \Cref{fig:nullspace_gmms} we project each GMM component's covariance from our seven models for all subjects into a task and null basis, and average the magnitude of each projection's dimension. We plot the ratio of the magnitude of this covariance projected into the task and null spaces. We find that, on average over subjects, all models tend to accumulate more variance in the task space than the null space. This is not surprising, however, since activity in the task space is required to achieve the task. Comparing across models, we find, shown in \Cref{fig:nullspace_pvalues_gmms}, 
+  \item How do you compute task and null spaces? This refers to eigenvectors of the decoder. These can be computed directly using singular value decomposition of the decoder, where the task-relevant subspace is spanned by the eigenvectors associated with nonzero eigenvalues and the null subspace is spanned by the eigenvectors associated with zero eigenvalues.
+  \item These results accord with what we expect: the movement data is unrelated to the task, thus has a low ratio. The calibration task is designed to maximally explore the EMG space, unrelated to the target task so we see a significantly lower ratio, near 1. As subjects learn, their variance in the task space increases relative to the null space.
+  \item Looking at the task and null space activity separately to discern whether null activity is decreasing or task activity is increasing, we see in \Cref{fig:null_task_magnitude_gmms} that null space activity on average over subjects appears to decrease more than task space activity, while both decrease together.
+  \item This is showing that over learning the distributions become more aligned with the task space, the directions of variance become more aligned with the task space.
+  \item \textbf{TODO} write the math associated with the task and null space and the projection. 
+  \item \textbf{TODO} make some kind of visual to support explaining the task and null space. Even if it's just a plane with some projection lines and arrows.
+  \item \textbf{TODO} Think more about how this relates to the hit end results below. How do we expect these things to compare?
+\end{itemize}
+ 
+% Hypothesis: in line with prior studies, that we will see lower variability in the task-relevant subspace compared with the task-irrelevant subspace in later trials.
+% Hypothesis: over trials, task-relevant variability will decrease as subjects identify the task-relevant dimensions of their movement space.
+
 % \begin{figure}[tph]
 %   \centering
 %   \begin{minipage}{\textwidth}
@@ -35,88 +55,131 @@
 \begin{figure}[tph]
   \centering
   \includegraphics[width=\textwidth]{more_results/gmms/nullspace_ratios_models.pdf}
-  \caption[Nullspace activity for GMMs]{CAPTION}\label{fig:nullspace_gmms}
+  \caption[Task-null activity ratio over GMMs]{Task-null activity ratio over GMMs}\label{fig:nullspace_gmms}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+  \includegraphics[width=\textwidth]{more_results/gmms/null_task_magnitude_gmm.pdf}
+  \caption[Null and task activity over GMMs]{Null and task activity over GMMs}\label{fig:null_task_magnitude_gmms}
 \end{figure}
 
 \begin{figure}[tph]
   \centering
   \includegraphics[width=\textwidth]{more_results/gmms/nullspace_pvalues_models.png}
-  \caption[GMM nullspace significance matrix]{CAPTION}\label{fig:nullspace_pvalues_gmms}
+  \caption[GMM task-null ratio significance matrix]{GMM task-null ratio significance matrix.}\label{fig:nullspace_pvalues_gmms}
 \end{figure}
 
+
+
 \section{Hit and Miss Nullspace Ratio}
+
+\begin{itemize}
+  \setlength\itemsep{0em}
+  \item \textbf{TODO} Introduce the idea of the ``hit end'' by showing hit ends from a single subject. Explain the ``hit end'' for the miss trials, where we're taking the lowest task-space error sample in place of the hit end. We're calling this a ``miss end''.
+  \item \textbf{TODO} Introduce the hit end variance ratio before getting into misses and hits
+  \item Do these ``miss ends'' have higher null space activity? That is, are subjects making mistakes (even if that ``error'' doesn't count) in the null or task space? \Cref{fig:hit_miss_nullspace} shows that subjects, on average, the ratio of the variance of miss and hit ``ends'' differs, where miss ends tend to have higher relative task space variance than hits. That is, subjects are identifying the task plane and prioritizing it over the null space. While for hits, higher performing subjects tend to show higher variance of their hits in the task plane, while lower performing subjects tend to accumulate more variance in the null space. Note that this differs from the GMM projections.
+  \item \textbf{TODO} Think more carefully here. The correlation for hit ends versus reward may simply be due to lower performing subjects having fewer hits, and thus lower variance. We should try normalizing by the number of samples/hits. 
+  \item \textbf{TODO} Decide whether this analysis makes sense. Should we instead use the ``error'' between the ideal, zero-null-space-activity solution (\textbf{TODO} write down the math for the pseudoinverse solution) and the actual subject solutions? These results don't show much shift in the task-null ratio, which might be interesting as it shows that people don't really seem to care about the null space over learning. In theory, using the error removes activity that is minimally task relevant, leaving you with what should be pure nullspace activity, or everything in the EMG that isn't required for the task. This is shown in \Cref{fig:error_nullspace_subjects}. We see a much higher ratio, suggesting that the distribution of error is more aligned to the task plane than the nullspace. 
+  \item We have to point out clearly that the task is designed by extracting a plane from subjects' calibration data, and thus the natural manifold is biased in the direction of the task. However, taken in combination with the GMM projections, we don't think this is merely an artefact of the task structure. \textbf{TODO} strengthen this argument, reflect on all these results together to form a coherent story.
+  \item \textbf{TODO} Is there a way to compare the variance projection of the error distribution to a null hypothesis? If subjects were to move randomly according to some simpler distribution? Or can we compare the error here to the natural movement or calibration data somehow? The problem with this is that there is no ``solution'' to use to compute an error signal. Need to think about this.
+\end{itemize}
 
 \begin{figure}[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/hit_miss_task_null_ratio.pdf}
-    \caption[Task-null variance ratio of hits and misses]{CAPTION}\label{fig:hit_miss_nullspace}
-\end{figure}
-
-
-\section{Nullspace Ratio of Task Error}
-
-\begin{figure}[tph]
-  \centering
-    \includegraphics[width=\textwidth]{more_results/nullspace/example_error.pdf}
-    \caption[Example Error]{CAPTION}\label{fig:example_error}
+    \caption[Task-null variance ratio of hits and misses]{Task-null variance ratio of hits and misses}\label{fig:hit_miss_nullspace}
 \end{figure}
 
 \begin{figure}[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/error_ratio.pdf}
-    \caption[Error Nullspace]{CAPTION}\label{fig:error_nullspace_subjects}
+    \caption[Task-Null variance projections of activity error]{Task-Null variance projections of activity error}\label{fig:error_nullspace_subjects}
 \end{figure}
+
+
+% \section{Nullspace Ratio of Task Error}
+
+% \begin{itemize}
+%   \item 
+% \end{itemize}
+
+% \begin{figure}[tph]
+%   \centering
+%     \includegraphics[width=\textwidth]{more_results/nullspace/example_error.pdf}
+%     \caption[Example Error]{CAPTION}\label{fig:example_error}
+% \end{figure}
+
+
 
 
 \section{Nullspace Optimization Solutions}
 
-Compare subject EMG solutions to optimization solutions
-NB https://math.stackexchange.com/questions/2028698/
-Hypothesis: subject error ratio of err-pinv / err-weighted will be > 1 as subjects tend to minimize their error to the prior-weighted solution rather than the pinv solution.
-Todo – use a metric
-Check if fitting different subsets of the prior data with GMMs makes the distance thing work out! 
-Try calibration only
-Try movement only
-There is a result here regardless of the outcome!!!
-This is about choosing a cost function and comparing to the data
-Can I fit a cost function to the data? This is like fitting a model… 
-We know subject solutions hit the target, but what do they minimize over time?
-Can we regress these solutions against potential regressors?
+\begin{itemize}
+  \setlength\itemsep{0em}
+  \item We're expanding the previous section to include more elaborate solutions, not just the pseudoinverse. This builds on the previous analysis.
+  \item We're looking at the cosine similarity for different candidate solutions to target task, which serve as hypothetical cost functions in a sense: these are different possible optimizations that subjects might be making, each with different constraints in the null space. we use the method of lagrange multipliers to find each optimal solution. Every solution here produces an EMG activation which reaches the target exactly, but it solves the redundancy problem in different ways:
+  \begin{itemize}
+    \item The pseudoinverse --- zero null space activity
+    \item Movement mean --- penalizes Euclidean distance from the movement dataset's mean
+    \item Calibration mean --- penalizes Euclidean distance from the calibration dataset's mean
+    \item Movement normal --- penalizes Mahalanobis distance from a Gaussian with the movement dataset's mean and covariance
+    \item Calibration normal --- penalizes Mahalanobis distance from a Gaussian with the calibration dataset's mean and covariance
+    \item Movement GMM likelihood --- penalizes inverse likelihood under the Movement GMM
+    \item Calibration GMM likelihood --- penalizes inverse likelihood under the Calibration GMM
+  \end{itemize}
+  \item These solutions are all constrained to be nonnegative, to match subject's EMG activities.
+  \item Out hypothesis: since subjects are constrained in their EMG activation, we should see a greater similarity between the constrained solutions and the pseudoinverse solution. This is a method of testing how ``biased'' subjects' solutions are to the natural statistics of their muscle activations. If subject's solutions are closer to those weighted by their own natural movement and calibration statistics, this supports the idea that subjects choose EMG activations within their repertoire. 
+  \item This is what we find in \Cref{fig:computed_distances} with the computed solutions for one subject shown in \Cref{fig:computed_solutions}. An example of the cost functions used to compute the optimal solutions under the Gaussian and GMM statistics is shown in \Cref{fig:cost_functions}.
+  \item From the significance matrix \Cref{fig:optimization_pvalues} we see that the subject's statistics have a significant effect on the EMG activations made to hit targets.
+  \item \textbf{TODO} Think harder about why the GMM has a lower similarity to the subject solutions than the other solutions. I think this is simply an artefact of the GMMs being overfit, and thus these solutions are very ``specific'' to those datasets, while the other solutions are more generic. So subjects are generating solutions that are in line with their prior statistics, but that are unique to the target task itself, not just rehashings of movements that were made prior, on average.
+  \item \textbf{TODO} Change cosine ``distance'' to similarity (0 to 1)
+\end{itemize}
 
-How do subjects EMG solutions compare to optimization-derived solutions with varying levels of prior influence? I.e. Are subjects biased towards their prior data?
-
-Do the variances of subject errors (subject solution - optimization solution) lie in the null space directions on average or not? I.e. Where do subjects expend most of their variance beyond achieving the requirements of the task 
-
-Nonnegative min-norm solution - activity = mostly in the null space or task space? This says something about the error! Does the error live in the null space or task space, does this change over time?
+% NB https://math.stackexchange.com/questions/2028698/
 
 \begin{figure}[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/example_computed_solutions.pdf}
-    \caption[Computed solutions]{CAPTION}\label{fig:computed_solutions}
+    \caption[Computed solutions]{Computed solutions}\label{fig:computed_solutions}
 \end{figure}
 
 \begin{figure}[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/example_cost_functions.pdf}
-    \caption[Example Cost Functions for Optimal Solutions]{CAPTION}\label{fig:cost_functions}
+    \caption[Example Cost Functions for Optimal Solutions]{Example Cost Functions for Optimal Solutions}\label{fig:cost_functions}
 \end{figure}
 
 \begin{figure}[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/cosine_distance_solutions.pdf}
-    \caption[Distance from computed solutions]{CAPTION}\label{fig:computed_distances}
+    \caption[Distance from computed solutions]{Distance from computed solutions}\label{fig:computed_distances}
 \end{figure}
 
 \begin{figure}[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/optimization_pvalues.png}
-    \caption[Significance matrix for optimization solutions]{CAPTION}\label{fig:optimization_pvalues}
+    \caption[Significance matrix for optimization solutions]{Significance matrix for optimization solutions}\label{fig:optimization_pvalues}
 \end{figure}
 
 
 
 
 \section{Classifying Nullspace Noise}
+
+\begin{itemize}
+  \setlength\itemsep{0em}
+  \item Here we're asking if there is enough ``signal'' in the null space to correctly classify the target for each trial. That is, take the hit end, project into the null space to remove any necessary task-relevant information, then run a classifier on these null space projections. If we can classify the target, there must exist information that is task relevant in this null space projection. This would suggest that subjects are generating solutions to the task which are specific to the EMG space, not merely the task-relevant space.
+  \item This suggests model-free learning: subjects are not using an internal model of the decoder plane to choose solutions which minimize their null space activity, they are learning some solution for each target and repeating this solution, becoming more precise at repeating this exact EMG activity upon seeing that same target again.
+  \item In \Cref{fig:regression_scores} we see how we can nearly perfectly regress the task-relevant projection of the hit ends for each subject against their targets. We can also regress the null space projection to predict the target as well, and subjects who perform better on the task are more predictable in their solutions. That is, higher performers more predictable null space activity to hit targets, suggesting that subjects are learning and repeating solutions in EMG space, rather than attending only to task space.
+  \item We show this using a Nearest Neighbors classifier, again with cross validation, and comparing to a null model of a Gaussian with matching statistics and dimensionality to the null statistics. Here we see the same pattern: subjects who perform better generate more predictable null space activity in their solutions.
+  \item We show PCA projections of the full, task, and null activity in \Cref{fig:pca_null}, where it is clear that there is target-related structure in the null space activity, even in the two-dimensional principle subspace. In \Cref{fig:pca_scores} we show two analyses on the PCA components of the null space activity. If we reconstruct the null space activity using the highest variance principle components, adding one component at a time to our reconstruction, we see that, on average over subjects, with only two principle components we have reached nearly 60\% of our maximum classification score from the full null space. That is, the task-relevant information in the null space activity can be said to be low dimensional. If we start from the low variance components and build up, we find that even these low variance components hold task information, that they are not all noise, on average. With half of these components, on average, we can achieve nearly 30\% of our classification score. This suggests that many of the dimensions of subjects' solutions, while not necessary to reconstruct the null space, hold enough task-relevant information to be sufficient for weakly classifying targets. Subjects' solutions, on average, are in that sense bespoke in EMG space for the goal at hand.
+  \item Subjects seem to be learning ``rote'' solutions, which they learn to better recall and repeat more precisely over time. We don't see that they are learning flexible solutions, internally aware of the task plane, within the time frame of training.
+  \item \textbf{TODO} Is this again due to the amount of data we have for subjects? Can we normalize somehow normalize this by the number of hits to check?
+  \item \textbf{TODO} Put all of these results together. What do they all point to? The best summary I have now is that subjects are fundamentally constrained by their underlying EMG manifold in succeeding in the task, and this is not taken into account in the way the decoder is computed. Despite this, however, subjects still learn to varying degrees. They are biased by their prior statistics, but not enough not to carve out new solutions for the task at hand. The solutions they do discover seem to mostly disregard the null space as task-irrelevant, pointing to a kind of model-free learning happening on this time scale.
+  \item \textbf{TODO?} I think it would be really strong to dig further into one or two subjects' solutions and visualize things as if I only had this data. This might give better context for the subject-averaged results, illustrating how this plays out for a single subject.
+  \item This is a cool task! Figure out how to strengthen the holistic story of this: we designed a task to do X and test Y, we find that Z happened with accepts or rejects our hypothesis. Not quite tight enough.
+\end{itemize}
 
 
 \begin{figure}[tph]
@@ -142,12 +205,6 @@ Nonnegative min-norm solution - activity = mostly in the null space or task spac
     \includegraphics[width=\textwidth]{more_results/nullspace/pca_scores.pdf}
     \caption[Classification scores of PCA reconstructions]{CAPTION}\label{fig:pca_scores}
 \end{figure}
-
-
-What do subjects learn? Do they learn specific rote movements, or are they flexible in their solutions?
-
-Look at the null space for task relevant information-- think about this, have we removed all the task relevant information before looking at this noise?
-
 
 
 \include{end_of_chapter}

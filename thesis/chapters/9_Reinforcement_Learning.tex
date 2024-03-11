@@ -1,0 +1,38 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../../images/}}}
+\begin{document}
+
+\chapter{CHAPTER NAME}\label{chap:LABEL}
+
+\begin{quote}
+  \emph{An interesting open question is how to relate trial-to-trial dynamics of learning to asymptotic predictions regarding optimal adaptation.}\\
+  \raggedleft{--- Todorov, 2007}
+\end{quote}
+\cleardoublepage%
+
+\begin{figure}
+    \centering
+    \begin{minipage}{0.8\textwidth}
+      \includegraphics[width=\textwidth]{introduction/voder_schematic.jpg}
+      \subcaption{}
+    \end{minipage}\\%
+    \begin{minipage}{0.5\textwidth}
+      \includegraphics[width=\textwidth]{introduction/voder.png}
+      \subcaption{}
+    \end{minipage}
+    \caption{CAPTION}\label{fig:voder}
+  \end{figure}
+
+
+Subjects are hard-constrained by their hands physiology, but we think theyre also soft-constrained by their natural movement repertoire. We suggest casting this as a constrained policy optimization problem, where there is a regularization of the policy based on the prior movement data, which we suggest captures these natural constraints. The alternative we offer here is a norm-minimizing solution.
+
+% % Models 
+% Do we see shifts over learning under different models?
+% Fit models across learning, use the stats to show shifts?
+% Entropy of GMM model fits over trials? “Policy entropy”? Bits of information contained in the policy? --– the more high-probability actions, or concentration around a few actions, the less entropy, the lower the description length. Balance between exploration and exploitation.
+% Does a subject penalize changes to their controllers/action distribution?
+% Do they follow a KL-divergence type of measurement when improving their policy?
+% Do we see this in the dynamics of the statistics over trials?
+
+\include{end_of_chapter}
+\end{document}

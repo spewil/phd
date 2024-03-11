@@ -12,4 +12,13 @@
 \newblock \emph{\bibinfo{journal}{Daedalus}} \textbf{\bibinfo{volume}{144}},
   \bibinfo{pages}{83--95} (\bibinfo{year}{2015}).
 
+\bibitem{Valero-Cuevas2009}
+\bibinfo{author}{{Valero-Cuevas}, F.~J.}, \bibinfo{author}{Venkadesan, M.} \&
+  \bibinfo{author}{Todorov, E.}
+\newblock \bibinfo{title}{Structured {{Variability}} of {{Muscle Activations
+  Supports}} the {{Minimal Intervention Principle}} of {{Motor Control}}}.
+\newblock \emph{\bibinfo{journal}{Journal of Neurophysiology}}
+  \textbf{\bibinfo{volume}{102}}, \bibinfo{pages}{59--68}
+  (\bibinfo{year}{2009}).
+
 \end{thebibliography}

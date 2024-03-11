@@ -1,0 +1,148 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../../images/}}}
+\begin{document}
+
+
+\chapter{Data Manifold}\label{chap:data_manifold}
+
+
+\begin{quote}
+    \emph{Learning is not like a coin, which remains physically whole even through the most infamous transactions; it is, rather, like a very handsome dress, which is worn out through use and ostentation.}\\
+    \raggedleft{--- Umberto Eco, The Name of the Rose}
+  \end{quote}
+
+\cleardoublepage%
+
+
+
+\section{Structure of the Data Manifold}
+
+\begin{itemize}
+  \setlength\itemsep{0em}
+  \item Results so far don't show any glaring confounds in the experiment (decoder, metadata, etc.) which suggests that performance is constrained by subjects' available EMG activation space; their ability to produce, identify, and recall activations which produce successful trials
+  \item Trajectories show a lobed pattern, as seen in for example in \Cref{fig:mean_trajectories}. This suggests that the underlying manifold is ``spiky'' or ``subspace confined''--- this means PCA will struggle to capture the finer details of the manifold
+  \item We illustrate this with \Cref{fig:toy_model}, where we show how a Gaussian mixture model with rank-1 mixture components can produce trajectories similar to what we see in our data, and how PCA fails to recover these components when they are mixed, despite remaining low-rank. 
+  \item We're thinking of this like a sampling problem--- since we're filtering for active EMG, each sample can be thought of as a ``dart throw'' trying to hit the bulls-eye (target). This data is very sparse; each trajectory is low-probability, the EMG space is large and we have fewer trajectories (45) than dimensions (64). Our models will necessarily be overfit, but this should not detract from comparing like for like. We can think of models like a filter.
+  \item PCA will hide information about subspace confinement, covariance structure, etc. It will not take into account the “spiky” nature of the data manifold. This will give us a false sense of the correlation structure between EMG channels. We should use a more expressive model to give a fuller sense of the data's shape
+  \item We hypothesize that subspace confinement correlates negative with performance, as this is the underlying constraint which prevents subjects from accessing high reward EMG activations.
+  \item We find that log transforming the data will be helpful in fitting Gaussian mixtures, as the data appears lognormal, see \Cref{fig:raw_pairplot} and \Cref{fig:log_pairplot} --- there is precedent for this in the literature \lbrack{REF?}\rbrack
+\end{itemize}
+
+
+\begin{figure}[tph]
+  \centering
+  \includegraphics[width=1.0\textwidth]{more_results/pairplot/raw_pairplot.png}
+  \caption[Pairplot of calibration data]{Pairplot of calibration data}\label{fig:raw_pairplot}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+  \includegraphics[width=1.0\textwidth]{more_results/pairplot/log_pairplot.png}
+  \caption[Pairplot of log-transformed calibration data]{Pairplot of log-transformed calibration data}\label{fig:log_pairplot}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+    \includegraphics[width=1.0\textwidth]{more_results/gmms/PCA_rank_fig.pdf}
+    \caption[Explanatory Mixture Model]{The variables here are: the rank (number of rank-1 components making up the mixture), the ratio of the variance to the covariance of those components, and the "mixing" of each rank-1 component which effectively increases the rank of the mixture, if we assume to be a single Gaussian. We can see how as the variance begins to dominate the mixture looks more like a multivariate Gaussian. When components mix (without changing the overall variance to covariance ratio), we have a similar result due, however, to inability for PCA to model such a mixture as a single Gaussian. The 2D trajectory plots are shown for reference, but this effect is happening in the full 64D space, the values of the decoder are not a factor in this effect. See how PCA mischaracterizes the distribution in the mixed case, but fares well in the unmixed and high variance cases. This motivates our use of mixture models, which explicitly attempts to fit multiple Gaussians and can thus deal with mixing. Note that the effect here is slight, but demonstrates the principle of interest.}\label{fig:toy_model}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+\section{How Does PCA Dimensionality Compare Across Tasks?}
+
+\begin{itemize}
+  \setlength\itemsep{0em}
+  \item In other studies \lbrack{REF?}\rbrack, theyve analyzed surface EMG data with PCA to then say that since there are high-variance components that capture gross hand postures / movements, and lower-variance, higher-order components that capture finer movements, this implies something about the neural basis for hand control. While it may, this result via PCA is not surprising. What is more insightful is to understand the underlying structure of the data manifold, and follow its changes across learning to understand how the motor system copes with a new environment. We can clearly show how PCA misses an important aspect of the data manifold, its highly nonlinear structure, and how this plays a role in subjects performance and learning.
+  \item Compute PCA for movement, calibration, and dividing target task into 5 blocks of roughly equal numbers of samples. Use this as a baseline or reference compared to mixture models in \Cref{chap:gmms}. 
+  \item Subspace confinement here is the sum of the explained variance of the top two principal components of each dataset's spatial covariance. This measures a kind of spatial complexity of the data, asking how much of the data's variance can be explained by two components. The higher this measure is, the more confined the data is to its principle subspace.
+  \item \textbf{TODO?} Look at the sparsity of the components --- while the number of components needed may be low, those components may not be sparse, they may be spatially spread out? Look at the 1-norm of the component? 0-norm? Gini index?
+  \item How does the dimensionality compare between these tasks? \textbf{Hypothesis}: Early in learning, subjects will explore more, and their dimensionality will be high (similar to the dimensionality of natural movement or the calibration task). Over learning, dimensionality will decrease as subjects “hone in” on solutions to the task. \textbf{Result}: The movement task is highest, meaning the movement activity as a whole is confined to a small principle subspace. The calibration is lowest, meaning it is more spread across its principle subspaces. This supports our aim for the calibration task, to encourage or ``gameify'' this kind of wider exploration of the EMG space. While we don't see a significant difference in the means over subjects between the trial blocks, we do see significance between movement and all other datasets. We find that from the third chunk of trials, subjects on average increase their principle subspace confinement relative to the calibration datasets. This suggests that over time, on average over subjects, EMG activations shift from exploration early in the target task to movements that look more like natural movements \Cref{fig:pca_variance,fig:pca_pvalues}.
+  \item \textbf{TODO} Inspect the PCA modes and compare them. Are natural movement modes relevant to the task? Do modes change over time?
+  \item \textbf{IDEA} we should find a projection of the data in a lower dimensional space than 64, but higher than 2, that maximizes the dimensionality, or generates spatial weights that are least sparse (channel-wise activations which are nonzero). This would mean a projection that maximally ``fills'' the space. PCA is maximally variant projections in each dimension, but leads to sparsity in the weights.This would give us a better starting point for decoders which do not handicap subjects by their underlying manifold.
+\end{itemize}
+
+
+\begin{figure}[tph]
+  \centering
+  \includegraphics[width=1.0\textwidth]{more_results/pca_dimensionality/PCA_variance.pdf}
+  \caption[Explained variance for PCA over tasks]{Explained variance of the top two principal components for each task.}\label{fig:pca_variance}
+\end{figure}
+
+
+\begin{figure}[tph]
+  \centering
+  \includegraphics[width=1.0\textwidth]{more_results/pca_dimensionality/pca_pvalues.pdf}
+  \caption[Explained variance Tukey test]{$p$-values for Tukey's honestly significant difference test for pairwise means of a group of samples. Here we compare the explained variance of the top two singular values for the movement, calibration, and 5 blocks of task trials over subjects.}\label{fig:pca_pvalues}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+\subsection{UMAP}
+
+\begin{itemize}
+  \setlength\itemsep{0em}
+  \item UMAP the data to visualize the nonlinear manifold, generate hypotheses about what happens over learning
+  \item Refresher: UMAP is a topological dimensionality reduction technique, attempts to take into account the local and global structure of the data manifold 
+  \item The parameters used to produce UMAP projection here were chosen to favor stretching the data out in the projection, yet we still see the ``spikes'' of the subspaces and mixing between targets
+  \item Over time, we see how EMG ``relaxes'' into proven high-return patterns, we see a kind of compression of activity to ostensibly high-reward trajectories
+  \item Over trials, we see that subjects, both low and high performing, demix their EMG activity as they develop bespoke solutions for each target. Additionally, we see how those solutions become more concentrated over time. This might be thought of as a relaxation into target-specific solutions. As UMAP takes into account the topology of the full EMG dimensionality, these characteristics of the projection point to the hypothesis that subjects attend to a larger dimensionality of their solution that the task-relevant dimensions alone. This will be explored more deeply in \Cref{chap:nullspace}.
+  \item \textbf{TODO?} generate synthetic data to compare 64D Gaussian distribution with matching statistics from UMAP (this will look like a blob), compare that to subspace confined gaussians?
+\end{itemize}
+
+% \begin{figure}[tph]
+%   \centering
+%     \includegraphics[width=\textwidth]{more_results/manifold/example_umap.pdf}
+%     \caption[Example UMAP projection]{}\label{fig:example_umap}
+% \end{figure}
+
+% \begin{figure}[tph]
+%   \centering
+%     \includegraphics[width=\textwidth]{more_results/manifold/umap_over_blocks.pdf}
+%     \caption[Example UMAP projection over blocks]{}\label{fig:umap_over_blocks}
+% \end{figure}
+
+\begin{figure}[tph]
+  \centering
+  \begin{minipage}{\textwidth}
+    \includegraphics[width=\textwidth]{more_results/manifold/example_umap_22.pdf}
+    \subcaption{}
+  \end{minipage}\\%
+  \begin{minipage}{\textwidth}
+    \includegraphics[width=\textwidth]{more_results/manifold/example_umap_6.pdf}
+    \subcaption{}
+  \end{minipage}
+  \caption[Comparison of UMAP projections between two subjects]{Comparison of UMAP projections between two subjects: low performance and high performance. Full Target task dataset}\label{fig:umap_comparison}
+\end{figure}
+
+\begin{figure}[tph]
+  \centering
+  \begin{minipage}{\textwidth}
+    \includegraphics[width=\textwidth]{more_results/manifold/umap_over_blocks_22.pdf}
+    \subcaption{}
+  \end{minipage}\\%
+  \begin{minipage}{\textwidth}
+    \includegraphics[width=\textwidth]{more_results/manifold/umap_over_blocks_6.pdf}
+    \subcaption{}
+  \end{minipage}
+  \caption[Comparison of UMAP projections over blocks between two subjects]{Comparison of UMAP projections over blocks between two subjects: low performance and high performance}\label{fig:umap_over_blocks_comparison}
+\end{figure}
+
+
+\include{end_of_chapter}
+\end{document}
