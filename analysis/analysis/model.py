@@ -166,6 +166,11 @@ def closest_pairs_wasserstein(mu0,mu1,S0,S1):
             used_pairs_2.append(pair[1])
     return stored_pairs
 
+def closest_pairs_over_models_wasserstein(models):
+    pairs = []
+    for model1, model2 in zip(models[:-1],models[1:]):
+        pairs += [closest_pairs_wasserstein(model1.means_, model2.means_,model1.covariances_,model2.covariances_)]
+    return np.array(pairs)
 
 def closest_pairs(points1, points2):
     # assert points1.shape[0] > points1.shape[1]

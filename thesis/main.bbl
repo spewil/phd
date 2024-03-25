@@ -5,6 +5,33 @@
 \providecommand{\bibinfo}[2]{#2}
 \providecommand{\eprint}[2][]{\url{#2}}
 
+\bibitem{koberReinforcementLearningRobotics2013}
+\bibinfo{author}{Kober, J.}, \bibinfo{author}{Bagnell, J.~A.} \&
+  \bibinfo{author}{Peters, J.}
+\newblock \bibinfo{title}{Reinforcement learning in robotics: {{A}} survey}.
+\newblock \emph{\bibinfo{journal}{The International Journal of Robotics
+  Research}} \textbf{\bibinfo{volume}{32}}, \bibinfo{pages}{1238--1274}
+  (\bibinfo{year}{2013}).
+
+\bibitem{sauerbreiCorticalPatternGeneration2019}
+\bibinfo{author}{Sauerbrei, B.~A.} \emph{et~al.}
+\newblock \bibinfo{title}{Cortical pattern generation during dexterous movement
+  is input-driven}.
+\newblock \emph{\bibinfo{journal}{Nature}}  (\bibinfo{year}{2019}).
+
+\bibitem{Bernstein1967}
+\bibinfo{author}{Bernstein, N.}
+\newblock \emph{\bibinfo{title}{The Coordination and Regulation of Movements}}
+  (\bibinfo{publisher}{{Pergamon}}, \bibinfo{address}{{Oxford}},
+  \bibinfo{year}{1967}).
+
+\bibitem{kitanoBiologicalRobustness2004}
+\bibinfo{author}{Kitano, H.}
+\newblock \bibinfo{title}{Biological robustness}.
+\newblock \emph{\bibinfo{journal}{Nature Reviews Genetics}}
+  \textbf{\bibinfo{volume}{5}}, \bibinfo{pages}{826--837}
+  (\bibinfo{year}{2004}).
+
 \bibitem{bizziHardScientificQuest2015}
 \bibinfo{author}{Bizzi, E.} \& \bibinfo{author}{Ajemian, R.}
 \newblock \bibinfo{title}{A {{Hard Scientific Quest}}: {{Understanding

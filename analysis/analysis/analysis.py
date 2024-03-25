@@ -12,6 +12,33 @@ else:
     ROOT_RAWDATA_PATH = Path("/Users/spencer/motor-control/data/rawdata/")
     ROOT_METADATA_PATH = Path("/Users/spencer/motor-control/data/metadata/")
 
+def variance_fraction_of_projection(components, data):
+    # data -- samples, vars
+    # components == p_vars, vars
+    assert components.shape[1] == data.shape[1], (components.shape, data.shape)
+    projection = data @ components.T
+    if components.shape[0] == 1:
+        projection_total_var = np.var(projection)
+    else:
+        projection_total_var = np.trace(np.cov(projection.T))
+    data_total_var = np.trace(np.cov(data.T))
+    return projection_total_var / data_total_var
+
+def grassmann_metric(A,B):
+    assert A.shape == B.shape
+    assert A.shape[0] > A.shape[1]
+    QA,_ = np.linalg.qr(A)
+    QB,_ = np.linalg.qr(B)
+    # svd of cross-covariance
+    _, S, _ = np.linalg.svd(QA.T@QB)
+    # the singular values here are in [0,1] because matrices are orthonormal
+    S = np.clip(S,a_min=0,a_max=1)
+    # we're normalizing the arccos [0,pi/2]
+    # taking the norm of that vector
+    # normalizing by the dimensionality, that's the maximum length on the simplex
+    return np.sqrt(np.sum(np.arccos(S)/(np.pi/2))**2) / S.shape[0]
+
+
 def make_chunk_indices():
     return np.array(list(zip(np.arange(0,45,9),np.arange(9,46,9))))
 

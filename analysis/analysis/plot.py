@@ -51,7 +51,7 @@ matplotlib.use("TkAgg")
 #     return ax, hf, stats
 
 
-def annotated_heatmap(array, labels_x, labels_y):
+def annotated_heatmap(array, labels_x, labels_y, figax=(None,None)):
     assert array.shape[0] == array.shape[1]
     assert array.shape[0] == len(labels_x)
     assert array.shape[0] == len(labels_y)
@@ -66,7 +66,11 @@ def annotated_heatmap(array, labels_x, labels_y):
     newmap[128: :] = short_map(1.0)
     newmap = ListedColormap(newmap)
 
-    fig, ax = plt.subplots()
+    if figax == (None, None):
+        fig, ax = plt.subplots()
+    else:
+        fig, ax = figax
+            
     for i,j in zip(*np.triu_indices(array.shape[0])):
         array[i,j] = 10
     divider = make_axes_locatable(ax)
@@ -91,6 +95,7 @@ def annotated_heatmap(array, labels_x, labels_y):
 
     fig.tight_layout()
     return fig, (ax, cax)
+
 
 
 def format_scientific(n):
@@ -124,20 +129,20 @@ def plot_circle(x, y, r, ax, style="k"):
     ax.plot(r * np.cos(theta) + x, r * np.sin(theta) + y, style)
 
 
-def plot_targets(ax, style="ko", markersize=5, target=None):
-    m = MarkerStyle("o", fillstyle="none")
+def plot_targets(ax, style="ko", markersize=5, target=None,**kwargs):
     theta = (np.linspace(0, 2 * np.pi, 13) + np.pi)[:-1]
-    ax.plot(
+    h = ax.plot(
         np.cos(theta),
         np.sin(theta),
         style,
-        marker=m,
+        marker="o",
         markersize=markersize,
         color="grey",
+        **kwargs
     )
     if not target is None:
         ax.plot(target[0], target[1], "ro", markersize=markersize)
-
+    return h
 
 def plot_box(ax):
     ax.plot(0, 0, "ks", zorder=20)

@@ -39,7 +39,7 @@
 % Hypothesis: in line with prior studies, that we will see lower variability in the task-relevant subspace compared with the task-irrelevant subspace in later trials.
 % Hypothesis: over trials, task-relevant variability will decrease as subjects identify the task-relevant dimensions of their movement space.
 
-% \begin{figure}[tph]
+% \begin{figure}[H]%[tph]
 %   \centering
 %   \begin{minipage}{\textwidth}
 %     \includegraphics[width=\textwidth]{more_results/gmms/nullspace_ratios_models.pdf}
@@ -52,23 +52,46 @@
 %   \caption[Nullspace activity for GMMs]{CAPTION}\label{fig:nullspace_gmms}
 % \end{figure}
 
-\begin{figure}[tph]
+
+\begin{figure}[H]%[tph]
+  \centering
+  \includegraphics[width=\textwidth]{more_results/gmms/variance_projection_example.pdf}
+  \caption[Example of variance projection of GMM components]{Example of variance projection of GMM components.}\label{fig:variance_projection_example}
+\end{figure}
+
+\begin{figure}[H]%[tph]
+  \centering
+  \includegraphics[width=\textwidth]{more_results/gmms/null_task_magnitude_gmm.pdf}
+  \caption[GMM task and null projection activity]{GMM task and null projection activity}\label{fig:gmm_task_null_significance}
+\end{figure}
+
+\begin{figure}[H]%[tph]
+  \centering
+  \begin{minipage}{0.49\textwidth}
+    \includegraphics[width=\textwidth]{more_results/gmms/nullspace_pvalues_models_task_significance.png}
+    \subcaption{}
+  \end{minipage}\\%
+  \begin{minipage}{0.49\textwidth}
+    \includegraphics[width=\textwidth]{more_results/gmms/nullspace_pvalues_models_null_significance.png}
+    \subcaption{}
+  \end{minipage}
+  \caption[Null and task activity significance over GMMs]{Null and task activity significance over GMMs}\label{fig:null_task_magnitude_gmms}
+\end{figure}
+
+\begin{figure}[H]%[tph]
   \centering
   \includegraphics[width=\textwidth]{more_results/gmms/nullspace_ratios_models.pdf}
   \caption[Task-null activity ratio over GMMs]{Task-null activity ratio over GMMs}\label{fig:nullspace_gmms}
 \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
-  \includegraphics[width=\textwidth]{more_results/gmms/null_task_magnitude_gmm.pdf}
-  \caption[Null and task activity over GMMs]{Null and task activity over GMMs}\label{fig:null_task_magnitude_gmms}
+  \includegraphics[width=0.8\textwidth]{more_results/gmms/nullspace_pvalues_models.png}
+  \caption[GMM task-null ratio significance matrix]{GMM task-null ratio significance matrix.}\label{fig:gmm_task_null_activity}
 \end{figure}
 
-\begin{figure}[tph]
-  \centering
-  \includegraphics[width=\textwidth]{more_results/gmms/nullspace_pvalues_models.png}
-  \caption[GMM task-null ratio significance matrix]{GMM task-null ratio significance matrix.}\label{fig:nullspace_pvalues_gmms}
-\end{figure}
+
+
 
 
 
@@ -85,30 +108,30 @@
   \item \textbf{TODO} Is there a way to compare the variance projection of the error distribution to a null hypothesis? If subjects were to move randomly according to some simpler distribution? Or can we compare the error here to the natural movement or calibration data somehow? The problem with this is that there is no ``solution'' to use to compute an error signal. Need to think about this.
 \end{itemize}
 
-\begin{figure}[tph]
+
+\begin{figure}[H]%[tph]
+  \centering
+  \includegraphics[width=\textwidth]{more_results/nullspace/example_error.pdf}
+  \caption[Example of EMG solutions and optimal solution for one subject]{Example of EMG solutions and optimal solution for one subject}\label{fig:example_error}
+\end{figure}
+
+\begin{figure}[H]%[tph]
+  \centering
+  \includegraphics[width=\textwidth]{more_results/nullspace/error_ratio.pdf}
+  \caption[Task-Null variance projections of activity error]{Task-Null variance projections of activity error}\label{fig:error_ratio}
+\end{figure}
+
+\begin{figure}[H]%[tph]
+  \centering
+  \includegraphics[width=0.8\textwidth]{more_results/nullspace/error_ratio_significance.png}
+  \caption[Significance matrix for task-null variance ratios of error]{Task-Null variance projections of activity error}\label{fig:error_ratio_significance}
+\end{figure}
+
+\begin{figure}[H]%[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/hit_miss_task_null_ratio.pdf}
     \caption[Task-null variance ratio of hits and misses]{Task-null variance ratio of hits and misses}\label{fig:hit_miss_nullspace}
 \end{figure}
-
-\begin{figure}[tph]
-  \centering
-    \includegraphics[width=\textwidth]{more_results/nullspace/error_ratio.pdf}
-    \caption[Task-Null variance projections of activity error]{Task-Null variance projections of activity error}\label{fig:error_nullspace_subjects}
-\end{figure}
-
-
-% \section{Nullspace Ratio of Task Error}
-
-% \begin{itemize}
-%   \item 
-% \end{itemize}
-
-% \begin{figure}[tph]
-%   \centering
-%     \includegraphics[width=\textwidth]{more_results/nullspace/example_error.pdf}
-%     \caption[Example Error]{CAPTION}\label{fig:example_error}
-% \end{figure}
 
 
 
@@ -138,25 +161,25 @@
 
 % NB https://math.stackexchange.com/questions/2028698/
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/example_computed_solutions.pdf}
     \caption[Computed solutions]{Computed solutions}\label{fig:computed_solutions}
 \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/example_cost_functions.pdf}
     \caption[Example Cost Functions for Optimal Solutions]{Example Cost Functions for Optimal Solutions}\label{fig:cost_functions}
 \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/cosine_distance_solutions.pdf}
     \caption[Distance from computed solutions]{Distance from computed solutions}\label{fig:computed_distances}
 \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/optimization_pvalues.png}
     \caption[Significance matrix for optimization solutions]{Significance matrix for optimization solutions}\label{fig:optimization_pvalues}
@@ -182,25 +205,25 @@
 \end{itemize}
 
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/regression_scores.pdf}
     \caption[regression scores]{CAPTION}\label{fig:regression_scores}
 \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/classification_scores.pdf}
     \caption[classification scores]{CAPTION}\label{fig:classification_scores}
 \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/pca_2d_reconstructions.pdf}
     \caption[PCA projections of null space into two dimensions]{CAPTION}\label{fig:pca_null}
 \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/pca_scores.pdf}
     \caption[Classification scores of PCA reconstructions]{CAPTION}\label{fig:pca_scores}

@@ -38,7 +38,7 @@
 \end{itemize}
 
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
   \includegraphics[width=1.0\textwidth]{methods/spaces.png}
   \caption[Geometry of the task]{PLACEHOLDER for a figure here or later which summarizes the EMG and task spaces and gives a visual intuition for the linear algebra}\label{fig:spaces}
@@ -72,13 +72,13 @@ Software
   \item Raw EMG as recorded is shown in \Cref{fig:raw_data}
 \end{itemize}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
 \centering
 \includegraphics[width=1.0\textwidth]{methods/setup.pdf}
 \caption[Experimental setup prototype]{(a) Graphic depicting the closed-loop EMG interface concept in a target task. The multidimensional EMG signal is transformed online through a mapping $F$ from EMG electrode space to a lower dimensional task space, creating an experimentally controllable redundancy problem for the subject. In experiments shown here the task space is two-dimensional, though the EMG interface can be extended to tasks with higher-dimensional inputs. The subject's arm and hand are constrained during the experiment to ensure isometric contractions. (b) First prototype of custom recording hardware consisting of four bands of eight electrodes each, and a spherical hand constraint. Our recordings are 64 channel monopolar recording with reference electrode at the wrist. (c) Example cup-style monopolar recording electrodes, 5mm in diameter. (d) Side view of the recording hardware. Also pictured is the arm restraint frame to ensure isometric contractions. The frame obscures the subject's arm from view and contains adjustable elbow and wrist rests. (d) Recording hardware shown off the arm with wireless amplifier and connection board.}\label{fig:prototype_setup}
 \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
   \begin{minipage}{0.33\textwidth}
     \includegraphics[width=\textwidth]{methods/electrode_assembly.png}
@@ -101,13 +101,13 @@ Software
   \caption[Final experimental setup]{(a) Final design of the electrode assembly, showing the elastic sleeve with embedded electrodes, and Velcro closure (b) Closeup of the 3D printed electrode hardware to enable ``snap'' connections with the sleeve (c) Hand constraint, 3D printed plastic with medical-grade foam (d) Entire electrode assembly within the recorded enclosure (e) Subject engaged in the natural movement task}\label{fig:final_setup}
 \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
   \includegraphics[width=1.0\textwidth]{methods/muscle_map.pdf}
   \caption[Electrode layout with forearm and hand muscles]{Layout of the forearm muscles showing, in blue, the approximate locations where electrodes were placed on subjects's arms during the experiment.}\label{fig:muscle_map}
 \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
   \includegraphics[width=1.0\textwidth]{methods/raw_data.pdf}
   \caption[Example raw EMG data]{10 seconds of raw 64-channel EMG data taken during a finger flexion trial. Note that some channels include some clear sine wave line noise. Putative single motor unit action potentials can be seen on many channels.}\label{fig:raw_data}
@@ -174,7 +174,7 @@ The steps of each subject's trial:
   \item Each subject took about 3 hours to complete data collection 
   \end{enumerate}
 
-  \begin{figure}[tph]
+  \begin{figure}[H]%[tph]
     \centering
     \includegraphics[width=1.0\textwidth]{methods/task_structure.pdf}
     \caption[Task structure for each subject]{Task structure for each subject. In the course of a session:}\label{fig:task_structure}
@@ -220,7 +220,7 @@ Data processing to produce bar heights:
   \item See filtering steps in \Cref{fig:filtering_steps}
 \end{itemize}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
   \includegraphics[width=1.0\textwidth]{methods/filtering_steps.pdf}
   \caption[Data filtering steps]{Data from a single trial showing each step of preprocessing. (TODO: finish caption.)}\label{fig:filtering_steps}
@@ -240,7 +240,7 @@ Data processing to produce bar heights:
 \end{itemize}
 
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
   \includegraphics[width=1.0\textwidth]{methods/example_trajectories.pdf}
   \caption{Cursor trajectories (blue) in two-dimensional task space during a single trial of the target task with 12 targets spaced evenly around the unit circle (active trial shown in red, non-active targets denoted by black circles, not shown to the subject in the trial). Training was conducted over 3 blocks each with 180 trials. Columns are best, median, and worst performer defined by the total hits accumulated across the target task. Rows are first, halfway, and final block of trials.}\label{fig:example_trajectories}
@@ -271,6 +271,14 @@ Nonnegative matrix factorization (NMF) attempts to solve the following optimizat
 
 where $X$ is our calibration EMG data, concatenated along samples with shape $(c\times{n})$ where $N$ is the number of samples and $C$ is the number of electrode channels, fixed at 64. The objective assumes that this EMG data can be accurately reconstructed by a dot product between $W$, a $c\times{m}$ matrix which holds $m$ ``modes'', and $H$, an $m\times{n}$ matrix which holds $n$ ``activations''. For our purposes we choose \textit{a priori} to fit 4 modes, one for each cardinal direction: up, down, left, and right. The NMF process can be thought of as extracting, or inferring, an $m$-dimensional linear latent space (an $m$ dimensional plane) within the 64-dimensional EMG space. This $m$ dimensional plane, in order to reconstruct the full 64D signal, must capture the salient features of the original data.
 
+NMF components, as they attempt to reconstruct nonnegative data, are additive. They produce components which in theory separate the input data into its constitutive parts, combined together to reform its whole.
+
+\begin{figure}[H]%[tph]
+  \centering
+  \includegraphics[width=1.0\textwidth]{methods/NMF_PCA_comparison.pdf}
+  \caption[Comparison of NMF and PCA]{Comparison of NMF and PCA. The leftmost plot shows a random sample fro a mixture of two 2D Gaussians (black). PCA on this data returns a simple rotation of the data aligned with the directions of maximum variance (blue arrows). The middle plot shows this data exponentiated, or lognormal. NMF is run on this data with two components and the directions which are found to maximally reconstruct this data are show (purple arrows). In the rightmost plot, we log-transform this exponentiated data (black) as well as the NMF axes (orange arrows). We also normalize these transformed axes. Thus we have a nonnegative basis for the data via NMF in both the original and lognormal spaces which reflect the dominant modes of the data, as used to generate our task decoders. This highlights the key difference between PCA and NMF\: PCA is concerned with data variance, while NMF is a ``best fit'' (up to an error tolerance) of the data's modes and does not have an immediate notion of ``explained variance''. PCA reconstructs variance, NMF reconstructs the data itself using additive components. In our task, NMF is used on the lognormal data to find modes. If comparisons are made between datasets, PCA and NMF subspaces should be compared like for like; for which this demonstration provides geometric intuition.}\label{fig:nmf_v_pca}
+\end{figure}
+
 Each NMF mode is made of up weights for each EMG channel. Once fit to a dataset, each mode can be thought of as a linear filter for each filtered EMG sample, within the original dataset or a new sample. Each filtered sample is ``projected on'' (the dot product is taken with) each mode. Thus each 64-dimensional EMG sample (a point in 64D space) is now reduced to a point in a 4D latent space, becoming an ``activation'', a linear combination of individual EMG channel readings. Mathematically, 
 
 \begin{align}
@@ -296,11 +304,13 @@ This mapping, the difference between pairs of pseudoinverse modes, is what we te
   \item \textbf{TODO} Show that we can run NMF on the second calibration dataset and compare – does similarity here correlate with performance?
 \end{itemize}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
   \includegraphics[width=0.7\textwidth]{methods/example_decoder.pdf}
   \caption[Example subject decoder]{Example EMG-to-cursor decoders from a single subject. The target task works by mapping 64 channels of EMG activity from subjects' forearms to 2-dimensional cursor position, a component acting in the $x$ and $y$ directions within the task's linear dynamics. Depicted here are the two 64-dimensional ``decoders'' arranged as the EMG electrodes were arranged on subjects' arms (along the arm, longitudinally, and around the arm, radially). The left plot shows the $x$ cursor decoder mode, with $y$ on the right.}\label{fig:example_decoder}
 \end{figure}
+
+
 
 
 
@@ -365,7 +375,7 @@ This mapping, the difference between pairs of pseudoinverse modes, is what we te
 % movement and calibration: 99.5
 % trial: 99.9
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \begin{minipage}[b]{\linewidth}
     \centering
     \includegraphics[width=\textwidth]{methods/log_hist_movement.pdf}
@@ -387,13 +397,13 @@ This mapping, the difference between pairs of pseudoinverse modes, is what we te
   \caption[Log transforming EMG]{Activity filter!}\label{fig:log_hist}
 \end{figure}
 
-% \begin{figure}[tph]
+% \begin{figure}[H]%[tph]
 %   \centering
 %   \includegraphics[width=1.0\textwidth]{methods/activity_filter.pdf}
 %   \caption[Activity filter example trial]{Activity filter!}\label{fig:activity_filter}
 % \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \begin{minipage}[b]{0.7\linewidth}
     \centering
     \includegraphics[width=\textwidth]{methods/activity_filter_good_trial.pdf}

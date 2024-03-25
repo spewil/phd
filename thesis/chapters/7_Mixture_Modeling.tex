@@ -112,28 +112,28 @@ How to exponentially transform lognormal Gaussians ``back'' to the original, log
 % \end{figure}
 
 
-\begin{figure}[H]%[tph]
-  \centering
-  \begin{minipage}{0.49\textwidth}
-    \includegraphics[width=\textwidth]{more_results/gmms/subject_1_gmms.pdf}
-    \subcaption{}
-  \end{minipage}%
-  \begin{minipage}{0.49\textwidth}
-    \includegraphics[width=\textwidth]{more_results/gmms/subject_14_gmms.pdf}
-    \subcaption{}
-  \end{minipage}
-  \caption[Example GMMs for subjects 1 and 14]{CAPTION}\label{fig:example_gmms}
-\end{figure}
+% \begin{figure}[H]%[tph]
+%   \centering
+%   \begin{minipage}{0.49\textwidth}
+%     \includegraphics[width=\textwidth]{more_results/gmms/subject_1_gmms.pdf}
+%     \subcaption{}
+%   \end{minipage}%
+%   \begin{minipage}{0.49\textwidth}
+%     \includegraphics[width=\textwidth]{more_results/gmms/subject_14_gmms.pdf}
+%     \subcaption{}
+%   \end{minipage}
+%   \caption[Example GMMs for subjects 1 and 14]{CAPTION}\label{fig:example_gmms}
+% \end{figure}
 
 
 \begin{figure}[H]%[tph]
   \centering
-  \begin{minipage}{0.49\textwidth}
-    \includegraphics[width=\textwidth]{more_results/gmms/subject_37_trial_gmms.pdf}
+  \begin{minipage}{\textwidth}
+    \includegraphics[width=\textwidth]{more_results/gmms/subject_37_gmms.pdf}
     \subcaption{}
-  \end{minipage}%
-  \begin{minipage}{0.49\textwidth}
-    \includegraphics[width=\textwidth]{more_results/gmms/subject_42_trial_gmms.pdf}
+  \end{minipage}\\%
+  \begin{minipage}{\textwidth}
+    \includegraphics[width=\textwidth]{more_results/gmms/subject_42_gmms.pdf}
     \subcaption{}
   \end{minipage}
   \caption[Example trial GMMs for subjects 37 and 42]{CAPTION}\label{fig:example_trial_gmms}
@@ -169,13 +169,19 @@ How to exponentially transform lognormal Gaussians ``back'' to the original, log
 \begin{figure}[H]%[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/gmm_diffs/mean_gmm_differences.pdf}
-    \caption[Mean GMM differences over subjects for the target task]{Mean GMM differences over subjects for the target task}\label{fig:gmm_diffs}
+    \caption[Mean GMM Frobenius differences over subjects]{Mean GMM differences over subjects for the target task}\label{fig:gmm_Fr_diffs}
+\end{figure}
+
+\begin{figure}[H]%[tph]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/gmm_diffs/mean_gmm_wasserstein.pdf}
+    \caption[Mean GMM Wasserstein distance differences over subjects]{Mean GMM Wasserstein distance differences over subjects for the target task}\label{fig:gmm_w2_diffs}
 \end{figure}
 
 \begin{figure}[H]%[tph]
   \centering
     \includegraphics[width=\textwidth]{more_results/gmms/gmm_wasserstein.pdf}
-    \caption[Wasserstein distance between GMMs]{CAPTION}\label{fig:gmm_w2}
+    \caption[Wasserstein distance between Movement, Calibration, and Trial GMMs]{Wasserstein distance between GMMs Movement, Calibration, and Trial GMMs}\label{fig:gmm_w2}
 \end{figure}
 
 

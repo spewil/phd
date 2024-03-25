@@ -29,19 +29,19 @@
 \end{itemize}
 
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
   \includegraphics[width=1.0\textwidth]{more_results/pairplot/raw_pairplot.png}
   \caption[Pairplot of calibration data]{Pairplot of calibration data}\label{fig:raw_pairplot}
 \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
   \includegraphics[width=1.0\textwidth]{more_results/pairplot/log_pairplot.png}
   \caption[Pairplot of log-transformed calibration data]{Pairplot of log-transformed calibration data}\label{fig:log_pairplot}
 \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
     \includegraphics[width=1.0\textwidth]{more_results/gmms/PCA_rank_fig.pdf}
     \caption[Explanatory Mixture Model]{The variables here are: the rank (number of rank-1 components making up the mixture), the ratio of the variance to the covariance of those components, and the "mixing" of each rank-1 component which effectively increases the rank of the mixture, if we assume to be a single Gaussian. We can see how as the variance begins to dominate the mixture looks more like a multivariate Gaussian. When components mix (without changing the overall variance to covariance ratio), we have a similar result due, however, to inability for PCA to model such a mixture as a single Gaussian. The 2D trajectory plots are shown for reference, but this effect is happening in the full 64D space, the values of the decoder are not a factor in this effect. See how PCA mischaracterizes the distribution in the mixed case, but fares well in the unmixed and high variance cases. This motivates our use of mixture models, which explicitly attempts to fit multiple Gaussians and can thus deal with mixing. Note that the effect here is slight, but demonstrates the principle of interest.}\label{fig:toy_model}
@@ -70,22 +70,35 @@
 \end{itemize}
 
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
-  \includegraphics[width=1.0\textwidth]{more_results/pca_dimensionality/PCA_variance.pdf}
+  \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/PCA_variance.pdf}
   \caption[Explained variance for PCA over tasks]{Explained variance of the top two principal components for each task.}\label{fig:pca_variance}
 \end{figure}
 
-
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
-  \includegraphics[width=1.0\textwidth]{more_results/pca_dimensionality/pca_pvalues.pdf}
+  \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/pca_rank_vs_reward.pdf}
+  \caption[Effective rank for each model over subjects versus mean reward]{Effective rank for each model over subjects versus mean reward}\label{fig:pca_rank_vs_reward}
+\end{figure}
+
+\begin{figure}[H]%[tph]
+  \centering
+  \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/pca_pvalues.png}
   \caption[Explained variance Tukey test]{$p$-values for Tukey's honestly significant difference test for pairwise means of a group of samples. Here we compare the explained variance of the top two singular values for the movement, calibration, and 5 blocks of task trials over subjects.}\label{fig:pca_pvalues}
 \end{figure}
 
+\begin{figure}[H]%[tph]
+  \centering
+  \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/grassmann_solla_models.png}
+  \caption[Comparison of PCA subspaces over models]{Grassman distance and shared variance measure for NMF subspace of model data}\label{fig:grassman_solla_pca}
+\end{figure}
 
-
-
+\begin{figure}[H]%[tph]
+  \centering
+  \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/grassmann_solla_nmf.png}
+  \caption[Comparison of NMF subspaces over models]{Grassman distance and shared variance measure for NMF subspace of model data}\label{fig:grassman_solla_pca}
+\end{figure}
 
 
 
@@ -105,19 +118,19 @@
   \item \textbf{TODO?} generate synthetic data to compare 64D Gaussian distribution with matching statistics from UMAP (this will look like a blob), compare that to subspace confined gaussians?
 \end{itemize}
 
-% \begin{figure}[tph]
+% \begin{figure}[H]%[tph]
 %   \centering
 %     \includegraphics[width=\textwidth]{more_results/manifold/example_umap.pdf}
 %     \caption[Example UMAP projection]{}\label{fig:example_umap}
 % \end{figure}
 
-% \begin{figure}[tph]
+% \begin{figure}[H]%[tph]
 %   \centering
 %     \includegraphics[width=\textwidth]{more_results/manifold/umap_over_blocks.pdf}
 %     \caption[Example UMAP projection over blocks]{}\label{fig:umap_over_blocks}
 % \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
   \begin{minipage}{\textwidth}
     \includegraphics[width=\textwidth]{more_results/manifold/example_umap_22.pdf}
@@ -130,7 +143,7 @@
   \caption[Comparison of UMAP projections between two subjects]{Comparison of UMAP projections between two subjects: low performance and high performance. Full Target task dataset}\label{fig:umap_comparison}
 \end{figure}
 
-\begin{figure}[tph]
+\begin{figure}[H]%[tph]
   \centering
   \begin{minipage}{\textwidth}
     \includegraphics[width=\textwidth]{more_results/manifold/umap_over_blocks_22.pdf}

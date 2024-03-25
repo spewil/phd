@@ -60,7 +60,7 @@
 \end{figure}
 
 
-Path segments are defined as points where the sign of the trajectory's derivative changes, equivalent to ``zero crossings'' of the derivative. We filter low-velocity zero crossings and combine crossings that are close to one another. 
+Path segments are defined as points where the sign of the trajectory's derivative changes, equivalent to ``zero crossings'' of the derivative. We filter low-velocity zero crossings and combine crossings that are close to one another. The literature talks about the conceept of ``degree of freedom (DoF) freezing''. Here we use trajectory segments as a proxy measure of DoF freezing.
 
 \begin{figure}[H]%[tph]
     \centering
@@ -139,6 +139,18 @@ Mean reward is defined over $K$ trials and samples or timepoints $T$ using the 2
     \centering
     \includegraphics[width=1.0\textwidth]{basic_results/performance_over_blocks/hit_fraction_vs_reward.pdf}
     \caption[Hits versus reward]{Hit counts versus total reward.}\label{fig:hit_fraction_vs_reward}
+\end{figure}
+
+\begin{figure}[H]%[tph]
+    \centering
+    \includegraphics[width=0.5\textwidth]{basic_results/performance_over_blocks/reward_v_path.pdf}
+    \caption[Path statistics versus reward]{Path statistics versus reward. We see a strong correlation between path length and reward, which confirms our analysis, as path length is directly related to our notion of reward. We see no linear correlation between reward and reach time or segment count. Reach time implies that subject reach velocity is related to subject performance. Segment count appears to have a rough bell shape, which may indicate that lower performing subjects make less complex movements, as do higher performing subjects, while subjects with middling performance make many moves. This echoes the reach time plot, where more segments implies more movement, which in turn implies longer reaches.}\label{fig:reward_vs_path_stats}
+\end{figure}
+
+\begin{figure}[H]%[tph]
+    \centering
+    \includegraphics[width=1.0\textwidth]{basic_results/performance_over_blocks/velocity_v_reward.pdf}
+    \caption[Reach velocity versus reward]{Reach velocity versus reward. We could have used an exponential fit here, but linear without teh max and min subjects illustrates the idea well enough that higher performers on average move slower. This may seem counterintuitive but this is an aspect of a subject's ability to control their muscle activations. Lower peforming subjects tend to move more erratically, making more errors, while higher performers move less and thus on average move more slowly. We might initially question whether this is an artefact of the task, that subject variance induced by the EMG signal means subjects are noisier. But the left plot shows that we see no correlation between subjects' total variance in the calibration task and their performance. Also not that in the task, we standardize subject's EMG channels using their calibration variance, to reduce such effects (an unequal weighting of channels). We can also invoke Fitts' Law here? More accurate subjects move more slowly?}\label{fig:velocity}
 \end{figure}
 
 \begin{figure}
@@ -313,8 +325,15 @@ If the decoder directions are more/less aligned to the target directions, do sub
 
 \begin{figure}[H]%[tph]
     \centering
-    \includegraphics[width=1.0\textwidth]{basic_results/trajectory_variance/trajectory_variance_over_blocks.pdf}
-    \caption[Trajectory variance over blocks]{Plotting the log as variance tends to decrease exponentially}\label{fig:trajectory_variance}
+    \includegraphics[width=\textwidth]{basic_results/trajectory_variance/subject_example_trajectory_variance.pdf}
+    \caption[Example trajectories, $y$ coordinate]{Example trajectories, $y$ coordinate}\label{fig:example_trajectories}
+\end{figure}
+
+
+\begin{figure}[H]%[tph]
+    \centering
+    \includegraphics[width=1.0\textwidth]{basic_results/trajectory_variance/trajectory_variance_blocks.pdf}
+    \caption[Median and IQR of trajectory variance over blocks and subjects]{Trajectory variance over blocks, median, IQR over subjects}\label{fig:trajectory_variance}
 \end{figure}
 
 
