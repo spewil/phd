@@ -20,6 +20,17 @@
 \section{GMM Null Space}
 
 
+The null space projection ratio is:
+
+\begin{align}
+  r_{t/n} = \frac{k_n}{k_t}\frac{\sum_i^{k_t}{t_i^TCt_i}}{\sum_i^{k_n}{n_i^TCn_i}}
+\end{align}
+
+where $k_t$ and $k_n$ are orthonormal basis vectors of the task and null subspaces, respectively. They are of dimensions $k_t$ and $k_n$. The matrix $C$ is the covariance matrix of interest. We are effectively averaging the magnitudes of the projection of the variance along the direction of each basis vector in the task and null space, and taking the ratio of this average magnitude. By taking the ratio we can compare across subjects without the confound of relative variance magnitudes between subjects.
+
+The basis vectors are the right eigenvectors of each subjects' $2\times64$ decoder matrix. The task space is the 2-dimensional subspace spanned by the two eigenvectors corresponding to nonzero eigenvalues, and the null space, or kernel, is the subspace spanned by the 62 eigenvectors corresponding to the zero eigenvalues.
+
+
 \begin{itemize}
   \setlength\itemsep{0em}
   \item Introduce the null and task space: the task space is a two-dimensional plane passing through the origin within the ambient 64D EMG space. The null space is the 62D space that is not task relevant. Any activity in the null space has no bearing on the task outcome

@@ -32,6 +32,13 @@
   \textbf{\bibinfo{volume}{5}}, \bibinfo{pages}{826--837}
   (\bibinfo{year}{2004}).
 
+\bibitem{pirayLinearReinforcementLearning2019}
+\bibinfo{author}{Piray, P.} \& \bibinfo{author}{Daw, N.~D.}
+\newblock \bibinfo{title}{Linear reinforcement learning: {{Flexible}} reuse of
+  computation in planning, grid fields, and cognitive control}.
+\newblock \bibinfo{type}{Preprint}, \bibinfo{institution}{{Neuroscience}}
+  (\bibinfo{year}{2019}).
+
 \bibitem{bizziHardScientificQuest2015}
 \bibinfo{author}{Bizzi, E.} \& \bibinfo{author}{Ajemian, R.}
 \newblock \bibinfo{title}{A {{Hard Scientific Quest}}: {{Understanding

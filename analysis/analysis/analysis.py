@@ -145,27 +145,28 @@ def compute_subspaces(decoder):
     return Vt.T[:,:decoder_dim].T, Vt.T[:,decoder_dim:].T
 
 def mean_quadratic_form(C, subspace_basis):
-    """
-    used to find the mean variance in subspace dimensions
-    for each row in x, compute x.T@A@x
-    take the average over these quadratics
+    # """
+    # used to find the mean variance in subspace dimensions
+    # for each row in x, compute x.T@A@x
+    # take the average over these quadratics
 
-    subspace_basis : an orthonorm basis for subspace, vecs are in rows
-    C : covariance or other matrix
-    """
-    # C is square, dimensions should align
-    assert subspace_basis.shape[1] == C.shape[0]
-    assert subspace_basis.shape[1] == C.shape[1]
-    mean = 0
-    dim_subspace = subspace_basis.shape[0]
-    for u in subspace_basis:
-        # convert to column vector
-        u = u.reshape(-1, 1)
-        # flatten the quadratic form into a number
-        mean += (u.T @ C @ u).ravel()
-    # flatten mean into a number
-    return (mean / dim_subspace).ravel()
-
+    # subspace_basis : an orthonorm basis for subspace, vecs are in rows
+    # C : covariance or other matrix
+    # """
+    # # C is square, dimensions should align
+    # assert subspace_basis.shape[1] == C.shape[0]
+    # assert subspace_basis.shape[1] == C.shape[1]
+    # mean = 0
+    # dim_subspace = subspace_basis.shape[0]
+    # for u in subspace_basis:
+    #     # convert to column vector
+    #     u = u.reshape(-1, 1)
+    #     # flatten the quadratic form into a number
+    #     mean += (u.T @ C @ u).ravel()
+    # # flatten mean into a number
+    # return (mean / dim_subspace).ravel()
+    dim = subspace_basis.shape[0]
+    return (np.sum(np.diag(subspace_basis @ C @ subspace_basis.T)) / dim).ravel()
 
 def subspace_projection(C, subspace):
     projection = np.empty(shape=(subspace.shape[0]))
