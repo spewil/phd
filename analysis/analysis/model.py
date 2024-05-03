@@ -23,7 +23,8 @@ def gaussian_entropy(cov):
     # https://gregorygundersen.com/blog/2020/09/01/gaussian-entropy/
     assert cov.shape == (64,64)
     # (D/2)*(1 + log(2pi)) + (1/2)*log(det(C))
-    return 32*(1 + np.log(2*np.pi)) + 0.5*np.log(np.linalg.det(cov))
+    # return 32*(1 + np.log(2*np.pi)) + 0.5*np.log(np.linalg.det(cov))
+    return np.log(np.linalg.det(cov)**(1/64))
 
 def total_gmm_entropy(model):
     assert len(model.covariances_) > 0
@@ -82,8 +83,7 @@ def GaussianW2(m0,m1,Sigma0,Sigma1):
     # compute the quadratic Wasserstein distance between two Gaussians with means m0 and m1 and covariances Sigma0 and Sigma1
     Sigma00  = sp.linalg.sqrtm(Sigma0)
     Sigma010 = sp.linalg.sqrtm(Sigma00@Sigma1@Sigma00)
-    d        = np.linalg.norm(m0-m1)**2+np.trace(Sigma0+Sigma1-2*Sigma010)
-    return d
+    return np.linalg.norm(m0-m1)**2+np.trace(Sigma0+Sigma1-2*Sigma010)
 
 # original from the GMM W2 paper 
 # def GW2(pi0,pi1,mu0,mu1,S0,S1):

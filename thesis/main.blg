@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: bib/naturemag.bst
+A level-1 auxiliary file: preamble.aux
+Database file #1: bib/bibliography.bib
+Warning--empty journal in chengModelingSensorimotorLearning
+Warning--empty year in chengModelingSensorimotorLearning
+Warning--empty journal in sejnowskiPerspectivesCognitiveNeuroscience1988
+Warning--empty journal in chungMyomatrixArraysHighdefinition
+Warning--empty year in chungMyomatrixArraysHighdefinition
+Warning--empty journal in mcinnesUMAPUniformManifold2018
+You've used 82 entries,
+            2348 wiz_defined-function locations,
+            1513 strings with 26705 characters,
+and the built_in function-call counts, 31797 in all, are:
+= -- 2249
+> -- 789
+< -- 2
++ -- 394
+- -- 197
+* -- 3917
+:= -- 3466
+add.period$ -- 237
+call.type$ -- 82
+change.case$ -- 91
+chr.to.int$ -- 0
+cite$ -- 88
+duplicate$ -- 2850
+empty$ -- 2971
+format.name$ -- 259
+if$ -- 6349
+int.to.chr$ -- 0
+int.to.str$ -- 82
+missing$ -- 675
+newline$ -- 409
+num.names$ -- 83
+pop$ -- 584
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 515
+stack$ -- 0
+substring$ -- 1508
+swap$ -- 2828
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 6
+while$ -- 198
+width$ -- 84
+write$ -- 881
+(There were 6 warnings)

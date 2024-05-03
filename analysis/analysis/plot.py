@@ -51,7 +51,7 @@ matplotlib.use("TkAgg")
 #     return ax, hf, stats
 
 
-def annotated_heatmap(array, labels_x, labels_y, figax=(None,None)):
+def annotated_heatmap(array, labels_x, labels_y, figax=(None,None), colorbar=True):
     assert array.shape[0] == array.shape[1]
     assert array.shape[0] == len(labels_x)
     assert array.shape[0] == len(labels_y)
@@ -74,10 +74,13 @@ def annotated_heatmap(array, labels_x, labels_y, figax=(None,None)):
     for i,j in zip(*np.triu_indices(array.shape[0])):
         array[i,j] = 10
     divider = make_axes_locatable(ax)
-    cax = divider.append_axes('right', size='5%', pad=0.05)
+
     im = ax.imshow(array,vmax=0.1,vmin=0.0001,cmap=newmap)
 
-    fig.colorbar(im, cax=cax, orientation='vertical', ticks=[0.0, 0.01 , 0.02, 0.05, 0.1])
+    if colorbar:
+        cax = divider.append_axes('right', size='5%', pad=0.05)
+        fig.colorbar(im, cax=cax, orientation='vertical', ticks=[0.0, 0.01 , 0.02, 0.05, 0.1])
+        cax.set_ylabel("$p$ Value")
 
     # Show all ticks and label them with the respective list entries
     ax.set_xticks(np.arange(len(labels_x)), labels=labels_x)
@@ -94,7 +97,11 @@ def annotated_heatmap(array, labels_x, labels_y, figax=(None,None)):
                         ha="center", va="center", color="k")
 
     fig.tight_layout()
-    return fig, (ax, cax)
+
+    if colorbar:
+        return fig, (ax, cax)
+    else:
+        return fig, ax
 
 
 
@@ -129,15 +136,13 @@ def plot_circle(x, y, r, ax, style="k"):
     ax.plot(r * np.cos(theta) + x, r * np.sin(theta) + y, style)
 
 
-def plot_targets(ax, style="ko", markersize=5, target=None,**kwargs):
+def plot_targets(ax, markersize=5, target=None, **kwargs):
     theta = (np.linspace(0, 2 * np.pi, 13) + np.pi)[:-1]
     h = ax.plot(
         np.cos(theta),
         np.sin(theta),
-        style,
         marker="o",
         markersize=markersize,
-        color="grey",
         **kwargs
     )
     if not target is None:

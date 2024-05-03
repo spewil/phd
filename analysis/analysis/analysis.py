@@ -24,6 +24,7 @@ def variance_fraction_of_projection(components, data):
     data_total_var = np.trace(np.cov(data.T))
     return projection_total_var / data_total_var
 
+
 def grassmann_metric(A,B):
     assert A.shape == B.shape
     assert A.shape[0] > A.shape[1]
@@ -34,19 +35,23 @@ def grassmann_metric(A,B):
     # the singular values here are in [0,1] because matrices are orthonormal
     S = np.clip(S,a_min=0,a_max=1)
     # we're normalizing the arccos [0,pi/2]
+    # taking the mean
+    # return np.mean((np.arccos(S)/(np.pi/2)))
     # taking the norm of that vector
-    # normalizing by the dimensionality, that's the maximum length on the simplex
-    return np.sqrt(np.sum(np.arccos(S)/(np.pi/2))**2) / S.shape[0]
+    ones = np.ones(S.shape[0])
+    return np.linalg.norm(np.arccos(S)/(np.pi/2)) / np.linalg.norm(ones)
 
 
 def make_chunk_indices():
     return np.array(list(zip(np.arange(0,45,9),np.arange(9,46,9))))
+
 
 def make_lognormal_mean(normal_mean, normal_covariance):
     dim = normal_mean.shape[0]
     assert dim >= normal_mean.shape[1]
     assert dim == normal_covariance.shape[0] and dim == normal_covariance.shape[1]
     return np.exp(normal_mean + 0.5*np.diag(normal_covariance).reshape(-1,1))
+
 
 def make_lognormal_covariance(normal_mean, normal_covariance):
     dim = normal_mean.shape[0]

@@ -15,147 +15,297 @@
 
 
 
-\section{Structure of the Data Manifold}
 
-\begin{itemize}
-  \setlength\itemsep{0em}
-  \item Results so far don't show any glaring confounds in the experiment (decoder, metadata, etc.) which suggests that performance is constrained by subjects' available EMG activation space; their ability to produce, identify, and recall activations which produce successful trials
-  \item Trajectories show a lobed pattern, as seen in for example in \Cref{fig:mean_trajectories}. This suggests that the underlying manifold is ``spiky'' or ``subspace confined''--- this means PCA will struggle to capture the finer details of the manifold
-  \item We illustrate this with \Cref{fig:toy_model}, where we show how a Gaussian mixture model with rank-1 mixture components can produce trajectories similar to what we see in our data, and how PCA fails to recover these components when they are mixed, despite remaining low-rank. 
-  \item We're thinking of this like a sampling problem--- since we're filtering for active EMG, each sample can be thought of as a ``dart throw'' trying to hit the bulls-eye (target). This data is very sparse; each trajectory is low-probability, the EMG space is large and we have fewer trajectories (45) than dimensions (64). Our models will necessarily be overfit, but this should not detract from comparing like for like. We can think of models like a filter.
-  \item PCA will hide information about subspace confinement, covariance structure, etc. It will not take into account the “spiky” nature of the data manifold. This will give us a false sense of the correlation structure between EMG channels. We should use a more expressive model to give a fuller sense of the data's shape
-  \item We hypothesize that subspace confinement correlates negative with performance, as this is the underlying constraint which prevents subjects from accessing high reward EMG activations.
-  \item We find that log transforming the data will be helpful in fitting Gaussian mixtures, as the data appears lognormal, see \Cref{fig:raw_pairplot} and \Cref{fig:log_pairplot} --- there is precedent for this in the literature \lbrack{REF?}\rbrack
-\end{itemize}
+\section{Visualization of Data Manifold}
+
+Our results so far indicate a lack of any overt confounds in our experimental design in terms of the decoding subjects' EMG, which suggests that a subject's performance is constrained by their available space of EMG activations. That is, subjects are not necessarily ``battling'' with their decoders directly, but they're battling with their own intrinsic EMG manifold, working to identify and exploit solutions in the form of muscle contractions. The ``shape'' of a subject's EMG activation space constrains their ability to search, identify, and recall activations which produce successful trials.
+
+A first step in understanding the structure of the EMG manifold is to use a broadly applicable visualization tool such as uniform manifold approximation and projecton (UMAP) to visualize EMG data into two dimensions\cite{mcinnesUMAPUniformManifold2018}. UMAP is a topological dimensionality reduction technique which attempts to take into account the local and global structure of the data manifold. The parameters used to produce UMAP projections here were chosen to favor ``stretching'' or unfurling of the manifold into the projected plane (namely, low minimum distance between points and high number of neighbors). We will use this technique to form hypotheses about the structure of subjects' EMG manifolds, how we might assess their structure in a more constrained manner, and how further analysis can highlight the ways in which subjects' underlying EMG manifolds influence their progression in the task. 
+
+% \textbf{TODO?} generate synthetic data to compare 64D Gaussian distribution with matching statistics from UMAP (this will look like a blob), compare that to subspace confined gaussians?
 
 
-\begin{figure}[H]%[tph]
-  \centering
-  \includegraphics[width=1.0\textwidth]{more_results/pairplot/raw_pairplot.png}
-  \caption[Pairplot of calibration data]{Pairplot of calibration data}\label{fig:raw_pairplot}
-\end{figure}
-
-\begin{figure}[H]%[tph]
-  \centering
-  \includegraphics[width=1.0\textwidth]{more_results/pairplot/log_pairplot.png}
-  \caption[Pairplot of log-transformed calibration data]{Pairplot of log-transformed calibration data}\label{fig:log_pairplot}
-\end{figure}
-
-\begin{figure}[H]%[tph]
-  \centering
-    \includegraphics[width=1.0\textwidth]{more_results/gmms/PCA_rank_fig.pdf}
-    \caption[Explanatory Mixture Model]{The variables here are: the rank (number of rank-1 components making up the mixture), the ratio of the variance to the covariance of those components, and the "mixing" of each rank-1 component which effectively increases the rank of the mixture, if we assume to be a single Gaussian. We can see how as the variance begins to dominate the mixture looks more like a multivariate Gaussian. When components mix (without changing the overall variance to covariance ratio), we have a similar result due, however, to inability for PCA to model such a mixture as a single Gaussian. The 2D trajectory plots are shown for reference, but this effect is happening in the full 64D space, the values of the decoder are not a factor in this effect. See how PCA mischaracterizes the distribution in the mixed case, but fares well in the unmixed and high variance cases. This motivates our use of mixture models, which explicitly attempts to fit multiple Gaussians and can thus deal with mixing. Note that the effect here is slight, but demonstrates the principle of interest.}\label{fig:toy_model}
-\end{figure}
-
-
-
-
-
-
-
-
-
-
-\section{How Does PCA Dimensionality Compare Across Tasks?}
-
-\begin{itemize}
-  \setlength\itemsep{0em}
-  \item In other studies \lbrack{REF?}\rbrack, theyve analyzed surface EMG data with PCA to then say that since there are high-variance components that capture gross hand postures / movements, and lower-variance, higher-order components that capture finer movements, this implies something about the neural basis for hand control. While it may, this result via PCA is not surprising. What is more insightful is to understand the underlying structure of the data manifold, and follow its changes across learning to understand how the motor system copes with a new environment. We can clearly show how PCA misses an important aspect of the data manifold, its highly nonlinear structure, and how this plays a role in subjects performance and learning.
-  \item Compute PCA for movement, calibration, and dividing target task into 5 blocks of roughly equal numbers of samples. Use this as a baseline or reference compared to mixture models in \Cref{chap:gmms}. 
-  \item Subspace confinement here is the sum of the explained variance of the top two principal components of each dataset's spatial covariance. This measures a kind of spatial complexity of the data, asking how much of the data's variance can be explained by two components. The higher this measure is, the more confined the data is to its principle subspace.
-  \item \textbf{TODO?} Look at the sparsity of the components --- while the number of components needed may be low, those components may not be sparse, they may be spatially spread out? Look at the 1-norm of the component? 0-norm? Gini index?
-  \item How does the dimensionality compare between these tasks? \textbf{Hypothesis}: Early in learning, subjects will explore more, and their dimensionality will be high (similar to the dimensionality of natural movement or the calibration task). Over learning, dimensionality will decrease as subjects “hone in” on solutions to the task. \textbf{Result}: The movement task is highest, meaning the movement activity as a whole is confined to a small principle subspace. The calibration is lowest, meaning it is more spread across its principle subspaces. This supports our aim for the calibration task, to encourage or ``gameify'' this kind of wider exploration of the EMG space. While we don't see a significant difference in the means over subjects between the trial blocks, we do see significance between movement and all other datasets. We find that from the third chunk of trials, subjects on average increase their principle subspace confinement relative to the calibration datasets. This suggests that over time, on average over subjects, EMG activations shift from exploration early in the target task to movements that look more like natural movements \Cref{fig:pca_variance,fig:pca_pvalues}.
-  \item \textbf{TODO} Inspect the PCA modes and compare them. Are natural movement modes relevant to the task? Do modes change over time?
-  \item \textbf{IDEA} we should find a projection of the data in a lower dimensional space than 64, but higher than 2, that maximizes the dimensionality, or generates spatial weights that are least sparse (channel-wise activations which are nonzero). This would mean a projection that maximally ``fills'' the space. PCA is maximally variant projections in each dimension, but leads to sparsity in the weights.This would give us a better starting point for decoders which do not handicap subjects by their underlying manifold.
-\end{itemize}
-
-
-\begin{figure}[H]%[tph]
-  \centering
-  \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/PCA_variance.pdf}
-  \caption[Explained variance for PCA over tasks]{Explained variance of the top two principal components for each task.}\label{fig:pca_variance}
-\end{figure}
-
-\begin{figure}[H]%[tph]
-  \centering
-  \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/pca_rank_vs_reward.pdf}
-  \caption[Effective rank for each model over subjects versus mean reward]{Effective rank for each model over subjects versus mean reward}\label{fig:pca_rank_vs_reward}
-\end{figure}
-
-\begin{figure}[H]%[tph]
-  \centering
-  \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/pca_pvalues.png}
-  \caption[Explained variance Tukey test]{$p$-values for Tukey's honestly significant difference test for pairwise means of a group of samples. Here we compare the explained variance of the top two singular values for the movement, calibration, and 5 blocks of task trials over subjects.}\label{fig:pca_pvalues}
-\end{figure}
-
-\begin{figure}[H]%[tph]
-  \centering
-  \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/grassmann_solla_models.png}
-  \caption[Comparison of PCA subspaces over models]{Grassman distance and shared variance measure for NMF subspace of model data}\label{fig:grassman_solla_pca}
-\end{figure}
-
-\begin{figure}[H]%[tph]
-  \centering
-  \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/grassmann_solla_nmf.png}
-  \caption[Comparison of NMF subspaces over models]{Grassman distance and shared variance measure for NMF subspace of model data}\label{fig:grassman_solla_pca}
-\end{figure}
-
-
-
-
-
-
-
-\subsection{UMAP}
-
-\begin{itemize}
-  \setlength\itemsep{0em}
-  \item UMAP the data to visualize the nonlinear manifold, generate hypotheses about what happens over learning
-  \item Refresher: UMAP is a topological dimensionality reduction technique, attempts to take into account the local and global structure of the data manifold 
-  \item The parameters used to produce UMAP projection here were chosen to favor stretching the data out in the projection, yet we still see the ``spikes'' of the subspaces and mixing between targets
-  \item Over time, we see how EMG ``relaxes'' into proven high-return patterns, we see a kind of compression of activity to ostensibly high-reward trajectories
-  \item Over trials, we see that subjects, both low and high performing, demix their EMG activity as they develop bespoke solutions for each target. Additionally, we see how those solutions become more concentrated over time. This might be thought of as a relaxation into target-specific solutions. As UMAP takes into account the topology of the full EMG dimensionality, these characteristics of the projection point to the hypothesis that subjects attend to a larger dimensionality of their solution that the task-relevant dimensions alone. This will be explored more deeply in \Cref{chap:nullspace}.
-  \item \textbf{TODO?} generate synthetic data to compare 64D Gaussian distribution with matching statistics from UMAP (this will look like a blob), compare that to subspace confined gaussians?
-\end{itemize}
-
-% \begin{figure}[H]%[tph]
+% \begin{figure}[!htb]
 %   \centering
 %     \includegraphics[width=\textwidth]{more_results/manifold/example_umap.pdf}
 %     \caption[Example UMAP projection]{}\label{fig:example_umap}
 % \end{figure}
 
-% \begin{figure}[H]%[tph]
+% \begin{figure}[!htb]
 %   \centering
 %     \includegraphics[width=\textwidth]{more_results/manifold/umap_over_blocks.pdf}
 %     \caption[Example UMAP projection over blocks]{}\label{fig:umap_over_blocks}
 % \end{figure}
 
-\begin{figure}[H]%[tph]
+In \Cref{fig:umap_over_blocks_comparison}, we plot the UMAP result from two subjects, one low-performing (top) and the other high-performing (bottom). The data are labeled by target and the projections are divided into groups of 9 blocks (108 trials each). These data are from the entire target task, where only the ``active'' samples are shown, one for each point in the projection. We are interpreting the data here, and in subsequent analyses, in an atemporal manner. That is, active EMG samples can be thought of as ``dart throw'' at the target. Subjects are drawing samples from an underlying, complex action distribution which they are attempting to tune to the reward structure of the task. This view focuses our thinking on the data manifold in EMG channel space.
+
+Before projecting with UMAP, we have log-transformed the data as discussed in \Cref{sec:structure}. We can immediately see how, when breaking the projection into targets, the higher performing subject produces solutions to the target task which are more confined, less mixed, within the EMG space than the lower performing subject. Qualitatively, this feature holds across our experimental cohort. Looking over time, We see that EMG activity appears to ``cohere'' into more structured responses, leaving behind ``isolated'' actions around the periphery. This is, again, more significant for the higher performing subject whereas the lower performing subject shown here is ``settling'' or ``relaxing'' onto rewarding actions but in a less coherent manner, highlighting the evolution over learning of ``bespoke'' solutions per target. This can be seen most clearly when comparing first group of blocks to the second for both subjects, highlighting how quickly subjects are able to organize their activity in the face of a new challenge. The lower performing subject, however, is not able to reach the same level of ``fine-tuning'' of their solutions as the higher performing subject.
+
+Zooming out, a striking aspect of these projections is what we the ``spikiness'' of the subspaces. If we imagine the 64-dimensional EMG space, the shape of the UMAP projection becomes more intuitive, and offers us a better image of our EMG dataset: due to the dimensionality, subject responses are likely to be sparse within the ambient EMG space. While the solutions to our task lie on a 2D plane within the EMG space, subjects' muscles activations are highly correlated and modal, meaning they will sit in disparate activity subspaces. When projected with UMAP, these become tendril-like shapes in the visualization. This highlights a key facet of the task stemming directly from the movement manifold: subjects are faced with a problem of finding ``modes'' of activity throughout the trial, which may be more or less common movements (perhaps measured by comparisons with the movement dataset). If these modes are similar in EMG space, they will need to be de-mixed, or new modes will need to be found. If the manifold itself is fundamentally (perhaps measured by statistics of the calibration dataset, which provides a glimpse) tangled, this will prove a handicap for the task. With these ideas in mind, we will explore direct comparisons of these statistics in later sections.
+
+% We're thinking of this like a sampling problem--- since we're filtering for active EMG, each sample can be thought of as a ``dart throw'' trying to hit the bulls-eye (target). This data is very sparse; each trajectory is low-probability, the EMG space is large and we have fewer trajectories (45) than dimensions (64). Our models will necessarily be overfit, but this should not detract from comparing like for like. We can think of models like a filter.
+
+% \begin{figure}[!htb]
+%   \centering
+%   \begin{minipage}{\textwidth}
+%     \includegraphics[width=\textwidth]{more_results/manifold/example_umap_22.pdf}
+%     \subcaption{}
+%   \end{minipage}\\%
+%   \begin{minipage}{\textwidth}
+%     \includegraphics[width=\textwidth]{more_results/manifold/example_umap_6.pdf}
+%     \subcaption{}
+%   \end{minipage}
+%   \caption[Comparison of UMAP projections between two subjects]{Comparison of UMAP projections between two subjects; data points are active EMG samples (log-transformed) over time. (Top row) Low performing subject labeled by target (left) and by trial (right). (Bottom row) High performing subject.}\label{fig:umap_comparison}
+% \end{figure}
+% projected with UMAP parameters \texttt{min_dist}=0.3 and \textt{n_neighbors}=500.
+
+\begin{figure}[!htb]
   \centering
   \begin{minipage}{\textwidth}
-    \includegraphics[width=\textwidth]{more_results/manifold/example_umap_22.pdf}
+    \includegraphics[width=0.9\textwidth]{more_results/manifold/umap_over_blocks_22.pdf}
     \subcaption{}
   \end{minipage}\\%
   \begin{minipage}{\textwidth}
-    \includegraphics[width=\textwidth]{more_results/manifold/example_umap_6.pdf}
+    \includegraphics[width=0.9\textwidth]{more_results/manifold/umap_over_blocks_6.pdf}
     \subcaption{}
   \end{minipage}
-  \caption[Comparison of UMAP projections between two subjects]{Comparison of UMAP projections between two subjects: low performance and high performance. Full Target task dataset}\label{fig:umap_comparison}
+  \caption[Comparison of UMAP projections over blocks between two subjects]{Comparison of UMAP projections over blocks between two subjects. (a) Low performing subject over 5 groups of blocks, each with 9 blocks or 108 trials. Colors indicate targets. (b) High performing subject.}\label{fig:umap_over_blocks_comparison}
 \end{figure}
 
-\begin{figure}[H]%[tph]
+
+
+
+\section{Structure of the Data Manifold}\label{sec:structure}
+
+To better understand the shape of the data manifold directly, we plot both the raw EMG samples in a pair plot as shown in \Cref{fig:raw_pairplot}. These plots show only last 8 channels of a single subject's activity during the calibration task, where we expect variability to be highest. We can see that the EMG is strongly correlated and, within distinct pairs (e.g. channels 56 and 59), multi-modal. These modes likely correspond to distinct actions within the subject's movement repertoire. On the diagonal we can see individual channels' histograms of activity, indicating a roughly log-normal shape (producing a Gaussian distribution when log-transformed), a known feature of rectified and filtered EMG likely stemming from the fact that the signal is the convolution of many random point sources\cite{nazarpourNoteProbabilityDistribution2013a}. When log-transforming as shown in \Cref{fig:log_pairplot}, we see that our pair plot is now roughly Gaussian, thus with this transformation our data becomes more in line with the assumptions of tools which assume Gaussianity in some form (namely PCA and Gaussian Mixtures). We will use the log-transform in all subsequent analyses unless noted otherwise.
+
+In these pair plots as well as the example trajectories shown in \Cref{fig:mean_trajectories}, we can see the effects of the ``lobed'' EMG manifold where, in the task space, the EMG lobes become dominant modes of activity after decoding. We can illustrate this with a simple toy model. In \Cref{fig:toy_model}, we show how a Gaussian mixture model with rank-1 mixture components can produce trajectories similar to what we see in our data. In this model, we generate three covariance matrices: one with activity in separate subspaces (left), and one with the same covariance magnitudes but in overlapping subspaces (right). The third covariance is identical to the first, but increases the diagonal variance magnitudes to illustrate the effect (or lack thereof) of increased variance relative to covariance. The plot shows the rank-1 submatrices used to construct the covariances as a ``ground truth'' (black arrows). In this model, we sample data from a 64-dimensional Gaussian with our chosen covariance matrix and zero mean. We then use one subject's decoder (the specific choice of decoder among subjects has little to no effect on the result for the purposes of illustration), to project these pseudo-EMG samples into the task space. We fit PCA as well as a Gaussian mixture model to the sampled data in EMG space. We then decode and plot the statistics of these fits in the task space for comparison.
+
+In this demonstration, we can capture the minimal features of the ``lobed'' data manifold in a simple model, which we term ``subspace confinement'' as the lobes in the data are due to subsets of channels being more or less active at a time. One way to think of this confinement is the degree of spatial (channel-wise) orthogonality of each activity mode.
+
+Since these actions use different subsets of channels, the covariance structure of a severely subspace confined manifold will be more separated than mixed. When activations are subspace confined (the left case of \Cref{fig:toy_model}), PCA will recover these components as their ``directions'' in the ambient space are orthogonal and PCA is finding orthogonal directions of maximum variance in the data manifold. In the high-variance case (center) we find the same result despite the covariance being ``overpowered'' by the variance. While it is impossible to see the covariance borne out in the task space in this case, in the ambient EMG space the subspace confinement is still present and PCA and the mixture model in the original remains fruitful. In the case where the two rank-1 submatrices overlap by four channels and thus ``mix'' in EMG space (right), PCA fails to recover the eigenvectors of the submatrices. This is intuitive in the EMG space: the dominant dimensions of variance are now between the two vectors aligned with the rank-1 matrices, and PCA aligns with these directions. PCA assumes a single Gaussian structure in EMG space for this data, while it in fact has overlapping modes in this space. The Gaussian approximation to this structure leads to covariance eigenvectors between these modes. The Gaussian mixture model, however, is able to disambiguate these distinct modes, as it identifies each mode as an individual Gaussian. This is of course still an approximation, but it recovers the multimodality of mixed case.
+
+While this toy model is an extreme case of subspace confinement, it illustrates the principle and generates the basic multimodality of the data manifold. A comparison for PCA can be summarized by a scree plot of each case. In the unmixed case, the top two PC components extract nearly all the variance, while in the mixed case that variance must be spread out to other dimensions. In the case of high variance, the variance is spread along more dimensions, shifting the plot but retaining the same ratios of variance between the top components and other dimensions. Thus, one measure of subspace confinement is the ratios of variance between components, where a steeper drop-off in variance indicates greater confinement. While this is a coarse metric, it is a starting point for comparing the structures, or dimensionality, of subjects' EMG manifolds which can then be built upon to develop an understanding of how these and other quantities evolve across learning.
+
+% We have seen how PCA will ``hide'' information about covariance structure, etc. It will not take into account the “spiky” nature of the data manifold. This will give us a false sense of the correlation structure between EMG channels. We should use a more expressive model to give a fuller sense of the data's shape
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1.0\textwidth]{more_results/pairplot/raw_pairplot.png}
+  \caption[Pair plot of calibration data]{Pair plot of samples from the last 8 EMG channels of an representative subject's calibration dataset. Note the ``lobed'' structure of the data, strong channel-channel correlations, multimodality, and non-Gaussianity within channels.}\label{fig:raw_pairplot}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1.0\textwidth]{more_results/pairplot/log_pairplot.png}
+  \caption[Pair plot of log-transformed calibration data]{Pair plot of logarithmically transformed samples from the last 8 EMG channels of an representative subject's calibration dataset. Note the strong channel-channel correlations and coarse Gaussianity compared to \Cref{fig:raw_pairplot}.}\label{fig:log_pairplot}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+    \includegraphics[width=1.0\textwidth]{more_results/gmms/PCA_rank_fig.pdf}
+    \caption[Toy Mixture Model]{The variables here are: the rank (number of rank-1 components making up the mixture), the ratio of the variance to the covariance of those components, and the "mixing" of each rank-1 component which effectively increases the rank of the mixture, if we assume to be a single Gaussian. We can see how as the variance begins to dominate the mixture looks more like a multivariate Gaussian. When components mix (without changing the overall variance to covariance ratio), we have a similar result due, however, to inability for PCA to model such a mixture as a single Gaussian. The 2D trajectory plots are shown for reference, but this effect is happening in the full 64D space, the values of the decoder are not a factor in this effect. See how PCA mischaracterizes the distribution in the mixed case, but fares well in the unmixed and high variance cases. This motivates our use of mixture models, which explicitly attempts to fit multiple Gaussians and can thus deal with mixing. Note that the effect here is slight, but demonstrates the principle.}\label{fig:toy_model}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Subspace Confinement Across Tasks}
+
+We compute PCA for active, log-transformed samples from the movement, calibration, target task datasets, dividing the target task into 5 groups of 9 blocks (108 trials each) yielding roughly equal numbers of EMG samples in each group. We can use PCA as a first, coarse measure of subspace confinement by looking at the sum of the explained variance of the top two principal components of each dataset's spatial (channel-wise) covariance. This measures a kind of spatial complexity of the data, the magnitude of the data's variance which can be explained by just two components. This can also be thought of as an ``effective rank'', relating dimensionality of the manifold to the rank of its constituent components\endnote{A similar concept is the \textit{spectral norm} of a matrix, which is defined as the magnitude of the first eigenvalue of that matrix.}. Mixing of modes along dimensions implies higher rank of these constituents, as the modes will vary along more dimensions. The higher this measure is the more confined the data is to the principle subspace; there exist a few dominant dimensions (though these dominant modes can mask the complexity of lower-variance modes, which we will explore further). In the case of low confinement, the dataset will be spread throughout more dimensions of the EMG space.
+
+This concept is related to that of ``sphericity,'' the measure of how ellipsoidal in shape a dataset is. On one end of the spectrum is perfectly spherical gaussian, with a diagonal covariance of equal entries (eigenvalues). On the other end the data is rank-1; activity lies along a single dimension, and thus has a single principle axis capturing 100\% of the variance. From this perspective, sphericity is simply how many dimensions are variant and the weighting of that dimension. In terms of EMG data, this is equivalent to number and degree to which channels are active.
+
+We hypothesized that early in learning, subjects explore their activation space, and thus the effective dimensionality of their activations will be high, their subspace confinement low. Over learning, dimensionality will decrease as subjects ``hone in'' on solutions to their task. As shown in \Cref{fig:pca_rank}, we find that the natural movement data (including all movements in each subject's dataset) is significantly higher on average across all subjects than all other datasets. As the natural movements are relative ``simple'' actions which are well-practiced and non-exploratory, as designed. Recall as well from \Cref{fig:toy_model} that PCA is aligning only to the directions of largest variance, and are constrained to be orthogonal. It is likely that natural movements are in general more spatially aligned in EMG space compared to the calibration and target tasks, which encourage subjects to explore the activation space, eliciting directions of greater orthogonality.
+
+Though it isn't statistically significant, qualitatively we see that groups of subjects take different learning paths. For some, the calibration task is the least subspace confined, as subjects are maximally exploring the EMG space in this task. For others, it is later blocks of the target task that elicit less confined actions. Most subjects seem to increase their confinement over the course of learning as expected, honing in their activations, though never reaching the same level of confinement as the natural movement portion of the session. 
+
+Seeing as subjects may follow different ``routes'' in terms of subspace confinement, we asked whether this metric was predictive of performance. We hypothesized that subspace confinement early in learning would correlate negatively with performance: higher-performing subjects should gain by exploring their EMG activity space in earlier trial. In \Cref{fig:pca_rank_vs_reward}, we plot each subject's subspace confinement against their total mean reward for each dataset. The calibration and first group of trial blocks show a very slight downward trend. Averaged over targets and all trials, higher performers tend, weakly, to show less confinement. This is in accordance with the hypothesis that those who explore more broadly, or those are able to explore more broadly given the constraints of their manifold, are able to identify and produce more rewarding activations in the task. The weak signal is likely due to the ``washing out'' of information related to specific targets by averaging, to the coarseness of the PCA-based confinement metric, or to reward being averaged over all trials.
+
+% TODO: Inspect the PCA modes and compare them. Are natural movement modes relevant to the task? Do modes change over time?
+
+% IDEA: we should find a projection of the data in a lower dimensional space than 64, but higher than 2, that maximizes the dimensionality, or generates spatial weights that are least sparse (channel-wise activations which are nonzero). This would mean a projection that maximally ``fills'' the space. PCA is maximally variant projections in each dimension, but leads to sparsity in the weights.This would give us a better starting point for decoders which do not handicap subjects by their underlying manifold.
+
+\begin{figure}[!htb]
   \centering
   \begin{minipage}{\textwidth}
-    \includegraphics[width=\textwidth]{more_results/manifold/umap_over_blocks_22.pdf}
+    \centering
+    \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/PCA_rank_over_models.pdf}
     \subcaption{}
   \end{minipage}\\%
   \begin{minipage}{\textwidth}
-    \includegraphics[width=\textwidth]{more_results/manifold/umap_over_blocks_6.pdf}
+    \centering
+    \includegraphics[width=0.6\textwidth]{basic_results/pca_dimensionality/pca_pvalues.png}
     \subcaption{}
   \end{minipage}
-  \caption[Comparison of UMAP projections over blocks between two subjects]{Comparison of UMAP projections over blocks between two subjects: low performance and high performance}\label{fig:umap_over_blocks_comparison}
+  \caption[Subspace confinement over tasks]{(a) Subspace confinement based on variance captured by the two-dimensional principle subspace of groups of trials for all subjects (movement, calibration, and five groups of 108 trials over time in the target task). In grey each subject's values are show. In red, the mean and standard deviations over subjects are shown. (b) The significance matrix of $p$-values for Tukey's honestly significant difference test of subspace confinement for each group of trials.}\label{fig:pca_rank}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/pca_rank_vs_reward.pdf}
+  \caption[Subspace confinement versus reward]{Subspace confinement based on the two-dimensional principle subspace .}\label{fig:pca_rank_vs_reward}
 \end{figure}
 
 
-\include{end_of_chapter}
+
+
+
+So far we have compared the subspace confinement of each dataset individually via the degree of variance captured by the orthogonal, variance-maximizing subspace (the principle subspace) of each dataset. We can use another metric based on principle subspaces, which we call the ``Solla'' metric, to directly compare pairs of datasets\cite{yanUnexpectedComplexityEveryday2020}. The Solla metric $s_{AB}$ for two datasets $A$ and $B$, asks the magnitude of variance which is shared, or recovered, by each dataset's principle subspace $P$ by projecting each dataset $D$ onto the other's principle subspace. We compute the ``total variance'', the sum of the eigenvalues of the covariance of the projection,
+%
+\begin{align}
+  var_{AB} &= tr{(D_AP_B^T)(P_BD_A^T)}
+\end{align}
+%
+and take the mean of each subspace's projection onto the other's principle subspace:
+%
+\begin{align}
+  s_{AB} &= 1 - 0.5\left( \frac{var_{AB}}{var_{AA}} + \frac{var_{BA}}{var_{BB}} \right).
+\end{align}
+%
+The mean is taken as these two quantities are asymmetric; the mean yields a measure of shared variance, or similarity, of each projection. Subtracting the quantity from 1 yields a ``loss'' of variance when projecting one dataset onto its counterpart's principle subspace. The result is a means of comparing how much mismatch we find in terms of variability between subspaces. In \Cref{fig:solla_models}, we plot all subjects' Solla metrics for pairwise comparisons of subspaces used previously: movement, calibration, and 5 groups of 9 trial blocks (108 trials). We hypothesize that over training, trials will become more self-similar with decreasing mismatch. We find an insignificant difference averaging across subjects when comparing trial group differences. We can see qualitatively two segments of subjects: one group with higher mismatch between trial groups 2 and 3 than trial groups 1 and 2. We speculate that these are groups of ``early explorers'' and ``late explorers''. There is a significant divergence between the difference of calibration subspace and the trial group 1 subspace and all other subspace differences. While this supports the idea that the the target task is, from the first group of trials, an organizing force for a new sub-repertoire of subject movements distinct from natural movements and the calibration activity, there is also a segmentation of subjects within this difference. If we divide them into roughly three groups, we have those for which the calibration subspace is very different from the first trial group, somewhat different, and very similar. We can surmise that these segments reflect different time courses of learning: some subjects (very different) begin learning immediately in the first trial group, tailoring their movements to construct a new dominant subspace for the task. These subjects may begin to diverge in later trials from their earlier trials as they hone their activations specifically for the task. Others (very similar) may reuse past movements which are similar to natural movements or their calibration activity in the trial task. These subjects may be fundamentally more constrained by their EMG manifolds or are deliberately relying on common movements as an exploration strategy. These different time courses of learning reflect the diversity of motoric decisions being made depending on the local context of each subject. Overall, this analysis underscores the fact that on average over subjects there is a difference in the structure of the variability between natural movement and calibration activity. While the calibration task is pulling EMG activity off the natural movement manifold, the target task is pulling activity onto a manifold driven by task reward.
+
+\begin{figure}[!htb]
+  \centering
+  \begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/solla_models.pdf}
+    \subcaption{}
+  \end{minipage}\\%
+  \begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=0.6\textwidth]{basic_results/pca_dimensionality/solla_models_significance.png}
+    \subcaption{}
+  \end{minipage}
+  \caption[Pairwise Solla metric between tasks]{(a) The Solla metric yields the magnitude of variance ``lost'' from the projection of a dataset onto a subspace distinct from that dataset's own principle subspace. We plot pairwise metrics to compare subspace similarities. Grey markers show subjects' values, while red markers show means and standard deviations across subjects. (b) Significance matrix of $p$-values for Tukey's honestly significant difference test comparing the difference in means over subjects between each subspace comparison.}\label{fig:solla_models}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+\section{Subspace Alignment Across Tasks}
+
+
+We have compared the similarity of subspaces using the magnitudes of their shared variance for orthogonal subspaces. We can now ask about the alignment of subspaces. The Grassmann metric is a more general similarity (or distance) measure between linear subspaces within a shared ambient vector space, without the constraint of orthogonality of the subspaces\cite{eschenburg2022}. For two subspaces $A$ and $B$, we can use the $QR$ and $SVD$ decompositions of those subspaces to produce a measure of (mis)alignment between the two subspaces. This is a generalization of ``angles between flats'' from geometry, and closely related to canonical correlation analysis, where the inverse problem of finding a linear subspace of maximum correlation between two sets of variables is the objective. To compute the Grassman metric we find the dot product $D$ between orthonormal versions of our two subspaces
+%
+\begin{align}
+  A &= Q_AR_A \\ 
+  B &= Q_BR_B \\
+  D &= Q_AQ_B^T
+\end{align}
+%
+which can be thought of as a cross-covariance matrix containing the magnitude and direction of pairwise (mis)alignment between each orthogonal basis vector of the two subspaces. Taking the SVD decomposition of this cross-covariance
+%
+\begin{align}
+  D = USV^T
+\end{align}
+%
+we use the singular values in $S$ to extract the principle angles between the two subspaces
+%
+\begin{align}
+  \vec{\theta} = \cos^{-1}({\vec{S}}).
+\end{align}
+%
+This vector of principle angles of the cross-covariance is a geodesic between the two subspaces $A$ and $B$ in the space of all possible linear subspaces (the Grassmannian manifold) within a given vector space. We can normalize this vector by noting that principle angles are within $[0,\frac{\pi}{2}]$ (parallel or orthogonal) to define
+%
+\begin{align}
+  d(A,B) = \frac{\sqrt{\sum_{i}^{}{{\theta_i}^2}}}{||\mathbb{1}_d||^2}
+\end{align}
+%
+where $\mathbb{1}_d$ is the ones vector of the subspace dimension normalizing against the case of a maximally orthogonal subspace. When the Grassmann metric is 0, all axes of the two subspaces are parallel or perfectly aligned. Then the metric is 1, the axes are all orthogonal to one another, or unaligned. In \Cref{fig:grassman_models}, we visualize the Grassmann metric between pairwise principle subspaces of two dimensions as a comparison to \Cref{fig:solla_models}.
+
+In effect, the Grassmannian metric is removing the element of variance magnitude from the comparisons, and only looking here at the angles between directions of the subspace axes (here the principle axes) in EMG space. We hypothesize that we will see a less radical difference between the movement and calibration datasets from the trial datasets as the directions of variance should align with the fundamental directions of variance in each subject's EMG manifold. Secondly, we hypothesize that trial subspaces should become more self-similar in alignment over time, settling onto solutions.
+
+We find that the data supports these hypothesese, the last trial groups are more self-similar than earlier groups, and similarity decreases from the calibration dataset over time as solutions are learning. We find that the differences in later trial groups (3-4 and 4-5) are significantly different than distances between earlier trial groups, supporting our hypothesis in terms of spatial self-similarity. Secondly, since the calibration dataset's magnitude of variance is not taken into account, only the directions of maximum variance, there is less of a difference in the calibration dataset to others compared to the Solla metric, as expected. Finally, we see less segmentation of subjects when comparing with the Grassmanian, indicating that the segmentation we saw in the Solla metric in part reflected differences in the magnitudes of variance subjects exhibited over tasks. 
+
+\begin{figure}[!htb]
+  \centering
+  \begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/grassmann_models.pdf}
+    \subcaption{}
+  \end{minipage}\\%
+  \begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=0.6\textwidth]{basic_results/pca_dimensionality/grassmann_models_significance.png}
+    \subcaption{}
+  \end{minipage}
+\caption[Pairwise Grassmann metric between principle subspaces]{(a) Pairwise Grassmann metric between 2-dimensional principle subspaces of trial groups. Grey markers show individual subjects, while red markers show means over subjects. (b) Significance matrix of $p$-values for Tukey's honestly significant difference test comparing the means of each trial group.}\label{fig:grassman_models}
+\end{figure}
+
+Since the Grassmann metric is not restricted to orthogonal subspaces, we also visualize the pairwise comparisons of two-dimensional subspaces derived from nonnegative matrix factorizations (NMF) of each dataset as before to assess non-orthogonal directions in the data and their evolution across learning. NMF is designed to capture ``parts'' of a dataset which sum to form the whole. We hypothesize that we will see a more pronounced difference between trial groups using NMF as the decomposition has more flexibility to capture the structure of each group.
+
+In \Cref{fig:grassman_nmf_models}, we visualize the Grassmann metric between NMF subspaces for the same trial groups as before. We find support for our hypothesis, that NMF is capturing modes of the data more specifically for each trial group, as the Grassmann distances on average are higher than in the case of orthogonal subspaces. Again, we see subjects evolving towards self-similarity over the course of the trials. Again, we see that the natural movements and calibration datasets are less similar to early trials and each other than early trials are to later trials. We find that the difference between the modes of activities used in early trials and the modes of the natural movements are significantly different than the divergence of modes between calibration and early trials. This reinforces the idea that, on average, subjects begin from early trials to tailor their movements beyond common activations to seek reward. The context of task reward drives subjects to develop modes in their activity space that are distinct from the set of simple movements commanded in that benchmark task. Finally, the results of the Grassmann distance between NMF subspaces compared to those determined by PCA underscore the non-orthogonality of the EMG manifolds. That is, subjects are not simply activating spatially orthogonal activations to learn the task, they are searching their movement repertoires to identify bespoke mixed spatial modes for this specific task driven by reward.
+
+\begin{figure}[!htb]
+  \centering
+  \begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/gr_nmf.pdf}
+    \subcaption{}
+  \end{minipage}\\%
+  \begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=0.6\textwidth]{basic_results/pca_dimensionality/gr_nmf_sig.png}
+    \subcaption{}
+  \end{minipage}
+  \caption[Pairwise Grassmann metric between NMF subspaces]{(a) Pairwise Grassmann metric between 2-dimensional NMF subspaces of trial groups. Grey markers show individual subjects, while red markers show means over subjects. (b) Significance matrix of $p$-values for Tukey's honestly significant difference test comparing the means of each trial group.}\label{fig:grassman_nmf_models}
+\end{figure}
+
+% \begin{figure}[!htb]
+%   \centering
+%   \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/grassmann_solla_models.png}
+%   \caption[Comparison of PCA subspaces over models]{Grassman distance and shared variance measure for NMF subspace of model data}\label{fig:grassman_solla_pca}
+% \end{figure}
+
+% \begin{figure}[!htb]
+%   \centering
+%   \includegraphics[width=1.0\textwidth]{basic_results/pca_dimensionality/grassmann_solla_nmf.png}
+%   \caption[Comparison of NMF subspaces over models]{Grassman distance and shared variance measure for NMF subspace of model data}\label{fig:grassman_solla_pca}
+% \end{figure}
+
+\section{Discussion}
+
+So far, we have investigated the data produced by subjects in our learning task in detail using linear methods to understand how subspaces in different parts of the task relate to one another. We've identified that an important feature of this data is its spatial modes, which are mixed across dimensions. We've shown that this mixing poses issues for a linear model PCA which attempts to reconstruct EMG activity using a single Gaussian oriented in maximally varying dimensions, whereas a mixture of Gaussians can cope with this multimodality as shown in \Cref{fig:toy_model}. In the next chapter, we will use Gaussian mixtures to delve into the structure of variability and its evolution over learning.
+
+This chapter explored the structure of the data manifold formed by subjects' EMG activity during the various tasks in the experiment. Several key insights emerged from the analyses:
+
+Visualization using UMAP revealed that subjects' EMG activations formed distinct ``lobes'' or modes within the high-dimensional EMG space. These modes likely correspond to different muscle activation patterns or movement strategies employed by subjects during the tasks.
+Higher-performing subjects exhibited more coherent and confined solutions within the EMG space, particularly in the later stages of learning the target task. In contrast, lower-performing subjects displayed more diffuse and intermingled activations across targets.
+
+The pair plots and toy model illustrations highlighted the multimodal and non-Gaussian nature of the EMG data, underscoring the limitations of linear techniques like PCA in capturing the full complexity of the data manifold.
+
+Analyses of subspace confinement using PCA revealed that subjects' EMG activations during natural movements were significantly more confined to a low-dimensional subspace compared to the calibration and target tasks. This aligns with the notion that natural movements are well-practiced and less exploratory.
+
+During the target task, subspace confinement tended to increase over the course of learning, suggesting that subjects were converging on more specific and confined solutions as they mastered the task.
+
+Higher-performing subjects exhibited a slight tendency towards lower subspace confinement early in learning, potentially indicating a greater ability to explore the EMG activation space and identify rewarding solutions.
+
+Comparisons using the Solla and Grassmann metrics revealed that subjects followed diverse learning trajectories, with some individuals exhibiting more immediate tailoring of their EMG activations to the target task, while others relied more heavily on reusing existing movement patterns.
+
+The Grassmann analyses further highlighted the non-orthogonality of the EMG manifold, suggesting that subjects were not simply activating spatially orthogonal muscle patterns but instead combining and recombining existing movement modes in task-specific ways.
+
+Overall, these findings shed light on the intricate structure of the EMG data manifold and how it shapes subjects' ability to explore, identify, and converge on rewarding muscle activation patterns during the learning process. The multimodal and non-Gaussian nature of the data underscores the importance of using more flexible modeling techniques, such as Gaussian mixture models, to capture the full complexity of the EMG activation space.
+Future research could further investigate the relationship between individual differences in the EMG manifold structure and learning outcomes, as well as explore the potential for leveraging these insights to develop more effective training protocols or assistive technologies for motor skill acquisition.
+
+\cleardoublepage\printendnotes%
+\ifSubfilesClassLoaded{%
+    \newpage%
+    \bibliography{../bib/bibliography}%
+}{}%
 \end{document}

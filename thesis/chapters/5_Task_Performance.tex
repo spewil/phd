@@ -24,72 +24,103 @@
 \cleardoublepage%
 
 
+\section{Performance over Blocks}\label{sec:performance_over_blocks}
 
-\section{Does Subject Performance Improve over Trials?}
+Since we have verified that the methods of our task are sounds, our next question is whether subjects are in fact learning to achieve the goals of the tasks. As our intention is to ``stretch'' learning across the task, we can generate learning curves to understand if we met this aim. As visualized in \Cref{fig:hits_and_noholds}, we find that subjects, based on numbers of target ``hits'' (reaching the target with the cursor in the allotted time constraint), are learning over trials to increase their performance. These results over subjects immediately pose further questions. As there is a variety across subjects in the speed of learning-- some subjects appear to achieve the goals of the task rapidly (see the best performing subject hitting nearly every target after just 8 blocks, or 96 trials) while others struggle to reach more than half the targets on average (see the worst performing subject) throughout their session. Most subjects, however (see the median subject), show a rise in performance across their session, indicating that the task does in fact ``stretch'' the learning process in time, providing an opportunity to observe the features of learning over trials. Few subjects are unable to ``hold'' in the task, and these issues were quickly addressed (often by a minor adjustment in the electrode assembly to remove an electrical artifact).
 
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \item Are subjects actually learning the task? \textbf{Result}: Yes, Across various measures of performance, the majority of subjects learn to achieve the task’s goals in the allotted time period. Is the task difficult enough to pose a learning challenge for subjects? \textbf{Result}: Yes, learning curves are ``stretched'' across the allotted learning period. Is there variability across subjects in terms of performance? \textbf{Result}: Yes, some subjects struggle to learn the task, some subjects learn very quickly, while the majority of subjects are between these two extremes. These results are visualized in \Cref{fig:hits_and_noholds}
-    \item Do subjects spend less time moving the cursor towards the target over time? \textbf{Result} yes, the time length of trials decreases on average over blocks. Subjects tend to take less time to move to targets across learning. \Cref{fig:reach_times_over_blocks}
-    \item Do subjects make shorter trajectories over learning? \textbf{Result} yes, trajectories tend on average to get shorter across learning. \Cref{fig:path_length_over_blocks}
-    \item Do subjects make smoother, more fluid movements over learning, defined by the number of submovements, or segments, that make up their trajectories? \textbf{Result} yes, the number of trajectory segments tends on average to decrease across learning. \Cref{fig:path_segments_over_blocks} and \Cref{fig:example_segments}. We can speculate that these segments are activations of subjects' natural repertoire; early in learning, subjects solve the task by stitching together existing motor syllables. Over learning, subjects blend their existing activations together to form new solutions for each target.
-    \item \textbf{TODO} plot reward vs. (reach time, path length, and segments) to prove that these correlate with performance as expected
-    \item \textbf{TODO?}: Look into the ``freezing degrees of freedom'' idea, defined as the size of the ``active'' EMG subspace within each trial. This could be done using NMF or PCA on each trial, e.g. many PCA components are active at once (how sparse are the component weights?), and how does this change over time? Sparsity (measured by the 1-norm) might imply that only a certain mode is active at a time, and this might change to more mixing over time. We would expect mixing to increase as people become more proficient and blend their activity modes together. This would be quite a rabbit hole, but interesting! We really want to know if people have distinct modes of activity early on, and how these blend into solutions over time. This is tricky to do, and currently lacking between the setup in the background chapters and the current results.
-    \item We define reward of a trial as the sum of the inverse distance from the current target \cref{eq:reward}.
-\end{itemize}
-
-
-\begin{figure}[H]%[tph]
+\begin{figure}[!htb]%[H]
     \centering
     \includegraphics[width=1.0\textwidth]{basic_results/performance_over_blocks/hits_and_noholds.pdf}
-    \caption[Hit counts over trials]{Target task outcomes over blocks. Outcomes across 45 blocks of 12 unique targets each. Subjects with the most, median, and least number of hits out of all 46 subjects are shown in green, blue, and orange respectively. All other subjects are show in gray. Top to bottom: the percentage of ``Hits'' within each block, the percentage of ``Misses'' (timeouts), and ``No Holds'' (subject unable to initiate trial by resting).}\label{fig:hits_and_noholds}
+    \caption[Hit and No-Hold counts over trials]{Target task outcomes over 45 blocks of 12 unique targets each, in randomized order per block. Subjects with the most, median, and least number of hits out of all 46 subjects are shown in green, blue, and orange, respectively. All other subjects are show in gray. Top: the number of ``Hits'' (reaching the target within the allotted time window after holding in the center of the task screen) within each block. Bottom: the number of ``No-Holds'' (occurs when a subject is unable to initiate trial by keeping the cursor in the center of the task screen for the allotted time. High numbers of No-Holds resulted in minor adjustments to the recoding apparatus to rectify any issues).}\label{fig:hits_and_noholds}
 \end{figure}
 
+Hit count is not the only measure of performance. As a ``hit'' implies decreasing the distance in task space between the target and the cursor (referred to as ``task error''), we defined ``mean reward'' over $K$ trials and $T$ timepoints using the inverse of the 2-norm of the distance between the cursor position $x$ and the target position $g$ for a given timepoint $t$ and trial $k$:
 
-\begin{figure}[H]%[tph]
+\begin{align}
+    r = \frac{1}{KT}\sum_k^K\sum_t^T{|| \vec{g_k} - \vec{x}_{t,k} ||^{-2}}.
+    \label{eq:reward}
+\end{align}
+
+That is, as subjects deviate further, on average, from their targets, the are ``rewarded'' according to an inverse square of their ``error''. We refer to this henceforth as task ``error''. Note that this notion of reward is calculated using the ``active'' samples as defined in \Cref{chap:methods}. Histograms of reward and hit counts per subject are shown in \Cref{fig:reward_histograms}. Where the hit counts are skewed, the mean rewards over subjects are approximately normal. In \Cref{fig:hit_fraction_vs_reward}, we find evidence that supports a linear correlation between this notion of reward and number of hits, as we would expect ($p=\num{0.978e-9}$). Put simply, hits can happen with more or less reward, and reward is a more fine-grained signal of performance as it reflects the trajectory directly as opposed to the binary outcome of each movement. Higher reward implies more direct, straight-line trajectories to targets. The residuals here imply that subjects miss their targets by deviating further from their targets in all directions, as opposed to repeated, systematic errors. This is supported in the bottom plot of \Cref{fig:hit_fraction_vs_reward}, where we see evidence that the standard deviation of the task error decreases with higher-hit-count subjects. Subjects who hit more targets are less varied in their trajectories than those who achieve fewer hits, providing support for the idea that subjects suffer from general task variability rather than systematic error. We explore the nature of this variability more deeply in later sections.
+
+\begin{figure}[!htb]%[H]
+    \centering
+    \begin{minipage}{0.49\textwidth}
+        \includegraphics[width=0.9\textwidth]{basic_results/trial_reward/reward_histogram.pdf}
+        \subcaption{}
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+        \includegraphics[width=0.9\textwidth]{basic_results/trial_reward/hit_fraction_histogram.pdf}
+      \subcaption{}
+    \end{minipage}
+    \caption[Hit and reward histograms]{(a) Histogram over subjects of mean rewards as described in the main text. (b) Histogram over subjects of the fraction of trials which are hit trials.}\label{fig:reward_histograms}
+\end{figure}
+
+\begin{figure}[!htb]%[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{basic_results/performance_over_blocks/hit_fraction_vs_reward.pdf}
+    \caption[Hits versus reward]{Hit counts versus total reward. Reward is calculated as shown in \cref{eq:reward}.}\label{fig:hit_fraction_vs_reward}
+\end{figure}
+
+We hypothesized that subjects who achieved more hits in the task would reduce the time it took them to hit those targets across their trials. This is visualized in \Cref{fig:reach_times_over_blocks}, where we see qualitative evidence supporting this idea; the highest performing subject tends to decrease their hit times over trials, while lesser performing subjects tend to take longer to move on average in each block; the lowest performing subject does not tend to decrease their reach time. This evidence extends to two other task metrics: path length, shown in \Cref{fig:path_length_over_blocks}, and number of path segments, shown in \Cref{fig:path_segments_over_blocks}. Path length is computed as the sum of the euclidean distance between each timestep. 
+
+Path segments, as demonstrated in \Cref{fig:example_segments}, are defined as points where the sign of the task trajectory's derivative changes, or ``zero crossings'' of the derivative. We filter low-velocity zero crossings and combine crossings that are close to one another to ensure segments reflect natural ``syllables'' of movement. We used this definition of trajectory segments to investigate the concept of degree-of-freedom freezing, initially suggested by Bernstein as a first phase of motor learning \cite{Bernstein1967}. We see qualitatively across all subjects a reduction in path segmentation, though it is not dramatic. We also see that on average higher performing subjects have fewer path segments than their lower performing counterparts, implying smoother, more fluid movements combining motor actions or syllables in concert over time to reach targets. As we will see in later sections, subjects tend to blend their modal activities into solutions for each target over learning. We can speculate that the 2D task projection of subject EMG activities may mask degree-of-freedom freezing. We suggest a further investigation of this idea in the EMG data directly, perhaps tracking orthogonal EMG subspaces over time within trials. EMG subspaces is a different, perhaps more illuminating, definition of degree of freedom. We will investigate EMG subspaces over trials in later sections.
+
+While we find qualitative evidence that these metrics correlate as expected with reward, only path length versus reward ($p=\num{2.2e-2}$) and path segments versus reward ($p=\num{4.5e-2}$) reveal (slight) statistical significance, as shown in \Cref{fig:reward_v_metrics} when looking across all subjects. These comparisons are computed using the percent difference between the means of the first and last groups of 15 blocks (180 trials) for each metric. We hypothesize that reach time shows an insignificant correlation as the trial time window was long enough (5s), subjects were not time-pressured and thus did not overly factor movement time into their strategies. These results highlight the variability of each subject; each individual is likely to have a unique strategy or objective associated with the task, and these coarse metrics fail to immediately capture the nuances of each subjects' movement patterns across learning. This is taken as a positive sign, that the features of this data are rich, and not easily captured by statistics which average out subjects' individual learning trajectories.
+
+\begin{figure}[!htb]%[H]
     \centering
     \includegraphics[width=1.0\textwidth]{basic_results/performance_over_blocks/reach_times_over_blocks.pdf}
-    \caption[Reach time over trials]{Reach time over trials.}\label{fig:reach_times_over_blocks}
+    \caption[Reach time over blocks]{Reach time, measured using timers during the experimental sessions, averaged over each subjects' block of 12 trials, one trial per target in randomized order. Subjects with the most, least, and median numbers of hits are shown in green, orange, and blue, respectively. Log-fits are shown in matching colors for each of these subjects are shown to guide the eye. The mean over subjects per block is shown in dotted black.}\label{fig:reach_times_over_blocks}
 \end{figure}
 
-
-\begin{figure}[H]%[tph]
+% return np.sum (np.sqrt (np.sum (np.diff (a, axis=0)**2,axis=1)))
+\begin{figure}[!htb]%[H]
     \centering
     \includegraphics[width=1.0\textwidth]{basic_results/performance_over_blocks/path_length_over_blocks.pdf}
-    \caption[Trajectory length over trials]{return np.sum (np.sqrt (np.sum (np.diff (a, axis=0)**2,axis=1)))}\label{fig:path_length_over_blocks}
+    \caption[Trajectory length over blocks]{Trajectory length in task space, computed as the sum of the squares of the trajectory finite difference over time, averaged over each subjects' block of 12 trials, one trial per target in randomized order. Subjects with the most, least, and median numbers of hits are shown in green, orange, and blue, respectively. Log-fits are shown in matching colors for each of these subjects are shown to guide the eye. The mean over subjects per block is shown in black dotted line.}\label{fig:path_length_over_blocks}
 \end{figure}
 
+\begin{figure}[!htb]%[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{basic_results/performance_over_blocks/example_path_segments.pdf}
+    \caption[Example of a path segmented trial]{An example of path segmentation for one trajectory. Axes are removed to focus the example on the segmentation result. Top: The trajectory shown in red as an $x$ and $y$ coordinate over time. Path segments are defined as zero crossings of the trajectory's derivative. The black points identify zero crossings of the derivative, or maxima and minima in the trajectory. Bottom: The trajectory in the task space. We combine crossings which are near each other in time (below a set ``radius''), and exclude crossings below the 10th percentile of the max velocity in order to remove overly short segments. Resulting segments are shown in alternative blue and orange, with the black points highlighting segment switch points.}\label{fig:example_segments}
+\end{figure}
 
-Path segments are defined as points where the sign of the trajectory's derivative changes, equivalent to ``zero crossings'' of the derivative. We filter low-velocity zero crossings and combine crossings that are close to one another. The literature talks about the conceept of ``degree of freedom (DoF) freezing''. Here we use trajectory segments as a proxy measure of DoF freezing.
-
-\begin{figure}[H]%[tph]
+\begin{figure}[!htb]%[H]
     \centering
     \includegraphics[width=1.0\textwidth]{basic_results/performance_over_blocks/path_segments_over_blocks.pdf}
-    \caption[Trajectory segments over trials]{This connects to the idea of freezing degrees of freedom. We expect to see degrees of freedom in the task space, quantified by segments, to decrease over trials.}\label{fig:path_segments_over_blocks}
+    \caption[Trajectory segments over blocks]{Trajectory segments in task space, computed as described in the main text, averaged over each subjects' block of 12 trials, one trial per target in randomized order. Subjects with the most, least, and median numbers of hits are shown in green, orange, and blue, respectively. Log-fits are shown in matching colors for each of these subjects are shown to guide the eye. The mean over subjects per block is shown in dotted black.}\label{fig:path_segments_over_blocks}
 \end{figure}
 
+% We could look into the ``freezing degrees of freedom'' idea, defined as the size of the ``active'' EMG subspace within each trial. This could be done using NMF or PCA on each trial, e.g. many PCA components are active at once (how sparse are the component weights?), and how does this change over time? Sparsity (measured by the 1-norm) might imply that only a certain mode is active at a time, and this might change to more mixing over time. We would expect mixing to increase as people become more proficient and blend their activity modes together. This would be quite a rabbit hole, but interesting! We really want to know if people have distinct modes of activity early on, and how these blend into solutions over time. This is tricky to do, and currently lacking between the setup in the background chapters and the current results.
 
-\begin{figure}[H]%[tph]
+% \begin{figure}[!htb]%[H]
+%     \centering
+%     \includegraphics[width=1.0\textwidth]{basic_results/performance_over_blocks/reward_v_learning_rate.pdf}
+%     \caption[Learning rates of path metrics versus reward]{Learning rates of path metrics versus reward}\label{fig:reward_v_learning_rate}
+% \end{figure}
+
+\begin{figure}[!htb]%[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{basic_results/performance_over_blocks/example_path_segments.pdf}
-    \caption[Example of a path segmented trial]{Example path segmentation. Path segments are defined as zero crossings of the trajectory's derivative. We then combine crossings that are near each other in time, and exclude crossings below the 10th percentile of the max velocity in order to remove short segments.}\label{fig:example_segments}
+    \includegraphics[width=1.0\textwidth]{basic_results/performance_over_blocks/reward_v_metrics.pdf}
+    \caption[Percent difference of path metrics versus reward]{For each task space metric (reach time, path length, and path segments), we take the percent difference of the means of the first 15 blocks and the last 15 blocks of trials for each subject, and plot these against each subjects reward.}\label{fig:reward_v_metrics}
 \end{figure}
 
-
-\begin{table}[H]
-    \begin{center}
-        \caption[Statistics of performance regression]{Statistics of performance regression}\label{tab:performance_stats}
-        \begin{tabular}{l | c}
-            \hline
-            $p$(Hit Learning Rate, Reward) & 0.177 \\
-            $p$(Reach time Learning Rate, Reward) & 0.215 \\
-            $p$(Path length Learning Rate, Reward) & 0.786 \\
-            $p$(Segment Learning Rate, Reward) & 0.072 \\
-            Adjusted R-squared & 0.058 \\
-            Prob (F-statistic) & 0.170
-        \end{tabular}
-    \end{center}
-  \end{table}
+% \begin{able}%[H]
+%     \begin{center}
+%         \caption[Statistics of performance regression]{Statistics of performance regression}\label{tab:performance_stats}
+%         \begin{tabular}{l | c}
+%             \hline
+%             $p$(Hit Learning Rate, Reward) & 0.177 \\
+%             $p$(Reach time Learning Rate, Reward) & 0.215 \\
+%             $p$(Path length Learning Rate, Reward) & 0.786 \\
+%             $p$(Segment Learning Rate, Reward) & 0.072 \\
+%             Adjusted R-squared & 0.058 \\
+%             Prob (F-statistic) & 0.170
+%         \end{tabular}
+%     \end{center}
+%   \end{table}
   
 % mean_reward vs [hit_learning_rates, reach_time_learning_rates, path_length_learning_rates, segment_learning_rates]
 
@@ -119,69 +150,88 @@ Path segments are defined as points where the sign of the trajectory's derivativ
 % Kurtosis:                       4.098   Cond. No.                         51.4
 % ==============================================================================
 
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \item Reward correlates with hits, but noisily. Hits can happen with more or less reward. Reward is a more fine-grained signal of performance as it reflects the trajectory directly as opposed to the binary outcome of each movement. Higher reward implies more direct, straight-line trajectories to targets. Mean reward is based on active EMG samples.
-    \item The learning rate for hits based on the logarithm fit to hit counts over blocks does not linearly correlate significantly with mean reward, indicating that the magnitude of the rate with which a subject accumulates hits over blocks does not necessarily lead to lower reward. This might be explained by the fact that some subjects start at high hit rate, meaning less learning is available to these subjects, meaning their learning rate is low despite their performance being high (reward being low). Note here that it may serve us well to look closely at subjects with high learning rates and high increases in performance over trials, as these subjects displayed the most learning, the largest spread in performance.
-    \item Looking at the histograms of reward and hit counts per subject, we can justify using the mean reward per subject as a measure of performance as there are not any glaring outliers and the curve is approximately normal, while the hit count curve is skewed (\textbf{TODO?}: normality tests on these?)
-    \item \textbf{TODO} make sure that I'm using active EMG to compute reward. Shouldn't change the statistics, but good to check.
-    \item \textbf{TODO?} Put this histogram and the hits vs. reward plot first, then use reward everywhere instead of hits! 
-\end{itemize}
+% The learning rate for hits based on the logarithm fit to hit counts over blocks does not linearly correlate significantly with mean reward, indicating that the magnitude of the rate with which a subject accumulates hits over blocks does not necessarily lead to lower reward. This might be explained by the fact that some subjects start at high hit rate, meaning less learning is available to these subjects, meaning their learning rate is low despite their performance being high (reward being low). Note here that it may serve us well to look closely at subjects with high learning rates and high increases in performance over trials, as these subjects displayed the most learning, the largest spread in performance.
 
-Mean reward is defined over $K$ trials and samples or timepoints $T$ using the 2-norm of the distance between the cursor position $x$ and the target, or goal, position $g$ for a given timepoint $t$ and trial $k$:
+% \begin{figure}[!htb]%[H]
+%     \centering
+%     \includegraphics[width=1.0\textwidth]{basic_results/performance_over_blocks/velocity_v_reward.pdf}
+%     \caption[Reach velocity versus reward]{Reach velocity versus reward. We could have used an exponential fit here, but linear without teh max and min subjects illustrates the idea well enough that higher performers on average move slower. This may seem counterintuitive but this is an aspect of a subject's ability to control their muscle activations. Lower peforming subjects tend to move more erratically, making more errors, while higher performers move less and thus on average move more slowly. We might initially question whether this is an artefact of the task, that subject variance induced by the EMG signal means subjects are noisier. But the left plot shows that we see no correlation between subjects' total variance in the calibration task and their performance. Also not that in the task, we standardize subject's EMG channels using their calibration variance, to reduce such effects (an unequal weighting of channels). We can also invoke Fitts' Law here? More accurate subjects move more slowly?}\label{fig:velocity}
+% \end{figure}
 
-\begin{align}
-    r = \frac{1}{KT}\sum_k^K\sum_t^T{|| \vec{g_k} - \vec{x}_{t,k} ||^{-2}}.
-    \label{eq:reward}
-\end{align}
-
-\begin{figure}[H]%[tph]
-    \centering
-    \includegraphics[width=1.0\textwidth]{basic_results/performance_over_blocks/hit_fraction_vs_reward.pdf}
-    \caption[Hits versus reward]{Hit counts versus total reward.}\label{fig:hit_fraction_vs_reward}
-\end{figure}
-
-\begin{figure}[H]%[tph]
-    \centering
-    \includegraphics[width=0.5\textwidth]{basic_results/performance_over_blocks/reward_v_path.pdf}
-    \caption[Path statistics versus reward]{Path statistics versus reward. We see a strong correlation between path length and reward, which confirms our analysis, as path length is directly related to our notion of reward. We see no linear correlation between reward and reach time or segment count. Reach time implies that subject reach velocity is related to subject performance. Segment count appears to have a rough bell shape, which may indicate that lower performing subjects make less complex movements, as do higher performing subjects, while subjects with middling performance make many moves. This echoes the reach time plot, where more segments implies more movement, which in turn implies longer reaches.}\label{fig:reward_vs_path_stats}
-\end{figure}
-
-\begin{figure}[H]%[tph]
-    \centering
-    \includegraphics[width=1.0\textwidth]{basic_results/performance_over_blocks/velocity_v_reward.pdf}
-    \caption[Reach velocity versus reward]{Reach velocity versus reward. We could have used an exponential fit here, but linear without teh max and min subjects illustrates the idea well enough that higher performers on average move slower. This may seem counterintuitive but this is an aspect of a subject's ability to control their muscle activations. Lower peforming subjects tend to move more erratically, making more errors, while higher performers move less and thus on average move more slowly. We might initially question whether this is an artefact of the task, that subject variance induced by the EMG signal means subjects are noisier. But the left plot shows that we see no correlation between subjects' total variance in the calibration task and their performance. Also not that in the task, we standardize subject's EMG channels using their calibration variance, to reduce such effects (an unequal weighting of channels). We can also invoke Fitts' Law here? More accurate subjects move more slowly?}\label{fig:velocity}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \begin{minipage}{0.49\textwidth}
-        \includegraphics[width=0.9\textwidth]{basic_results/trial_reward/reward_histogram.pdf}
-        \subcaption{}
-    \end{minipage}
-    \begin{minipage}{0.49\textwidth}
-        \includegraphics[width=0.9\textwidth]{basic_results/trial_reward/hit_fraction_histogram.pdf}
-      \subcaption{}
-    \end{minipage}
-    \caption[Hit and reward histograms]{Hits and rewards histograms over subjects}\label{fig:reward_histograms}
-\end{figure}
-
-% \begin{figure}[H]%[tph]
+% \begin{figure}[!htb]%[H]
 %     \centering
 %     \includegraphics[width=1.0\textwidth]{basic_results/performance_over_blocks/mean_rewards_vs_learning_rate.pdf}
 %     \caption[Reward versus learning rate]{No correlation between the rate of hit accumulation and total reward.}\label{fig:mean_rewards_vs_learning_rate}
 % \end{figure}
 
 
-\subsection{Hits over Targets}
+\section{Performance and Subject Attributes}
+
+To assess whether any traits of our subjects and their experimental context correlated with their performance in the task, we asked subjects to complete a pre-experiment questionnaire, and we recorded experimental conditions. The following continuous attributes were recorded:
 
 \begin{itemize}
-    \setlength\itemsep{0em}
-    \item We find a significant difference in the mean number of hits between the directly rightward target, Target 1, and the leftward targets 6, 7, and 8. I would have to speculate on why this bias appears on average. It's probably best not to speculate, and just explain what this implies: that for some reason it's more likely to create a decoder which aligns with subject's more common movements in a leftward direction than a rightward one. Probably worth discussing here that next time, we need to think more carefully about the subject's inherent EMG manifold before mapping. This is kind of a bootstrapping problem-- we didn't know we would have this problem before we tried it out. Next time, I would more deeply explore the subject's EMG manifold and relate that to the task directly, by simulating their task-space EMG projection more fully, creating a decoder extraction pipeline that explicitly balanced activity between targets. \Cref{fig:hits_over_targets}
-    \item This is also true for Target 4, straight up. I think this is due to how the decoder was made, by subtracting pairs of NMF modes. This, I think, means that you're less likely to get ``pure'' up and right. But this isn't true for left and down, the ``negative'' directions. I'm not sure why this is.
+    \item Time of day the data collection began. % no correlation
+    \item Day order of the subject out of the cohort of 46 subjects. % no correlation
+    \item Arm size: the circumference of a subject's dominant arm measured at a distance 10\% of their arm length (taken to be the distance between the elbow (olecranon) to the ulnar styloid) below the olecranon. % weak correlation!
+    \item Hours of sleep reported the night before the experiment. % no correlation
 \end{itemize}
 
-\begin{figure}[H]%[tph]
+We found no statistical significance in correlations with reward over subjects for any of these attributes except for arm size ($p=\num{3.17e-3}$), as shown in \Cref{fig:hour_of_day_vs_reward,fig:days_vs_reward,fig:arm_vs_reward,fig:sleep_vs_reward}. The following categorical attributes were collected:
+
+\begin{itemize}
+    \item Sex, male or female (options included non-binary, no subject chose these options). % significant difference in mean! This, we suspect, is explained by arm size
+    \item Handedness, left or right. % none, though few left handed subjects
+    \item Caffeine consumption day of the experiment; responses were grouped into ``high'' and ``low'' caffeine groups. %--- none 
+    \item Sportsperson: ``regularly engaged in an activity that requires physicality and hand-eye coordination.'' % --- none 
+    \item Dexterous: ``regularly engaged in a task considered dexterous.'' %--- none
+\end{itemize}
+
+The results of the categorical comparisons are shown in \Cref{fig:compare_subject_groups}. All categories show no significant difference in difference (by T-test) except for sex of the subjects. One explanation we can offer to explain this result is the difference in arm sizes for subjects who identified as female and male in the task. Those with arms of greater circumference appear to achieve higher reward in the task, and those with larger arms, on average, identified as male as shown in \Cref{fig:male_female_arms}. Those with larger arms achieving higher performance in the task may be explained by our flexible electrode array stretching to cover more of the arm. With more motor tissue (with more motor units) available for the task, subjects with larger arms may have an easier time decorrelating their EMG activity. We will explore this more deeply when we discuss our notion of ``subspace confinement'' in subsequent sections. For categories pertaining to non-anatomical attributes, we find no significant predictors of performance, which implies that our task provides a novel training ground for subjects.
+
+\begin{figure}[!htb]%[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{basic_results/form_response/arm_vs_reward.pdf}
+    \caption[Arm versus reward]{The circumference of each subject's dominant arm used in the task, measured 5cm below the tip of the elbow. We find a correlation (0.27, $p=\num{3.17e-3}$) in reward and arm size, as discussed in the main text.}\label{fig:arm_vs_reward}
+\end{figure}
+
+\begin{figure}[!htb]%[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{basic_results/form_response/days_vs_reward.pdf}
+    \caption[Experiment day versus reward]{The date of each subject's experiment to highlight any trends in performance in the experiment over time. We find no significant correlation.}\label{fig:days_vs_reward}
+\end{figure}
+
+\begin{figure}[!htb]%[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{basic_results/form_response/hour_of_day_vs_reward.pdf}
+    \caption[Hour of day versus reward]{The hour of day of each experiment to highlight and trends in performance with the time of day. We find no significant correlation.}\label{fig:hour_of_day_vs_reward}
+\end{figure}
+
+\begin{figure}[!htb]%[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{basic_results/form_response/sleep_vs_reward.pdf}
+    \caption[Hours of sleep vs reward]{Self-reported hours of sleep the night before the experiment to highlight any trends in performance with sleep. We find no significant correlation.}\label{fig:sleep_vs_reward}
+\end{figure}
+
+\begin{figure}[!htb]%[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{basic_results/form_response/compare_subject_groups.pdf}
+    \caption[Subject group comparisons]{Subject categories, self-reported, comparing means of each categorical pair. Differences in means are compared using a t-test. ``***'' indicates $p<\num{1e-3}$. We find significance only in the difference between male and female categories ($p=\num{2.84e-4}$) as discussed in the main text.}\label{fig:compare_subject_groups}
+\end{figure}
+
+\begin{figure}[!htb]%[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{basic_results/form_response/male_female_arms.pdf}
+    \caption[Arm circumference and self-reported sex]{Plotting arm circumference between ``male'' and ``female'' groups to explain the correlation in performance with arm size with performance and sex with performance. We find a statistically significant difference in means of arm circumference between male and female groups ($p=\num{2.91e-6}$). The hypothetical advantage (in terms of EMG manifold) of larger arms is discussed in the main text.}\label{fig:male_female_arms}
+\end{figure}
+
+
+\section{Performance over Targets}
+
+So far we have looked at mean rewards over all targets and subjects; we will now break results down across targets to assess any biases. As shown in \Cref{fig:hits_over_targets}, we find a statistically significant difference in the mean number of hits between the directly rightward target, Target 1, and the leftward targets 6, 7, 8, and 9. There is not an immediately obvious reason for this bias; this result might imply that with our method it is more likely that subjects' common movements, after decoding, lie in a leftward direction than a rightward one. That is, it is more likely for subjects to move leftward in the task space given their decoder, while it is least likely for subjects to move directly rightward. This hints at a major theme of this work: while we strongly support the continued development of a research program around electromyography to understand the computations underlying human learning, developing a finer-grained model of individual subjects' space of EMG activations is crucial to developing tasks with inter-subject comparability. This result in no way nullifies our findings here, but provides a context for them. Going forward, future experimentalists should work to develop a clear picture of subjects' EMG manifolds. This is a kind of bootstrapping problem; without running the task in the manner that we did, we would not have found such a bias (assuming it holds in all possible version of this experiment). In future iterations, it may prove fruitful to simulate task-space EMG projections to create decoders which explicitly balance activity between task states. Note, however, that subjects' natural biases within their EMG manifolds should not necessarily be completely removed, but appropriately leveraged for the goals of the experimental work.
+
+% This should probably be log-transformed...?
+
+\begin{figure}[!htb]%[H]
     \centering
     \begin{minipage}{1.0\textwidth}
         \includegraphics[width=1.0\textwidth]{basic_results/decoder_vs_performance/hits_over_targets.pdf}
@@ -195,150 +245,94 @@ Mean reward is defined over $K$ trials and samples or timepoints $T$ using the 2
         \includegraphics[width=1.0\textwidth]{basic_results/decoder_vs_performance/target_hit_pvalues.pdf}
       \subcaption{}
     \end{minipage}
-    \caption[Hits over Targets across subjects]{Hit count means per target. Significance matrix comparing hit counts over individual targets to assess bias in target directions across subjects.}\label{fig:hits_over_targets}
+    \caption[Hits over Targets across subjects]{(a) Mean hit trial fractions for each subject, per target. Means over subjects are shown in red, with standard deviation error bars. (b) Mean hit trial fractions over subjects per target shown as the radius of each target marker to demonstrate in the task space where hits were more likely to occur across subjects. (c) Pairwise significance matrix reporting $p$-values from Tukey's honest significance test for multiple comparisons of hit trial fractions over individual targets to assess bias in target directions across subjects. We find that Target 1 (right) and Target 4 (up) are statistically significantly different from leftward targets.}\label{fig:hits_over_targets}
 \end{figure}
 
+One hypothesis is that our decoder generation method results in decoding which biases subjects' movements in particular directions. If these directions are advantageous to subject performance, some subjects may have an advantage based on their decoder in achieving more hits in the task. To investigate this, we can visualize subjects' decoders to look for a systematic bias in a particular direction, as shown in \Cref{fig:decoder_normality}. In the top left figure, we superimpose all subjects' decoders into two dimensions. That is, each arrow illustrates the direction in the task space which each electrode is mapped to. Qualitatively, we do not see any overt systematic bias across all subjects. This suggests, as previously discussed, that subjects' natural EMG manifolds are more likely to underlie task performance than their decoder. To test this hypothesis, we can ask how the action of the decoder shifts a uniform distribution of EMG signal in a unit cube ($[0,1]$) in $\mathcal{R}^{64}$. If we simulate EMG activity in the possible space of activation, sampling uniformly, and pass those activations through each subject's decoder we find, shown in \Cref{fig:decoder_normality}, that the result is a normal distribution (based on D'Agostino and Pearson's normality test) with significance for all subjects but one. Thus, our decoders effectively act as a spatial Gaussian blurring filter of our EMG signals in the task space. Subjects do not appear to be advantaged or disadvantaged by their decoders, only by their underlying EMG manifolds, which we will explore in depth in later sections.
 
-
-
-
-\section{Do Subject Attributes Predict Performance?}
-
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \item Look at self-reported form response data to explore whether there are obvious confounds based on subject metadata
-    \begin{itemize}
-        \item Arm size --- measured the circumference of the arm 5cm below the tip of the elbow --- weak correlation! This implies that those with larger arms perform better on the task. We speculate that this may be due to subjects with larger arms allowing electrodes to cover more motor units, thus allowing for greater decorrelation between EMG channels. We explore this more deeply in later chapters using a metric we term ``subspace confinement''.
-        \item Time order of the subject out of the cohort of 46 subjects --- no correlation
-        \item Time of day data collection began --- no correlation
-        \item Hours of sleep reported --- no correlation
-        \item Sex --- significant difference in mean! This, we suspect, is explained by arm size
-        \item Sportsperson --- none 
-        \item handedness --- none, though few left handed subjects
-        \item caffeine consumption day of the experiment grouped into high and low --- none 
-        \item self-described as dexterous or engaging in tasks considered dexterous --- none
-        \item In all, these categorical results are promising as they signify that our task presents a novel challenge for subjects, in the sense that it is dissimilar from other activities and thus does not provide an advantage.
-        \item The only advantage we found was due to arm size.
-        \item \textbf{TODO} --- statistics for mean comparisons in \Cref{fig:compare_subject_groups}
-    \end{itemize}
-\end{itemize}
-
-
-\begin{figure}[H]%[tph]
-    \centering
-    \includegraphics[width=1.0\textwidth]{basic_results/form_response/arm_vs_reward.pdf}
-    \caption[Arm versus reward]{}\label{fig:arm_vs_reward}
-\end{figure}
-
-\begin{figure}[H]%[tph]
-    \centering
-    \includegraphics[width=1.0\textwidth]{basic_results/form_response/days_vs_reward.pdf}
-    \caption[Experiment day versus reward]{}\label{fig:days_vs_reward}
-\end{figure}
-
-\begin{figure}[H]%[tph]
-    \centering
-    \includegraphics[width=1.0\textwidth]{basic_results/form_response/hour_of_day_vs_reward.pdf}
-    \caption[Hour of day versus reward]{}\label{fig:hour_of_day_vs_reward}
-\end{figure}
-
-\begin{figure}[H]%[tph]
-    \centering
-    \includegraphics[width=1.0\textwidth]{basic_results/form_response/sleep_vs_reward.pdf}
-    \caption[Hours of sleep vs reward]{}\label{fig:sleep_vs_reward}
-\end{figure}
-
-\begin{figure}[H]%[tph]
-    \centering
-    \includegraphics[width=1.0\textwidth]{basic_results/form_response/compare_subject_groups.pdf}
-    \caption[Subject group comparisons]{}\label{fig:compare_subject_groups}
-\end{figure}
-
-
-
-\section{Does the Decoder Predict Performance?}
-
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \item How do decoders act on EMG data? We took uniformly random EMG and projected it onto all subject decoders, and show that only one decoder resulted in data that rejected normality. \Cref{fig:decoder_normality}. The decoders act on EMG data by effectively gaussian blurring the data centered on the center of the task space.
-    \item Do the directions of the decoder correlate with performance? See example decoders in \Cref{fig:decoder_arrows}. We found no significant correlation in the alignment, measure by cosine similarity, of the two decoder axes, and mean reward. This implies the decoder axes orthogonality neither handicaps nor gives an advantage to subjects, sww \Cref{fig:decoder_cosine_vs_reward}
-    \item \textbf{TODO} Plot the mean of all subjects decoder arrows, which may help to explain the bias towards the left hand side of the screen? However, this is a weird average to take since the order of EMG channels will differ. I would need to do this using some kind of density plot, overlaying each subject's deocder arrows in 2D. Probably more trouble than it's worth.
-\end{itemize}
-
-    Hypothesis: yes, decoder directions which happen to be oriented towards targets will make the learning problem easier, and thus correlate positively with performance.
-
-If the decoder directions are more/less aligned to the target directions, do subjects explore less/more? Is exploration (e.g. EMG variance) higher in subjects with misaligned decoders?
-    Hypothesis: exploration will be lower in subjects with target-aligned decoders. Subjects make fewer incorrect movements, and thus are induced to explore less.
-
-\begin{figure}[H]%[tph]
-    \centering
-    \includegraphics[width=1.0\textwidth]{basic_results/decoder_vs_performance/decoder_arrows.pdf}
-    \caption[Example decoder directions in 2D.]{Example decoders directions in 2D.}\label{fig:decoder_arrows}
-\end{figure}
-
-\begin{figure}[H]%[tph]
+\begin{figure}[!htb]%[H]
     \centering
     \includegraphics[width=1.0\textwidth]{basic_results/decoder_vs_performance/decoder_normality_test.pdf}
-    \caption[Decoder normality testing]{Testing the effect of the decoder on uniform data.}\label{fig:decoder_normality}
+    \caption[Decoder normality test]{Top left: Superimposing all subject decoders into the task space, such that each arrow is the action of each electrode into the task space. Red markers are task target locations. Top right: Testing the effect of the decoder on uniformly sampled data from a unit cube $[0,1] \in \mathcal{R}^{64}$. Black markers are transformed samples from the EMG space into the task space from an example subject. Red markers are target locations in the task space. Bottom left: $p$ values from D'Agostino and Pearson's normality test for transformed uniform samples in $x$ and $y$. Red limits are 95\% significance. Bottom right: visualization of subjects with highest and lowest statistical significance, along with density plots of Gaussians with equivalent mean and variance to subject data to highlight how stringency of the normality test.}\label{fig:decoder_normality}
 \end{figure}
 
-\begin{figure}[H]%[tph]
+Next, we ask whether the similarity of the $x$ and $y$ directions of each decoder correlates with performance in the task. If the decoder axes, which are non-orthogonal by design as discussed in \Cref{chap:methods}, are closely aligned in EMG space, this may disadvantage subjects beyond the ``blurring'' action of that decoder. As shown in \Cref{fig:decoder_cosine_vs_reward}, we found no significant correlation in the alignment, measure by cosine similarity, of the two decoder axes, and mean reward. A cosine similarity of 0 indicates that the decoder axes are perfectly orthogonal, while +1 and -1 indicates that these axes are perfectly parallel, in the same and opposite directions, respectively. 
+
+% TODO: Plot the mean of all subjects decoder arrows, which may help to explain the bias towards the left hand side of the screen? However, this is a weird average to take since the order of EMG channels will differ. I would need to do this using some kind of density plot, overlaying each subject's decoder arrows in 2D. Probably more trouble than it's worth.
+
+% Hypothesis: yes, decoder directions which happen to be oriented towards targets will make the learning problem easier, and thus correlate positively with performance. If the decoder directions are more/less aligned to the target directions, do subjects explore less/more? Is exploration (e.g. EMG variance) higher in subjects with misaligned decoders? Hypothesis: exploration will be lower in subjects with target-aligned decoders. Subjects make fewer incorrect movements, and thus are induced to explore less.
+
+% \begin{figure}[!htb]%[H]
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{basic_results/decoder_vs_performance/decoder_arrows.pdf}
+%     \caption[Example decoder directions in 2D.]{Example decoders directions in 2D.}\label{fig:decoder_arrows}
+% \end{figure}
+
+\begin{figure}[!htb]%[H]
     \centering
     \includegraphics[width=1.0\textwidth]{basic_results/decoder_vs_performance/decoder_cosine_vs_reward.pdf}
-    \caption[Decoder axis similarity versus reward]{Decoder cosine similarity. EMG-to-force decoders are computed using a calibration dataset collected before the ``center hold, reach out'' task. 4 ``modes'' of EMG activity are extracted from the dataset using non-negative matrix factorization. These 4 modes are then subtracted in pairs to yield the two 64-dimensional EMG-to-force mappings, shown in \{+@fig:low\_variance\_PCs\}. The left plot shows the cosine similarity of the $x$ and $y$ EMG-to-force decoders. A cosine similarity of 1 means the two vectors are parallel, producing identical forces (in the respective directions) for the same EMG activity ($F_x = F_y$). A cosine similarity of -1 means the vectors are antiparallel, producing equal but opposite forces in the two directions ($F_x = -F_y$). A cosine similarity of 0 means the decoder directions are orthogonal; e.g.producing a force in the $x$ direction with a certain EMG activity produces no force in the $y$ direction. Plotted across subjects, we see a range of decoder similarities, providing a variety of task contingencies. The rightmost plot asks whether cosine similarity is predictive of task success, in terms of the numbers of ``Hits''. We find no significant correlation, implying that the decoder cosine similarity, in the range we tested, does not predict task success. Task success, therefore, likely relies on an alternative task variable.}\label{fig:decoder_cosine_vs_reward}
+    \caption[Decoder cosine similarity versus reward]{Cosine similarity between the $x$ and $y$ EMG-to-force decoder axes in EMG space. A cosine similarity of +1/-1 indicates that the two vectors are parallel/antiparallel, producing equal/opposite task actions for the same EMG activity ($T_x = T_y$ or $T_x = -T_y$). A cosine similarity of 0 indicates that the decoder directions are orthogonal, producing task action in $x$ direction with a certain EMG activity produces no activity in the $y$ direction or vice versa. The $x$ and $y$ actions are decoupled. We ask whether cosine similarity is predictive of task success, in terms of the numbers of mean task reward. We find no significant correlation, implying that decoder cosine similarity is not predictive of task success.}\label{fig:decoder_cosine_vs_reward}
 \end{figure}
 
-% \begin{figure}[H]%[tph]
+% \begin{figure}[!htb]%[H]
 %     \centering
 %     \includegraphics[width=0.8\textwidth]{basic_results/decoder_vs_performance/mean_decoder.pdf}
 %     \caption[Decoder normality testing]{Average decoder over subjects}\label{fig:mean_decoder}
 % \end{figure}
 
 
+\section{Task Variance over Trials}
 
-\section{Does Task Space Variance Decrease over Trials?}
+As discussed in reference to \Cref{sec:performance_over_blocks}, we have seen that performance appears to be underpinned to some extent by lowering general variability in the task space. How this task variability relates to variability of subjects' EMG will be explored deeply in later chapters. Looking at the example task trajectories for three subjects (maximum, minimum, and median reward) in \Cref{fig:mean_trajectories}, mean trajectories are shown in color and have been interpolated in time. Higher performing subjects tend to have less erratic movements, and seem to use the dominant directions of their underlying EMG manifold, projected onto the task plane, to their advantage. This can be seen for example in the three dominant directions in the maximum reward subject. These example trajectories, particularly the target means, give a warped (in time) perspective of the task space variability as more variability timepoints will have an outweighed effect on the mean when interpolated.
 
-\begin{itemize}
-    \setlength\itemsep{0em}
-    \item \textbf{TODO} This section is confused and needs rethinking or cutting. The point is to show that trajectory variance decreases over time. This isn't a very interesting point to make, as it's clear that this is the case from the earlier performance plots. Should we really only be looking at the $y$ coordinate since the $x$ coordinate has to vary in order to hit the target?
-    \item Looking at the example trajectories in \Cref{fig:mean_trajectories}, with means shown in color are averaged over trajectories normalized in time such that they have identical length. This is achieved by interpolating shorter trajectories. We can see that higher performing subjects have less erratic movements, and seem to use the dominant directions of their underlying EMG manifold, projected onto the task plane, to their advantage.
-    \item \Cref{fig:rotated_trajectories} shows how trajectories are rotated for comparison. The blue trajectories have been rotated such that every goal state or pseudo-target is Target 1, purely rightward. \textbf{TODO} plot the targets.
-    \item \Cref{fig:trajectory_variance} shows that trajectory variance in the $x$ and $y$ directions tends to decrease exponentially, plotting the log as subject variance is right-tailed. 
-    \item \textbf{TODO} should we show the right-tailed data here too? Should we fit this exponential, in order to say ``across subjects on average trajectory variance decreases'' We could try to relate this to performance, maybe showing correlation between early and late variance? There might be a point made here about exploration in the task space? The original idea here was to explore the task space statistics more fully before getting into the full EMG space. The decoder discussion about normality allows us to say that the decoder is a projection onto a 2d plane, but going from 64 to 2 dimensions also has this concentrating action, so the task space statistics are interesting on their own as well. This is still unrealized here. Unclear what the story can or should be.
-\end{itemize}
+To compare trajectories over time and assess variability across learning, we rotate trajectories towards a single target, Target 1 directly to the right, to compare like-for-like. An example of this action of rotation is shown in \Cref{fig:rotated_trajectories}. In \Cref{fig:example_trajectories}, we show the $y$ coordinate of rotated trajectories for each target over 5 ``chunks'' of 9 blocks (108 trials) each. The $y$ coordinate is used here as the $x$ coordinate, post-rotation, is meant to increase from 0 to 1 in order to reach the target. The $y$ coordinate, under rotation, should remain at 0 to reach Target 1. This gives us a straightforward signal of movement variability over trials. This is clear in the example of \Cref{fig:trajectory_variance}, where qualitatively we see that the $y$ coordinate variability decreasing over time.
+
+To compare across subjects, in \Cref{fig:trajectory_variance} we plot the median variance and it's inter-quartile range over subjects of the rotated $y$ coordinate. Qualitatively we see that variance over subjects decreases across learning, as subjects discover and ``hone'' their task solutions. Quantitatively, we run a multiple comparison Tukey test to compare mean variances over subjects and targets across trial block groups. We find significant evidence that means of the first and last group of trial blocks are not identical, supporting the fact that task variance decreases across learning over all subjects. This summarizes a general result from task learning, that subjects learn to generate less variable movements across practice. The question remaining is not \textit{if} subjects lower the variance of their movements across learning, but \textit{how} subjects achieve this reduction in variance by changing their patterns of muscle activations. In the next sections we will explore the structure of subject EMG variability in more detail.
 
 
-
-\begin{figure}[H]%[tph]
+\begin{figure}[!htb]%[H]
     \centering
-    \includegraphics[height=0.9\textheight]{basic_results/mean_trajectories/mean_trajectories.pdf}
-    \caption[Mean trajectories]{??}\label{fig:mean_trajectories}
+    \includegraphics[width=\textwidth]{basic_results/mean_trajectories/mean_trajectories.pdf}
+    \caption[Example task trajectories and means per target]{Example task trajectories for three subjects: maximum, minimum, and median reward. Trajectories are shown in black, while for each target we interpolate trajectories in time to time-normalize them in order to take means of per-target trajectories. This gives a coarse impression of mean trajectories, though the interpolation scheme will overweight the effect of high variability movements, as seen in the minimum reward subject (bottom).}\label{fig:mean_trajectories}
 \end{figure}
 
 
-\begin{figure}[H]%[tph]
+\begin{figure}[!htb]%[H]
     \centering
     \includegraphics[width=\textwidth]{basic_results/trajectory_variance/rotated_trajectories.pdf}
-    \caption[Rotating trajectories]{??}\label{fig:rotated_trajectories}
+    \caption[Example rotated trajectories, single block]{An example of a single subject and block of trial's targets in task space. Left: Original task space trajectories. Right: Rotated trajectories to compare all trials to Target 1. Targets shown in red.}\label{fig:rotated_trajectories}
 \end{figure}
 
 
-\begin{figure}[H]%[tph]
+\begin{sidewaysfigure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{basic_results/trajectory_variance/subject_example_trajectory_variance.pdf}
-    \caption[Example trajectories, $y$ coordinate]{Example trajectories, $y$ coordinate}\label{fig:example_trajectories}
-\end{figure}
+    \caption[Example rotated trajectories, all blocks]{Example rotated trajectories for a single subject over five groups of trial blocks (108 trials per group) broken down by target for the $y$ coordinate. The histograms collect samples over time to highlight the decrease in variance over trials.}\label{fig:example_trajectories}
+\end{sidewaysfigure}
 
 
-\begin{figure}[H]%[tph]
+\begin{figure}[!htb]%[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{basic_results/trajectory_variance/trajectory_variance_blocks.pdf}
-    \caption[Median and IQR of trajectory variance over blocks and subjects]{Trajectory variance over blocks, median, IQR over subjects}\label{fig:trajectory_variance}
+    \begin{minipage}{1.0\textwidth}
+    \includegraphics[width=1.0\textwidth]{basic_results/trajectory_variance/trajectory_variance_blocks.pdf}\subcaption{}
+    \end{minipage}\\%
+    \begin{minipage}{0.7\textwidth}
+        \includegraphics[width=1.0\textwidth]{basic_results/trajectory_variance/trajectory_variance_pvalues.png}
+      \subcaption{}
+    \end{minipage}
+    \caption[Median and IQR of trajectory variance over blocks and subjects]{(a) Trajectory variance over block groups (108 trials each) with medians and IQR over subjects. We see variance in the task space decreasing over learning. (b) Multiple comparison Tukey test for the mean variance over subjects across learning, comparing trial groups pairwise. We find significance in rejection of the null hypothesis that the mean of variance of the first and last trial groups is identical.}\label{fig:trajectory_variance}
 \end{figure}
+
+
+% \begin{figure}[!htb]%[H]
+%     \centering
+%     \includegraphics[width=1.0\textwidth]{basic_results/trajectory_variance/trajectory_variance_blocks.pdf}
+%     \caption[Median and IQR of trajectory variance over blocks and subjects]{Trajectory variance over blocks, median, IQR over subjects}\label{fig:trajectory_variance}
+% \end{figure}
 
 
 % cut this as it's shit
-% \begin{figure}[H]%[tph]
+% \begin{figure}[!htb]%[H]
 %     \centering
 %     \begin{minipage}{0.9\textwidth}
 %         \includegraphics[width=\textwidth]{basic_results/trajectory_variance/trajectory_r_squared_fit.pdf}
@@ -352,7 +346,9 @@ If the decoder directions are more/less aligned to the target directions, do sub
 % \end{figure}
 
 
-
-
-\include{end_of_chapter}
+\cleardoublepage\printendnotes%
+\ifSubfilesClassLoaded{%
+    \newpage%
+    \bibliography{../bib/bibliography}%
+}{}%
 \end{document}

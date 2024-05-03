@@ -3,158 +3,306 @@
 \begin{document}
 
 
-\chapter{Conclusions \& Outlook}\label{chap:conclusions}
+\chapter{Discussion, Outlook, \& Conclusions}\label{chap:conclusion}
 
 
 \begin{quote}
-    \emph{When it comes to the problem of skilled movement, the algorithm is simply not known.}\\ 
+    \raggedright{\emph{When it comes to the problem of skilled movement, the algorithm is simply not known.}}\\ 
     \raggedleft{--- Wolpert \& Ghahramani, \emph{2000}}
 \end{quote}
 
 
 \cleardoublepage%
 
+\section{Discussion} % What just happened?
+
+% summary
+
+% Background -- motor system driving the hand is highly redundant and has a spectrum of modularity
+% Methods -- 64 dimensional EMG setup on the arm
+% Performance -- subjects learn the task
+% Manifold -- the manifold is specific to subjects and nonlinear
+% Mixture Modeling -- Gaussian mixture models make statistics over learning interpretable
+% Null Space -- subjects attend to null space activity, pointing to model-free type of learning
+
+This study recorded 64 dimensions of electromyographic (EMG) channels from the forearm as subjects learned to control a 2-dimensional cursor decoded from this EMG signal. By analyzing this high-dimensional EMG data, we sought to uncover general principles governing how the motor system shapes its coordination patterns over the course of learning a \textit{de novo} task. The data presented here confirmed the working principle of the setup and highlighted the efficacy of the paradigm in elucidating statistical aspects of such learning.
+
+The exploratory nature of this work led to several key findings. First, despite the redundancy of the musculoskeletal system, subjects on average converged upon specific muscle coordination patterns over learning for different targets. Across subjects, variability across EMG dimensions decreased over learning, suggesting that through task practice subjects identify rewarding solutions and worked to recall and refine these towards exactitude to achieve performance in the task, despite the redundant nature of the task itself. This supports our initial vision of the motor system, set out in \Cref{chap:background}, where the architecture of the movement machine strategically attends to and regulates variability across all dimensions, across a spectrum of granularity, depending on the context of the ongoing goal (including the disregard of dimensions, allowing greater variability along those axes). From the motor system's perspective, it may in fact be simpler to control more dimensions than required for a task particularly when the discovery of the task-relevant manifold may require more effort or risk, through selective exploration, than following a straightforward algorithm of reinforcement across all available dimensions. This, of course, could come at the cost of flexibility, though this could be adjudicated
+
+The observation that variability tends to decrease over learning in the task-irrelevant, null space EMG dimensions, seems to challenge the proposal that the brain constructs and refines inverse models. Under model-based schemes, one might expect task-irrelevant variability to remain constant or gradually increase. Decreasing variability in task-irrelevant dimensions appears to go against the preservation of optionality or exploration to facilitate generalization. Based on our results, however, we do not propose a neural control system \textit{sans} internal models. Rather we suggest that there is indeed an exciting interplay between model-based and model-free learning processes, particularly when subjects learn \textit{de novo} tasks as we have presented here.
+
+That said, we note that our experiment is a first, brief exposure to this task for subjects. We are interested to understand whether, and we hypothesize that, over longer time scales generalized solutions do emerge. If and how this transition from an attention-to-detail state to elegant, effortless movement occurs is a worthwhile question to pursue. We believe that the experimental method used in this study is a good fit for continued study in this direction.
+
+Overall, our findings contribute to the perspective that motor skill acquisition is a variegated process which is unlikely to rely on a single learning algorithm. The massive redundancy and overlapping modularity of the human movement machine will align with a variety of learning models depending on the context in which learning and adaptation is demanded. Ultimately, striking a balance between flexibility, generalization, and specialization is a core challenge for the motor system. Our results highlight how the motor system may choose to prioritize specialization over generalization in certain situations. 
+
+We see this work as a first step in constructing engaging virtual learning tasks driven by EMG signals to illuminate the interplay between learning processes underlying the acquisition of motor skills. We hope that our work will pave the way for fruitful collaboration of theory and experiment towards a unified framework explaining how the redundant motor system flexibly coordinates its many degrees of freedom, and its various learning processes during to achieve dexterity in new contexts.
 
 
-\section{Conclusions}\label{sec:conclusion}
-
-% Hypothesis: Early in learning, well see subjects repeat many of the same movements as theyre repeating what works in a model-free manner. Later in learning, well see subjects responding more flexibly, having developed a better internal model of the movement-task contingency. 
-% NB: these hypotheses contradict other hypotheses about exploration. If subjects are optimally exploring the space, collecting data about the contingency, they wouldnt be making the same movements repeatedly, they would be making a variety of movements. This might come down to individual subjects strategies for how they approach the task. We may see some subjects choosing to explore, rather than solve the task. Other subjects may be focused on solving the task and learning through their mistaken movements.
 
 
-\section{Future Work}\label{sec:next_steps}
 
 
-\subsection{EMG Hardware}
 
-Our preliminary data confirms the working principle of the setup and highlights the next steps for producing quality datasets. This is in accordance with the literature, where more advanced use of EMG is emerging as an important tool in understanding the complexities of motor computation[@Hug2011]. Our next steps are to build a new version of the EMG hardware doubling the number of channels to 64 electrodes placed across the forearm and to provide better hand constraints to ensure completely isometric contractions. The next hardware version will also include investments in shielding to provide proper noise mitigation. Most EMG in the literature is smoothed and trial-averaged due to noise, but we are confident that our records can be analyzed at the level of single trials, much like recent developments in neural data analyses [@churchlandNeuralVariabilityPremotor2006;@churchlandNeuralPopulationDynamics2012a].
 
-\subsection{Eye Tracking}
 
-To completely close the loop in our experiments, we are working to integrate pupil and gaze tracking to more closely follow the perceptual aspects of our task. We hope to find correlations in line with the literature dealing with active learning[@yangTheoreticalPerspectivesActive2016;@huangActiveLearningLearning2008]. 
 
-> EMG activity was recorded using hook-wire electrodes (44 gauge with a 27 gauge cannula; Nicolet Biomedical, Madison, WI) placed in the muscle for the duration of single recording sessions. [...] Electrode voltages were amplified, bandpass filtered (150–500 Hz, four pole, 24 db/octave), sampled at 1000 Hz, and digitized. Off-line, raw traces were differentiated (to remove any remaining baseline), rectified, smoothed with a Gaussian (SD of 15 ms) and averaged. [@churchlandNeuralVariabilityPremotor2006] 
+
+
+\section{Future Work} %What should happen next?
+
+There are a great number of promising directions for further experiments to build upon these findings. We will list a selection of next steps which we think may prove most fruitful as both refinements of the current study and as standalone research projects.
+
 
 \subsection{Preprocessing}
 
-Preprocessing of the EMG signal per-channel is another key area for improvement. EMG signal is the convolution of motor unit action potentials terminating near the electrode sites. Ideally we could filter each channel of raw EMG to infer the signal envelope. There is precedent in the literature for Bayesian filtering of EMG signal using a Laplacian distribution. Sanger used a Laplacian distribution to filter a one-dimensional EMG signal[@sangerBayesianFilteringMyoelectric2007]. In accordance with this choice, Nazarpour found that as more motor units are recruited, the EMG distribution shifts from super-gaussian to gaussian following the central limit theorem[@nazarpourNoteProbabilityDistribution2013]. That work suggests methods for estimating high-order statistics for better filtering at low contraction levels relevant to our experiments. Such methods may prove to be more rigorous for inferring motor unit activations from our raw signal.
+Preprocessing of the EMG signal per-channel is a key area for improvement, assuming a ``rate coding'' style analysis is used, as we have taken in this work. The EMG signal is fundamentally a convolution of motor unit action potentials terminating near the the electrode sites. Ideally, one could filter each channel of raw EMG and infer the signal's envelope. There is precedent in the literature for this kind of Bayesian filtering of EMG signal using an underlying Laplacian distribution\cite{sangerBayesianFilteringMyoelectric2007}. In line with this choice, Nazarpour et al. found that as more motor units are recruited, the EMG distribution shifts from super-gaussian to gaussian following the central limit theorem\cite{nazarpourNoteProbabilityDistribution2013}. That work suggests methods for estimating high-order statistics for better filtering at low contraction levels relevant to our experiments. Such methods may prove to be more principled for inferring motor unit activations from raw signals.
 
 
-A window of EMG of length $T$ samples can be modeled as a convolution
 
-$$
-\mathbf{z} = \sum_t^T \mathbf{h} * \mathbf{s}
-$$
+\subsection{Decoding}
 
-where $\mathbf{h}$ is a motor unit activation template, which itself is a particular neural spike waveform, and $\mathbf{s}$ is the incidence of a spike, which might be modeled as a point process.  
+% With a filtered raw signal per channel, our goal is to devise mapping from EMG space to task space which are biophysically achievable by our subjects but require a degree of learning over many trials. In our preliminary task, we hardcoded mappings. Our next step would be to design a calibration task which asks subjects to actively explore the biophysical limits of EMG space that can be captured by our electrodes. 
+% nonlinear decoders such as variational autoencoders \cite{vujaklijaOnlineMappingEMG2018}
+% then perturb the decoders! analyze the networks within a "perfect" decoder in order to produce principled perturbations
+% simple neural networks for decoders, then ``opening'' the black box by analyzing the neural network themselves? Perturbing the networks then watching subjects learn?
+% The issue, however, is how to design a task which evokes the available modes of possible EMG activity before using dimensionality reduction to generate learnable yet non-intuitive mappings.
+% This is a bootstrapping problem -- until you have information about the manifold, it's difficult to determine decoders. we can use our linear decoders as a stepping stone, and now as a control group, compared to other decoding strategies
 
-  
+Using our filtered EMG signals, our goal here was to devise mappings from EMG space to task space that were achievable for subjects while require learning over many trials. In this work, we deliberately used the simplest possible mapping based on the statistics of subjects' EMG manifolds, a linear decoder plane. Now that we've gone through this ``bootstrapping'' phase to understand EMG dynamics and the shape of the EMG manifolds, we can broaden our decoding strategy. For example, we could use nonlinear decoders such as variational autoencoders\cite{vujaklijaOnlineMappingEMG2018}. With neural networks, we could in theory construct a ``perfect'' decoder fit to a calibration tasks, and ``open the black box'' of these networks to produce principled perturbations. The linear decoders used in this work can serve as a stepping stone to compare with with other decoding strategies.
 
-\subsection{Calibration}
 
-With a filtered raw signal per channel, our goal is to devise mapping from EMG space to task space which are biophysically achievable by our subjects but require a degree of learning over many trials. In our preliminary task, we hardcoded mappings. Our next step would be to design a calibration task which asks subjects to actively explore the biophysical limits of EMG space that can be captured by our electrodes. This is akin to extracting features of spontaneous activity and passive viewing used in cortical BMI experiments to generate "intuitive" mappings [@Clancy2014;@sadtlerNeuralConstraintsLearning2014].
 
-With high-dimensional EMG, we would ideally devise a principled method of extracting modes from raw EMG that accurately reflect modes of neural drive, demixing neural modes across channels. Here we used PCA as a first step. One starting point would be to align with the cortical BMI literature and use factor analysis and Kalman filtering[@sadtlerNeuralConstraintsLearning2014]. The issue, however, is how to design a task which evokes the available modes of possible EMG activity before using dimensionality reduction to generate learnable yet non-intuitive mappings.
+\subsection{Perturbations}
 
- autoencoders (farina paper) [@vujaklijaOnlineMappingEMG2018]  
+The work described here is fundamentally exploratoy, given the novelty of the experimental design. A clear next step is to introduce systematic perturbations during the learning process and analyze how the task-relevant and task-irrelevant variability patterns respond, relative to both a control group but also to the many tasks in the literature (e.g. reaching) which have a long history of such perturbations. For example, introducing force fields, visuomotor rotations, or dynamically changing task goals may reveal new or confirm existing aspects of null and task space variability covered in this work. It may also prove interesting to use the redundancy of the task more directly. That is, increase the number of task-relevant dimensions of the task, though only provide partial visual feedback such that the task is one with hidden information. This would allow the experimenter to test subjects' variability in the case where a subset of dimensions are blindly reinforced.
 
- Another direction for analysis is to study long-range correlations in EMG data within and across trials through empirical correlation functions[@crevecoeurGoldstandardApproachAddress2010]. This work may inform features of models which attempt to recover aspects of trial-to-trial learning. 
 
-\subsection{Task Design and Data Collection}
 
-With a working calibration task, our next goal is to use this calibration data to generate mappings to track learning. Our center-hold, reach-out task combined these two steps into one task for validation of the setup using hardcoded mappings. We can maintain the center-hold, reach-out style of the task but with data-driven mappings, as well as construct novel tasks to test predictions of our models. Scaling this task up to multiple subjects across days will provide a dataset with which we can test hypotheses concerning the evolution of complexity and correlations across learning. This will also give us an opportunity to study inter-subject variability, for which there is precedent in the literature which suggests individual strategies[@crouzierIndividualDifferencesDistribution2019].
 
-\subsection{Modeling Control}
 
-One relevant aspect of the basic optimal feedback control model is that the optimal controller that arises from specifying a quadratic state and control cost is invariant to the target state. In spite of this, we can use the aforementioned task to test predictions of the basic LQR model with respect to state and control noise and imperfect dynamics.
 
-We expect to validate the basic optimal control models for our setup as we've designed the learning environment specifically for the EMG signal provided by the subject acts as the input to chosen virtual dynamics, which can be chosen in accordance with our model. We can then test perturbations in our task with respect to noise, goal, and dynamics and compare subjects' responses to our models.
 
-The question then becomes: when might subjects need to internalize a new control policy? When might they need to internalize multiple control policies? We hope to work towards answers of these questions alongside models of compositional control. Such control models could deal with, for example, target uncertainty as well as multiple competing targets[@gallivanActionPlanCooptimization2015;@gallivanParallelSpecificationCompeting2016].
+\subsection{Experimental Duration}
+
+One weakness of this work is that the data is drawn from a single experimental session. Collecting data over as many or more subjects over multiple days or weeks would provide orders of magnitude more insight into how learning evolves between sessions. This, of course, opens the experimenter to many challenges, mainly that of inter-session repeatability, which would need to be addressed. This challenge is surmountable, perhaps by leveraging some of the suggested data analysis techniques mentioned in this section, and will almost surely prove incredibly insightful.
+
+For example, it is tantalizing to wonder how subjects' null space activities evolve over longer durations. We hypothesize that early in learning, subjects will attend to variability along all dimensions. Later in learning, however, we expect to see subjects responding more flexibly, having developed an internal model of the task contingencies, accumulating variability in task-irrelevant dimensions. To understand exactly this variability evolves, we will need the data, but we can posit an idea of optimality which begins with overt control and ends with flexibility.
+
+In this way, we take the view that the controlled/uncontrolled manifold is not a hard-and-fast principle, and arises under specific circumstances. As we've found here, and others have found elsewhere, human motor learning and control is thus a spectrum of strategies\cite{raczSpatiotemporalAnalysisReveals2013}. In general, formalizing such hypotheses as cost functions is a clear way of testing hypotheses, as we did in \Cref{chap:nullspace}. To carry this forward, we can formalize our hypotheses about longer durations of learning as cost functions and compare both the predictions of agents acting under those cost functions, or apply inverse optimal control theory to find cost functions given particular assumptions about the dynamics of the data.
+
+
+
+
+
+
+
+\subsection{Temporal Analysis}
+
+The majority of the analysis presented here deals with the EMG signal as samples from a 64-dimensional distribution, taking little if any temporal information into account within trials. Looking more closely at the statistics of EMG trajectories is likely a fruitful first step in this direction. Due to the high variability early in learning, this may prove more efficacious at later stages of learning.
+
+One set of analyses that may be particularly interesting is to frame trajectories as ``paths'' and dissect temporal correlations across trials. This direction reframes the analysis from thinking about distributions over spatial signals to distributions over trajectories\cite{mcnameeHierarchicalModelbasedPolicy2020b,mcnameeCharacterizingOptimalHierarchical2017a}. Advanced interpolation/alignment and tensor decomposition techniques may prove useful here, as they have in analyzing neural data\cite{onkenUsingMatrixTensor2016}. This direction may demand building tasks with temporal dependence, or spatial correlations over time, such as a maze or obstacle task. Such analysis may be akin to studying long-range correlations in EMG data within and across trials using empirical correlation functions[@crevecoeurGoldstandardApproachAddress2010].
+
+Zooming in rather than out, we also suggest leveraging work done on spike inference and spike sorting to resolve motor unit action potentials from EMG data\cite{pachitariuSpikeSortingKilosort42024}. Analyzing EMG at the spike level may prove fruitful for resolving fine-grained strategies and correlations within and across subjects, trials, and conditions\cite{digeUnsupervisedBayesianDecomposition2010,mendezguerraNoninvasiveRealtimeAccess2021}.
+
+% How do subjects efficiently use error information from each trial and feedback from each time step to update their policy/policies? Look more closely at the trajectories, rather than the spatial information
+
+% Inter-subject variability, for which there is precedent in the literature which suggests individual strategies[@crouzierIndividualDifferencesDistribution2019].
+% spike level analysis -- fine temporal stuff
+
+% non-eq statmech stuff
+
+
+
+
+
+
+\subsection{Learning as a Non-equilibrium Process}
+
+We suggest borrowing concepts from statistical physics, particularly those from non-equilibrium statistical mechanics, to cast the learner as a system out of equilibrium, being driven by reward to ``organize'' towards rewarding states and actions. This is not a new idea, though it has not been significantly explored in the experimental literature, to our knowledge. As Nemenman writes:
+%
+\begin{quote}
+    A hint comes from the fluctuation–dissipation theorem in statistical physics (Ma, 1985), which states that if a system fluctuates in the presence of a linear dissipative restoring force, then the variance of fluctuations (a stationary property) is linearly related to the dissipation coefficient (a feature of the transient response). In our case, we may hope that response to a variable target (fluctuations) reveals information about the learning curve (dissipation)\cite{nemenmanFluctuationDissipationTheoremModels2005}.
+\end{quote}
+%
+In \Cref{chap:data_manifold}, we discussed the concept of relaxation (moving from a high variance to low variance), but this can also be thought of as a ``drivenness'': learned activations developing from noise as high-reward patterns. This kind of thinking about learning as out-of-equilibrium behavior we see as a fruitful avenue for further study and modeling, and has shown remarkable results in the machine learning literature in the form of diffusion modeling\cite{sohl-dicksteinDeepUnsupervisedLearning2015}.
+
+
+
+
+
+% \subsection{Models of Optimality}
+
+% Do subjects optimally sample their state space to efficiently learn? Do subjects sample optimally (e.g. according to a maximum entropy approach)?
+% - We might hypothesize that a subject will act as randomly as possible while minimizing cost, a maximum entropy solution that converges to an optimal controller? $\mathcal{H}(p(u_t|x_t))$ 
+% - To completely close the loop in our experiments, we are working to integrate pupil and gaze tracking to more closely follow the perceptual aspects of our task. We hope to find correlations in line with the literature dealing with active learning.
+
+% %% MODELING
+% % models of hybrid model-based, model-free learning mechanisms
+% 6. Computational modeling 
+% Developing novel computational models that can quantitatively capture the evolving mixture of variability patterns across relevant/irrelevant dimensions could provide a theoretical framework for understanding the underlying mechanisms exposed by the EMG data.
+% \cite{odohertyStructureReinforcementlearningMechanisms2015}
+% Posit the whole task as a Bayesian inference of the right muscle state?
+% % base policy, linear RL
+% - Do subjects have a "base" policy? (test with timed perturbations?) how does a subject avoid "distribution mismatch" between their base policy and their optimal policy? How do they efficiently explore and use this new data to update their internal model? 
+% - What is a subject's baseline/prior model? $y_{t} = \hat{f}_0(x_t,u_t)$ or $y_{t} \propto p_0(y_t|x_{t},u_t)$ 
+% - What is the base policy / prior policy? $u_t = \pi_0(\hat{x}_t)$
+% \cite{pirayLinearReinforcementLearning2019}
+
+
+
+% \subsection{Models of Optimality}
+
+% Do subjects optimally sample their state space for efficient learning? We might hypothesize they act as randomly as possible while minimizing cost, taking a maximum entropy solution converging to an optimal policy. 
+
+% Novel computational models quantitatively capturing evolving variability patterns across relevant/irrelevant dimensions could provide a theoretical framework for understanding the underlying mechanisms exposed by EMG data \\cite{odohertyStructureReinforcementlearningMechanisms2015}.
+
+% Do subjects have a "base" policy? How do they avoid "distribution mismatch" between their base $\\pi_0(\\hat{x}_t)$ and optimal policies, efficiently exploring to update their internal model? What is their baseline/prior model $y_t = \\hat{f}_0(x_t,u_t)$ or $y_t \\propto p_0(y_t|x_t,u_t)$? \\cite{pirayLinearReinforcementLearning2019}
+
+% Positing the task as Bayesian inference of the right muscle state could be insightful.
+
+
+
+
+\subsection{Geometric Analyses}
+
+In this work we've discussed trajectories in task space as well as EMG space, and in \Cref{chap:gmms} discussed trajectories through the space of mixture models. In general, geometric data analysis methods can be incredibly powerful. For example, tangent space analysis in the space of semipositive definite (SPD) matrices (such as spatial covariances) has precedent here, and is a direction worth following. One concept is to compare the trajectories that subjects' EMG covariances take through SPD space across trials. Analyze the geometry of this trajectory may expose underlying dynamical modes\cite{barachantCommonSpatialPattern2010,barachantClassificationCovarianceMatrices2013}.
+
+Similarly, the topic of optimal transport and learning discussed in \Cref{chap:gmms} is a deep topic which could prove fruitful for hypothesis generation. Here, we frame questions in the space of distributions, and probe the geometry of trajectories through this space. A recent topic in machine learning that could be borrowed for this purpose is the inverse optimal transport problem: for what cost are subjects optimal in transporting their probability mass (of their actions)? To go a step further, are subjects regularizing this transport problem with entropy to maintain a high-entropy policy?
+
+% E.g. Take the first and last distribution of learning, compute the optimal path from A to B. Then compare this in time to the path that subjects actually took. But what does deviation from this path mean? Can we develop other cost functions in the space of models to understand this? Or learn the metric subjects are using?
+
+
+
+
+
+
+
+
+% % calibration task!
+% Deeper dive into the calibration task -- to find the boundaries of the available EMG space?
 
  
 
-- stochastic optimal control model comparisons
-  - cost models 
-  - perturbations in goal
-  - go-before you know / goal uncertainty 
-  - noise perturbations --- do reponses match the models?
 
-- dynamics model fitting
-  - internal model uncertainty 
-  - modeled with robust optimal control?  
+
+\subsection{Multimodality}
+
+While EMG provides information about the final descending motor commands, it cannot reveal the complete processes of neural computation that generate those commands. A fruitful direction may be to combine EMG with other techniques such as neuroimaging (e.g. fMRI, EEG) and eyetracking. Correlating EMG with neural activity and gaze patterns could elucidate how different brain regions contribute to the computational processes culminating in motor outputs, and how visual information is integrated and transformed into motor plans. With eye tracking, we can hope to align our results with this studying the concept of active learning\cite{yangTheoreticalPerspectivesActive2016,huangActiveLearningLearning2008}. Through building multimodal datasets, we can develop a more holistic picture spanning visual processing, neural computation, and motor output.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Conclusion} % Get us pumped about continuing this thread
+
+The study of human motor learning and its connections to machine learning present are a very exciting frontier. As we aim to delve deeper into the acquisition and refinement of human motor skills, I have no doubt that one of the most intriguing lines of inquiry will be the experimental exploration of the computational principles governing human motor learning. 
+
+Advancements here will be hard won, but by synthesizing insights from the data, we will continue to unravel the strategies and algorithms employed by the brain. The ability to model and replicate the adaptability and generalization exhibited by humans will pave the way for fundamental progress across robotics, prosthetics, human-machine interfaces, and beyond.
+
+Biological learning mechanisms discovered from careful interpretation of fine-grained human data will unlock novel theoretical frameworks and computational models integrating concepts from neurophysiology, statistics, control theory, and other fields. This interdisciplinary consilience is a powerful approach towards building unifying models that capture the complexities of human behavior.
+
+To future researchers, this frontier beckons with a wealth of unanswered questions. Embrace this challenge and follow the data. Work to fuse experiments, computation, and theory to understand the most difficult questions that you can. Inspire these necessary collaborations between experimentalists and theoreticians. The insights yet found have the power to upend our conceptions of the human mind and propel truly intelligent artificial systems into our world.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% > EMG activity was recorded using hook-wire electrodes (44 gauge with a 27 gauge cannula; Nicolet Biomedical, Madison, WI) placed in the muscle for the duration of single recording sessions. [...] Electrode voltages were amplified, bandpass filtered (150–500 Hz, four pole, 24 db/octave), sampled at 1000 Hz, and digitized. Off-line, raw traces were differentiated (to remove any remaining baseline), rectified, smoothed with a Gaussian (SD of 15 ms) and averaged. [@churchlandNeuralVariabilityPremotor2006] 
+
+% One relevant aspect of the basic optimal feedback control model is that the optimal controller that arises from specifying a quadratic state and control cost is invariant to the target state. In spite of this, we can use the aforementioned task to test predictions of the basic LQR model with respect to state and control noise and imperfect dynamics.
+
+% We expect to validate the basic optimal control models for our setup as we've designed the learning environment specifically for the EMG signal provided by the subject acts as the input to chosen virtual dynamics, which can be chosen in accordance with our model. We can then test perturbations in our task with respect to noise, goal, and dynamics and compare subjects' responses to our models.
+
+% The question then becomes: when might subjects need to internalize a new control policy? When might they need to internalize multiple control policies? We hope to work towards answers of these questions alongside models of compositional control. Such control models could deal with, for example, target uncertainty as well as multiple competing targets[@gallivanActionPlanCooptimization2015;@gallivanParallelSpecificationCompeting2016].
+
+% - stochastic optimal control model comparisons
+%   - cost models 
+%   - perturbations in goal
+%   - go-before you know / goal uncertainty 
+%   - noise perturbations --- do reponses match the models?
+
+% - dynamics model fitting
+%   - internal model uncertainty 
+%   - modeled with robust optimal control?  
  
+% (task reads out from D muscles, find modes of that data; do PCA to get K < D dimensions, controller only responds to motion in those K directions)—does behavior + motor activity follow LQR? this question has already been asked, but it hasnt been asked for this kind of high-to-low dim mapping. Its been asked in tasks where muscles havent been directly in control (Valero-Cuevas 2009).  
 
+% Todorov: do a task, look at muscle signal. Muscles that arent necessary for task have higher variability b/c theyre not being optimized for task (but doest introduce perturbations). Also see Loeb (2012) for a negative result saying that muscle coordination is habitual rather than optimal, but it has issues (low number of muscles). Can we replicate previous reaching optimality results in our set-up? Whats unique about our set-up is the PCA/dimensionality reduction in muscle activity space. This is important because you can create arbitrary muscle-cursor mappings, so you have to learn a new skill/mapping. This is different than perturbing a fundamental movement and forcing adaptation, which is what has been previously done. For our task, the participants actually have to learn a new task/mapping, rather than just do what they already know and be robust to perturbations. We test the LQR hypothesis once theyve learned the task, because LQR isnt a learning theory, its a theory about optimal control. We can see if, once people learn a new skill, their behavior is optimal wrt LQR theory. If we establish this, then we can think about how this LQR model is actually learned (enter RL). 
 
- (task reads out from D muscles, find modes of that data; do PCA to get K < D dimensions, controller only responds to motion in those K directions)—does behavior + motor activity follow LQR? this question has already been asked, but it hasnt been asked for this kind of high-to-low dim mapping. Its been asked in tasks where muscles havent been directly in control (Valero-Cuevas 2009).  
+% \section{Modeling Learning}
 
- Todorov: do a task, look at muscle signal. Muscles that arent necessary for task have higher variability b/c theyre not being optimized for task (but doest introduce perturbations). Also see Loeb (2012) for a negative result saying that muscle coordination is habitual rather than optimal, but it has issues (low number of muscles). Can we replicate previous reaching optimality results in our set-up? Whats unique about our set-up is the PCA/dimensionality reduction in muscle activity space. This is important because you can create arbitrary muscle-cursor mappings, so you have to learn a new skill/mapping. This is different than perturbing a fundamental movement and forcing adaptation, which is what has been previously done. For our task, the participants actually have to learn a new task/mapping, rather than just do what they already know and be robust to perturbations. We test the LQR hypothesis once theyve learned the task, because LQR isnt a learning theory, its a theory about optimal control. We can see if, once people learn a new skill, their behavior is optimal wrt LQR theory. If we establish this, then we can think about how this LQR model is actually learned (enter RL). 
+% Ultimately, our goal is to adapt optimal control models which begin as coarse approximations and are updated both within and across trials. Adaptation typically refers to online alterations to control policies while learning might refer to across-trial policy changes. Our theoretical aim is to devise models of learning and movement construction which extend the optimal feedback control framework through additions of composition and error-based updates.
 
-\section{Modeling Learning}
+%  gradient descent stuff 
 
-Ultimately, our goal is to adapt optimal control models which begin as coarse approximations and are updated both within and across trials. Adaptation typically refers to online alterations to control policies while learning might refer to across-trial policy changes. Our theoretical aim is to devise models of learning and movement construction which extend the optimal feedback control framework through additions of composition and error-based updates.
-
- gradient descent stuff 
-
-Stemming from our work using simple gradient descent to update internal dynamics models, we would like to gain a better understanding of the loss landscape. It may be possible to compute the optimum analytically and to corrupt the dynamics matrix in a more principled way. We will also explore the action of the resulting gradient, and compute second-order derivatives, and compute derivatives with respect to the control law $K$ as a comparison. These results can then be compared with results from the reaching adaptation literature. This work can be guided by analyzing our empirical data to understand what aspects of our trajectories in EMG and task space are changing over trial.
-
+% Stemming from our work using simple gradient descent to update internal dynamics models, we would like to gain a better understanding of the loss landscape. It may be possible to compute the optimum analytically and to corrupt the dynamics matrix in a more principled way. We will also explore the action of the resulting gradient, and compute second-order derivatives, and compute derivatives with respect to the control law $K$ as a comparison. These results can then be compared with results from the reaching adaptation literature. This work can be guided by analyzing our empirical data to understand what aspects of our trajectories in EMG and task space are changing over trial.
  
-- explore connections between spectral analysis perspective of optimal control and empirical correlation functions from data
-- make the connection between control and dynamics in model and experiment more tightly integrated.  
-- learning control via reward (RL) [@vanderkooijLearningReachTrajectory2021] 
-
-\section{Open Questions}
-
-- What is the best calibration task to find the boundaries of the available EMG space?
-- What are the defining features of learning in our EMG-based task?
-- Are our experiments well-modeled by the optimal control framework?
-- How do subjects efficiently use error information from each trial and feedback from each time step to update their forward model and control policy/policies? How do subjects balance policy updates with model updates?
-- How does a subject sample the state space to efficiently learn? Do subjects sample optimally?
-- How can you empirically disentangle system identification (model estimation) and policy learning? If subjects are suboptimal, is it due to model mismatch or a suboptimal policy?
-    
- - On what scale (trials, timesteps) is the model altered? the policy? 
- - Replanning at every timestep is a model predictive control algorithm 
- - What prediction can we make for ID/learning every trial? 
- - how does a subject avoid "distribution mismatch" between their base policy and their optimal policy? How do they efficiently explore and use this new data to update their internal model? 
- - what exploration strategy does a subject use to avoid mismatch? 
- - What is a subject's baseline/prior model? $y_{t} = \hat{f}_0(x_t,u_t)$ or $y_{t} \propto p_0(y_t|x_{t},u_t)$ 
- - What is the base policy / prior policy? $u_t = \pi_0(\hat{x}_t)$ 
- - How do we think about learning a distribution over trajectories in control law space, or perhaps equivalently, in covariance/precision space? 
- - We might hypothesize that a subject will act as randomly as possible while minimizing cost, a maximum entropy solution that converges to an optimal controller? $\mathcal{H}(p(u_t|x_t))$ 
- - How does a subject penalize changes to their controllers? Do they follow a KL-divergence type of measurement when improving their policy? 
- - How do we best modeling learning LQR controllers trial-to-trial? 
- - how do we use existing controllers to construct movements? 
- - how do we construct controllers under dynamical and goal uncertainty? 
- - How does the observation mapping relate to the latent state covariance? The task state covariance? 
- - How do we formalize this into a probabilistic graphical model? Why would we? 
- - Would this make it easier to reason about what the goals are? 
- - Would learning $M$ become an inference problem? 
- - Would solving the control problem become an inference problem...? 
- - What noise assumptions can we make? Can we not make? 
- - How can we incorporate signal-dependent noise? 
-
-\section{Model-based optimal control \& LQR}
-
-comparisons to LQR – discussion of theory and that model
-Null and task variability for LQR model and data – discussion – motivate the idea of treating the data as iid samples (“dart throws”) at the target
-Compare the trajectory stats to the LQR stats
-Discussion about learning this LQR? Learning a linear policy?
-Do we expect our experiments well-modeled by the optimal control framework?
-What would give us an indication that subjects are using an internal model? 
-Are subjects predictive?
-Are they responding to disturbances in an expectedly optimal way?
-What are the defining features of the model to compare?
-Trajectory-based? Trajectory statistics
-Null/task space variability? But note that our task isnt redundant in the task space, its redundant in the control→task mapping
-Can we pass our EMG through LQR dynamics and recover trajectories?
-Is the LQR a reasonable model for EMG control? As the task dynamic is designed to be linear-gaussian, does the control solution developed by subjects match the “decision” made by an LQR controller? We can investigate this by providing the LQR controller with actual subject data on each timestep, and comparing the difference at each timestep between the subjects control response and the LQR controller. (This is the opposite of what the inverse control problem is asking: at each timestep, what cost function, under a given model, best explains the response of the subject? Here were asking for an assumed cost function, what would the optimal controller do, and how does this differ from decisions we see subjects making?)
-Hypothesis: Early in learning, no, subjects are not akin to an LQR. Later in learning, they become closer to LQR controllers as they internalize a model of the task contingency. Subjects begin responding in a “least action” manner in the course of learning.
-
-\section{Inverse Optimal Control}
-What are subjects' cost functions? Is it straight line movements in the task space? Something else?
-Hypothesis: subjects optimize for straight-line movements in the task space, as well as for minimum-variance movements. We can test this hypothesis by tracking “straightness” of trajectories over the course of learning for subjects who improve over trials. Does this change along with performance? 
-Hypothesis: If we take subjects movements as a priori optimal and fit cost functions to their movements, over trials we will see their cost functions converge to straight-line, minimum variance movement (the prediction of OFC). (NB: this is a stab in the dark, the work here is interpreting the cost functions we get out, and defending our choice of dynamics and other assumptions)
+% - explore connections between spectral analysis perspective of optimal control and empirical correlation functions from data
+% - make the connection between control and dynamics in model and experiment more tightly integrated.  
+% - learning control via reward (RL) [@vanderkooijLearningReachTrajectory2021] 
 
 
-\include{end_of_chapter}
+% \section{Model-based optimal control \& LQR}
+
+% comparisons to LQR – discussion of theory and that model
+% Null and task variability for LQR model and data – discussion – motivate the idea of treating the data as iid samples (“dart throws”) at the target
+% Compare the trajectory stats to the LQR stats
+% Discussion about learning this LQR? Learning a linear policy?
+% Do we expect our experiments well-modeled by the optimal control framework?
+% What would give us an indication that subjects are using an internal model? 
+% Are subjects predictive?
+% Are they responding to disturbances in an expectedly optimal way?
+% What are the defining features of the model to compare?
+% Trajectory-based? Trajectory statistics
+% Null/task space variability? But note that our task isnt redundant in the task space, its redundant in the control→task mapping
+% Can we pass our EMG through LQR dynamics and recover trajectories?
+% Is the LQR a reasonable model for EMG control? As the task dynamic is designed to be linear-gaussian, does the control solution developed by subjects match the “decision” made by an LQR controller? We can investigate this by providing the LQR controller with actual subject data on each timestep, and comparing the difference at each timestep between the subjects control response and the LQR controller. (This is the opposite of what the inverse control problem is asking: at each timestep, what cost function, under a given model, best explains the response of the subject? Here were asking for an assumed cost function, what would the optimal controller do, and how does this differ from decisions we see subjects making?)
+% Hypothesis: Early in learning, no, subjects are not akin to an LQR. Later in learning, they become closer to LQR controllers as they internalize a model of the task contingency. Subjects begin responding in a “least action” manner in the course of learning.
+
+% \section{Inverse Optimal Control}
+% What are subjects' cost functions? Is it straight line movements in the task space? Something else?
+% Hypothesis: subjects optimize for straight-line movements in the task space, as well as for minimum-variance movements. We can test this hypothesis by tracking “straightness” of trajectories over the course of learning for subjects who improve over trials. Does this change along with performance? 
+% Hypothesis: If we take subjects movements as a priori optimal and fit cost functions to their movements, over trials we will see their cost functions converge to straight-line, minimum variance movement (the prediction of OFC). (NB: this is a stab in the dark, the work here is interpreting the cost functions we get out, and defending our choice of dynamics and other assumptions)
+
+
+\cleardoublepage\printendnotes%
+\ifSubfilesClassLoaded{%
+    \newpage%
+    \bibliography{../bib/bibliography}%
+}{}%
 \end{document}

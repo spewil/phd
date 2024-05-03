@@ -1,0 +1,83 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces The Voder at the 1939 World's Fair}}{22}{figure.caption.6}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Illustration of lower motor system}}{30}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Low-variance PCs contain task-relevant information}}{32}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Basmajian experimental method}}{33}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Comparing the work of Strick and Graziano}}{39}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Motor sytem schematic}}{41}{figure.caption.12}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Sketch of the task geometry}}{53}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Experimental setup prototype}}{56}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Final experimental setup}}{57}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Electrode layout with forearm and hand muscles}}{58}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Example raw EMG data}}{58}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Task structure for each subject}}{62}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Comparison of NMF and PCA}}{64}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Example subject decoder}}{65}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Log transforming EMG}}{67}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Activity filter for EMG and trajectories}}{68}{figure.caption.23}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Hit and No-Hold counts over trials}}{74}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Hit and reward histograms}}{75}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Hits versus reward}}{76}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Reach time over blocks}}{78}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Trajectory length over blocks}}{78}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Example of a path segmented trial}}{79}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Trajectory segments over blocks}}{80}{figure.caption.31}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Percent difference of path metrics versus reward}}{81}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Arm versus reward}}{83}{figure.caption.33}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Experiment day versus reward}}{84}{figure.caption.34}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Hour of day versus reward}}{84}{figure.caption.35}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Hours of sleep vs reward}}{85}{figure.caption.36}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Subject group comparisons}}{85}{figure.caption.37}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Arm circumference and self-reported sex}}{86}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Hits over Targets across subjects}}{89}{figure.caption.39}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Decoder normality test}}{90}{figure.caption.40}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Decoder cosine similarity versus reward}}{91}{figure.caption.41}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Example task trajectories and means per target}}{93}{figure.caption.42}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Example rotated trajectories, single block}}{94}{figure.caption.43}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Example rotated trajectories, all blocks}}{95}{figure.caption.44}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces Median and IQR of trajectory variance over blocks and subjects}}{96}{figure.caption.45}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Comparison of UMAP projections over blocks between two subjects}}{103}{figure.caption.47}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Pair plot of calibration data}}{106}{figure.caption.48}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Pair plot of log-transformed calibration data}}{107}{figure.caption.49}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Toy Mixture Model}}{108}{figure.caption.50}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Subspace confinement over tasks}}{111}{figure.caption.51}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Subspace confinement versus reward}}{112}{figure.caption.52}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Pairwise Solla metric between tasks}}{114}{figure.caption.53}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Pairwise Grassmann metric between principle subspaces}}{117}{figure.caption.54}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Pairwise Grassmann metric between NMF subspaces}}{119}{figure.caption.55}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces GMM and PCA covariances}}{130}{figure.caption.57}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Subject movement and calibration data overlaid on Gaussian mixture}}{132}{figure.caption.58}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Subject trial data overlaid on Gaussian mixture}}{133}{figure.caption.59}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Gaussian mixtures models showing component pairs}}{134}{figure.caption.60}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Entropy of subject GMMs}}{139}{figure.caption.61}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Total variance of subject GMMs}}{140}{figure.caption.62}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Mixture entropy versus mean reward}}{141}{figure.caption.63}%
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Mixture total variance versus mean reward}}{141}{figure.caption.64}%
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Mean mixture entropy differences over target task blocks}}{142}{figure.caption.65}%
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Mean mixture total variance differences over target task blocks}}{142}{figure.caption.66}%
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Mixture subspace confinement over subjects}}{145}{figure.caption.67}%
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Mixture subspace confinement versus mean reward}}{146}{figure.caption.68}%
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Mean GMM Frobenius differences over subjects}}{149}{figure.caption.69}%
+\contentsline {figure}{\numberline {6.14}{\ignorespaces Mean GMM Frobenius differences over subjects}}{150}{figure.caption.70}%
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Wasserstein mixture differences over tasks}}{152}{figure.caption.71}%
+\contentsline {figure}{\numberline {6.16}{\ignorespaces Mean GMM Wasserstein distance differences over subjects}}{153}{figure.caption.72}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Task-null activity ratio over GMMs}}{164}{figure.caption.74}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces GMM task and null projection activity}}{165}{figure.caption.75}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Example of mean EMG solutions for one subject}}{167}{figure.caption.76}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Task-Null variance projections of activity error}}{168}{figure.caption.77}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Task-null variance ratio of hits and misses}}{170}{figure.caption.78}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Example solutions from constrained optimization}}{173}{figure.caption.79}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Example cost functions}}{174}{figure.caption.80}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Cosine distance from optimization solutions}}{174}{figure.caption.81}%
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Significance matrix for optimization solutions}}{175}{figure.caption.82}%
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Regression task and null space against targets}}{177}{figure.caption.83}%
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Nearest neighbors classification of task and null space}}{178}{figure.caption.84}%
+\contentsline {figure}{\numberline {7.12}{\ignorespaces PCA projections of null and task space activity}}{178}{figure.caption.85}%
+\contentsline {figure}{\numberline {7.13}{\ignorespaces Classification of PCA reconstructions}}{179}{figure.caption.86}%
+\addvspace {10\p@ }

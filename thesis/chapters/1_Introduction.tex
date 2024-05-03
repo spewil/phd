@@ -8,125 +8,117 @@
 \begin{quote}
   \emph{Movement is nothing but the quality of our being.}
   
-  \raggedleft{--- Sunryu Suzuki, \emph{Zen Mind, Beginner's Mind}}
+  \raggedleft{--- Sunryu Suzuki, \emph{Zen Mind, Beginner's Mind} (1970)}
+\end{quote}
+
+\bigskip
+\begin{quote}
+  \emph{What I cannot create, I do not understand.}
+  
+  \raggedleft{--- Richard Feynman's final blackboard (1988)}
 \end{quote}
 
 \cleardoublepage%
 
 
-\begin{itemize}
-  \item Why do this? Why fund or support this? Broadly, why is this topic interesting?
-  \item isn't motor just spinal modules being played like keys?
-  \item Why motor? Why be interested in this?
-  \item motor actions are complex and extended across time and space
-  \item no, it's all about the dynamics-- the rich correlations between movement variables, prediction, feedback...
-  \item What are our goals? What are we trying to achieve? Why are we setting up this task? 
-  \item Voder
-  \item Basmajian
-  \item RL muscle work
-  \item Bernstein
-  \item 
-\end{itemize}
 
 
-In 1939, a Bell Labs researcher, Homer Dudley, engineered a demonstration device he named the ``Voice Operation Demonstrator'' or ``Voder'' for the New York World's Fair\cite{Dudley}. Dudley explains:
 
+
+
+
+\section{Inspiration from the Past}
+
+In 1939, a Bell Labs researcher named Homer Dudley engineered a demonstration device he called the ``Voice Operation Demonstrator'' or ``Voder'' for the New York World's Fair\cite{dudleyAutomaticSynthesisSpeech1939}. Dudley explains:
+%
 \begin{quote}
   In the Fair demonstration, \ldots [the operator replies to an announcer's] questions by forming sounds on the voder and connecting them into words and sentences. She does this by manipulating fourteen keys with her fingers, a bar with her left wrist and a pedal with her right foot. \textbf{This requires considerable skill by the operator}.
 \end{quote}
-
-
+%
 \begin{figure}
   \centering
-  \begin{minipage}{0.8\textwidth}
+  \begin{minipage}{0.59\textwidth}
     \includegraphics[width=\textwidth]{introduction/voder_schematic.jpg}
     \subcaption{}
-  \end{minipage}\\%
-  \begin{minipage}{0.5\textwidth}
+  \end{minipage}
+  \begin{minipage}{0.4\textwidth}
     \includegraphics[width=\textwidth]{introduction/voder.png}
     \subcaption{}
   \end{minipage}
-  \caption[Voder]{Longer voder caption}\label{fig:voder}
+  \caption[The Voder at the 1939 World's Fair]{The Voder project was a groundbreaking synthesis device to electronically produce human-like speech. The operator used 14 keys, a wrist bar, and a foot pedal in real time to manipulate electronic circuitry which generated speech-sound waveforms: vowels, consonants, and inflections. To use the device expertly required months of training. (a) Schematic of the Voder from the original paper. (b) Photo of an operator using the switchboard of the device.}\label{fig:voder}
 \end{figure}
+%
+While Dudley's work served as an engineering investigation to reproduce speech sounds mechanically in line with Bell Telephone's goals of transmitting such sounds along their wires, he effectively invented a speech prosthetic controlled by the muscles of the body rather than the muscles of the tongue and larynx\endnote{For the armchair historians, see Wolfgang von Kempelen's (inventor of the ``mechanical Turk'' chess-playing automaton) ``speaking machine'' from 1780 as an earlier example of such experiments. Note that Von Kempelen spent twenty-odd years developing his speaking machine, whereas this thesis required a mere six!}. By reconfiguring the inputs from the muscles usually used for speech production to the many muscles controlling the hand, arm, and feet of operator of the the Voder device, Dudley created an experimental environment for the operator, now a subject, to solve a redundant motor task. To achieve success in their task, the operator had to develop ``considerable skill'', as Dudley pointed out. It is known anecdotally that there were only a few Voder operators, and they each trained for months to produce intelligible answers to unrehearsed questions using the device.
+
+The experimental environment that Dudley created in 1939 is in exactly the same spirit as what we attempted to achieve with this work. The principle aim of this thesis is \textit{to construct an experimental platform on which a suite of motor skill learning experiments can be devised and recorded.} By developing and sharing this platform, we hope to advance our understanding of trial-to-trial motor skill learning through the combination of theory and experiment, beginning a process of data generation to yield insights into how human beings are able to solve complex motor tasks.
+
+% Variety in experiments -- not just repeated movements
+% In a talk by Emo Todorov, the renowned motor control theorist nots that we know how to design and interpret experiments that involve many repetitions of the same movement however there is limited role for online optimization in that context. instead \textbf{we need experiments where subjects are required to come up with new movements all the time. how can we get experimenters to do such experiments? show cool movies of robots doing cool things,and hopefully get the experimenters excited.} (todorov online optimization slides) The long term goal of the research direction suggested here is to develop tasks which ask subjects to produce a variety of movements in response to a variety of goals and perturbations. This will allow us to study the computations that underpin the remarkable human ability to solve the motor problems they constantly face. This stands in contrast to studies with many repetitions of the same movements. That said, we wish to validate our experimental setup on classical tasks as a stepping stone to tasks with greater variety.
+
+% Maybe use big motor learning review to show we know what we're after...?
+% Krakauer et al.'s motor learning review categorization of motor learning places prior work into the following classes: - Adaptation - Sequence Learning - De Novo Learning - Motor Acuity - Expertise. Align our interest and work into these categories and discuss how we're thinking about this...
+
+% Our task sets up the case when these models are totally wrong-- not just a rotation (somewhere in the stack), but completely new contingencies entirely?
+
+% procedural knowledge -- unable to express
+% declarative knowledge -- able to articulate
+% Reading from Kandel \cite{kandelPrinciplesNeuralScience2013}
+% we're interested more in how subjects acquire procedural knowledge through experience
+% Much of our movement, even what we term \textit{voluntary movement} is subconscious. Conscious thinking can actually impair performance, which is relatable if you have ever taken up a new sport. It is common to feel ``stiff'' and clumsy when, say, trying to hold in your head every aspect of perfecting your golf swing as an amateur. Coaches talk about ``letting your body think for you'' when it comes to deliberate practice. 
 
 
-\noindent While Dudley's work served as an engineering investigation to reproduce speech sounds mechanically in line with Bell Telephone's goals of transmitting such sounds along their wires, he effectively invented a speech prosthetic controlled by the body rather than the muscles of the tongue and larynx\endnote{For the armchair historians, see Wolfgang von Kempelen's (inventor of the ``mechanical Turk'' chess-playing automaton) ``speaking machine'' from 1780 as an earlier example of such experiments. Note that Von Kempelen spent twenty-odd years developing his speaking machine, whereas this thesis only required a mere six.}. By reconfiguring the inputs from the muscles usually used for speech production to the many muscles controlling the hand, arm, and feet of the Voder's operator, Dudley created an experimental environment for the operator, now subject, to solve a redundant motor task. To achieve success in their task, the operator must develop ``considerable skill'' as Dudley points out. It is noted elsewhere that there were only a few Voder operators, and they each trained for dozens of hours to reproduce their answers in the form of intelligible speech using the device.
 
-That famous quote from Feynman's blackboard: ``What I cannot create, I do not understand''.
+\section{The Movement Paradox}
 
-The experimental environment that Dudley created in 1939 is exactly the kind of study we attempt to create in this project. The chief purpose of this thesis is \textit{to construct an experimental platform on which a suite of motor skill learning experiments can be devised and recorded.} By developing and sharing this platform, we hope to advance our understanding of trial-to-trial motor skill learning through the combination of theory and experiment, beginning a process of data generation to yield insights into how human beings are able to solve motor reconfiguration problems in the spirit of Dudley's Voder.
+Humans have sought to understand the nature of intelligence, that elusive quality that allows us to perceive, reason, and act upon the world around us, from our introspective beginnings. For all our intellectual ambitions, we have yet to replicate one of the most fundamental aspects of intelligence: the ability to move with the dexterity. Robotic motion excels at repetitive tasks in controlled environments, but tends to falter when faced with the ever-changing complexities of the real world. 
 
-The long term goal of the research direction suggested here is to develop tasks which ask subjects to produce a variety of movements in response to a variety of goals and perturbations. This will allow us to study the computations that humans use in everyday tasks to solve the motor problems they face. This stands in contrast to many repetitions of the same movements. However, we wish to validate our experimental setup on classical tasks as a stepping stone to tasks with greater variety. The dream is to have a task where: 
+Hans Moravec's eponymous paradox states that it is easier to generate artificially intelligent performance on tasks we think of as intellectually challenging, such as chess, than to provide a machine with faculties we take for granted, such as movement. Moravec's Paradox, for example, encourages us not to look past the complex computations generated by the human motor system. Following Moravec, this work focuses on what is arguably the most advanced control apparatus in the known universe: the human hand. 
 
-Todorov: we know how to design and interpret experiments that involve many repetitions of the same movement however there is limited role for online optimization in that context. instead \textbf{we need experiments where subjects are required to come up with new movements all the time. how can we get experimenters to do such experiments? show cool movies of robots doing cool things,and hopefully get the experimenters excited.} (todorov online optimization slides)
+The human hand is the pinnacle of evolutionary advancement, a marvel of evolutionary engineering. Muscles, tendons, and bones work in elegant harmony, governed by a neural processor which seamlessly integrates perception, cognition, and action. By working to disentangle the algorithms employed by the human brain to acquire and refine motor skills, we hope to inspire novel machine learning architectures that replicate and surpass our own capabilities.
 
-We take considerable inspiration from work like Basmajian in the 1960s, where basic research on the limits of human motor control were being done, attempting to understand if humans could learn, with feedback, to fire single motor unit action potentials. Variability in performance between subjects varied widely, with some subjects being unable to perform at all, while others able to fire several motor units alone and in concert.
-
-In the 1960s and 70s, there was a surge of interest in this quantum of behavior. In their 1962 experiment, Harrison and Mortenson provide real-time auditory and visual feedback to several subjects attempting SMU activation in the \textit{tibialis anterior} muscle using EMG signals via surface and needle electrodes. They claim that auditory feedback is more helpful for learning compared to visual feedback and that some form of ``external'' feedback is essential. They report a great variability in response with respect to ability: ``a considerable degree of `mental concentration' is needed for independent contractions'' \cite{Harrison1962}. They write that ``As many as six individual motor units were recruited and identified in some experiments'' though this was an extreme level of competency among their subjects.
-
-
-% Basmajian quotes: 
-
-% ``After individual motor units within the field of a surface or needle electrode were recruited, the subject attempted to isolate and contract the units independently.``
-
-% isometric and isotonic contractions
-
-% Writing in 1963, Basmajian reports similar findings: ``they groped around in their conscious efforts to find [SMUs] and sometimes, it seemed, only succeeded by accident''. Of those subjects who could do ``tricks'': ``they were unable to explain how they could do it'' and ``aural feedback was more useful than visual'' \cite{Basmajian1963}. Basmajian suggests a mechanism of ``active suppression of neighboring horn cells'' for SMU activation, and calls for ``more exploration of techniques for teaching motor skills''. He writes:
-
-% \begin{quotation}
-% \noindent\textit{Although the skills learned in the experiments initially depend on artificial feedbacks, they are learned so quickly and are so exquisite in some persons that they are retained after the feedbacks are eliminated. We do not know the reason because the subjects cannot explain their success or failure, being quite oblivious or of any special feeling. They state that they ``think'' about the previous tests with the cues. This aspect of these studies deserves large-scale investigations for it appears to be of fundamental significance in learning.}
-% \end{quotation}
-
-% Basmajian conducted a larger follow-up study in 1965 with 54 subjects. 46 could isolate well at least a single unit, while 20 could master a single unit, 18 two, 6 three, and 1 subject four and six units \cite{Basmajian1965}. Subjects found it difficult to ``re-find'' (switch between units) and isolate units separately. Wagman, in 1965, wrote on the idea of subjects leveraging proprioception to identify SMUs:
-
-% \begin{quotation}
-% \noindent\itshape{It appears that without training, volitional activation from the descending pathways is variable. Otherwise,the response of SMUs would not be dependent on maintenance of certain positions of the limb or certain patterns of contractions. During minimal contractions, the action of the descending pathways is modified, and perhaps controlled, probably in the anterior horn of the spinal cord, by peripheral input— proprioception, muscle contraction, or cutaneous stimuli. Therefore appropriate sensory information must be present for volitional activation of SMUs. However, after training, precise conscious control of SMUs can be established with lessened influence of peripheral stimuli.\cite{Wagman1965}}
-% \end{quotation}
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth]{introduction/basmajian_63.png}
-  \caption[Basmajian experimental method]{CAPTION}\label{fig:basmajian_63}
-\end{figure}
-
-Over the last few decades, there has been considerable amount of work done to untangle the abilities of the motor system to flexibly control the body including through optimal control theory\cite{Todorov2004}, reinforcement learning in continuous action spaces\cite{koberReinforcementLearningRobotics2013}, and detailed physiological studies\cite{sauerbreiCorticalPatternGeneration2019}. Despite a wealth of painstaking and impressive work, a holistic understanding of the computations underlying the construction of skilled movement remains an incredibly exciting and fruitful direction of research. Our aim is to progress understanding of skilled movement by studying the solutions produced by human subjects to motor tasks in dynamically rich, yet experimentally manipulable, virtual environments. Our goal is to reverse-engineer the ability to acquire and perform novel motor skills.
-
-Humans produce a great variety of movements every day, often without conscious thought. For example, movements like bringing a cup of coffee to our lips for a sip are generally out of reach for state-of-the-art robotic systems. We claim that this ``motor gap'' between biological and artificial motor systems is due to a lack of \emph{dexterity}. Soviet neuroscientist Nikolai Bernstein defined dexterity as the ability to ``find a motor solution in any situation and in any condition\cite{Bernstein1967}''. The crux of this definition is the flexibility of such solutions. This flexibility, or robustness\endnote{Kitano defines robustness as ``the maintenance of specific functionalities of the system against perturbations, and it often requires the system to change its mode of operation in a flexible way''. He claims that robustness requires control, alternative mechanisms, modularity and decoupling between high and low level variability.}\cite{kitanoBiologicalRobustness2004}, is the ability to optimize internal parameters in response to external perturbations and adapt to new information to achieve the goals of an ongoing plan.
-
-Using data from our experimental setup, we wish to understand both how the structure of muscle activation variability evolves during skill acquisition and how the motor system constructs skilled movement through the composition of component muscle activations. To begin, we review a  sampling of current motor physiology research relevant to dexterous motor computations in \cref{sec:physiology}. In \cref{sec:experiment}, we cover our prototype hardware and experiments. With inspiration from physiology and our experiments, we hope to make progress in modeling sensorimotor control and learning in our experimental setup. We cover preliminary work in this direction in \cref{sec:theory}, and discuss possible future directions in \cref{sec:next_steps}.
-
-Why can't robots move like humans? What is special about human movement? Why is movement a hard problem? What is hard about it?
-
-Hans Moravec's eponymous paradox states that it is easier to generate artificially intelligent performance on tasks we think of as intellectually challenging, such as chess, than to provide a machine with faculties we take for granted, such as movement. Moravec's Paradox, for example, encourages us not to look past the complex computations generated by the human motor system. Following Moravec, this work focuses on what is arguably the most advanced control apparatus in the known universe: the human movement machine.
-
-The interesting problem here is coordination of a redundant system to produce dexterous solutions-- we want to solve the redundancy problem and produce solutions that are robust to external perturbations and sensitive to new information. While a robot may be able to move a cup of coffee to a precise location in space, its solution is often found to be brittle in a new context, or unable to generalize to the movement of new objects. We define a skill as a behavior that involves dexterity in Bernstein's sense. The use of a tool such as a screwdriver is an example of a motor skill. We define a task as the production of skilled movement in a particular context. Driving a screw in a particular posture using a particular screwdriver is an example of a task.
-
-``Why'' is a question for evolutionary biologists
-
-``How'' is a question for engineers
-
-Humans have extraordinary motoric ability, we want to understand why. They display traits like Robustness, Flexibility, Generalization, Composition
-
-Why is this the most interesting problem? Because we are so far from creating machines that can move like we do, which means we are very far from understanding what elements of the body and brain are sufficient or necessary for human-level motor control.
-
-The physiology of the human hand is unique from an evolutionary perspective, so we focus on use of the hand.
-
-We want to set up a specific experiment will help us to track muscle-level changes
-
-We need to get a little messy, collect and analyze data in a decidedly exploratory manner to then inspire hypotheses that can be modeled. We want these hypotheses to be inspired by theoretical work in control and learning theory.
-
-To do so, we with the conceptual language of the experimental sensorimotor learning community together with the language of the control theory and reinforcement learning community, as each of these communities shares a common goal of understanding the computation underlying the production of skilled movement. Making a step towards building a bridge between these communities.
-
-Call to action:
-
+A recent review presented a compelling call to action to pursue research programs along exactly these lines:
+%
 \begin{quote}
-  The processes by which biological control solutions spanning large and continuous state spaces are constructed remain relatively unexplored. Future investigations may need to embed rich dynamical interactions between object dynamics and task goals in novel and complex movements [@McNamee2019].
+  \textit{The processes by which biological control solutions spanning large and continuous state spaces are constructed remain relatively unexplored. Future investigations may need to embed rich dynamical interactions between object dynamics and task goals in novel and complex movements\cite{McNamee2019}.}
 \end{quote}
-
-To explore dexterous movement, we will leverage recordings of muscles controlling the hand as a readout of flexible motor behavior. This is a step beyond recording hand kinematics as electromyography provides a physiological output of the nervous system. Surface electromyography recordings taken from the forearms controlling subjects' dominant hands allows us to track the sequential selection of muscle activations during both skill acquisition and subsequent performance of that skill to achieve desired goal. As we are interested in subjects' abilities to acquire new skills, we design tasks that require subjects to use available, but uncommon, motor activations. We then track the selection and execution of these activation during virtual tasks. Preliminary work in this direction is described in {@sec:experiment}.
-
-The overarching goal of this task is to track learning in a new movement contingency. Subjects have no prior knowledge related to the task, and must explore to find solutions, while experiencing constraints of their fitted decoder/task mapping. We want to follow their learning progress statistically to gain an insight into how subjects are learning to deal with their new environment.
+%
+This project is interested in observing an exceedingly complex, high-dimensional system which, faced with a new challenge, which optimizes itself towards a goal.
 
 
-\include{end_of_chapter}
+
+
+
+
+\section{The Approach}
+
+To explore dexterous movement, we will leverage recordings of muscles controlling the hand as a readout of flexible motor behavior. This is a step beyond recording hand kinematics, as electromyography provides a direct, physiological output of the nervous system. Surface electromyography (EMG) recordings taken from the forearms controlling subjects' dominant hands allows us to track the sequential selection of muscle activations during both skill acquisition and subsequent performance of that skill to achieve desired goal.
+
+As we are interested in subjects' abilities to acquire new skills, our goal is to design tasks which require subjects to use available, but uncommon, motor activations. We then track the selection and execution of these activations during those tasks for further study. Ideally, subjects will have no prior knowledge related to the task, requiring a balance of exploration and exploitation in order to succeed. Subjects will experience constraints due to the task contingency, as well as the limits of the underlying manifold of their motor activity. Our aim is to follow the progress of learning to gain an insight into how subjects cope with their new context.
+
+Using data from our experimental setup, we aim to explore specifically how the structure of muscle activation variability evolves across skill acquisition, and how the motor system constructs skilled movement through the composition of component muscle activations. By carefully titrating task difficulty for ``slow learning'' over many trials, we expect to finely resolve the progression of how redundancies are harnessed and strategies explored as performance emerges. By prompting subjects to elicit uncommon muscle activation patterns in service of the task goals, we aim to increase the ecological validity of our experimental context beyond typical motor behaviors in order to shed light on the flexibility of the motor system. We believe that our paradigm provides a powerful platform to directly observe the neural processes involved as the redundant, dexterous motor system constructs a novel skill \textit{de novo}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Outline}
+
+In \Cref{chap:background}, we review selected works of motor physiology research relevant to dexterous motor computations, and present a view of motor skill learning based on what is known about the structure of the motor system. In \Cref{chap:methods}, we provide a detailed explanation of our experimental design as well as the hardware and software underpinning the experimental apparatus. In \Cref{chap:performance}, we support the choices made in our experimental design by presenting data pertaining to task performance across subjects. In \Cref{chap:data_manifold}, we explore subjects' EMG manifolds to provide a foundation for testable hypotheses pertaining to the evolution of subjects' muscle activations across learning. In \Cref{chap:gmms}, we present mixture models to extract statistics from subjects' activations and refine our hypotheses for the structure of subject variability. In \Cref{chap:nullspace}, we test hypotheses pertaining to the structure of variability in terms of the task-relevant and task-irrelevant activity subspaces. In \Cref{chap:conclusion}, we discuss possible future directions for the research program we have presented in this work.
+
+% In \Cref{chap:reinforce}, we compare what we have learned about subject variability to a computational model based on the theory of reinforcement learning.
+
+\cleardoublepage\printendnotes%
+\ifSubfilesClassLoaded{%
+    \newpage%
+    \bibliography{../bib/bibliography}%
+}{}%
 \end{document}

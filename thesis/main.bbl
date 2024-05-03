@@ -1,58 +1,409 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
 \expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
 \providecommand{\bibinfo}[2]{#2}
 \providecommand{\eprint}[2][]{\url{#2}}
 
-\bibitem{koberReinforcementLearningRobotics2013}
-\bibinfo{author}{Kober, J.}, \bibinfo{author}{Bagnell, J.~A.} \&
-  \bibinfo{author}{Peters, J.}
-\newblock \bibinfo{title}{Reinforcement learning in robotics: {{A}} survey}.
-\newblock \emph{\bibinfo{journal}{The International Journal of Robotics
-  Research}} \textbf{\bibinfo{volume}{32}}, \bibinfo{pages}{1238--1274}
-  (\bibinfo{year}{2013}).
+\bibitem{dudleyAutomaticSynthesisSpeech1939}
+\bibinfo{author}{Dudley, H.}
+\newblock \bibinfo{title}{The {{Automatic Synthesis}} of {{Speech}}}.
+\newblock \emph{\bibinfo{journal}{Proceedings of the National Academy of Sciences}} \textbf{\bibinfo{volume}{25}}, \bibinfo{pages}{377--383} (\bibinfo{year}{1939}).
 
-\bibitem{sauerbreiCorticalPatternGeneration2019}
-\bibinfo{author}{Sauerbrei, B.~A.} \emph{et~al.}
-\newblock \bibinfo{title}{Cortical pattern generation during dexterous movement
-  is input-driven}.
-\newblock \emph{\bibinfo{journal}{Nature}}  (\bibinfo{year}{2019}).
+\bibitem{McNamee2019}
+\bibinfo{author}{McNamee, D.} \& \bibinfo{author}{Wolpert, D.~M.}
+\newblock \bibinfo{title}{Internal {{Models}} in {{Biological Control}}}.
+\newblock \emph{\bibinfo{journal}{Annual Review of Control, Robotics, and Autonomous Systems}} \textbf{\bibinfo{volume}{2}}, \bibinfo{pages}{339--364} (\bibinfo{year}{2019}).
 
 \bibitem{Bernstein1967}
 \bibinfo{author}{Bernstein, N.}
-\newblock \emph{\bibinfo{title}{The Coordination and Regulation of Movements}}
-  (\bibinfo{publisher}{{Pergamon}}, \bibinfo{address}{{Oxford}},
-  \bibinfo{year}{1967}).
+\newblock \emph{\bibinfo{title}{The Coordination and Regulation of Movements}} (\bibinfo{publisher}{Pergamon}, \bibinfo{address}{Oxford}, \bibinfo{year}{1967}).
 
 \bibitem{kitanoBiologicalRobustness2004}
 \bibinfo{author}{Kitano, H.}
 \newblock \bibinfo{title}{Biological robustness}.
-\newblock \emph{\bibinfo{journal}{Nature Reviews Genetics}}
-  \textbf{\bibinfo{volume}{5}}, \bibinfo{pages}{826--837}
-  (\bibinfo{year}{2004}).
+\newblock \emph{\bibinfo{journal}{Nature Reviews Genetics}} \textbf{\bibinfo{volume}{5}}, \bibinfo{pages}{826--837} (\bibinfo{year}{2004}).
 
-\bibitem{pirayLinearReinforcementLearning2019}
-\bibinfo{author}{Piray, P.} \& \bibinfo{author}{Daw, N.~D.}
-\newblock \bibinfo{title}{Linear reinforcement learning: {{Flexible}} reuse of
-  computation in planning, grid fields, and cognitive control}.
-\newblock \bibinfo{type}{Preprint}, \bibinfo{institution}{{Neuroscience}}
-  (\bibinfo{year}{2019}).
+\bibitem{fuglevandMechanicalPropertiesNeural2011}
+\bibinfo{author}{Fuglevand, A.~J.}
+\newblock \bibinfo{title}{Mechanical properties and neural control of human hand motor units: {{Control}} of human hand motor units}.
+\newblock \emph{\bibinfo{journal}{The Journal of Physiology}} \textbf{\bibinfo{volume}{589}}, \bibinfo{pages}{5595--5602} (\bibinfo{year}{2011}).
+
+\bibitem{kandelPrinciplesNeuralScience2013}
+\bibinfo{editor}{Kandel, E.~R.} (ed.) \emph{\bibinfo{title}{Principles of Neural Science}} (\bibinfo{publisher}{McGraw-Hill}, \bibinfo{address}{New York}, \bibinfo{year}{2013}), \bibinfo{edition}{5th ed} edn.
+
+\bibitem{vanduinenConstraintsControlHuman2011}
+\bibinfo{author}{{van Duinen}, H.} \& \bibinfo{author}{Gandevia, S.~C.}
+\newblock \bibinfo{title}{Constraints for control of the human hand: {{Control}} of the hand}.
+\newblock \emph{\bibinfo{journal}{The Journal of Physiology}} \textbf{\bibinfo{volume}{589}}, \bibinfo{pages}{5583--5593} (\bibinfo{year}{2011}).
+
+\bibitem{yanUnexpectedComplexityEveryday2020}
+\bibinfo{author}{Yan, Y.}, \bibinfo{author}{Goodman, J.~M.}, \bibinfo{author}{Moore, D.~D.}, \bibinfo{author}{Solla, S.~A.} \& \bibinfo{author}{Bensmaia, S.~J.}
+\newblock \bibinfo{title}{Unexpected complexity of everyday manual behaviors}.
+\newblock \emph{\bibinfo{journal}{Nature Communications}} \textbf{\bibinfo{volume}{11}}, \bibinfo{pages}{3564} (\bibinfo{year}{2020}).
+
+\bibitem{Basmajian1963}
+\bibinfo{author}{Basmajian, J.~V.}
+\newblock \bibinfo{title}{Control and {{Training}} of {{Individual Motor Units}}}.
+\newblock \emph{\bibinfo{journal}{Science}} \textbf{\bibinfo{volume}{141}}, \bibinfo{pages}{440--441} (\bibinfo{year}{1963}).
+\newblock \eprint{13969854}.
+
+\bibitem{Harrison1962}
+\bibinfo{author}{Harrison, V.~F.} \& \bibinfo{author}{Mortensen, O.~A.}
+\newblock \bibinfo{title}{Identification and voluntary control of single motor unit activity in the tibialis anterior muscle}.
+\newblock \emph{\bibinfo{journal}{The Anatomical Record}} \textbf{\bibinfo{volume}{144}}, \bibinfo{pages}{109--116} (\bibinfo{year}{1962}).
+
+\bibitem{Basmajian1965}
+\bibinfo{author}{Basmajian, J.~V.}, \bibinfo{author}{Baeza, M.} \& \bibinfo{author}{Fabrigar, C.}
+\newblock \bibinfo{title}{Conscious {{Control}} and {{Training}} of {{Individual Spinal Motor Neurons}} in {{Normal Human Subjects}}}.
+\newblock \emph{\bibinfo{journal}{The Journal of New Drugs}} \textbf{\bibinfo{volume}{5}}, \bibinfo{pages}{78--85} (\bibinfo{year}{1965}).
+\newblock \eprint{14315154}.
+
+\bibitem{Wagman1965}
+\bibinfo{author}{Wagman, I.~H.}, \bibinfo{author}{Pierce, D.~S.} \& \bibinfo{author}{Burger, R.~E.}
+\newblock \bibinfo{title}{Proprioceptive {{Influence}} in {{Volitional Control}} of {{Individual Motor Units}}}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{207}}, \bibinfo{pages}{925--926} (\bibinfo{year}{1965}).
+
+\bibitem{mussa-ivaldiMotorLearningCombination2000b}
+\bibinfo{author}{{Mussa--Ivaldi}, F.} \& \bibinfo{author}{Bizzi, E.}
+\newblock \bibinfo{title}{Motor learning through the combination of primitives}.
+\newblock \emph{\bibinfo{journal}{Philosophical Transactions of the Royal Society of London. Series B: Biological Sciences}} \textbf{\bibinfo{volume}{355}}, \bibinfo{pages}{1755--1769} (\bibinfo{year}{2000}).
+
+\bibitem{DAvella2003}
+\bibinfo{author}{D'Avella, A.}, \bibinfo{author}{Saltiel, P.} \& \bibinfo{author}{Bizzi, E.}
+\newblock \bibinfo{title}{Combinations of muscle synergies in the construction of a natural motor behavior}.
+\newblock \emph{\bibinfo{journal}{Nature Neuroscience}} \textbf{\bibinfo{volume}{6}}, \bibinfo{pages}{300--308} (\bibinfo{year}{2003}).
+
+\bibitem{giszterMotorPrimitivesNew2015}
+\bibinfo{author}{Giszter, S.~F.}
+\newblock \bibinfo{title}{Motor primitives---new data and future questions}.
+\newblock \emph{\bibinfo{journal}{Current Opinion in Neurobiology}} \textbf{\bibinfo{volume}{33}}, \bibinfo{pages}{156--165} (\bibinfo{year}{2015}).
+
+\bibitem{gaoTheoryMultineuronalDimensionality2017}
+\bibinfo{author}{Gao, P.} \emph{et~al.}
+\newblock \bibinfo{title}{A theory of multineuronal dimensionality, dynamics and measurement}.
+\newblock \bibinfo{type}{Preprint}, \bibinfo{institution}{Neuroscience} (\bibinfo{year}{2017}).
+
+\bibitem{raczSpatiotemporalAnalysisReveals2013}
+\bibinfo{author}{R{\'a}cz, K.} \& \bibinfo{author}{{Valero-Cuevas}, F.~J.}
+\newblock \bibinfo{title}{Spatio-temporal analysis reveals active control of both task-relevant and task-irrelevant variables}.
+\newblock \emph{\bibinfo{journal}{Frontiers in Computational Neuroscience}} \textbf{\bibinfo{volume}{7}} (\bibinfo{year}{2013}).
+
+\bibitem{Ingram2009}
+\bibinfo{author}{Ingram, J.~N.} \& \bibinfo{author}{Wolpert, D.~M.}
+\newblock \bibinfo{title}{The statistics of natural hand movements}.
+\newblock \emph{\bibinfo{journal}{Brain}} \textbf{\bibinfo{volume}{188}}, \bibinfo{pages}{223--236} (\bibinfo{year}{2009}).
+
+\bibitem{TodorovDimensionality2005}
+\bibinfo{author}{Todorov, E.} \& \bibinfo{author}{Ghahramani, Z.}
+\newblock \bibinfo{title}{Analysis of the synergies underlying complex hand manipulation}.
+\newblock In \emph{\bibinfo{booktitle}{The 26th {{Annual International Conference}} of the {{IEEE Engineering}} in {{Medicine}} and {{Biology Society}}}}, vol.~\bibinfo{volume}{4}, \bibinfo{pages}{4637--4640} (\bibinfo{publisher}{IEEE}, \bibinfo{year}{2005}).
+
+\bibitem{bizziMotorPlanningExecution2020}
+\bibinfo{author}{Bizzi, E.} \& \bibinfo{author}{Ajemian, R.}
+\newblock \bibinfo{title}{From motor planning to execution: A sensorimotor loop perspective}.
+\newblock \emph{\bibinfo{journal}{Journal of Neurophysiology}} \textbf{\bibinfo{volume}{124}}, \bibinfo{pages}{1815--1823} (\bibinfo{year}{2020}).
+
+\bibitem{brutonSynergiesCoordinationComprehensive2018}
+\bibinfo{author}{Bruton, M.} \& \bibinfo{author}{O'Dwyer, N.}
+\newblock \bibinfo{title}{Synergies in coordination: A comprehensive overview of neural, computational, and behavioral approaches}.
+\newblock \emph{\bibinfo{journal}{Journal of Neurophysiology}} \textbf{\bibinfo{volume}{120}}, \bibinfo{pages}{2761--2774} (\bibinfo{year}{2018}).
+
+\bibitem{merelHierarchicalMotorControl2019}
+\bibinfo{author}{Merel, J.}, \bibinfo{author}{Botvinick, M.} \& \bibinfo{author}{Wayne, G.}
+\newblock \bibinfo{title}{Hierarchical motor control in mammals and machines}.
+\newblock \emph{\bibinfo{journal}{Nature Communications}} \textbf{\bibinfo{volume}{10}}, \bibinfo{pages}{5489} (\bibinfo{year}{2019}).
+
+\bibitem{cheneyFunctionalClassesPrimate1980}
+\bibinfo{author}{Cheney, P.~D.} \& \bibinfo{author}{Fetz, E.~E.}
+\newblock \bibinfo{title}{Functional classes of primate corticomotoneuronal cells and their relation to active force}.
+\newblock \emph{\bibinfo{journal}{Journal of Neurophysiology}} \textbf{\bibinfo{volume}{44}}, \bibinfo{pages}{773--791} (\bibinfo{year}{1980}).
+
+\bibitem{griffinMotorCortexUses2020}
+\bibinfo{author}{Griffin, D.~M.} \& \bibinfo{author}{Strick, P.~L.}
+\newblock \bibinfo{title}{The motor cortex uses active suppression to sculpt movement}.
+\newblock \emph{\bibinfo{journal}{Science Advances}} \textbf{\bibinfo{volume}{6}}, \bibinfo{pages}{eabb8395} (\bibinfo{year}{2020}).
+
+\bibitem{lemonCorticalControlPrimate1993}
+\bibinfo{author}{Lemon, R.~N.}
+\newblock \bibinfo{title}{Cortical control of the primate hand}.
+\newblock \emph{\bibinfo{journal}{Experimental Physiology}} \textbf{\bibinfo{volume}{78}}, \bibinfo{pages}{263--301} (\bibinfo{year}{1993}).
+
+\bibitem{lemonMechanismsCorticalControl1997}
+\bibinfo{author}{Lemon, R.~N.}
+\newblock \bibinfo{title}{Mechanisms of cortical control of hand function}.
+\newblock \emph{\bibinfo{journal}{Neuroscientist}} \textbf{\bibinfo{volume}{3}}, \bibinfo{pages}{389--398} (\bibinfo{year}{1997}).
+
+\bibitem{lemonDescendingPathwaysMotor2008}
+\bibinfo{author}{Lemon, R.~N.}
+\newblock \bibinfo{title}{Descending {{Pathways}} in {{Motor Control}}}.
+\newblock \emph{\bibinfo{journal}{Annual Review of Neuroscience}} \textbf{\bibinfo{volume}{31}}, \bibinfo{pages}{195--218} (\bibinfo{year}{2008}).
+
+\bibitem{Rathelot2009}
+\bibinfo{author}{Rathelot, J.-A.} \& \bibinfo{author}{Strick, P.~L.}
+\newblock \bibinfo{title}{Subdivisions of primary motor cortex based on cortico-motoneuronal cells}.
+\newblock \emph{\bibinfo{journal}{Proceedings of the National Academy of Sciences}} \textbf{\bibinfo{volume}{106}}, \bibinfo{pages}{918--923} (\bibinfo{year}{2009}).
+
+\bibitem{griffinCorticomotoneuronalCellsAre2015}
+\bibinfo{author}{Griffin, D.~M.}, \bibinfo{author}{Hoffman, D.~S.} \& \bibinfo{author}{Strick, P.~L.}
+\newblock \bibinfo{title}{Corticomotoneuronal cells are "functionally tuned"}.
+\newblock \emph{\bibinfo{journal}{Science}} \textbf{\bibinfo{volume}{350}}, \bibinfo{pages}{667--670} (\bibinfo{year}{2015}).
+
+\bibitem{Takei2017}
+\bibinfo{author}{Takei, T.}, \bibinfo{author}{Confais, J.}, \bibinfo{author}{Tomatsu, S.}, \bibinfo{author}{Oya, T.} \& \bibinfo{author}{Seki, K.}
+\newblock \bibinfo{title}{Neural basis for hand muscle synergies in the primate spinal cord}.
+\newblock \emph{\bibinfo{journal}{Proceedings of the National Academy of Sciences}} \textbf{\bibinfo{volume}{114}}, \bibinfo{pages}{8643--8648} (\bibinfo{year}{2017}).
+
+\bibitem{dumCorticospinalSystemStructural2011}
+\bibinfo{author}{Dum, R.~P.} \& \bibinfo{author}{Strick, P.~L.}
+\newblock \bibinfo{title}{The {{Corticospinal System}}: {{A Structural Framework}} for the {{Central Control}} of {{Movement}}}.
+\newblock In \emph{\bibinfo{booktitle}{Comprehensive {{Physiology}}}} (\bibinfo{publisher}{John Wiley \& Sons, Inc.}, \bibinfo{address}{Hoboken, NJ, USA}, \bibinfo{year}{2011}).
+
+\bibitem{furuyaFlexibilityMovementOrganization2013}
+\bibinfo{author}{Furuya, S.} \& \bibinfo{author}{Altenm{\"u}ller, E.}
+\newblock \bibinfo{title}{Flexibility of movement organization in piano performance}.
+\newblock \emph{\bibinfo{journal}{Frontiers in Human Neuroscience}} \textbf{\bibinfo{volume}{7}} (\bibinfo{year}{2013}).
+
+\bibitem{sauerbreiCorticalPatternGeneration2019}
+\bibinfo{author}{Sauerbrei, B.~A.} \emph{et~al.}
+\newblock \bibinfo{title}{Cortical pattern generation during dexterous movement is input-driven}.
+\newblock \emph{\bibinfo{journal}{Nature}}  (\bibinfo{year}{2019}).
+
+\bibitem{grazianoOrganizationBehaviorialRepertoire2006}
+\bibinfo{author}{Graziano, M.}
+\newblock \bibinfo{title}{The {{Organization}} of {{Behaviorial Repertoire}} in {{Motor Cortex}}}.
+\newblock \emph{\bibinfo{journal}{Annual Review of Neuroscience}} \textbf{\bibinfo{volume}{29}}, \bibinfo{pages}{105--134} (\bibinfo{year}{2006}).
+
+\bibitem{grazianoIntelligentMovementMachine2009}
+\bibinfo{author}{Graziano, M. S.~A.}
+\newblock \emph{\bibinfo{title}{The Intelligent Movement Machine: An Ethological Perspective on the Primate Motor System}} (\bibinfo{publisher}{Oxford University Press}, \bibinfo{address}{Oxford ; New York}, \bibinfo{year}{2009}).
+
+\bibitem{ebinaArmMovementsInduced2019}
+\bibinfo{author}{Ebina, T.} \emph{et~al.}
+\newblock \bibinfo{title}{Arm movements induced by noninvasive optogenetic stimulation of the motor cortex in the common marmoset}.
+\newblock \emph{\bibinfo{journal}{Proceedings of the National Academy of Sciences}} \textbf{\bibinfo{volume}{116}}, \bibinfo{pages}{22844--22850} (\bibinfo{year}{2019}).
+
+\bibitem{watanabeForelimbMovementsEvoked2020}
+\bibinfo{author}{Watanabe, H.} \emph{et~al.}
+\newblock \bibinfo{title}{Forelimb movements evoked by optogenetic stimulation of the macaque motor cortex}.
+\newblock \emph{\bibinfo{journal}{Nature Communications}} \textbf{\bibinfo{volume}{11}}, \bibinfo{pages}{3253} (\bibinfo{year}{2020}).
+
+\bibitem{wiltschkoMappingSubSecondStructure2015}
+\bibinfo{author}{Wiltschko, A.~B.} \emph{et~al.}
+\newblock \bibinfo{title}{Mapping {{Sub-Second Structure}} in {{Mouse Behavior}}}.
+\newblock \emph{\bibinfo{journal}{Neuron}} \textbf{\bibinfo{volume}{88}}, \bibinfo{pages}{1121--1135} (\bibinfo{year}{2015}).
+
+\bibitem{grazianoArmMovementsEvoked2005}
+\bibinfo{author}{Graziano, M. S.~A.}, \bibinfo{author}{Aflalo, T. N.~S.} \& \bibinfo{author}{Cooke, D.~F.}
+\newblock \bibinfo{title}{Arm {{Movements Evoked}} by {{Electrical Stimulation}} in the {{Motor Cortex}} of {{Monkeys}}}.
+\newblock \emph{\bibinfo{journal}{Journal of Neurophysiology}} \textbf{\bibinfo{volume}{94}}, \bibinfo{pages}{4209--4223} (\bibinfo{year}{2005}).
+
+\bibitem{MosierRemappingHandMovements2005}
+\bibinfo{author}{Mosier, K.~M.}, \bibinfo{author}{Scheidt, R.~A.}, \bibinfo{author}{Acosta, S.} \& \bibinfo{author}{{Mussa-Ivaldi}, F.~A.}
+\newblock \bibinfo{title}{Remapping {{Hand Movements}} in a {{Novel Geometrical Environment}}}.
+\newblock \emph{\bibinfo{journal}{Journal of Neurophysiology}} \textbf{\bibinfo{volume}{94}}, \bibinfo{pages}{4362--4372} (\bibinfo{year}{2005}).
+
+\bibitem{radhakrishnanLearningNovelMyoelectricControlled2008}
+\bibinfo{author}{Radhakrishnan, S.~M.}, \bibinfo{author}{Baker, S.~N.} \& \bibinfo{author}{Jackson, A.}
+\newblock \bibinfo{title}{Learning a {{Novel Myoelectric-Controlled Interface Task}}}.
+\newblock \emph{\bibinfo{journal}{Journal of Neurophysiology}} \textbf{\bibinfo{volume}{100}}, \bibinfo{pages}{2397--2408} (\bibinfo{year}{2008}).
+
+\bibitem{Mussa-IvaldiSensoryMotorRemapping2011}
+\bibinfo{author}{{Mussa-Ivaldi}, F.~A.}, \bibinfo{author}{Casadio, M.}, \bibinfo{author}{Danziger, Z.~C.}, \bibinfo{author}{Mosier, K.~M.} \& \bibinfo{author}{Scheidt, R.~A.}
+\newblock \bibinfo{title}{Sensory motor remapping of space in human-machine interfaces}.
+\newblock \emph{\bibinfo{journal}{Progress in Brain Research}} \textbf{\bibinfo{volume}{191}}, \bibinfo{pages}{45--64} (\bibinfo{year}{2011}).
+
+\bibitem{Valero-Cuevas2009}
+\bibinfo{author}{{Valero-Cuevas}, F.~J.}, \bibinfo{author}{Venkadesan, M.} \& \bibinfo{author}{Todorov, E.}
+\newblock \bibinfo{title}{Structured {{Variability}} of {{Muscle Activations Supports}} the {{Minimal Intervention Principle}} of {{Motor Control}}}.
+\newblock \emph{\bibinfo{journal}{Journal of Neurophysiology}} \textbf{\bibinfo{volume}{102}}, \bibinfo{pages}{59--68} (\bibinfo{year}{2009}).
+
+\bibitem{derugyMuscleCoordinationHabitual2012}
+\bibinfo{author}{{de Rugy}, A.}, \bibinfo{author}{Loeb, G.~E.} \& \bibinfo{author}{Carroll, T.~J.}
+\newblock \bibinfo{title}{Muscle {{Coordination Is Habitual Rather}} than {{Optimal}}}.
+\newblock \emph{\bibinfo{journal}{Journal of Neuroscience}} \textbf{\bibinfo{volume}{32}}, \bibinfo{pages}{7384--7391} (\bibinfo{year}{2012}).
+
+\bibitem{BergerDifferencesInAdaptationRates2013a}
+\bibinfo{author}{Berger, D.~J.}, \bibinfo{author}{Gentner, R.}, \bibinfo{author}{Edmunds, T.}, \bibinfo{author}{Pai, D.~K.} \& \bibinfo{author}{{d'Avella}, A.}
+\newblock \bibinfo{title}{Differences in {{Adaptation Rates}} after {{Virtual Surgeries Provide Direct Evidence}} for {{Modularity}}}.
+\newblock \emph{\bibinfo{journal}{Journal of Neuroscience}} \textbf{\bibinfo{volume}{33}}, \bibinfo{pages}{12384--12394} (\bibinfo{year}{2013}).
+
+\bibitem{Dyson2018}
+\bibinfo{author}{Dyson, M.}, \bibinfo{author}{Barnes, J.} \& \bibinfo{author}{Nazarpour, K.}
+\newblock \bibinfo{title}{Myoelectric control with abstract decoders}.
+\newblock \emph{\bibinfo{journal}{Journal of Neural Engineering}} \textbf{\bibinfo{volume}{15}} (\bibinfo{year}{2018}).
+
+\bibitem{ctrl-labsatrealitylabsGenericNoninvasiveNeuromotor2024}
+\bibinfo{author}{{CTRL-labs at Reality Labs}}, \bibinfo{author}{Sussillo, D.}, \bibinfo{author}{Kaifosh, P.} \& \bibinfo{author}{Reardon, T.}
+\newblock \bibinfo{title}{A generic noninvasive neuromotor interface for human-computer interaction}.
+\newblock \bibinfo{type}{Preprint}, \bibinfo{institution}{Neuroscience} (\bibinfo{year}{2024}).
+
+\bibitem{craikNatureExplanation1967}
+\bibinfo{author}{Craik, K. J.~W.}
+\newblock \emph{\bibinfo{title}{The Nature of Explanation}} (\bibinfo{publisher}{Univ. Press}, \bibinfo{address}{Cambridge}, \bibinfo{year}{1967}), \bibinfo{edition}{1. paperback ed. [with postscript]} edn.
+
+\bibitem{todorovOptimalFeedbackControl2002}
+\bibinfo{author}{Todorov, E.} \& \bibinfo{author}{Jordan, M.~I.}
+\newblock \bibinfo{title}{Optimal feedback control as a theory of motor coordination}.
+\newblock \emph{\bibinfo{journal}{Nature Neuroscience}} \textbf{\bibinfo{volume}{5}}, \bibinfo{pages}{1226--1235} (\bibinfo{year}{2002}).
+
+\bibitem{smithInteractingAdaptiveProcesses2006}
+\bibinfo{author}{Smith, M.~A.}, \bibinfo{author}{Ghazizadeh, A.} \& \bibinfo{author}{Shadmehr, R.}
+\newblock \bibinfo{title}{Interacting {{Adaptive Processes}} with {{Different Timescales Underlie Short-Term Motor Learning}}}.
+\newblock \emph{\bibinfo{journal}{PLoS Biology}} \textbf{\bibinfo{volume}{4}}, \bibinfo{pages}{e179} (\bibinfo{year}{2006}).
+
+\bibitem{chengModelingSensorimotorLearning}
+\bibinfo{author}{Cheng, S.} \& \bibinfo{author}{Sabes, P.~N.}
+\newblock \bibinfo{title}{Modeling {{Sensorimotor Learning}} with {{Linear Dynamical Systems}}} \bibinfo{pages}{39}.
+
+\bibitem{dawModelBasedInfluencesHumans2011}
+\bibinfo{author}{Daw, N.~D.}, \bibinfo{author}{Gershman, S.~J.}, \bibinfo{author}{Seymour, B.}, \bibinfo{author}{Dayan, P.} \& \bibinfo{author}{Dolan, R.~J.}
+\newblock \bibinfo{title}{Model-{{Based Influences}} on {{Humans}}' {{Choices}} and {{Striatal Prediction Errors}}}.
+\newblock \emph{\bibinfo{journal}{Neuron}} \textbf{\bibinfo{volume}{69}}, \bibinfo{pages}{1204--1215} (\bibinfo{year}{2011}).
+
+\bibitem{loebHierarchicalFoundationModels1999}
+\bibinfo{author}{Loeb, G.~E.}, \bibinfo{author}{Brown, I.~E.} \& \bibinfo{author}{Cheng, E.~J.}
+\newblock \bibinfo{title}{A hierarchical foundation for models of sensorimotor control}.
+\newblock \emph{\bibinfo{journal}{Experimental Brain Research}} \textbf{\bibinfo{volume}{126}}, \bibinfo{pages}{1--18} (\bibinfo{year}{1999}).
+
+\bibitem{loebHardLessonsMotor1987}
+\bibinfo{author}{Loeb, G.~E.}
+\newblock \bibinfo{title}{Hard lessons in motor control from the mammalian spinal cord}.
+\newblock \emph{\bibinfo{journal}{Trends in Neurosciences}} \textbf{\bibinfo{volume}{10}}, \bibinfo{pages}{108--113} (\bibinfo{year}{1987}).
+
+\bibitem{sejnowskiPerspectivesCognitiveNeuroscience1988}
+\bibinfo{author}{Sejnowski, T.} \& \bibinfo{author}{Churchland, P.}
+\newblock \bibinfo{title}{Perspectives on {{Cognitive Neuroscience}}} \textbf{\bibinfo{volume}{242}}, \bibinfo{pages}{6} (\bibinfo{year}{1988}).
 
 \bibitem{bizziHardScientificQuest2015}
 \bibinfo{author}{Bizzi, E.} \& \bibinfo{author}{Ajemian, R.}
-\newblock \bibinfo{title}{A {{Hard Scientific Quest}}: {{Understanding
-  Voluntary Movements}}}.
-\newblock \emph{\bibinfo{journal}{Daedalus}} \textbf{\bibinfo{volume}{144}},
-  \bibinfo{pages}{83--95} (\bibinfo{year}{2015}).
+\newblock \bibinfo{title}{A {{Hard Scientific Quest}}: {{Understanding Voluntary Movements}}}.
+\newblock \emph{\bibinfo{journal}{Daedalus}} \textbf{\bibinfo{volume}{144}}, \bibinfo{pages}{83--95} (\bibinfo{year}{2015}).
 
-\bibitem{Valero-Cuevas2009}
-\bibinfo{author}{{Valero-Cuevas}, F.~J.}, \bibinfo{author}{Venkadesan, M.} \&
-  \bibinfo{author}{Todorov, E.}
-\newblock \bibinfo{title}{Structured {{Variability}} of {{Muscle Activations
-  Supports}} the {{Minimal Intervention Principle}} of {{Motor Control}}}.
-\newblock \emph{\bibinfo{journal}{Journal of Neurophysiology}}
-  \textbf{\bibinfo{volume}{102}}, \bibinfo{pages}{59--68}
-  (\bibinfo{year}{2009}).
+\bibitem{jiSkinintegratedBiocompatibleStretchable2023}
+\bibinfo{author}{Ji, H.} \emph{et~al.}
+\newblock \bibinfo{title}{Skin-integrated, biocompatible, and stretchable silicon microneedle electrode for long-term {{EMG}} monitoring in motion scenario}.
+\newblock \emph{\bibinfo{journal}{npj Flexible Electronics}} \textbf{\bibinfo{volume}{7}}, \bibinfo{pages}{46} (\bibinfo{year}{2023}).
+
+\bibitem{sattiMicroneedleArrayElectrodeBased2021}
+\bibinfo{author}{Satti, A.~T.}, \bibinfo{author}{Kim, J.}, \bibinfo{author}{Yi, E.}, \bibinfo{author}{Cho, H.-y.} \& \bibinfo{author}{Cho, S.}
+\newblock \bibinfo{title}{Microneedle {{Array Electrode-Based Wearable EMG System}} for {{Detection}} of {{Driver Drowsiness}} through {{Steering Wheel Grip}}}.
+\newblock \emph{\bibinfo{journal}{Sensors}} \textbf{\bibinfo{volume}{21}}, \bibinfo{pages}{5091} (\bibinfo{year}{2021}).
+
+\bibitem{chungMyomatrixArraysHighdefinition}
+\bibinfo{author}{Chung, B.}
+\newblock \bibinfo{title}{Myomatrix arrays for high-definition muscle recording} .
+
+\bibitem{clancySensoryRepresentationCausally2019a}
+\bibinfo{author}{Clancy, K.~B.} \& \bibinfo{author}{{Mrsic-Flogel}, T.~D.}
+\newblock \bibinfo{title}{The sensory representation of causally controlled objects}.
+\newblock \bibinfo{type}{Preprint}, \bibinfo{institution}{Neuroscience} (\bibinfo{year}{2019}).
+
+\bibitem{sadtlerNeuralConstraintsLearning2014}
+\bibinfo{author}{Sadtler, P.~T.} \emph{et~al.}
+\newblock \bibinfo{title}{Neural constraints on learning}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{512}}, \bibinfo{pages}{423--426} (\bibinfo{year}{2014}).
+
+\bibitem{leeLearningPartsObjects1999a}
+\bibinfo{author}{Lee, D.~D.} \& \bibinfo{author}{Seung, H.~S.}
+\newblock \bibinfo{title}{Learning the parts of objects by non-negative matrix factorization}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{401}}, \bibinfo{pages}{788--791} (\bibinfo{year}{1999}).
+
+\bibitem{eggertSparseCodingNMF2004}
+\bibinfo{author}{Eggert, J.} \& \bibinfo{author}{Korner, E.}
+\newblock \bibinfo{title}{Sparse coding and {{NMF}}}.
+\newblock In \emph{\bibinfo{booktitle}{2004 {{IEEE International Joint Conference}} on {{Neural Networks}} ({{IEEE Cat}}. {{No}}.{{04CH37541}})}}, vol.~\bibinfo{volume}{4}, \bibinfo{pages}{2529--2533} (\bibinfo{publisher}{IEEE}, \bibinfo{address}{Budapest, Hungary}, \bibinfo{year}{2004}).
+
+\bibitem{nazarpourNoteProbabilityDistribution2013a}
+\bibinfo{author}{Nazarpour, K.}, \bibinfo{author}{{Al-Timemy}, A.~H.}, \bibinfo{author}{Bugmann, G.} \& \bibinfo{author}{Jackson, A.}
+\newblock \bibinfo{title}{A note on the probability distribution function of the surface electromyogram signal}.
+\newblock \emph{\bibinfo{journal}{Brain Research Bulletin}} \textbf{\bibinfo{volume}{90}}, \bibinfo{pages}{88--91} (\bibinfo{year}{2013}).
+
+\bibitem{sangerBayesianFilteringMyoelectric2007}
+\bibinfo{author}{Sanger, T.~D.}
+\newblock \bibinfo{title}{Bayesian {{Filtering}} of {{Myoelectric Signals}}}.
+\newblock \emph{\bibinfo{journal}{Journal of Neurophysiology}} \textbf{\bibinfo{volume}{97}}, \bibinfo{pages}{1839--1845} (\bibinfo{year}{2007}).
+
+\bibitem{mcinnesUMAPUniformManifold2018}
+\bibinfo{author}{McInnes, L.}, \bibinfo{author}{Healy, J.} \& \bibinfo{author}{Melville, J.}
+\newblock \bibinfo{title}{{{UMAP}}: {{Uniform Manifold Approximation}} and {{Projection}} for {{Dimension Reduction}}}  (\bibinfo{year}{2018}).
+
+\bibitem{eschenburg2022}
+\bibinfo{author}{Eschenburg, K.} (\bibinfo{year}{2022}).
+
+\bibitem{scholzUncontrolledManifoldConcept1999}
+\bibinfo{author}{Scholz, J.~P.} \& \bibinfo{author}{Sch{\"o}ner, G.}
+\newblock \bibinfo{title}{The uncontrolled manifold concept: Identifying control variables for a functional task}.
+\newblock \emph{\bibinfo{journal}{Experimental Brain Research}} \textbf{\bibinfo{volume}{126}}, \bibinfo{pages}{289--306} (\bibinfo{year}{1999}).
+
+\bibitem{nazarpourNoteProbabilityDistribution2013}
+\bibinfo{author}{Nazarpour, K.}, \bibinfo{author}{{Al-Timemy}, A.~H.}, \bibinfo{author}{Bugmann, G.} \& \bibinfo{author}{Jackson, A.}
+\newblock \bibinfo{title}{A note on the probability distribution function of the surface electromyogram signal}.
+\newblock \emph{\bibinfo{journal}{Brain Research Bulletin}} \textbf{\bibinfo{volume}{90}}, \bibinfo{pages}{88--91} (\bibinfo{year}{2013}).
+
+\bibitem{vujaklijaOnlineMappingEMG2018}
+\bibinfo{author}{Vujaklija, I.} \emph{et~al.}
+\newblock \bibinfo{title}{Online mapping of {{EMG}} signals into kinematics by autoencoding}.
+\newblock \emph{\bibinfo{journal}{Journal of NeuroEngineering and Rehabilitation}} \textbf{\bibinfo{volume}{15}}, \bibinfo{pages}{21} (\bibinfo{year}{2018}).
+
+\bibitem{mcnameeHierarchicalModelbasedPolicy2020b}
+\bibinfo{author}{McNamee, D.}
+\newblock \bibinfo{title}{Hierarchical model-based policy optimization: From actions to action sequences and back} (\bibinfo{year}{2020}).
+\newblock \eprint{1912.01448}.
+
+\bibitem{mcnameeCharacterizingOptimalHierarchical2017a}
+\bibinfo{author}{McNamee, D.}
+\newblock \bibinfo{title}{Characterizing optimal hierarchical policy inference on graphs via non-equilibrium thermodynamics} (\bibinfo{year}{2017}).
+\newblock \eprint{1801.00048}.
+
+\bibitem{onkenUsingMatrixTensor2016}
+\bibinfo{author}{Onken, A.} \emph{et~al.}
+\newblock \bibinfo{title}{Using {{Matrix}} and {{Tensor Factorizations}} for the {{Single-Trial Analysis}} of {{Population Spike Trains}}}.
+\newblock \emph{\bibinfo{journal}{PLOS Computational Biology}} \textbf{\bibinfo{volume}{12}}, \bibinfo{pages}{e1005189} (\bibinfo{year}{2016}).
+
+\bibitem{pachitariuSpikeSortingKilosort42024}
+\bibinfo{author}{Pachitariu, M.}, \bibinfo{author}{Sridhar, S.}, \bibinfo{author}{Pennington, J.} \& \bibinfo{author}{Stringer, C.}
+\newblock \bibinfo{title}{Spike sorting with {{Kilosort4}}}.
+\newblock \emph{\bibinfo{journal}{Nature Methods}}  (\bibinfo{year}{2024}).
+
+\bibitem{digeUnsupervisedBayesianDecomposition2010}
+\bibinfo{author}{{Di Ge}}, \bibinfo{author}{Le~Carpentier, E.} \& \bibinfo{author}{Farina, D.}
+\newblock \bibinfo{title}{Unsupervised {{Bayesian Decomposition}} of {{Multiunit EMG Recordings Using Tabu Search}}}.
+\newblock \emph{\bibinfo{journal}{IEEE Transactions on Biomedical Engineering}} \textbf{\bibinfo{volume}{57}}, \bibinfo{pages}{561--571} (\bibinfo{year}{2010}).
+
+\bibitem{mendezguerraNoninvasiveRealtimeAccess2021}
+\bibinfo{author}{Mendez~Guerra, I.}, \bibinfo{author}{Barsakcioglu, D.~Y.}, \bibinfo{author}{Vujaklija, I.}, \bibinfo{author}{Wetmore, D.~Z.} \& \bibinfo{author}{Farina, D.}
+\newblock \bibinfo{title}{Non-invasive real-time access to the output of the spinal cord via a wrist wearable interface}.
+\newblock \bibinfo{type}{Preprint}, \bibinfo{institution}{Neuroscience} (\bibinfo{year}{2021}).
+
+\bibitem{nemenmanFluctuationDissipationTheoremModels2005}
+\bibinfo{author}{Nemenman, I.}
+\newblock \bibinfo{title}{Fluctuation-{{Dissipation Theorem}} and {{Models}} of {{Learning}}}.
+\newblock \emph{\bibinfo{journal}{Neural Computation}} \textbf{\bibinfo{volume}{17}}, \bibinfo{pages}{2006--2033} (\bibinfo{year}{2005}).
+
+\bibitem{sohl-dicksteinDeepUnsupervisedLearning2015}
+\bibinfo{author}{{Sohl-Dickstein}, J.}, \bibinfo{author}{Weiss, E.~A.}, \bibinfo{author}{Maheswaranathan, N.} \& \bibinfo{author}{Ganguli, S.}
+\newblock \bibinfo{title}{Deep {{Unsupervised Learning}} using {{Nonequilibrium Thermodynamics}}} (\bibinfo{year}{2015}).
+\newblock \eprint{1503.03585}.
+
+\bibitem{barachantCommonSpatialPattern2010}
+\bibinfo{author}{Barachant, A.}, \bibinfo{author}{Bon, S.}, \bibinfo{author}{Congedo, M.} \& \bibinfo{author}{Jutten, C.}
+\newblock \bibinfo{title}{Common {{Spatial Pattern}} revisited by {{Riemannian}} geometry}.
+\newblock In \emph{\bibinfo{booktitle}{2010 {{IEEE International Workshop}} on {{Multimedia Signal Processing}}}}, \bibinfo{pages}{472--476} (\bibinfo{publisher}{IEEE}, \bibinfo{address}{Saint-Malo, France}, \bibinfo{year}{2010}).
+
+\bibitem{barachantClassificationCovarianceMatrices2013}
+\bibinfo{author}{Barachant, A.}, \bibinfo{author}{Bonnet, S.}, \bibinfo{author}{Congedo, M.} \& \bibinfo{author}{Jutten, C.}
+\newblock \bibinfo{title}{Classification of covariance matrices using a {{Riemannian-based}} kernel for {{BCI}} applications}.
+\newblock \emph{\bibinfo{journal}{Neurocomputing}} \textbf{\bibinfo{volume}{112}}, \bibinfo{pages}{172--178} (\bibinfo{year}{2013}).
+
+\bibitem{yangTheoreticalPerspectivesActive2016}
+\bibinfo{author}{Yang, S. C.-H.}, \bibinfo{author}{Wolpert, D.~M.} \& \bibinfo{author}{Lengyel, M.}
+\newblock \bibinfo{title}{Theoretical perspectives on active sensing}.
+\newblock \emph{\bibinfo{journal}{Current Opinion in Behavioral Sciences}} \textbf{\bibinfo{volume}{11}}, \bibinfo{pages}{100--108} (\bibinfo{year}{2016}).
+
+\bibitem{huangActiveLearningLearning2008}
+\bibinfo{author}{Huang, V.~S.}, \bibinfo{author}{Shadmehr, R.} \& \bibinfo{author}{Diedrichsen, J.}
+\newblock \bibinfo{title}{Active {{Learning}}: {{Learning}} a {{Motor Skill Without}} a {{Coach}}}.
+\newblock \emph{\bibinfo{journal}{Journal of Neurophysiology}} \textbf{\bibinfo{volume}{100}}, \bibinfo{pages}{879--887} (\bibinfo{year}{2008}).
 
 \end{thebibliography}

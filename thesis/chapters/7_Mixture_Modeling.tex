@@ -15,104 +15,87 @@
 
 
 
-\section{GMMs vs PCA}
+\section{Mixtures of Gaussians}
 
+Gaussian mixture models (GMMs) are used to model distributions with multimodality, where the generating process underlying the data is composed of multiple modes of activity arranged across the dimensions of sampled space. In our task, we are peering through a relatively brief window in time to view a process of activation along the spatial dimensions of our recorded EMG signal. As subjects learn, we hypothesize that they will identify modes of activity (mixture policies) which are rewarding, and they will attempt to reliably recall these modes to collect reward. This framing of the task implies that the variability not only decreases, as we have shown, but separates into rewarding modes across learning. 
 
-\begin{itemize}
-  \setlength\itemsep{0em}
-  \item We're fitting Gaussian mixture models to our data: movement sessions, calibration sessions, and 5 ``chunks'' of target task data, each with approximately the same number of samples as each other as well as the movements and calibration datasets. We chose 12 components for GMMs as this is the hypothetical ``perfect'' mixture solution: one component per target, a bespoke solution for each individual goal. We used a Bayesian approach with a Dirichlet process prior for the weight distribution. Our parameters encourage, but do not force, mixture weights which are sparse, meaning it will bias towards fewer active (high weight) components. We see that in practice, despite this encouragement, components are seldom set to near zero weight when fitting.
-  \item GMMs are fit on log-transformed data to take advantage of the lognormality.
-  \item GMM fitting protocol:
-  \begin{itemize}
-    \item log transform data
-    \item fit the mixture model with 12 components
-    \item draw samples from model
-    \item exponentiate the moments of the model components (undo the log transformation) to plot means and covariances in 2D
-    \item exponentiate drawn samples to plot in 2D
-  \end{itemize}
-  \item Comparing PCA and GMMs \Cref{fig:gmm_vs_pca}
-  \begin{itemize}
-    \item PCA is essentially fitting a single Gaussian, GMMs are fitting multiple Gaussians at once, much more expressive
-    \item Comparing covariances, we see how PCA, by design, extracts ``broader'', smoother components while GMMs are more specific aspects of the dataset. This means that we expect to find higher subspace confinement with GMMs and cannot directly compare subspace confinement between PCA and GMMs. 
-    \item \textbf{TODO}: Because we're not comparing PCA and GMMs directly, we should dig into PCA! Don't just say ``hey we can't use PCA'', use PCA as a starting point that's literally a broader view, then zoom in with the GMMs! Do this in the previous chapter.
-    \item \textbf{TODO}: Separate the colormaps of the two columns in \Cref{fig:gmm_vs_pca}, it doesn't make sense to share the scale as these will have different variances. The PCA variance is lower because the variance there is additive to reconstruct the empirical covariance.
-  \end{itemize}
-  \item \textbf{TODO}: Are we clearly explaining the main hypothesis that subjects who are less ``constrained'' are expected to perform better? And how this constraint arises?
-  \item \textbf{TODO}: With the GMMs, we're trying to dig into subjects' movement ``policies'' to better understand their structure. The GMMs give us statistics on the EMG distributions that we can compare across subjects and across time. By better visualizing the components of the models, we might be able to discuss whether subjects are choosing from a repertoire of policies more as a search problem, or building solutions to the target task from a mixture. We kind of see evidence of the latter in \Cref{fig:mean_trajectories} but this could be an artefact of how we're time-normalizing and averaging that data. \textbf{Visualize the PCA and GMM spatial modes for a few subjects and discuss similarities and differences of these.}
-  % Hypothesis: subjects are doing everything all at once– theyre internalizing the decoder by learning an internal model (a mapping from targets to movements) of their new environment, and theyre using targets as cues to remember discrete movements. This is highlighted when subjects make incorrect movements– how they recover from these mistakes will highlight the difference between an internal model and model-free learning.
-\end{itemize}
+Gaussian mixture models are probability distributions of the form
+%
+\begin{align}
+  {\displaystyle p({\boldsymbol {\theta }} | \boldsymbol{x} )=\sum _{i=1}^{K}\phi _{i}{\mathcal {N}}({\boldsymbol {\mu _{i},\Sigma _{i}}})}
+\end{align}
+%
+where $\boldsymbol{x}$ is the data which the model is conditioned over, $\boldsymbol{\theta}$ is the set of parameters of the model, and $K$ is the chosen number of mixture modes; $\phi_i$, $\mu_i$, and $\Sigma_i$ are the weight, mean, and covariance of mixture mode $i$.
 
+% PDF when transforming gaussian rv to log-gaussian rv https://stats.stackexchange.com/questions/214997/multivariate-log-normal-probabiltiy-density-function-pdf
+% PDF when exponentiating gaussian to get lognormal? gauhttps://stats.stackexchange.com/questions/89970/exponential-of-a-standard-normal-random-variable
 
+We use Gaussian mixtures not necessarily to find a model which generalizes well in order to, for example, classify new data. We use mixture models instead as a tool to capture statistics of our datasets over time. We expect our models to be ``overfit,'' in the sense that we are not concerned with an optimal fit criteria over our parameters such as the Bayesian Information Criterion. Instead, we will choose parameters based on our prior knowledge and hold these constant across subjects and conditions for direct comparisons between conditions.
 
-\begin{figure}[H]%[tph]
-  \centering
-    \includegraphics[height=0.8\textheight]{more_results/gmms/gmm_vs_pca.pdf}
-    \caption[GMMs and PCA Covariance]{Compare the covariances of GMM fits to the covariances of individual PCA modes.}\label{fig:gmm_vs_pca}
-\end{figure}
-
-
-
-\section{Visualizing GMMs}
-
-\begin{itemize}
-  \setlength\itemsep{0em}
-  \item Examples of movement, calibration, and trial models \Cref{fig:example_prior_gmms,fig:example_1_trial_data_gmms}
-  \item \textbf{TODO}: combine \Cref{fig:example_gmms,fig:example_trial_gmms}, use the connecting lines to explain how we're pairing the means of the components including the movement and calibration models. Change the targets to unweighted (too much information)
-  \item Point out salient features of these models: that by eye we seem to be capturing the features of the trajectories mentioned previously: the lobed pattern of the data, samples falling between targets often lead to hits, because the target has a radius, and the hit counts when the cursor collides with the target's edge.
-  \item \textbf{TODO}: Sample from the model and compare the performance of the model to the subject's performance in terms of hits and reward. This would serve as a practical goodness of fit test and give us better grounds to assess the model fits.
-\end{itemize}
-
-How to transform Gaussians into 2D
-  
+To fit our Gaussian mixture models, we used the variational Bayes approach such that we could influence the fits through the choice of prior distributions. We chose to constrain the models to 12 mixture modes, which reflects our intuition for the solution to the task: 12 unique modal solutions, one for each target. For a prior on the weights, we chose, after experimentation, a Dirichlet process prior with a low weight concentration parameter. These parameters encourage, but do not force, mixture weights which are sparse, biasing the model towards fewer active (high weight) components. In practice we find that, despite this encouragement, component weights are seldom set to near zero when fitting. This reflects the dimensionality of the problem (64 dimensions of EMG), where activity in the relatively high dimensional space is sparse leading to more modes remaining active when fitting. All data is log-transformed before fitting to take advantage of the log-normality of the EMG data. To ``pull back'' the fit to the original lognormal EMG space we can exponentially transform the mean and covariance of each GMM mode using
+%
+\begin{align}
+  \mu_i^l &= e^{{\mu}_i + \frac{1}{2}\Sigma_{ii}}\\
+  \Sigma_{ij}^l &= \left(e^{\mu_i + \mu_j + \frac{1}{2}\left(\Sigma{ii} + \Sigma{jj}\right)}\right)\left(e^{\Sigma_{ij}} - 1\right).
+  % cov[i,j] = (np.exp(normal_mean[i] + normal_mean[j] + 0.5*(normal_covariance[i,i] + normal_covariance[j,j]))*(np.exp(normal_covariance[i,j]) - 1))
+\end{align}
+%
+where $\mu_i^l$ and $\Sigma_{ij}^l$ are the lognormal moments while the other parameters are as defined in the GMM model. Note that when we sample from the model, we sample from the log-transformed version and exponentiate to pull back to the lognormal space. These lognormal statistics are used only for visualization. We can decode our GMM moments using the subject's decoder by linearly transforming our Gaussian moments as in
+%
 \begin{align}
     x &\propto N(\mu, \Sigma) \\ 
     y &= Ax + b \\ 
   y &\propto N(A\mu + b, A\Sigma A^T) \\ 
 \end{align}
+%
+where $A$ stands for the decoder in the projection.
 
+% - [WRITING] What does effective rank mean? Lower effective rank = mean of the rank of individual GMM components is small, more concentrated or directed in terms of spatial activity. All of the components could be the same, it's a measure of how "specific" the components are on average.
 
-How to exponentially transform lognormal Gaussians ``back'' to the original, lognormal space:
+In \Cref{fig:gmm_vs_pca}, we compare PCA to our mixture model fits for a representative subject's first group of target task trials using the reconstructed covariance of the principle subspace with the covariances of the modes of a mixture model and the data covariance. This serves as a representative set of statistics confirming the validity of our model fits. In the PCA column (right), we visualize the top three principle components as rank-1 covariances, noting the singular value magnitude of each. PCA, by design, extracts ``broader'', smoother components in an attempt to reconstruct the broad space of activity, reflected in the ``offset''-like character of the top component, with many active channels. Subsequent modes hone in on groups of active channels to reflect mode-like activations. In the bottom row we confirm that PCA reconstructs the empirical covariance well with few components, as seen earlier in the subspace confinement comparisons. GMMs naturally find more specific aspects of the dataset, as reflected in the covariances of the three highest weighted modes shown in left column. Mixture models provide a finer grained structure of subjects' movement ``policies'', yielding statistics on the EMG distributions that we can compare across subjects and across time. 
 
-\begin{align}
-  \mu_i &= e^{{\mu^l}_i + \frac{1}{2}\Sigma^l_{ii}}\\
-  \Sigma_{ij} &= \left(e^{\mu^l_i + \mu^l_j + \frac{1}{2}\left(\Sigma^l{ii} + \Sigma^l{jj}\right)}\right)\left(e^{\Sigma^l_{ij}} - 1\right)
-  % cov[i,j] = (np.exp(normal_mean[i] + normal_mean[j] + 0.5*(normal_covariance[i,i] + normal_covariance[j,j]))*(np.exp(normal_covariance[i,j]) - 1))
-\end{align}
+% By better visualizing the components of the models, we can determine whether subjects are choosing from a repertoire of policies more as a search problem, or building solutions to the target task from a mixture. We kind of see evidence of the latter in \Cref{fig:mean_trajectories} but this could be an artefact of how we're time-normalizing and averaging that data. \textbf{Visualize the PCA and GMM spatial modes for a few subjects and discuss similarities and differences of these.}
 
+% This is highlighted when subjects make incorrect movements– how they recover from these mistakes will highlight the difference between an internal model and model-free learning.
 
-% PDF when transforming gaussian rv to log-gaussian rv https://stats.stackexchange.com/questions/214997/multivariate-log-normal-probabiltiy-density-function-pdf
-% PDF when exponentiating gaussian to get lognormal? gauhttps://stats.stackexchange.com/questions/89970/exponential-of-a-standard-normal-random-variable
+\begin{figure}[!htb]
+  \centering
+    \includegraphics[height=0.8\textheight]{more_results/gmms/gmm_vs_pca.pdf}
+    \caption[GMM and PCA covariances]{(left) Covariances of GMM modes fit a representative subject's first block of target task trials. (right) Rank-1 covariances formed from principle components fit to the same data. (bottom row) Confirmation that with just three principle components, the subject's empirical covariance can be accurately reconstructed.}\label{fig:gmm_vs_pca}
+\end{figure}
 
+In \Cref{fig:example_prior_gmms} and \Cref{fig:example_1_trial_data_gmms}, we visualize data from a representative subject in the movement, calibration, and target tasks. Comparing the data from the movement and calibration task, we can see the underlying structure of the EMG manifold projected onto the task plane, where the natural movements are much less variable than activations in the calibration task. The shape of the ``lobes'', however, can be seen to be similar. The targets are shown in these figures, with size proportional to performance for each target. We see that performance is clearly hampered by the constraints imposed by the underlying EMG space on the task, noticeably in the top-left and top-right targets. The center of the data appears to be shifted; this is due to the lack of feedback in the calibration task relative to the target task. Without feedback, subjects tend to hold a baseline level of activity, offsetting their baseline task space activity. The mixture model means are shown with error ellipses at half of a standard deviation for each decoded covariance.
+
+% \textbf{TODO}: Sample from the model and compare the performance of the model to the subject's performance in terms of hits and reward. This would serve as a practical goodness of fit test and give us better grounds to assess the model fits.
 
 % PRIOR %
-\begin{figure}[H]%[tph]
+\begin{sidewaysfigure}[!htb]
   \centering
   \begin{minipage}{0.49\textwidth}
-    \includegraphics[width=\textwidth]{more_results/gmms/subject_10_movement_gmm.pdf}
+    \includegraphics[width=\textwidth]{more_results/gmms/subject_9_movement_gmm.pdf}
     \subcaption{}
   \end{minipage}%
   \begin{minipage}{0.49\textwidth}
     \includegraphics[width=\textwidth]{more_results/gmms/subject_9_calibration_gmm.pdf}
     \subcaption{}
   \end{minipage}
-  \caption[Example prior GMMs]{CAPTION}\label{fig:example_prior_gmms}
-\end{figure}
+  \caption[Subject movement and calibration data overlaid on Gaussian mixture]{Data from a representative subject's EMG activity in the (a) movement and (b) calibraion tasks. Gaussian mixture components fit to each dataset are shown. These mixtures are fit in EMG space and decoded using the subject's decoder. Components means are plotted with points surrounded by error ellipses at one-half standard deviation. Targets are plotted with radius proportional to performance within that trial block.}\label{fig:example_prior_gmms}
+\end{sidewaysfigure}
 
-
-\begin{figure}[H]%[tph]
+\begin{figure}[!htb]
   \centering
     \includegraphics[height=0.8\textheight]{more_results/gmms/subject_1_trial_gmm.pdf}
-    \caption[Subject 1 trial GMMs overlayed on trajectories]{CAPTION}\label{fig:example_1_trial_data_gmms}
+    \caption[Subject trial data overlaid on Gaussian mixture]{Data from the same representative subject as shown in \Cref{fig:example_prior_gmms}. EMG activity shown is from the target task, grouped into five blocks of trials over learning. Gaussian mixture components fit to each block of trials are shown. These mixtures are fit in EMG space and decoded using the subject's decoder. Components means are plotted with points surrounded by error ellipses at one-half standard deviation. Targets are plotted with radius proportional to performance within that trial block.}\label{fig:example_1_trial_data_gmms}
 \end{figure}
 
-% \begin{figure}[H]%[tph]
+% \begin{figure}[!htb]
 %   \centering
 %     \includegraphics[height=0.8\textheight]{more_results/gmms/subject_35_trial_gmm.pdf}
 %     \caption[Subject 35 trial GMMs overlayed on trajectories]{CAPTION}\label{fig:example_35_trial_data_gmms}
 % \end{figure}
 
 
-% \begin{figure}[H]%[tph]
+% \begin{figure}[!htb]
 %   \centering
 %   \begin{minipage}{0.49\textwidth}
 %     \includegraphics[width=\textwidth]{more_results/gmms/subject_1_gmms.pdf}
@@ -125,135 +108,295 @@ How to exponentially transform lognormal Gaussians ``back'' to the original, log
 %   \caption[Example GMMs for subjects 1 and 14]{CAPTION}\label{fig:example_gmms}
 % \end{figure}
 
+In \Cref{fig:example_trial_gmms}, we visualize each mixture model for movement, calibration, and five target task trial groups from two representative subjects on the (a) higher and (b) lower ends of performance. Error ellipses at one-half of standard deviation are shown around means of each mixture model's components. Lines are shown connecting mixture components paired by Wasserstein distance in EMG space. In some cases, these pairings may seem counter-intuitive, but this is due to the projection into the task plane. Because the decoder is aligned somewhat arbitrarily to the EMG manifold, relative to the data shown, the projections here may skew proximity in EMG space. These visualizations give us an intuition for the ``relaxation'' of subjects into their target task modes, and the differences in variability between higher and lower performing subjects.
 
-\begin{figure}[H]%[tph]
+\begin{sidewaysfigure}[!htb]
   \centering
-  \begin{minipage}{\textwidth}
+  \begin{minipage}{0.49\linewidth}
+    \centering
     \includegraphics[width=\textwidth]{more_results/gmms/subject_37_gmms.pdf}
     \subcaption{}
-  \end{minipage}\\%
-  \begin{minipage}{\textwidth}
+  \end{minipage}%
+  \begin{minipage}{0.49\linewidth}
+    \centering
     \includegraphics[width=\textwidth]{more_results/gmms/subject_42_gmms.pdf}
     \subcaption{}
   \end{minipage}
-  \caption[Example trial GMMs for subjects 37 and 42]{CAPTION}\label{fig:example_trial_gmms}
-\end{figure}
+  \caption[Gaussian mixtures models showing component pairs]{Mixture models fit to two representative subjects' EMG activities across the movement, calibration, and target task. (a) A higher performing subject. (b) A lower performing subject. The target task trials were grouped into five blocks of trials over learning. Gaussian mixture components fit to each block of trials are shown. These mixtures are fit in EMG space and projected into the task space using the subject's decoder. Components means are plotted with points surrounded by error ellipses at one-half standard deviation. Targets are plotted with radius proportional to performance within that trial block.}\label{fig:example_trial_gmms}
+\end{sidewaysfigure}
 
 
 
-\section{GMM Pseudo-derivative}
 
 
-\begin{itemize}
-  \setlength\itemsep{0em}
-  \item We're interested here in how the GMMs change over the course of learning.
-  \item \textbf{TODO}: write down the math for this, difference of component means. Here we pair the means of each component from one model to the next using the Euclidean distance in EMG space, then we compute the Frobenius difference between those pairs' covariances. Then we take the mean of that Frobenius difference.
-  \item What we find: 
-  \begin{itemize}
-    \item Component differences appear to be exponential, so we log plot
-    \item We normalize here by ``mean model variance'', the mean of the sum of model component covariance traces in order to make a fair comparison between subjects
-    \item The mean inter-model difference over time tends to be lower for higher performers. This can be explained in two ways:
-    \begin{itemize}
-      \item The interesting way: higher performers find their target solutions quickly and stick with them, meaning the distribution of their activity over time, as described by the mixture models, does not change as much as lower performers, who change their activity more over time in an effort to discover task solutions
-      \item The uninteresting way: higher performers have lower variance EMG distributions, and thus have inherently lower magnitude differences in their models over time compared to their lower performing counterparts. This interpretation is weakened by normalizing by total variance.
-    \end{itemize}
-    \item Our interpretation is that higher performers change their activity less. This implies that they are either fortunate with their EMG distribution in hitting targets, but also suggests that they use their manifold and tweak it. They make more subtle corrections to their activity in order to increase their performance.
-  \end{itemize}
-  \item Wasserstein distance is a distance measure based on the theory of optimal transport. It is a method of measuring the difference between two probability distributions. We use it here to measure the difference between the natural movement and calibration EMG distributions to the first target task chunk of trials. \textbf{Result}: We see a weak correlation between calibration and the first chunk of target task trials, meaning that the similarity of the first target task trials with the calibration is lower for higher performers. We intepret this as: higher performers, which are able to decorrelate their EMG and thus produce a ``broader'' calibration dataset, have the ability to search and find solutions in their space more quicky, and thus produce more target task distributions which are more dissimilar from their calibration datasets, as opposed to lower performers, who are more constrained in their activity, and thus produce more similar activity distributions no matter the task at hand. They have, so to speak, fewer buttons they can press to achieve their goals.
-  % \item This might be explained by higher performing subject calibrations accessing more of the EMG space outright. That is, the similarity in these distributions reflects the subjects' manifold allowing that subject to more readily explore the space of task-relevant EMG activations, thus providing useful training data for the subject more quickly. A subject with a more constrained manifold will have a more difficult search problem to solve in the target task, lowering performance and leading to a difference in their first target task chunk of EMG activity. We can visualize this as the higher performer have a smoother EMG manifold with better coverage of the task relevant activity subspace, while the lower performer has a ``spikier'' manifold, requiring a deeper search to find and/or construct EMG solutions.
-  \item \textbf{TODO} Explain the concept of the subspaces sooner to nail home the spikiness point, as this is becoming critical for the throughline of the thesis? Have we adequately supported the spiky, constrained manifold?
-  \item \textbf{TODO?} Show wasserstein pairwise statistics for all trial chunks? Keep these plots, but show the significance matrix?
-\end{itemize}
 
 
-\begin{figure}[H]%[tph]
+
+
+\section{Mixture Entropy \& Total Variance}
+
+With mixture models fit to data, we can use these distributions to estimate the entropy of our data overtime. Entropy is a measure of uncertainty or information content. There is no closed-form expression for the entropy $h(X)$ of a Gaussian mixture random variable, but an lower bound $h_l(X)$ on the entropy can be written
+%
+\begin{align}
+  h(\mathcal{G}) &\geq h_l(\mathcal{G}) \\ 
+  h(\mathcal{G}) &= h\left[\sum_{i}^{k}{w_i\mathcal{N}(\mu_i,\Sigma_i)}\right]\\
+  h_l(\mathcal{G}) &= \sum_i^k{w_i h(\mathcal{N}(\mu_i,\Sigma_i))} \\
+  &= \sum_i^k{w_i \left[\frac{1}{2}\log{(|\Sigma_i|)} + \frac{d}{2}\left(1 + \log(2\pi e)\right)\right]}.
+\end{align}
+%
+In the case that our components are well separated, we expect this lower bound to be near the full entropy. While this isn't always the case in our data, note that in the case of overlapping modes, underestimating the entropy is not critical to our purposes as we use entropy to formalize a notion of specificity in subject activity. The higher the entropy, the less specific the activations of subjects will be. At the extremes, minimizing entropy of the mixture take the form of delta functions in the EMG space for perfectly precise movements. One can imagine an ideal subject choosing the exactly correct EMG activations every trial, conditioned on the target. 
+
+The mixture entropy lower bound is proportional to the sum of the logarithm of the determinant of the mixture components covariances. For positive semi-definite matrices, the determinant and the trace are two different but deeply related concepts. In the specific case where the SPD matrix is a covariance, the trace corresponds to the total sample variance of the multivariate random variable. We will report here measures of entropy and scatter based on the determinant and the trace:
+%
+\begin{align}
+  e(\mathcal{G}) &=  \sum_i^k{w_i \log{(|\Sigma_i|^{1/d})}} \\
+  v(\mathcal{G}) &=  \sum_i^k{w_i \mathrm{tr}(\Sigma_i)/d} \\
+\end{align}\label{eq:mixture_metrics}
+%
+The intuition behind these two metrics is connected to the action of the product, in the case of the determinant, and the sum, in the case of the trace. The product will factor in small values of variance, and take into account the covariance between spatial dimensions. The sum will display a lesser the effect from small values of variance, being dominated by spatial dimensions of high variance.
+
+As shown in \Cref{fig:gmm_entropies}, we find that the calibration dataset has the highest entropy on average over subjects, while movement and the last chunk of target task trials are the lowest. This accords with our ideas of these tasks: the calibration tasks rewards search and exploration as designed, while the movement task is made up of well-honed movements, and the target task shows a reduction in entropy from the first block to the last block. In \Cref{fig:gmm_variances}, we find a similar trend with greater difference between the first trial block and last trial blocks. Additionally, we find a difference between the natural movement model variance and the later trial blocks. This implies that on average over subjects, the later trials are even less variable than the movement trials. Task reward is reinforcing decreased variability across all spatial dimensions of the task compared to an ``open-loop'' task, without reinforcement, as in the movement block.
+
+Comparing entropy and variance to reward, we hypothesize that greater entropy in the calibration task will be predictive of higher reward, as the ability of a subject to ``cover'' more of the space, in effect placing probability mass across dimensions of EMG activity, is predictive of an ability to ``cover'' EMG activities which are task-relevant and rewarding. We expect higher performing subjects to have lower entropy as they move towards the ideal, mixture-of-delta-functions solution. In terms of variance, we expect to recover our earlier findings from PCA, where higher performers tend to show lower overall spatial variance in their target task trials. We expect little predictive power from the movement dataset, while higher variance in the calibration dataset may imply greater ability to reach across spatial dimensions of EMG, the argument for entropy.
+
+As shown in \Cref{fig:gmm_entropy_vs_reward}, we see a weak correlation between entropy and reward for the calibration as well as the first chunk of target task trials. We interpret this result as relating subjects' ability to decorrelate their activity in the calibration task, to maximally explore in first chunk of the target task to find rewarding EMG activations. In \Cref{fig:gmm_variance_vs_reward}, however, we find no correlation between total variance and reward. This implies that higher performing subjects are no more variable, in terms of the total variance of their mixture model components, than lower performers, but that the utility of the variability of higher performers is indicative of higher rewarding movements. That is, variability is not enough-- variance along a variety of task dimensions is predictive of reward. This is akin to idea of ``maximum entropy'' policies in reinforcement learning, or entropy regularization in general machine learning, where it is advantageous to maximize entropy in order to maintain exploration while balancing this maximization with taking rewarding actions.
+
+Early in learning, higher entropy mixtures are indicative of greater mean reward as these are rewarding searches in EMG space as in the calibration case. Meanwhile, lower variability implies greater reward as subjects are who less generally variable are more likely to reach rewarding activations as opposed to noise. In this way, entropy and total variance build a complementary picture of subjects which are able to make meaningful but exploratory actions, balancing exploration and exploitation, will be more performant overall. 
+
+In \Cref{fig:gmm_entropy_diffs} and \Cref{fig:gmm_variance_diffs}, we visualize the mean of the differences in entropy and total variance between blocks of trials shown in prior figures. This works as a coarse mean over the derivative; negative values indicate reduction over time, while the magnitude indicates the speed of reduction. We find that higher performers tend to decrease total variance over learning, confirming prior results, while also reducing entropy over time. These results are in accordance with our working theory that performance in the task results in an overall spatial reduction in variability and thus uncertainty in movements. This applies, on average, across spatial dimensions of EMG. Subjects are identifying solutions to their task, and working to reliably repeat those solutions. In other words, the action distribution conditioned on a particular target narrows across learning, both in task space and within the ambient EMG space.
+
+\begin{figure}[!htb]
   \centering
-    \includegraphics[width=\textwidth]{more_results/gmm_diffs/mean_gmm_differences.pdf}
-    \caption[Mean GMM Frobenius differences over subjects]{Mean GMM differences over subjects for the target task}\label{fig:gmm_Fr_diffs}
+  \begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{more_results/gmms/entropy_over_models.pdf}
+    \subcaption{}
+  \end{minipage}\\%
+  \begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{more_results/gmms/model_entropy_pvalues.png}
+    \subcaption{}
+  \end{minipage}
+  \caption[Entropy of subject GMMs]{(a) Mixture entropy as defined in \Cref{eq:mixture_metrics} over mixture models for all subjects (grey), with means and standard deviations over subjects (red). (b) Significance matrix for comparison of means over subjects pairwise across tasks.}\label{fig:gmm_entropies}
 \end{figure}
 
-\begin{figure}[H]%[tph]
+\begin{figure}[!htb]
   \centering
-    \includegraphics[width=\textwidth]{more_results/gmm_diffs/mean_gmm_wasserstein.pdf}
-    \caption[Mean GMM Wasserstein distance differences over subjects]{Mean GMM Wasserstein distance differences over subjects for the target task}\label{fig:gmm_w2_diffs}
+  \begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{more_results/gmms/total_variance_over_models.pdf}
+    \subcaption{}
+  \end{minipage}\\%
+  \begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{more_results/gmms/model_total_variance_pvalues.png}
+    \subcaption{}
+  \end{minipage}
+  \caption[Total variance of subject GMMs]{(a) Total mixture entropy as defined in \Cref{eq:mixture_metrics} over mixture models for each task and for each subject (grey), with means and standard deviations over subjects (red). (b) Significance matrix for comparison of means over subjects pairwise across tasks.}\label{fig:gmm_variances}
 \end{figure}
 
-\begin{figure}[H]%[tph]
-  \centering
-    \includegraphics[width=\textwidth]{more_results/gmms/gmm_wasserstein.pdf}
-    \caption[Wasserstein distance between Movement, Calibration, and Trial GMMs]{Wasserstein distance between GMMs Movement, Calibration, and Trial GMMs}\label{fig:gmm_w2}
-\end{figure}
-
-
-\section{GMM Effective Rank}
-
-\begin{itemize}
-  \setlength\itemsep{0em}
-  \item This is the sister figure to the PCA version in \Cref{fig:pca_variance}
-  \item \textbf{TODO}: When we introduce this ``top two singular value'' concept, connect it to the toy mode \Cref{fig:toy_model} and the concept of ``effective rank''. That this is a proxy for the rank of the components which make up the mixture of modes in the dataset. PCA can't unmix these modes, so we use GMMs to try to unmix.
-  \item This figure shows the average, over model components, for each mixture model, of the explained variance of the top two singular values. This shows exactly what we expect relative to the PCA version of the analysis, that is, an inversion. Here, the calibration dataset is the highest (significantly, shown in \Cref{fig:gmm_rank_pvalues}) as the GMM is able to capture the low-rank components of the activity as subjects attempt to decorrelate their EMG in that task, while the other models reflect the lack of subspace constraint. In the target task, subjects' modes become on average less subspace constrained. 
-  \item Thinking about what happens to model components as subjects learn, together with the knowledge that over learning we see variance dropping, this points to what's happening is that instead of the ratio the variance lying much more along one or a few dimensions, over learning solutions to the target task arise, meaning we have more concentrated modes at those solutions where the variance is shared more equally along dimensions. 
-  \item \textbf{TODO} Visualize the model components over time for one subject so we can get an idea about the change happening over time on a per-subject basis, this will help us build a more intuitive explanation!
-  \item \textbf{TODO} keep thinking about this; not yet a very clear explanation. Needs to relate clearly to the mean and covariance of the model components.
-  \item In \Cref{fig:rank_vs_reward}, we're plotting the effect rank of each model for each subject against subjects' mean reward. We find a weak negative correlation between the mean effective ranks of each model with reward, suggesting that higher performing subjects are less subspace constrained. This makes sense intuitively: the underlying data manifold is a strong predictor of success in the task. If you have better, more available, access to rewarded EMG states, you will perform better on the task. We don't see this with movement data, which we interpret as pointing to the lack of relationship between the natural movement and the task. Again, this is a positive result as it points to the fact that the calibration and target tasks are distinct from common natural hand movements.
-  \item \textbf{TODO} Plot PCA rank vs. reward! Same plot as the GMM models. We expect these to agree with the GMM results, as they're capturing a similar phenomenon, opposed to the comparison between models, which are capturing opposite features of the distributions.
-\end{itemize}
-
-\begin{figure}[H]%[tph]
-  \centering
-    \includegraphics[width=\textwidth]{more_results/gmms/gmm_rank.pdf}
-    \caption[GMM effective rank over subjects]{Effective rank of GMM models with means over subjects}\label{fig:gmm_rank}
-\end{figure}
-
-\begin{figure}[H]%[tph]
-  \centering
-    \includegraphics[width=\textwidth]{more_results/gmms/gmm_rank_pvalues.png}
-    \caption[GMM effective rank significance matrix]{Significance matrix for comparing subject means of effective rank of GMMs.}\label{fig:gmm_rank_pvalues}
-\end{figure}
-
-\begin{figure}[H]%[tph]
-  \centering
-    \includegraphics[width=\textwidth]{more_results/gmms/rank_vs_reward.pdf}
-    \caption[GMM effective rank versus subject reward]{GMM effective rank versus subject reward}\label{fig:rank_vs_reward}
-\end{figure}
-
-
-\section{GMM Entropy}
-
-\begin{itemize}
-  \item ``Total entropy'' is proportional to the sum of the logarithm of the determinant of the GMM components. The determinant is understood as the volume of the covariance, and thus gives us a measure of the total variance of each model.
-  \item We see only a weak correlation between entropy and reward for the calibration and the first chunk of target task trials. We interpret this as pointing to the necessity of subjects to decorrelate their activity in the calibration task, and to maximally explore in first chunk of the target task to find rewarding EMG activations. Those that are able to both tend to perform better in the target task. Later in the target task, we suggest that what matters more than exploration is refinement, or exploitation, of discovered activations.
-  \item We find, shown in \Cref{fig:gmm_entropies}, that the calibration dataset has the highest entropy on average over subjects, while movement and the last chunk of target task trials are the lowest. This accords with our ideas of these tasks: the calibration tasks rewards search and exploration as designed, while the movement task is made up of well-honed movements, and the target task shows a reduction in entropy, or variance, over time as subjects learn to achieve higher reward.
-  \item \Cref{fig:gmm_entropy_diffs} shows the mean of the difference in entropy between trial chunks, negative values thus indicated reduction in entropy over time. That is, the reduction in entropy of subjects' target task models correlates with overall performance in the task.
-  \item \textbf{TODO} Set up the idea that variance or entropy in the calibration task is good (e.g. in \Cref{chap:methods} when introducing the tasks).
-\end{itemize}
-
-\begin{figure}[H]%[tph]
+\begin{figure}[!htb]
   \centering
     \includegraphics[width=\textwidth]{more_results/gmms/entropy_gmms.pdf}
-    \caption[Entropy of subject GMMs versus subject reward]{Entropy of subject GMMs versus subject reward.}\label{fig:gmm_entropy_vs_reward}
+    \caption[Mixture entropy versus mean reward]{Entropy of each subject's mixture models versus subject reward for each task: movement, calibration, and five blocks of trials across the target task (circle markers). We perform linear regression for each of these tasks (dotted lines).}\label{fig:gmm_entropy_vs_reward}
 \end{figure}
 
-\begin{figure}[H]%[tph]
+\begin{figure}[!htb]
   \centering
-    \includegraphics[width=\textwidth]{more_results/gmms/entropy_over_models.pdf}
-    \caption[Entropy of subject GMMs]{GMM entropy over models for all subjects, and means over subjects.}\label{fig:gmm_entropies}
+    \includegraphics[width=\textwidth]{more_results/gmms/total_variance_gmms.pdf}
+    \caption[Mixture total variance versus mean reward]{Total variance of each subject's mixture models versus subject reward for each task: movement, calibration, and five blocks of trials across the target task (circle markers). We perform linear regression for each of these tasks (dotted lines).}\label{fig:gmm_variance_vs_reward}
 \end{figure}
 
-\begin{figure}[H]%[tph]
-  \centering
-    \includegraphics[width=\textwidth]{more_results/gmms/model_entropy_pvalues.png}
-    \caption[GMM entropy significance matrix]{Significance matrix for comparison of means over subjects.}\label{fig:gmm_entropy_pvalues}
-\end{figure}
-
-\begin{figure}[H]%[tph]
+\begin{figure}[!htb]
   \centering
     \includegraphics[width=\textwidth]{more_results/gmms/entropy_diffs.pdf}
-    \caption[Successive GMM entropy differences]{Mean GMM entropy differences over target task models. Negative values indicate that entropy is decreasing over time.}\label{fig:gmm_entropy_diffs}
+    \caption[Mean mixture entropy differences over target task blocks]{Mean mixture entropy differences over trial blocks of the target task. Each black marker is a subject's mean over tasks. Negative values indicate that entropy is decreasing over time. Linear regression shown in red.}\label{fig:gmm_entropy_diffs}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/gmms/total_variance_diffs.pdf}
+    \caption[Mean mixture total variance differences over target task blocks]{Mean mixture total variance differences over trial blocks of the target task. Each black marker is a subject's mean over tasks. Negative values indicate that entropy is decreasing over time. Linear regression shown in red.}\label{fig:gmm_variance_diffs}
 \end{figure}
 
 
 
 
-\include{end_of_chapter}
+
+
+
+
+
+
+
+\section{Mixture Subspace Confinement}
+
+In \Cref{chap:data_manifold}, we visualized the variance captured by the two-dimensional principle subspace of each task and trial block. For comparison, we compute the same metric here, taking a weighted mean over the mixture components for the same metric. We termed this ``subspace confinement'' to reflect the measurement of complexity of the dataset on the degree to which one is successful in finding a plane of maximum variance in the data. In the context of the entropy and total variance metrics used in this chapter, subspace confinement provides a kind of intermediate value which is related to the average magnitude of the top two eigenvalues over the mixture components, as opposed to the full sum (the total variance) or the product (the determinant). 
+
+As we're modeling the whole dataset with a single Gaussian as before, we are now separating the data into Gaussian modes. We thus hypothesize that these modes, as they afford greater expressivity to the model, to be less subspace confined on average than the single Gaussian model. This is due to each mode having it's own variance in orthogonal directions locally within the mode, as opposed to the entire dataset, where one orthogonal dimension dominates over all others, and the manifold is not conducive to to modeling with a single overall orthogonal subspace. With each mode, we gain a clearer picture of the spatial variability for that mode. In other words, as noted in \Cref{chap:data_manifold}, each manifold displays greaster sphericity as opposed to the overall dataset.
+
+% Connect back to the toy mode \Cref{fig:toy_model} and the concept of ``effective rank''. That this is a proxy for the rank of the components which make up the mixture of modes in the dataset. PCA can't unmix these modes, so we use GMMs to try to unmix.
+
+In \Cref{fig:gmm_rank} we find that indeed the calibration dataset is significantly higher in average confinement across subjects than all other tasks, as the mixture model attempts to capture the low-rank (less spherical) components of activity where subjects attempt to decorrelate their EMG in that task. In the target task, subjects' modes become on average less subspace constrained across learning. We can interpret this as a progression of subjects' activity modes ``settling'' around solutions, and thus the structure of that variability becoming more spherical around those solutions. Crucially, as we will explore in the next chapter, this implies that while total variance (as shown in \Cref{fig:gmm_variances}) decreases over learning, the structure of this variability broadens spatially, as opposed to focusing on particular spatial dimensions of variance. In other words, across learning the variance of each mode evolves from higher magnitudes across few dimensions to being more concentrated and shared more equally across dimensions.
+
+% Distribution of the eigenvalues of the covariances! Variance is the sum, entropy is the product
+
+In \Cref{fig:rank_vs_reward}, we plot subspace confinement of each model for each subject against subjects' mean reward. We hypothesize that we would see an increase in the effect of confinement across learning with increased reward, and this is what we found. There is a negative correlation between the mean effective ranks of each target task model with reward, such that that the degree to which subjects' solutions are less subspace constrained predicts higher performance. This is particular to the target task, we do not see a strong effect in the movement or calibration datasets. The target tasks are distinct from natural movements and the calibration tasks in this respect, as designed.
+
+\begin{figure}[!htb]
+  \begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{more_results/gmms/gmm_rank.pdf}
+    \subcaption{}
+  \end{minipage}\\%
+  \begin{minipage}{\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{more_results/gmms/gmm_rank_pvalues.png}
+    \subcaption{}
+  \end{minipage}
+  \caption[Mixture subspace confinement over subjects]{(a) Mean subspace confinement of mixture models (grey) for each task. Means are taken over subjects (red). (b) Significance matrix for the comparison of subject means pairwise across tasks.}\label{fig:gmm_rank}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/gmms/rank_vs_reward.pdf}
+    \caption[Mixture subspace confinement versus mean reward]{GMM effective rank versus subject reward}\label{fig:rank_vs_reward}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Optimal Transport of Mixtures over Learning}
+
+Using our mixture model parameters, we can ask what changes across learning in the space of these parameters, and is this change reliable over subjects? We hypothesize that subjects on average would become more self-similar over learning in terms of their mixture component means and covariances. We also hypothesize that higher-performing subjects would show greater similarity over learning, as lower performing subjects would maintain a degree of variability in their movements as they continued to search the space of solutions.
+
+The simplest method of computing differences across mixtures is directly in terms of means and covariances. For each pair of mixture models compared, say $i$ and $j$, the closest pairs of component means in EMG space from within each mixture were found by comparing all means between the two mixtures and finding $\min_{ij}||\mu^0_i - \mu^1_j||^2$. By pairing components across the two mixtures, we can compute the Frobenius norm of the difference between those pairs of covariances and take the mean over component pairs to find a mean distance. The Frobenius norm of the difference between two square matrices $A$ and $B$ of dimension $n$ is
+%
+\begin{align}
+  ||A-B||_F = \left(\sum_{i,j}^{n}{||a_{ij} - b_{ij}||^2}\right)^{\frac{1}{2}} = \sqrt{tr{((A-B)^T(A-B))}}
+\end{align}
+%
+and the mean
+%
+\begin{align}
+  F = \frac{1}{k}\sum_{i}^{k}(||\Sigma^{\mathcal{G_0}}_i-\Sigma^{\mathcal{G_1}}_i||_F)
+\end{align}
+%
+is taken over pairs of covariances $\Sigma^{\mathcal{G}}_i$ from each mixture $\mathcal{G}$ of $k$ components. In \Cref{fig:frobenius_diffs}, we visualize the mean Frobenius difference between mixture models. We find significant differences in the movement and calibration tasks over subjects, as well as between the calibration task and the trial groups. The divergence between the differences of subsequent trial groups is insignificant, implying that the trial data is itself more self-similar that what we find in the movement and calibration tasks.
+
+We then visualize the mean over the differences in trial groups for each subject against reward, to understand how the magnitude of the inter-group distance predicts performance. We find that lower performing subjects have exponentially higher mean inter-group distances than higher performing subjects, supporting the idea that higher performing subjects show more self-similarity in their activations than lower performings subjects. We speculate that lower performing subjects tend to maintain variability in an effort to balance exploration and exploitation in the task while higher performing subjects tend to minimize exploration as they attempt to minimize the variability of their solutions. This is in accordance with what we see in the \Cref{fig:gmm_entropy_diffs}, where the mixture models of lower performing subjects tend to maintain their entropy while higher performers tend to decrease entropy over learning.
+
+\begin{figure}[!htb]
+  \centering
+  \begin{minipage}{\textwidth}
+  \includegraphics[width=\textwidth]{more_results/gmm_diffs/frobenius_over_tasks.pdf}
+  \subcaption{}
+\end{minipage}\\%
+\begin{minipage}{\textwidth}
+  \centering
+  \includegraphics[width=0.7\textwidth]{more_results/gmm_diffs/frobenius_over_tasks_pvalues.png}
+  \subcaption{}
+    \end{minipage}
+    \caption[Mean GMM Frobenius differences over subjects]{Mean GMM differences over subjects for the target task}\label{fig:frobenius_diffs}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/gmm_diffs/mean_gmm_differences.pdf}
+    \caption[Mean GMM Frobenius differences over subjects]{Mean GMM differences over subjects for the target task}\label{fig:frobenius_vs_reward}
+\end{figure}
+
+Our Frobenius method of inter-mixture distance is somewhat unprincipled, in the sense that minimizing the Frobenius distance does not have a unique solution, there are many matrix norms we could have chosen in place of the 2-norm, and the mean of these distances may ``wash out'' effects of the particularities of each mixture model.
+
+To place our measurement of differences between mixture distributions, we look to the theory of optimal transport. The theory of optimal transport formalizes the problem of finding an transformation between two probability distributions which minimizes a chosen cost function. Given the form of the two probability distributions and the cost, the theory generates an optimal plan in the form of a higher-dimensional probability distribution (the dimensionality determined by the product of the dimensionalities of the input distributions) which captures the magnitude and direction of probability mass to move in order to transform one distribution into another. The optimal transport plan is a geodesic path in the space of distributions along which the cost is minimized, the distance being the total cost incurred for the transport. For Gaussian mixture distributions in particular, a variant of the Wasserstein distance, $MW_2$, was derived to simplify the determination of an optimal transport plan between two mixtures based on the Wasserstein distance $W_2$ between two multivariate Gaussians $\mathcal{N}_0(\mu_0,\Sigma_0)$ and $\mathcal{N}_1(\mu_1,\Sigma_1)$. $W_2$ is defined
+%
+\begin{align}
+  W_2^2(\mathcal{N}_0,\mathcal{N}_1) = ||\mu_0-\mu_1||^2 + tr{(\Sigma_0 + \Sigma_1 - 2( {\Sigma_0}^{-1} \Sigma_1 {\Sigma_0}^{-1} )^{-1})}.
+\end{align}
+%
+% https://alexhwilliams.info/itsneuronalblog/2020/10/09/optimal-transport/
+$MW_2$ between for two Gaussian mixtures $\mathcal{G_0}$ and $\mathcal{G_1}$ with $k$ and $l$ mixture components ($\mathcal{N}_k$ and $\mathcal{N}_l$), respectively, is
+%
+\begin{align}
+  MW_2^2(\mathcal{G}_0,\mathcal{G}_1) = \min_{w}\sum_{kl}{w_{kl}W_2^2(\mathcal{N}_k,\mathcal{N}_l)}.
+\end{align}
+%
+The distance represents the cost incurred by transporting the mixture model mass along the geodesic defined by the optimal transport plan. 
+
+We use this distance as a way to track progression from early stages to late stages of learning by computing the distance between pairwise mixture models fit to data as in the Frobenius case. This distance gives us a more intuitive depiction of learning, where subjects incur some effort to shift their policies over time, driven by reward. In \Cref{fig:wasserstein_diffs}, we visualize the Wasserstein differences between pairs of mixture models for each subject, as in the Frobenius case. We see a similar pattern, except significant differences between early and late trials when comparing trial group differences. This provides support for the idea that trial groups become more self-similar at the level of individual activity modes. 
+
+We then look to predictions of reward based on inter-mixture differences. In \Cref{fig:wasserstein_vs_reward} we plot the logarithm of the mean inter-mixture Wasserstein distances over the trial group pairs against mean reward for all subjects. We find the a similar result as before, where lower performing subjects tend to display exponentially larger differences on average over learning between their activation distributions as opposed to higher performers. 
+
+One explanation for this trend is that higher performers have lower overall variability in their EMG distributions, and thus have inherently lower magnitude differences in their models over time compared to their lower performing counterparts. We tested this explanation by normalizing mixture differences based on total variance, and found no change in the result. This is supported by \Cref{fig:gmm_entropy_vs_reward} where entropy is linear in reward over subjects while the trend here is exponential. We suggest that there is a process of exploration within the activation space which yields higher differences for lower performing subjects than higher performing subjects. Higher performers appear to discover target solutions and maintain their activation distribution over learning while lower performers appear to change their activation distribution over time in an effort to discover new, more rewarding task solutions.
+
+% \begin{figure}[!htb]
+  %   \centering
+  %     \includegraphics[width=\textwidth]{more_results/gmms/gmm_wasserstein.pdf}
+  %     \caption[Wasserstein distance between Movement, Calibration, and Trial GMMs]{Wasserstein distance between GMMs Movement, Calibration, and Trial GMMs}\label{fig:gmm_w2}
+% \end{figure}
+
+\begin{figure}[!htb]
+  \centering
+  \begin{minipage}{\textwidth}
+    \includegraphics[width=\textwidth]{more_results/gmm_diffs/wasserstein_over_tasks.pdf}
+    \subcaption{}
+  \end{minipage}\\%
+  \begin{minipage}{0.7\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{more_results/gmm_diffs/wasserstein_over_tasks_pvalues.png}
+  \end{minipage}
+  \caption[Wasserstein mixture differences over tasks]{Mean GMM differences over subjects for the target task}\label{fig:wasserstein_diffs}
+\end{figure}
+
+\begin{figure}[!htb]
+  \centering
+    \includegraphics[width=\textwidth]{more_results/gmm_diffs/mean_gmm_wasserstein.pdf}
+    \caption[Mean GMM Wasserstein distance differences over subjects]{Mean GMM Wasserstein distance differences over subjects for the target task}\label{fig:wasserstein_vs_reward}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+\section{Discussion}
+
+In this chapter, we've used mixture models to peel back the layers of variability across subjects and how these relate to performance. We have discovered that subjects tend to decrease the variability across their modes of EMG activity across the spatial dimensions of that EMG to generate more self-similar solutions, yet more spatially generic solutions. This result suggests that subjects are generating variability in task-irrelevant dimensions of the EMG space. From this suggestion, we hypothesize that subjects are performing a reward-driven reinforcement learning pattern as opposed to an internalization of their task decoder in order to make decisions about their muscle activations on each trial. We will explore the relationship between task-relevant and task-irrelevant subspaces of variability to test this hypothesis in the next chapter.
+
+\section{Claude Summary}
+
+This chapter explored the use of Gaussian mixture models (GMMs) to analyze the structure of variability in subjects' EMG activity during the target task and how it relates to their performance. Several key findings emerged from the analyses:
+
+Subjects tended to decrease the entropy and total variance of their EMG activity over the course of learning the target task. This suggests that as subjects learned, their muscle activations became more specific and less variable, converging towards reliable solutions to each target.
+
+Higher-performing subjects showed lower entropy and variance in their later target task trials compared to lower-performing subjects. This aligns with the idea that higher performers were able to identify and reliably reproduce rewarding muscle activation patterns, while lower performers continued exploring the activation space.
+
+The subspace confinement of subjects' GMM components decreased over learning, indicating that the variability in their muscle activations became more evenly distributed across spatial dimensions rather than concentrated along a few principal components.
+
+Higher reward was associated with lower subspace confinement in the target task trials, suggesting that successful performance involved the ability to generate variability across multiple dimensions of the EMG space rather than along a few dominant modes.
+
+Analysis of the Wasserstein distances between GMMs revealed that higher-performing subjects exhibited more self-similarity in their activation distributions across learning compared to lower performers. This suggests that higher performers converged on stable solutions, while lower performers continued exploring different activation patterns.
+
+Overall, these findings paint a picture of subjects engaging in a reward-driven reinforcement learning process, where successful performance involves balancing exploration (generating variability across multiple dimensions of the EMG space) and exploitation (converging on reliable, rewarding muscle activation patterns). Higher-performing individuals appear to more effectively navigate this exploration-exploitation trade-off, ultimately achieving greater self-similarity in their activation distributions and less subspace-confined variability.
+
+The results align with the hypothesis that subjects are not internalizing the task decoder to plan their muscle activations directly. Instead, they seem to be learning a mapping between rewarding EMG patterns and target positions through a model-free reinforcement learning process, gradually refining their solutions based on the reward feedback received during the task.
+
+
+\cleardoublepage\printendnotes%
+\ifSubfilesClassLoaded{%
+    \newpage%
+    \bibliography{../bib/bibliography}%
+}{}%
 \end{document}

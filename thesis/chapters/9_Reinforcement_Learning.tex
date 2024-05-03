@@ -2,7 +2,7 @@
 \graphicspath{{\subfix{../../images/}}}
 \begin{document}
 
-\chapter{CHAPTER NAME}\label{chap:LABEL}
+\chapter{Target Task Simulation}\label{chap:reinforce}
 
 \begin{quote}
   \emph{An interesting open question is how to relate trial-to-trial dynamics of learning to asymptotic predictions regarding optimal adaptation.}\\
@@ -34,5 +34,9 @@ Subjects are hard-constrained by their hands physiology, but we think theyre als
 % Do they follow a KL-divergence type of measurement when improving their policy?
 % Do we see this in the dynamics of the statistics over trials?
 
-\include{end_of_chapter}
+\cleardoublepage\printendnotes%
+\ifSubfilesClassLoaded{%
+    \newpage%
+    \bibliography{../bib/bibliography}%
+}{}%
 \end{document}

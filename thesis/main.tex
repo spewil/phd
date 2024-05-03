@@ -6,8 +6,9 @@
 \usepackage{blindtext}
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{bm}
 \usepackage{setspace}
 \usepackage[dvipsnames,table]{xcolor}
 \definecolor{purple}{rgb}{0.44, 0.16, 0.39}
@@ -19,6 +20,11 @@
 \usepackage{enotez}
 \setenotez{backref=true}
 \let\footnote=\endnote%
+\usepackage{siunitx}
+\usepackage{mathtools}
+\usepackage[section]{placeins} % https://tex.stackexchange.com/questions/32598/force-latex-image-to-appear-in-the-section-in-which-its-declared
+\usepackage{rotating}
+\bibliographystyle{bib/naturemag}
 \usepackage{subfiles} % Best loaded last in the preamble
 
 \begin{document}
@@ -36,7 +42,6 @@
 % \subfile{chapters/9_Reinforcement_Learning.tex}
 \subfile{chapters/10_Next_Steps}
 
-\bibliographystyle{naturemag}
-\bibliography{bib/bibliography}
+\bibliography{bib/bibliography.bib}
 
 \end{document}

@@ -1,0 +1,59 @@
+\contentsline {chapter}{\numberline {1}Introduction \& Aims}{19}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Inspiration from the Past}{21}{section.1.1}%
+\contentsline {section}{\numberline {1.2}The Movement Paradox}{22}{section.1.2}%
+\contentsline {section}{\numberline {1.3}The Approach}{23}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Outline}{24}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Background \& Prior Work}{27}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Motor Units to Muscles}{29}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Coordinative Structures}{34}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Fractionating Structures}{36}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Supraspinal Motor Maps}{38}{subsection.2.1.3}%
+\contentsline {section}{\numberline {2.2}EMG Studies of Motor Learning}{41}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Internal Models and Motor Learning}{43}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Discussion}{45}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Experimental Methods}{49}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Methodological Aims}{51}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Recording Setup}{54}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Hardware}{54}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Software}{54}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Task Structure}{59}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Decoder Fitting}{61}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Offline Preprocessing}{65}{subsection.3.3.2}%
+\contentsline {chapter}{\numberline {4}Task Performance}{71}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Performance over Blocks}{73}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Performance and Subject Attributes}{82}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Performance over Targets}{87}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Task Variance over Trials}{92}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Data Manifold}{99}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Visualization of Data Manifold}{101}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Structure of the Data Manifold}{104}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Subspace Confinement Across Tasks}{109}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Subspace Alignment Across Tasks}{115}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Discussion}{119}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Mixture Modeling}{125}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Mixtures of Gaussians}{127}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Mixture Entropy \& Total Variance}{135}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Mixture Subspace Confinement}{143}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Optimal Transport of Mixtures over Learning}{147}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Discussion}{154}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Claude Summary}{154}{section.6.6}%
+\contentsline {chapter}{\numberline {7}Activity in the Null Space}{159}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Mixtures in the Null Space}{161}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Sample Covariance Null Space Alignment}{165}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Hit and Miss Null Space Alignment}{169}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Null Space Optimality}{170}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Classification of Null Space Activity}{175}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Discussion}{179}{section.7.6}%
+\contentsline {chapter}{\numberline {8}Discussion, Outlook, \& Conclusions}{183}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Discussion}{185}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Future Work}{186}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Preprocessing}{187}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Decoding}{187}{subsection.8.2.2}%
+\contentsline {subsection}{\numberline {8.2.3}Perturbations}{187}{subsection.8.2.3}%
+\contentsline {subsection}{\numberline {8.2.4}Experimental Duration}{188}{subsection.8.2.4}%
+\contentsline {subsection}{\numberline {8.2.5}Temporal Analysis}{189}{subsection.8.2.5}%
+\contentsline {subsection}{\numberline {8.2.6}Learning as a Non-equilibrium Process}{189}{subsection.8.2.6}%
+\contentsline {subsection}{\numberline {8.2.7}Geometric Analyses}{190}{subsection.8.2.7}%
+\contentsline {subsection}{\numberline {8.2.8}Multimodality}{191}{subsection.8.2.8}%
+\contentsline {section}{\numberline {8.3}Conclusion}{191}{section.8.3}%
+\contentsline {chapter}{Bibliography}{195}{chapter*.89}%
