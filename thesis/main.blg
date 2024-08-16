@@ -10,45 +10,45 @@ Warning--empty journal in sejnowskiPerspectivesCognitiveNeuroscience1988
 Warning--empty journal in chungMyomatrixArraysHighdefinition
 Warning--empty year in chungMyomatrixArraysHighdefinition
 Warning--empty journal in mcinnesUMAPUniformManifold2018
-You've used 82 entries,
+You've used 87 entries,
             2348 wiz_defined-function locations,
-            1513 strings with 26705 characters,
-and the built_in function-call counts, 31797 in all, are:
-= -- 2249
-> -- 789
+            1548 strings with 28510 characters,
+and the built_in function-call counts, 33753 in all, are:
+= -- 2404
+> -- 829
 < -- 2
-+ -- 394
-- -- 197
-* -- 3917
-:= -- 3466
-add.period$ -- 237
-call.type$ -- 82
-change.case$ -- 91
++ -- 414
+- -- 207
+* -- 4119
+:= -- 3666
+add.period$ -- 252
+call.type$ -- 87
+change.case$ -- 96
 chr.to.int$ -- 0
-cite$ -- 88
-duplicate$ -- 2850
-empty$ -- 2971
-format.name$ -- 259
-if$ -- 6349
+cite$ -- 93
+duplicate$ -- 3036
+empty$ -- 3154
+format.name$ -- 274
+if$ -- 6774
 int.to.chr$ -- 0
-int.to.str$ -- 82
-missing$ -- 675
-newline$ -- 409
-num.names$ -- 83
-pop$ -- 584
+int.to.str$ -- 87
+missing$ -- 712
+newline$ -- 434
+num.names$ -- 88
+pop$ -- 623
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 515
+skip$ -- 581
 stack$ -- 0
-substring$ -- 1508
-swap$ -- 2828
+substring$ -- 1575
+swap$ -- 3005
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 6
-while$ -- 198
-width$ -- 84
-write$ -- 881
+while$ -- 208
+width$ -- 89
+write$ -- 935
 (There were 6 warnings)

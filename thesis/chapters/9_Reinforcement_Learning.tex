@@ -2,7 +2,7 @@
 \graphicspath{{\subfix{../../images/}}}
 \begin{document}
 
-\chapter{Target Task Simulation}\label{chap:reinforce}
+\chapter{Reinforce Learning Simulation}\label{chap:reinforce}
 
 \begin{quote}
   \emph{An interesting open question is how to relate trial-to-trial dynamics of learning to asymptotic predictions regarding optimal adaptation.}\\
@@ -10,21 +10,98 @@
 \end{quote}
 \cleardoublepage%
 
-\begin{figure}
-    \centering
-    \begin{minipage}{0.8\textwidth}
-      \includegraphics[width=\textwidth]{introduction/voder_schematic.jpg}
-      \subcaption{}
-    \end{minipage}\\%
-    \begin{minipage}{0.5\textwidth}
-      \includegraphics[width=\textwidth]{introduction/voder.png}
-      \subcaption{}
-    \end{minipage}
-    \caption{CAPTION}\label{fig:voder}
-  \end{figure}
+\section{Policy Gradient}
+
+In prior chapters, we have alluded to elements of reinforcement learning such as policies and model-free learning. In this chapter we explicitly frame the task presented to our experimental subjects as a formal reinforcement learning problem, and we make first steps towards comparisons between human motor solutions and those of RL agents for our task design.
+
+Reinforcement learning provides a framework in which to cast learning tasks using the notions of \textit{state}, \textit{actions}, and \textit{reward}. For our task, connections to these concepts are intuitive: the state corresponds to the task space, actions correspond to EMG activations, and states and actions are related by the decoder which maps actions to states (in this case, linearly). Reward is simply the inverse of the Euclidean distance in task space from the current state to the target state. The objective is to reduce this distance, increasing the reward.
+
+The policy $\pi_\theta(a)$ is a distribution over actions with parameters $\theta$, the prior distribution $p(a)$ encodes the probabilities of ``default'' actions (EMG activations). The prior in the model is fixed. The goal state $g$ is the target location, and here we model only a single target (position $[1,0]$) as a starting point. Reward at time step $t$ is defined
+%
+% reward -jnp.sum(jnp.subtract(a @ decoder.T, target)**2,axis=1)
+\begin{align}
+  r_t = -\parallel Da_t - g \parallel^2
+\end{align}
+%
+such that larger distance is lower reward. This reward function encodes the redundancy of the task, as $D$ is an experimental subject's linear, $2\times64$ dimensional decoder matrix. A trajectory $\tau$ is the series of states and actions $(s_t,a_t,s_{t'},\ldots)$. Here we choose a simplified problem setup where the learning objective becomes finding a ``one-step'' policy; that is, our trajectory is always a single action. Rather than ``rolling out'' trajectories, we produce batches of actions and states and take means over these batches. Exploring the temporal dynamics within trials remains a fruitful direction for future work. The goal of the agent is to maximize the following objective:
+%
+% kl = alpha*divergence
+% loss = -(rewards * log_probs).sum() + kl
+\begin{align}
+  \mathcal{J}(\theta) = \mathbb{E}_{{\pi}_\theta}[{r(\tau)}] + \alpha\mathbb{KL}(\pi_\theta,p).
+\end{align}
+%
+This objective balances achieving the task goals by maximizing the expected reward under the policy, while penalizing the Kullback-Leibler divergence between the policy and the prior distribution. The constant $\alpha$ is a weighting parameter to titrate the constraint of the prior on the learned policy. We add this term in order to explore how the learning algorithm responds to prior constraints, as a model of the ``manifold constraints'' we have discussed for our experimental subjects. Our goal is to learn the parameters of the policy which maximize this objective with a chosen $\alpha$ and learning rate $\beta$ over a number of learning steps. To do so, we follow the gradient of the objective
+%
+\begin{align}
+  \theta_{t+1} = \theta_t + \beta\nabla{\mathcal{J}(\theta_t)}
+\end{align}
+%
+where $\beta$ is a chosen learning rate. This is known as the policy gradient and has a known\cite{suttonReinforcementLearningIntroduction2018} model-free formulation:
+%
+\begin{align}
+  \nabla\mathcal{J}(\theta) = \mathbb{E}_{{\pi}_\theta}[{r(a)\nabla\log\pi_\theta(a)}] + \alpha\nabla\mathbb{KL}(\pi_\theta,p).
+\end{align}
+%
+To compute these log probabilities and divergences, we sample batches of actions and taking means over the batch. The gradients of the objective are calculated using automatic differentiation\cite{bradburyJAXAutogradXLA2021}. To compute the Kullback-Leibler divergence, we take the expectation under the policy of the log difference over the batch:
+%
+\begin{align}
+  \mathbb{KL}(\pi_\theta, p) &= \int_{-\infty}^{\infty}\pi_\theta(x)\log{\frac {\ \pi_\theta(x)\ }{p(x)}}dx \\
+  \mathbb{KL}(\pi_\theta, p) &= \mathbb{E}_{\pi_\theta}[\log{\pi_\theta(x)} - \log{p(x)}].
+\end{align}
+%
+In our setup, the policy is a single gaussian $\pi_\theta(a) \sim \mathcal{N}(\mu,\Sigma)$. We have two different starting policy, both mean zero but with different values for $\Sigma$. The first is a spherical Gaussian, $\mathcal{N}(0,\mathbb{I})$, and the second is a Gaussian $\mathcal{N}(0,C)$ where $C$ matches the covariance of the first 9 blocks of an experimental subject's trials. This is meant to simulate a kind of ``primed'' learner for comparison with a neutral starting point in EMG space. For the prior distribution, we use subjects' empirical priors via the mixture model fits. That is, the mixture model is used in place $p(a)$ in all cases. In \Cref{fig:subject_fit} and \Cref{fig:subject_means}, we show samples from one subject's prior, their starting policy, and their policy after 10,000 learning steps with a batch size of 500 samples and a learning rate of $1\times10^{-4}$. We see that the agent finds the target and decreases the variance of the policy to a point. The steps of the mean are plotted across learning and show a smooth trajectory to the target. Note that we are learning a one-step policy here, not a trajectory solution. The trajectory shown here is the trajectory over the mean parameters of the policy. We also plot in \Cref{fig:subject_means} the mean trajectories for seven subjects, for the spherical starting policy and two levels for $\alpha$, the KL divergence weighting parameter. We find that all subjects reach the target, and the weighting parameter makes little difference in the learning trajectory.
+
+\begin{figure}[!htb]
+  \centering
+    \includegraphics[width=0.9\textwidth]{modeling/example_fit.pdf}
+    \caption{An example, in task space, of one model across learning, showing samples from: the initialization of the policy distribution (orange), the prior (blue), and the final policy distribution (green). All samples are decoded from action space to task space using the decoder. The trajectory over learning of the mean of the policy is shown in red. The goal state is shown as a red star, and the starting state as a green star. This subject's initial policy is a spherical Gaussian, and learning is successful in ``finding'' the target through accumulation of reward.}\label{fig:subject_fit}
+\end{figure}
+  
+\begin{figure}[!htb]
+  \centering
+    \includegraphics[width=0.9\textwidth]{modeling/subject_means.pdf}
+    \caption{Trajectories of the policy means across learning iterations for all seven subjects modeled. All starting policies are spherical Gaussians, and all subjects learn to reach the target. Trajectories are shown for two levels of the KL divergence weighting, $\alpha=0.0$ and $\alpha=0.5$, as explained in the main text.}\label{fig:subject_means}
+\end{figure}
+
+In \Cref{fig:subject_fits_diverge}, we show learning trajectories for the means of the same seven agents, but using a starting distribution with ``primed'' statistics. We see that only one of these agents manages to reach target, while learning diverges for all others due to the variance of their policy distributions, even in the case with zero weighting on the KL term of the objective. We present these negative results for transparency of the fact that reinforcement learning models can be difficult to train even in the simplest of cases, often requiring careful tuning of parameters and hyperparameters to achieve task success, particularly for a problem in relatively high dimensions such as this. The direct reason for these solutions diverging is runaway variance along certain action dimensions. The algorithm effectively ``loses sight'' in course correcting along these dimensions, and this error compounds. The agent is unable to attribute more or less variance in a certain dimension to higher or lower reward, and thus continues to make larger and larger errors until it is unable to correct these. This can be avoided by lowering the learning rate, at the cost of slower training, which ensures that errors can be caught and corrected before spiraling beyond control. This highlights the human motor system's ability, relative to our learning models, to cope with variance in a staggeringly high dimensional space, constantly making adjustments in line with the current context and ongoing goals. That said, not all of the experimental subjects who attempted our task were successful. Comparing the failure modes of models and subjects is yet another interesting path for future work.
+
+\begin{figure}[!htb]
+  \centering
+    \includegraphics[width=0.9\textwidth]{modeling/subject_means_diverge.pdf}
+  \caption{The trajectories of policy means shown in task space over learning from the start state (green star) to the goal state (red star). These models' starting policies have matching covariances as their experimental counterparts, taken from the first 9 blocks (108 trials) of the target task. We see that only one of the seven models learns to reach the target, while the others' policies diverge during learning. Learning a Gaussian policy distribution over 10,000 time steps with batch size 500 and learning rate $1\times10^{-4}$.}\label{fig:subject_fits_diverge}
+\end{figure}
 
 
-Subjects are hard-constrained by their hands physiology, but we think theyre also soft-constrained by their natural movement repertoire. We suggest casting this as a constrained policy optimization problem, where there is a regularization of the policy based on the prior movement data, which we suggest captures these natural constraints. The alternative we offer here is a norm-minimizing solution.
+
+\section{Task and Null Activity}
+
+In \Cref{fig:task_null}, we report the mean task and null policy variance for all subjects and conditions, using the same methods as in \Cref{chap:nullspace}. We normalize these variances by the initial average policy variance in each subspace to highlight changes across learning. We find that task variability decreases as the policy is learned (left column of the figures). This is expected: models ``hone'' their task-relevant activity to reach the target reliably, in the same way as experimental subjects. We find that null space variability (right column of the figures) is dependent on the KL weighting and the policy starting point.
+
+In the case without KL penalty ($\alpha=0.0$), the null space activity does not decrease across learning, but remains relatively constant. This is what we expect for an optimal learner: the model is concerned only with completing the task, and has no constraint on their EMG distribution. When we add the KL penalty ($\alpha>0.0$), we introduce this constraint to remain ``close'' to the prior distribution. We find that in this case the null space variability, on average, decreases over learning. This is the same phenomenon that we see in our subjects: there are underlying constraints in their policies (their EMG activation distributions), which leads to lower task-irrelevant null space activity over learning. We could argue that this is indeed a ``constraint'' rather than a ``choice'', and it is likely both. We found support for the idea that experimental subjects are in fact ``attending'' to their null space activity as the variability did not decrease generically, but in a target-specific manner. However, uncovering the causal relationship requires further investigation with specific task contingencies to probe the relationship between constraints and choices in terms of null space activity. The model presented here makes no claim to capture one or the other, but includes this interaction with a prior distribution simply as a ``penalty''.
+
+In the case where we match the statistics of our agents' starting policies to their experimental subject counterparts (bottom row of \Cref{fig:task_null} (a) and (b)), we find that the task space variability decreases, though with subject-dependent learning rates. This is expected, as individual subjects will have differing levels of variability in their task-relevant subspaces. Simply, the model begins from different points in policy space, closer to or further from the theoretical optimal distribution, a delta function at the goal state. Thus learning is faster or slower compared to the spherical case. 
+
+On the other hand, we find that the null space variability remains relatively constant over learning. We believe this has a straightforward explanation: the covariance in the policy null space is, by choice, closer to that of the prior distribution as the prior and starting policy are more aligned than the prior and a spherical Gaussian distribution. Thus, the learning algorithm has no incentive to appreciably change these dimensions of variance in the matching statistics case. In the spherical case, where each dimension has identical variance, those dimensions that differ in variance from the prior will be penalized (when $\alpha>0.0$). That is, the KL penalty models what we see in our experimental data: subjects have a kind of penalty from straying from their underlying, natural EMG manifold. Including this penalty in the model, learning decreases variance along a trajectory which includes this constraint.
+
+\begin{figure}[!htb]
+  \centering
+  \begin{minipage}{\textwidth}
+    \includegraphics[width=\textwidth]{modeling/fit_models.pdf}
+    \subcaption{}
+  \end{minipage}\\%
+  \begin{minipage}{\textwidth}
+    \includegraphics[width=\textwidth]{modeling/diverged_models.pdf}
+    \subcaption{}
+  \end{minipage}
+  \caption{(a) Agents whose policies converged to the target. (b) Agents whose polices did not converge to the target. (Top rows) Agents' starting policies are spherical Gaussians. (Bottom rows) Agents' starting policies are Gaussians with matching covariances to the sample covariances of the first group (9 blocks of 12 trials) of subjects' trials. (Left columns) Average task space variability across learning time steps. (Right columns) Average null space variability across learning time steps.}\label{fig:task_null}
+\end{figure}
+
+
+\section{Summary}
+
+In this chapter, we presented what is perhaps the simplest model-free reinforcement learning simulation of our task as a starting point towards directly comparing the behavior of human subjects faced with a naturalistic learning task, and \textit{in silico} agents who are faced with a formalization of that task. By encoding tasks into the framework of reinforcement learning (or by presenting human subjects with known reinforcement learning tasks), we hope to gain insight into the subtle power of human motor learning and how its idiosyncrasies are likely the source of that ability. Our addition of a KL divergence penalty models the underlying constraint that human motor control exhibits: a tendency or decision to remain within a learned manifold of natural muscle activations. Many exciting questions remain to be explored around the interplay between task-relevant and task-irrelevant variability across learning. The field of reinforcement learning is vast, though the fundamental framing of the problem as presented here is common across models. We see using this work as a launching point to derive more elaborate models as hypotheses for the mechanics of human learning as a compelling endeavour. In each theoretical step forward we would aim to remain as close as possible to data. We believe that preserving interpretability by staying faithful to the data and presenting the simplest possible models to capture the intended empirical phenomena is tantamount to generating real insights into the human movement machine. We have little doubt that this direction will remain rewarding.
+
 
 % % Models 
 % Do we see shifts over learning under different models?
@@ -34,7 +111,7 @@ Subjects are hard-constrained by their hands physiology, but we think theyre als
 % Do they follow a KL-divergence type of measurement when improving their policy?
 % Do we see this in the dynamics of the statistics over trials?
 
-\cleardoublepage\printendnotes%
+% \cleardoublepage\printendnotes%
 \ifSubfilesClassLoaded{%
     \newpage%
     \bibliography{../bib/bibliography}%

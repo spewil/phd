@@ -275,6 +275,16 @@
 \bibinfo{author}{Sejnowski, T.} \& \bibinfo{author}{Churchland, P.}
 \newblock \bibinfo{title}{Perspectives on {{Cognitive Neuroscience}}} \textbf{\bibinfo{volume}{242}}, \bibinfo{pages}{6} (\bibinfo{year}{1988}).
 
+\bibitem{guControlSpeciesdependentCorticomotoneuronal2017}
+\bibinfo{author}{Gu, Z.} \emph{et~al.}
+\newblock \bibinfo{title}{Control of species-dependent cortico-motoneuronal connections underlying manual dexterity}.
+\newblock \emph{\bibinfo{journal}{Science}} \textbf{\bibinfo{volume}{357}}, \bibinfo{pages}{400--404} (\bibinfo{year}{2017}).
+
+\bibitem{murabeHigherPrimatelikeDirect2018}
+\bibinfo{author}{Murabe, N.} \emph{et~al.}
+\newblock \bibinfo{title}{Higher primate-like direct corticomotoneuronal connections are transiently formed in a juvenile subprimate mammal}.
+\newblock \emph{\bibinfo{journal}{Scientific Reports}} \textbf{\bibinfo{volume}{8}}, \bibinfo{pages}{1--10} (\bibinfo{year}{2018}).
+
 \bibitem{bizziHardScientificQuest2015}
 \bibinfo{author}{Bizzi, E.} \& \bibinfo{author}{Ajemian, R.}
 \newblock \bibinfo{title}{A {{Hard Scientific Quest}}: {{Understanding Voluntary Movements}}}.
@@ -331,10 +341,25 @@
 \bibitem{eschenburg2022}
 \bibinfo{author}{Eschenburg, K.} (\bibinfo{year}{2022}).
 
+\bibitem{delonWassersteintypeDistanceSpace2020}
+\bibinfo{author}{Delon, J.} \& \bibinfo{author}{Desolneux, A.}
+\newblock \bibinfo{title}{A {{Wasserstein-type}} distance in the space of {{Gaussian Mixture Models}}} (\bibinfo{year}{2020}).
+\newblock \eprint{1907.05254}.
+
 \bibitem{scholzUncontrolledManifoldConcept1999}
 \bibinfo{author}{Scholz, J.~P.} \& \bibinfo{author}{Sch{\"o}ner, G.}
 \newblock \bibinfo{title}{The uncontrolled manifold concept: Identifying control variables for a functional task}.
 \newblock \emph{\bibinfo{journal}{Experimental Brain Research}} \textbf{\bibinfo{volume}{126}}, \bibinfo{pages}{289--306} (\bibinfo{year}{1999}).
+
+\bibitem{suttonReinforcementLearningIntroduction2018}
+\bibinfo{author}{Sutton, R.~S.} \& \bibinfo{author}{Barto, A.~G.}
+\newblock \emph{\bibinfo{title}{Reinforcement Learning: An Introduction}}.
+\newblock Adaptive Computation and Machine Learning Series (\bibinfo{publisher}{The MIT Press}, \bibinfo{address}{Cambridge, Massachusetts}, \bibinfo{year}{2018}), \bibinfo{edition}{second edition} edn.
+
+\bibitem{bradburyJAXAutogradXLA2021}
+\bibinfo{author}{Bradbury, J.} \emph{et~al.}
+\newblock \bibinfo{title}{{{JAX}}: {{Autograd}} and {{XLA}}}.
+\newblock \emph{\bibinfo{journal}{Astrophysics Source Code Library}} \bibinfo{pages}{ascl:2111.002} (\bibinfo{year}{2021}).
 
 \bibitem{nazarpourNoteProbabilityDistribution2013}
 \bibinfo{author}{Nazarpour, K.}, \bibinfo{author}{{Al-Timemy}, A.~H.}, \bibinfo{author}{Bugmann, G.} \& \bibinfo{author}{Jackson, A.}

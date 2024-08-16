@@ -21,7 +21,7 @@
   
   % Explain null and task space variability!
   
-  In earlier sections we found that total variance decreases across learning, and we noted that this reduction, in the average, decrease across all spatial dimensions. This leads to questions of whether some dimensions of variance decrease, increase, or remain constant. Do some dimensions accumulate variance? In the literature, there are studies of redundant tasks which show that subjects seem to attend to variability in task-relevant subspaces of their muscle activity while allowing task-irrelevant variability to accumulate, as this variance has no effect on the rewarded outcomes of the task\cite{Valero-Cuevas2009,scholzUncontrolledManifoldConcept1999}. We have shown in \Cref{chap:performance} that variance in the task space decreases across learning. Thus, variability in task-irrelevant dimensions can either remain constant, increase more slowly than task-relevant variance decreases, or decrease along with task-relevant variance. Since this variance has no effect on subjects' performance, we hypothesize that it remains constant. That is, subjects do not attend to their task-irrelevant dimensions of variability. 
+  In earlier sections, we found that total variance decreases across learning, and we noted that this reduction, on average, occurs across all spatial dimensions. This leads to further questions: do all dimensions of variance decrease? Do some dimensions accumulate variance? Do some dimensions remain constant? In the literature, there are studies of redundant tasks which show that subjects seem to attend to variability in task-relevant subspaces of their muscle activity while allowing task-irrelevant variability to accumulate, as this variance has no effect on the rewarded outcomes of the task\cite{Valero-Cuevas2009,scholzUncontrolledManifoldConcept1999}. We have shown in \Cref{chap:performance} that variance in the task space decreases across learning. Thus, variability in task-irrelevant dimensions can either remain constant, increase more slowly than task-relevant variance decreases, or decrease along with task-relevant variance. Since this variance has no effect on subjects' performance, we hypothesize that it remains constant. That is, subjects do not attend to their task-irrelevant dimensions of variability. 
   
   To separate task-relevant and task-irrelevant variability, we rely on the fact that our decoder is linear. The task space is a two-dimensional plane passing through the origin within the 64-dimensional EMG space. The null space (or kernel) is the 62-dimensional space that is ``outside of'' the task. Any activity in this null space has no bearing on the task as it is projected onto the task plane. We compute the null space and task space directly using singular value decomposition of the decoder, where the task-relevant subspace is spanned by the right singular vectors associated with nonzero eigenvalues and the null subspace is spanned by the right singular vectors associated with zero eigenvalues. The null space $N\in\mathbb{R}^{62\times64}$ constructed from eigenvectors of the decoder $D$ is the orthonormal subspace such that
   %
@@ -41,23 +41,23 @@
     r_m = \sum_{i}^{k}w_ir_i.
   \end{align}
   %
-  We compute $r_m$ for each subject over mixture models for the natural movement, calibration, and target task. The target task is split into five blocks of 108 trials (9 groups of 12 targets). In \Cref{fig:gmm_task_null_ratios}, we visualize $r_m$ over subjects and models. We find that, on average over subjects, all models tend to accumulate more variance in the task space than the null space. This implies, as shown in \Cref{fig:gmm_null_task_magnitude}, that while both the null and task space variance decreases, the null space variance decreases at a higher rate compared to the task space variability. Comparing the first block of trials with subsequent blocks, the variance of the average mixture mode for the average subject tends to become more aligned with the task plane across learning. The average task variance is on average 4-5x higher than the null variance. These facts point to subjects which are either unable, due to the constraints of their EMG manifolds relative to the decoder, to accumulate variance in the nullspace, or subjects who are learning specific movements in EMG space. The truth is likely a mixture of these two possibilities. 
+  We compute $r_m$ for each subject over mixture models for the natural movement, calibration, and target task. The target task is split into five blocks of 108 trials (9 groups of 12 targets). In \Cref{fig:gmm_task_null_ratios}, we visualize $r_m$ over subjects and models. We find that, on average over subjects, all models tend to accumulate more variance in the task space than the null space. This implies, as shown in \Cref{fig:gmm_null_task_magnitude}, that while both the null and task space variance decreases, the null space variance decreases at a higher rate compared to the task space variability. Comparing the first block of trials with subsequent blocks, the variance of the average mixture mode for the average subject tends to become more aligned with the task plane across learning. The average task variance is on average 4-5x higher than the null variance. These facts point to subjects which are either unable, due to the constraints of their EMG manifolds relative to the decoder, to accumulate variance in the null space, or subjects who are learning specific movements in EMG space. The truth is likely a mixture of the two. 
   
   While we have discussed the relationship between the decoder and the EMG manifold in \Cref{chap:methods}, and we have shown in \Cref{chap:performance} that decoders statistic are not indicative of performance, the manifold poses a constraint in terms of the likelihood of movement in the task and null space such that subjects are more likely to move in the task space. This is supported by the variance ratio in the calibration task. When subjects are encouraged to explore their EMG manifold and attempt to decorrelate the spatial dimensions of their activity, there is a significantly lower task-null ratio compared to other tasks.
   
-  The calibration variance ratio sets a kind of lower bound on the variance, suggesting here that the average subject is three times as likely to move in the task space than the null space (this would be true if the calibration task was ``perfect'' or maximally decorrelated). Note that if we were to sample uniformly from the EMG space and compute the task-null variance ratio, it will center on 1 as variance is equally likely to align or misalign with the task space. Thus, we surmise that subjects are more likely to product modes of activity aligned with the task space, and over learning they tend to repeat activations which are more aligned with the task space opposed to that in the null space. This aligns with the natural movement ratio; it is higher than the calibration ratio but significantly lower than blocks beyond the first block of trials. This suggests that the movement task is non-specific, as it was designed to be; subjects are learning specific solutions in the task, driven by reward.
+  The calibration variance ratio sets a kind of lower bound on the variance, suggesting here that the average subject is three times as likely to move in the task space than the null space (this would be true if the calibration task was ``perfect'' or maximally decorrelated). Note that if we were to sample uniformly from the EMG space and compute the task-null variance ratio, it will center on 1 as variance is equally likely to align or misalign with the task space. Thus, we surmise that subjects are more likely to produce modes of activity aligned with the task space, and over learning they tend to repeat activations which are more aligned with the task space opposed to that of the null space. This aligns with the natural movement ratio; it is higher than the calibration ratio but significantly lower than blocks beyond the first block of trials. This suggests that the movement task is non-specific, as it was designed to be; subjects are learning specific solutions in the task, driven by reward.
   
-  One hypothesis from this result is that subjects are learning to produce bespoke, ``rote'' movements for their targets. The alternative hypothesis is that subjects are learning, or internalizing, their decoders and using this internalized ``model'' of the task in order to produce flexible movements. This flexibility, we suggest, would become evident in an accumulation (increase) or maintenance (constancy) of null space variability, which contradicts what we see in our data.
+  One hypothesis from this result is that subjects are learning to produce bespoke, ``rote'' movements for their targets. The alternative hypothesis is that subjects are learning, or internalizing, their decoders and using this internalized ``model'' of the task in order to produce flexible movements. This flexibility, we suggest, would become evident in an accumulation (increase) or maintenance (constancy) of null space variability, which contradicts what we see in the data.
   
   % Note that this is based on the mixture models, therefore independent of the mean, based on the alignment of the covariances with the task plane.
   
-  % \begin{figure}[H]%[tph]
+  % \begin{figure}[!htb]
     %   \centering
     %   \includegraphics[width=\textwidth]{more_results/gmms/variance_projection_example.pdf}
     %   \caption[Example of variance projection of GMM components]{Example of variance projection of GMM components.}\label{fig:variance_projection_example}
     % \end{figure}
     
-    \begin{figure}[H]%[tph]
+    \begin{figure}[!htb]
       \centering
       \begin{minipage}{\textwidth}
         \centering
@@ -70,7 +70,7 @@
       \caption[Task-null activity ratio over GMMs]{(a) Task-null activity ratio means over mixture model covariances. Blocks are of 108 trials from the target task (9 sets of 12 targets). Grey markers show subject means. Means over subjects are shown in red, error bars are standard deviation. (b) Significance matrix reporting $p$-values from Tukey's honest significance test comparing subject means pairwise over models.}\label{fig:gmm_task_null_ratios}
     \end{figure}
     
-    \begin{figure}[H]%[tph]
+    \begin{figure}[!htb]
       \centering
       \begin{minipage}{\textwidth}
         \centering
@@ -88,7 +88,7 @@
         \includegraphics[width=\textwidth]{more_results/gmms/nullspace_pvalues_models_null_significance.png}
         \subcaption{}
       \end{minipage}
-      \caption[GMM task and null projection activity]{(a) GMM task and null projection activity. (b) Task (c) Null activity significance over GMMs}\label{fig:gmm_null_task_magnitude}
+      \caption[GMM task and null projection activity]{(a) Mixture model mean task and null variance projection over trial groups. Subject values are shown in shaded, means over subjects shown in bold (b,c) Task, null activity significance matrix pairwise between models over subjects using Tukey's honest significance test}\label{fig:gmm_null_task_magnitude}
     \end{figure}
     
     
@@ -102,9 +102,9 @@
   
   We compute the task-null variance ratios for the sample covariances over subjects and movement, calibration, and target task datasets where the target task is grouped into blocks of 108 trials (9 sets of 12 targets). The subject ratios and means over subjects for each trial block are shown in \Cref{fig:sample_ratio}.
   
-  By using the ``active samples'' the samples underlying the spatial covariance projected and averaged in the task and null space to compute the task-null variance ration is akin to ``dart throws'' in EMG space at the target. The task-null ratio here takes a Gaussian approximation of each subject's ``cloud'' of throws, and determines the magnitude of spatial covariance aligned to the task space relative to the null space from those throws.
+  By using the ``active samples'' the samples underlying the spatial covariance projected and averaged in the task and null space to compute the task-null variance ration is akin to ``dart throws'' in EMG space at the target. The task-null ratio here effectively takes a Gaussian approximation of each subject's ``cloud'' of throws, and determines the magnitude of spatial covariance aligned to the task space relative to the null space from those throws.
   
-  We hypothesized that we would see a less exaggerated version of the mixture model ratios. We instead see that over learning in the target task in this analysis the task-null ratio is static. On average, despite overall variance decreasing, the ratio between activity in the task and null is constant. Task variance is approximately four times that of null variance, matching the results from the mixture model. From this perspective, variance, despite aligning largely with the task space, decreases equally in all dimensions.
+  We hypothesized that we would see a less exaggerated version of the mixture model ratios. We instead find that, over learning, in the target task the task-null ratio is static. On average, despite overall variance decreasing, the ratio between activity in the task and null is constant. Task variance is approximately four times that of null variance, matching the results from the mixture model. From this perspective, variance, despite aligning largely with the task space, decreases equally in all dimensions.
   
   We find that the calibration task has the highest task-null ratio, which can be explained similarly to the mixture model case. The calibration task, by design, has higher variance. Since the EMG manifold is more aligned to the task space by design, we expect the task variance to be higher compared to null space activity. The logic is similar for the movement dataset: natural movements are unrelated to the task space, and thus the ratio is lower even than that of the task trial activity.
   
@@ -114,13 +114,13 @@
 
   % Is there a way to compare the variance projection of the error distribution to a null hypothesis? If subjects were to move randomly according to some simpler distribution? Or can we compare the error here to the natural movement or calibration data somehow? The problem with this is that there is no ``solution'' to use to compute an error signal. Need to think about this.
   
-  \begin{figure}[H]%[tph]
+  \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/example_samples.pdf}
     \caption[Example of mean EMG solutions for one subject]{Example of temporal means per trial of EMG solutions over targets for a representative subject are shown in grey. Grand means over targets are shown in red. Targets 1 to 12 are ordered row-wise.}\label{fig:example_samples}
   \end{figure}
   
-  \begin{figure}[H]%[tph]
+  \begin{figure}[!htb]
     \begin{minipage}{\textwidth}
       \centering
       \includegraphics[width=\textwidth]{more_results/nullspace/sample_ratio.pdf}
@@ -131,7 +131,7 @@
       \includegraphics[width=0.7\textwidth]{more_results/nullspace/sample_ratio_significance.png}
       \subcaption{}
     \end{minipage}%
-    \caption[Task-Null variance projections of activity error]{(a) Task-Null variance ratio of trial-averaged activity. Ratios are computed using sample covariances of this activity. Subject ratios over trial groups are shown in grey (target task trials are grouped into 5 blocks of 108 trials (9 sets of 12 targets)). Subject means are shown in red. (b) Significance matrix for pairwise comparison of task block means over subjects of task-null variance ratio}\label{fig:sample_ratio}
+    \caption[Task-Null variance projections of activity]{(a) Task-Null variance ratio of trial-averaged activity. Ratios are computed using sample covariances of this activity. Subject ratios over trial groups are shown in grey (target task trials are grouped into 5 blocks of 108 trials (9 sets of 12 targets)). Subject means are shown in red. (b) Significance matrix for pairwise comparison of task block means over subjects of task-null variance ratio using Tukey's honest significance test}\label{fig:sample_ratio}
   \end{figure}
 
 
@@ -141,13 +141,13 @@
 
   \section{Hit and Miss Null Space Alignment}
     
-  To refine the analysis of task-null variance of the samples directly, we introduce the ``hit end'', the final time point of a successful EMG trial. As we would like to compare hit trial to miss trials, we determine ``miss ends'' by selecting the time point with the lowest target error sample in place of the hit end. In \Cref{fig:hit_miss_nullspace} (a) we visualize the hit and miss ends and their means for a representative subject. 
+  To refine the analysis of task-null variance of the samples directly, we introduce the ``hit end'', the final time point of a successful EMG trial. As we would like to compare hit trials to miss trials, we determine ``miss ends'' by selecting the time point with the lowest target error. In \Cref{fig:hit_miss_nullspace} (a) we visualize the hit and miss ends and their means for a representative subject. 
   
-  In \Cref{fig:hit_miss_nullspace} (b) we compute the task-null variance ratio using the spatial covariance of the hit and miss ends for each subject and target and plot these values in histograms. We hypothesized that hit ends would display low ratios as by definition hits cannot vary around targets. We find that over subjects and targets, the median ratio for hit end ratios is 0.18. This simply confirms that the ``error'' of subject solutions lie in the null space. The distribution is right-skewed, reflecting the lognormality of the underlying data.
+  In \Cref{fig:hit_miss_nullspace} (b) we compute the task-null variance ratio using the spatial covariance of the hit and miss ends for each subject and target and plot these values in histograms. We hypothesized that hit ends would display low ratios as by definition hits cannot vary around targets. We find that over subjects and targets, the median ratio for hit end ratios is 0.18. This simply confirms that the ``error'' of subject solutions lies in the null space. The distribution is right-skewed, reflecting the lognormality of the underlying data.
   
-  For ``miss ends'' we hypothesized that subjects would ``make their mistakes in the null space:'' variability among misses would primarily lie in the null space, as this space of possibilities is much larger. It is easy to imagine moving predominantly in the null space, searching for task space. Subjects, on average, display more variability in the task space for their misses, but not by a large margin. The median ratio for miss ends is 1.73. Thus, miss ends display higher variability in the task space, though not to the degree that we see in the mixture models or the sample-based analysis. Subjects are missing in both the task and null space, by nearly equal degree.
+  For ``miss ends'' we hypothesized that subjects would ``make their mistakes in the null space:'' variability among misses would primarily lie in the null space, as this space of possibilities is much larger. It is easy to imagine moving predominantly in the null space, searching for the task space. Subjects, on average, display more variability in the task space for their misses, but not by a large margin. The median ratio for miss ends is 1.73. Thus, miss ends display higher variability in the task space, though not to the degree that we see in the mixture models or the sample-based analysis. Subjects are missing in both the task and null space, by nearly equal degree.
   
-  \begin{figure}[H]%[tph]
+  \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/hit_miss_task_null_ratio.pdf}
     \caption[Task-null variance ratio of hits and misses]{(Top) Hit and miss ``ends'' from a representative subject. (Bottom) Task-null variance ratio of hits (left) and misses (right) computed via the spatial covariance of all trials for each target. Subjects and targets are collected. Medians and IQRs are reported.}\label{fig:hit_miss_nullspace}
@@ -160,8 +160,8 @@
   
   
   \section{Null Space Optimality}
-      
-    We find solutions by solving the following constrained optimization problem:
+
+    Next, we want to understand what drives null space variability in subjects' solutions. To do so, we compute a range of possible solutions, under different proposed constraints, and compare these computed solutions to subject solutions. We find these candidate solutions by solving the following constrained optimization problem:
     %
     \begin{align*}
       \min \,f(e) \,\, &\mathrm{subject \,\, to}\\
@@ -169,7 +169,7 @@
       e &\geq 0\\
     \end{align*}
     %
-    where $f$ is a cost function based on the EMG activity. By choosing $f$ we can test different cost functions by generating EMG solutions which are all constrained to both hit the target and remain nonnegative. Each solution, however, solves the redundancy problem in different manners by optimizing its unique cost function. We can each solution to test different possible optimizations that subjects may be making, as each solution will have a different bias in the null space. The cost functions we tested are
+    where $f$ is a cost function based on the EMG activity. By choosing $f$ we can test different cost functions by generating EMG solutions which are all constrained to both hit the target and remain nonnegative. Each solution, however, solves the redundancy problem in different manners by optimizing its unique cost function. We can use each solution to test different possible optimizations that subjects may be making, as each solution will have a different bias in the null space. The cost functions we tested are:
     % 
     \begin{itemize}
       \item Pseudoinverse: $f = e^Te$. This solution is constrained to have no activity in the null space. This is equivalent to the Moore-Penrose pseudoinverse, the solution to $De=t$ when $D$ is rectangular, as in the case of our decoders.
@@ -191,25 +191,25 @@
   
   % NB https://math.stackexchange.com/questions/2028698/
   
-  \begin{figure}[H]%[tph]
+  \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/example_computed_solutions.pdf}
     \caption[Example solutions from constrained optimization]{Solutions computed via constrained optimization for a representative subject. See main text for details.}\label{fig:computed_solutions}
   \end{figure}
   
-  \begin{figure}[H]%[tph]
+  \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/example_cost_functions.pdf}
     \caption[Example cost functions]{Example cost functions for the mixture model likelihood based on synthetic data sampled from a mixture model in 2 dimensions with three components.}\label{fig:cost_functions}
   \end{figure}
   
-  \begin{figure}[H]%[tph]
+  \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/cosine_distance_solutions.pdf}
     \caption[Cosine distance from optimization solutions]{Cosine distance for all subjects between subject solutions and optimization solutions described in the main text.}\label{fig:computed_distances}
   \end{figure}
   
-  \begin{figure}[H]%[tph]
+  \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/optimization_pvalues.png}
     \caption[Significance matrix for optimization solutions]{Significance matrix reporting $p$-values for pairwise comparisons of cosine distances over subjects between optimization solutions.}\label{fig:optimization_pvalues}
@@ -245,25 +245,25 @@
     %  I think it would be really strong to dig further into one or two subjects' solutions and visualize things as if I only had this data. This might give better context for the subject-averaged results, illustrating how this plays out for a single subject.
   
   
-  \begin{figure}[H]%[tph]
+  \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/regression_scores.pdf}
     \caption[Regression task and null space against targets]{Regression analysis between task and null space projections and targets across subjects. We report $R^2$ scores from 10-fold cross-validation with 10\% of data held out and plot against mean reward per subject.}\label{fig:regression_scores}
   \end{figure}
   
-  \begin{figure}[H]%[tph]
+  \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/classification_scores.pdf}
     \caption[Nearest neighbors classification of task and null space]{Nearest neighbors classification of task and null space activity across subjects. We report the brier score for classification and plot against mean reward per subject.}\label{fig:classification_scores}
   \end{figure}
   
-  \begin{figure}[H]%[tph]
+  \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/pca_2d_reconstructions.pdf}
     \caption[PCA projections of null and task space activity]{2-dimensional PCA projections of hit ends. (Left) full EMG space (Middle) Task space projection (Right) Null space projection.}\label{fig:pca_null}
   \end{figure}
   
-  \begin{figure}[H]%[tph]
+  \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{more_results/nullspace/pca_scores.pdf}
     \caption[Classification of PCA reconstructions]{Classifying PCA reconstructions of null space activity with different numbers of PC components. We report classification success as a percentage of maximum possible classification score, classification of the original data. In purple, we report reconstructions of increasing variance captured beginning from the lowest variance component. In blue, we report reconstructions in the reverse order, beginning with the highest variance component and adding components in decreasing variance order. Means taken over subjects, shown in red.}\label{fig:pca_scores}
@@ -275,24 +275,11 @@
 
 
 
-  \section{Discussion}
+  \section{Summary}
 
-  This chapter investigated the activity of subjects in the null space of the decoder during a myoelectric target acquisition task. The null space represents dimensions of muscle activity that do not directly contribute to the task, allowing us to separate task-relevant from task-irrelevant variability.
-
-  Analysis of mixture model covariances revealed that on average, subjects accumulated more variance in the task-relevant space compared to the null space across learning. The ratio of task to null space variance was highest for later blocks of the target task, suggesting solutions became increasingly aligned with the task plane over time. However, the calibration task where subjects explored their muscle activity showed a significantly lower task/null ratio, indicating a baseline tendency for subjects to move more readily in null space dimensions.
-
-  Examining the sample covariances and projection of activity onto the null space painted a more nuanced picture. Hit samples tended to have higher relative task space variance compared to ``miss ends'' with the lowest task error, implying subjects prioritized the task plane when successful. Moreover, better performing subjects exhibited more predictable null space activity when hitting targets based on regression and classification analyses. Visualizations highlighted low-dimensional, target-related structure present even in the null space projections.
-
-  The optimization analysis revealed that subjects' solutions were significantly biased towards their own idiosyncratic muscle activation statistics from the calibration and natural movement data, while not simply recapitulating these previous activations. This suggests they learned new task-specific solutions influenced by their intrinsic dynamics.
-
-  Taken together, these findings indicate that while subjects focused their variability reduction on task-relevant dimensions, their solutions still contained substantial task-related information in the null space. This pattern is consistent with a form of model-free learning, where subjects gradually acquire rote, bespoke muscle activations for each target over time, rather than developing an explicit internal model of the task constraints.
-
-  Subjects appear fundamentally limited by the structure of their own muscle activations not accounted for in the decoder mapping. Nonetheless, they are able to find novel solutions through a process biased but not fully determined by their intrinsic statistics. The solutions discovered prioritize task achievement over null space minimization, at least over the timescale of training evaluated here.
-
-  In summary, this study provides an in-depth analysis of how redundancy is resolved in a skilled myocontrol task. The findings highlight the role of subject-specific musculoskeletal constraints and suggest an incremental, model-free learning process focused on the task priorities, despite absorbing some task-irrelevant variability. Future work could further characterize the relationship between subjects' muscle activations, task structure, and learning dynamics to optimize skill acquisition for myoelectric control applications.
-
+  This chapter investigated the variability of subjects' EMG activations in task-relevant and task-irrelevant dimensions. Analysis of mixture model covariances revealed that on average, subjects accumulated more variance in the task-relevant space compared to the null space across learning. The ratio of task to null space variance was highest for later blocks of the target task, suggesting solutions became increasingly aligned with the task plane over time. However, the calibration task where subjects explored their muscle activity showed a significantly lower task-null ratio (though still greater than 1), indicating a baseline tendency for subjects to move more readily in null space dimensions. The comparison between subjects' and optimization solutions revealed that subjects' solutions were significantly biased, or constrained, towards their activation manifolds, though less so to their task models. This suggests that subjects null space activity is explained by their activity manifolds, though null space activations in the target task solutions are specific to that context. We confirmed this by finding target-specific information in subjects' null space activities. Taken together, these findings indicate that while subjects focused their variability reduction on task-relevant dimensions, their solutions still contained substantial task-related information in the null space. This pattern is consistent with a form of model-free learning, where subjects gradually acquire rote, bespoke muscle activations for each target over time, rather than developing an explicit internal model of the task constraints and use this model to solve each target presentation flexibly.
   
-  \cleardoublepage\printendnotes%
+  % \cleardoublepage\printendnotes%
   \ifSubfilesClassLoaded{%
       \newpage%
       \bibliography{../bib/bibliography}%

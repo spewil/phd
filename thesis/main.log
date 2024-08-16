@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.28)  3 MAY 2024 08:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.7.28)  13 MAY 2024 22:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -604,25 +604,25 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 
 ] (./main.lof [15
 
-] [16])
+] [16] [17])
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
-) [17] (./chapters/1_Introduction.tex [18
-
-
-
-]
+) [18] (./chapters/1_Introduction.tex
 Chapter 1.
-[19] [20
+[19
+
+
+
+] [20
 
 ]
-<../images/../images//introduction/voder_schematic.jpg, id=546, 1740.5025pt x 917.4275pt>
+<../images/../images//introduction/voder_schematic.jpg, id=608, 1740.5025pt x 917.4275pt>
 File: ../images/../images//introduction/voder_schematic.jpg Graphic file (type jpg)
 <use ../images/../images//introduction/voder_schematic.jpg>
 Package pdftex.def Info: ../images/../images//introduction/voder_schematic.jpg  used on input line 41.
 (pdftex.def)             Requested size: 235.0183pt x 123.87537pt.
-<../images/../images//introduction/voder.png, id=547, 1192.455pt x 887.315pt>
+<../images/../images//introduction/voder.png, id=609, 1192.455pt x 887.315pt>
 File: ../images/../images//introduction/voder.png Graphic file (type png)
 <use ../images/../images//introduction/voder.png>
 Package pdftex.def Info: ../images/../images//introduction/voder.png  used on input line 45.
@@ -643,13 +643,13 @@ Chapter 2.
 Underfull \vbox (badness 3826) has occurred while \output is active []
 
  [29]
-<../images/../images//background_theory/spinal.png, id=613, 817.0525pt x 728.7225pt>
+<../images/../images//background_theory/spinal.png, id=677, 817.0525pt x 728.7225pt>
 File: ../images/../images//background_theory/spinal.png Graphic file (type png)
 <use ../images/../images//background_theory/spinal.png>
 Package pdftex.def Info: ../images/../images//background_theory/spinal.png  used on input line 119.
 (pdftex.def)             Requested size: 278.83578pt x 248.6964pt.
  [30 <../images/../images//background_theory/spinal.png>]
-<../images/../images//background_theory/low_variance_PCs.png, id=628, 1614.03pt x 789.95125pt>
+<../images/../images//background_theory/low_variance_PCs.png, id=692, 1614.03pt x 789.95125pt>
 File: ../images/../images//background_theory/low_variance_PCs.png Graphic file (type png)
 <use ../images/../images//background_theory/low_variance_PCs.png>
 Package pdftex.def Info: ../images/../images//background_theory/low_variance_PCs.png  used on input line 133.
@@ -658,7 +658,7 @@ Package pdftex.def Info: ../images/../images//background_theory/low_variance_PCs
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [31] [32 <../images/../images//background_theory/low_variance_PCs.png>]
-<../images/../images//introduction/basmajian_63.png, id=646, 735.74875pt x 845.1575pt>
+<../images/../images//introduction/basmajian_63.png, id=710, 735.74875pt x 845.1575pt>
 File: ../images/../images//introduction/basmajian_63.png Graphic file (type png)
 <use ../images/../images//introduction/basmajian_63.png>
 Package pdftex.def Info: ../images/../images//introduction/basmajian_63.png  used on input line 147.
@@ -670,42 +670,38 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [37] [38]
-<../images/../images//background_theory/strick_graziano.pdf, id=736, 2026.17291pt x 1445.29634pt>
+<../images/../images//background_theory/strick_graziano.pdf, id=799, 2026.17291pt x 1445.29634pt>
 File: ../images/../images//background_theory/strick_graziano.pdf Graphic file (type pdf)
 <use ../images/../images//background_theory/strick_graziano.pdf>
 Package pdftex.def Info: ../images/../images//background_theory/strick_graziano.pdf  used on input line 245.
 (pdftex.def)             Requested size: 398.33858pt x 284.13623pt.
  [39 <../images/../images//background_theory/strick_graziano.pdf>]
-<../images/../images//background_theory/motor_system.pdf, id=807, 625.30948pt x 710.3828pt>
+<../images/../images//background_theory/motor_system.pdf, id=871, 625.30948pt x 710.3828pt>
 File: ../images/../images//background_theory/motor_system.pdf Graphic file (type pdf)
 <use ../images/../images//background_theory/motor_system.pdf>
 Package pdftex.def Info: ../images/../images//background_theory/motor_system.pdf  used on input line 259.
 (pdftex.def)             Requested size: 398.33858pt x 452.5514pt.
- [40] [41 <../images/../images//background_theory/motor_system.pdf>]
-Underfull \vbox (badness 8151) has occurred while \output is active []
+ [40]
+Underfull \vbox (badness 2293) has occurred while \output is active []
+
+ [41 <../images/../images//background_theory/motor_system.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [42]
-Underfull \vbox (badness 2351) has occurred while \output is active []
-
- [43]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 312.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [44] [45] [46]
+)
+Underfull \vbox (badness 2351) has occurred while \output is active []
+
+ [43] [44] [45] [46]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 348.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 348.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 348.
-
-
-LaTeX Warning: Citation `guControlSpeciesdependentCorticomotoneuronal2017' on page 47 undefined on input line 348.
-
-
-LaTeX Warning: Citation `murabeHigherPrimatelikeDirect2018' on page 47 undefined on input line 348.
-
-) (./chapters/3_Background_experiments.tex) (./chapters/4_Methods.tex [47
+) (./chapters/4_Methods.tex [47
 
 
 ] [48
@@ -715,7 +711,7 @@ Chapter 3.
 [49] [50
 
 ] [51] [52]
-<../images/../images//methods/spaces.pdf, id=932, 845.04686pt x 597.50786pt>
+<../images/../images//methods/spaces.pdf, id=1000, 845.04686pt x 597.50786pt>
 File: ../images/../images//methods/spaces.pdf Graphic file (type pdf)
 <use ../images/../images//methods/spaces.pdf>
 Package pdftex.def Info: ../images/../images//methods/spaces.pdf  used on input line 43.
@@ -724,17 +720,17 @@ Package pdftex.def Info: ../images/../images//methods/spaces.pdf  used on input 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [53 <../images/../images//methods/spaces.pdf>] [54]
-<../images/../images//methods/setup.pdf, id=981, 1927.2pt x 1084.05pt>
+<../images/../images//methods/setup.pdf, id=1056, 1927.2pt x 1084.05pt>
 File: ../images/../images//methods/setup.pdf Graphic file (type pdf)
 <use ../images/../images//methods/setup.pdf>
 Package pdftex.def Info: ../images/../images//methods/setup.pdf  used on input line 71.
 (pdftex.def)             Requested size: 398.33858pt x 224.05122pt.
-<../images/../images//methods/electrode_assembly.png, id=982, 1861.95625pt x 3882.505pt>
+<../images/../images//methods/electrode_assembly.png, id=1057, 1861.95625pt x 3882.505pt>
 File: ../images/../images//methods/electrode_assembly.png Graphic file (type png)
 <use ../images/../images//methods/electrode_assembly.png>
 Package pdftex.def Info: ../images/../images//methods/electrode_assembly.png  used on input line 78.
 (pdftex.def)             Requested size: 131.45245pt x 274.05432pt.
-<../images/../images//methods/electrode_detail.JPG, id=983, 3035.34pt x 2011.515pt>
+<../images/../images//methods/electrode_detail.JPG, id=1058, 3035.34pt x 2011.515pt>
 File: ../images/../images//methods/electrode_detail.JPG Graphic file (type jpg)
 <use ../images/../images//methods/electrode_detail.JPG>
 Package pdftex.def Info: ../images/../images//methods/electrode_detail.JPG  used on input line 83.
@@ -744,12 +740,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 83--84
 
  []
 
-<../images/../images//methods/hand_constraint_detail.JPG, id=984, 4047.12pt x 3035.34pt>
+<../images/../images//methods/hand_constraint_detail.JPG, id=1059, 4047.12pt x 3035.34pt>
 File: ../images/../images//methods/hand_constraint_detail.JPG Graphic file (type jpg)
 <use ../images/../images//methods/hand_constraint_detail.JPG>
 Package pdftex.def Info: ../images/../images//methods/hand_constraint_detail.JPG  used on input line 85.
 (pdftex.def)             Requested size: 131.45245pt x 98.55937pt.
-<../images/../images//methods/hand_constraint_in_box.JPG, id=985, 4047.12pt x 3035.34pt>
+<../images/../images//methods/hand_constraint_in_box.JPG, id=1060, 4047.12pt x 3035.34pt>
 File: ../images/../images//methods/hand_constraint_in_box.JPG Graphic file (type jpg)
 <use ../images/../images//methods/hand_constraint_in_box.JPG>
 Package pdftex.def Info: ../images/../images//methods/hand_constraint_in_box.JPG  used on input line 90.
@@ -759,7 +755,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 90--91
 
  []
 
-<../images/../images//methods/peter_playing_game.JPG, id=986, 4047.12pt x 3035.34pt>
+<../images/../images//methods/peter_playing_game.JPG, id=1061, 4047.12pt x 3035.34pt>
 File: ../images/../images//methods/peter_playing_game.JPG Graphic file (type jpg)
 <use ../images/../images//methods/peter_playing_game.JPG>
 Package pdftex.def Info: ../images/../images//methods/peter_playing_game.JPG  used on input line 92.
@@ -769,12 +765,12 @@ Overfull \hbox (10.57884pt too wide) in paragraph at lines 77--95
  []$[]$|  $[]$|  $[]$ 
  []
 
-<../images/../images//methods/muscle_map.pdf, id=987, 1101.76915pt x 1084.05pt>
+<../images/../images//methods/muscle_map.pdf, id=1062, 1101.76915pt x 1084.05pt>
 File: ../images/../images//methods/muscle_map.pdf Graphic file (type pdf)
 <use ../images/../images//methods/muscle_map.pdf>
 Package pdftex.def Info: ../images/../images//methods/muscle_map.pdf  used on input line 100.
 (pdftex.def)             Requested size: 398.33858pt x 391.92838pt.
-<../images/../images//methods/raw_data.pdf, id=988, 1262.62218pt x 441.56595pt>
+<../images/../images//methods/raw_data.pdf, id=1063, 1262.62218pt x 441.56595pt>
 File: ../images/../images//methods/raw_data.pdf Graphic file (type pdf)
 <use ../images/../images//methods/raw_data.pdf>
 Package pdftex.def Info: ../images/../images//methods/raw_data.pdf  used on input line 106.
@@ -782,7 +778,7 @@ Package pdftex.def Info: ../images/../images//methods/raw_data.pdf  used on inpu
 [55] [56 <../images/../images//methods/setup.pdf>] [57 <../images/../images//methods/electrode_assembly.png> <../images/../images//methods/electrode_detail.JPG> <../images/../images//methods/hand_constraint_detail.JPG> <../images/../images//methods/hand_constraint_in_box.JPG> <../images/../images//methods/peter_playing_game.JPG>] [58 <../images/../images//methods/muscle_map.pdf> <../images/../images//methods/raw_data.pdf>] [59
 
 ] [60]
-<../images/../images//methods/task_structure.pdf, id=1255, 1927.2pt x 1084.05pt>
+<../images/../images//methods/task_structure.pdf, id=1331, 1927.2pt x 1084.05pt>
 File: ../images/../images//methods/task_structure.pdf Graphic file (type pdf)
 <use ../images/../images//methods/task_structure.pdf>
 Package pdftex.def Info: ../images/../images//methods/task_structure.pdf  used on input line 312.
@@ -791,64 +787,67 @@ Package pdftex.def Info: ../images/../images//methods/task_structure.pdf  used o
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [62 <../images/../images//methods/task_structure.pdf>]
-<../images/../images//methods/NMF_PCA_comparison.pdf, id=1290, 1156.45491pt x 375.83627pt>
+<../images/../images//methods/NMF_PCA_comparison.pdf, id=1365, 1156.45491pt x 375.83627pt>
 File: ../images/../images//methods/NMF_PCA_comparison.pdf Graphic file (type pdf)
 <use ../images/../images//methods/NMF_PCA_comparison.pdf>
 Package pdftex.def Info: ../images/../images//methods/NMF_PCA_comparison.pdf  used on input line 342.
 (pdftex.def)             Requested size: 398.33858pt x 129.4572pt.
  [63] [64 <../images/../images//methods/NMF_PCA_comparison.pdf>]
-<../images/../images//methods/example_decoder.pdf, id=1353, 943.56892pt x 459.60713pt>
+<../images/../images//methods/example_decoder.pdf, id=1426, 943.56892pt x 459.60713pt>
 File: ../images/../images//methods/example_decoder.pdf Graphic file (type pdf)
 <use ../images/../images//methods/example_decoder.pdf>
 Package pdftex.def Info: ../images/../images//methods/example_decoder.pdf  used on input line 370.
 (pdftex.def)             Requested size: 278.83578pt x 135.81435pt.
  [65 <../images/../images//methods/example_decoder.pdf>]
-<../images/../images//methods/log_hist_movement.pdf, id=1408, 1160.63176pt x 422.0085pt>
+<../images/../images//methods/log_hist_movement.pdf, id=1482, 1160.63176pt x 422.0085pt>
 File: ../images/../images//methods/log_hist_movement.pdf Graphic file (type pdf)
 <use ../images/../images//methods/log_hist_movement.pdf>
 Package pdftex.def Info: ../images/../images//methods/log_hist_movement.pdf  used on input line 440.
 (pdftex.def)             Requested size: 318.67207pt x 115.86917pt.
-<../images/../images//methods/log_hist_calibration.pdf, id=1409, 1165.29028pt x 422.0085pt>
+<../images/../images//methods/log_hist_calibration.pdf, id=1483, 1165.29028pt x 422.0085pt>
 File: ../images/../images//methods/log_hist_calibration.pdf Graphic file (type pdf)
 <use ../images/../images//methods/log_hist_calibration.pdf>
 Package pdftex.def Info: ../images/../images//methods/log_hist_calibration.pdf  used on input line 446.
 (pdftex.def)             Requested size: 318.67207pt x 115.40553pt.
-<../images/../images//methods/log_hist_trial.pdf, id=1410, 1160.63176pt x 441.56595pt>
+<../images/../images//methods/log_hist_trial.pdf, id=1484, 1160.63176pt x 441.56595pt>
 File: ../images/../images//methods/log_hist_trial.pdf Graphic file (type pdf)
 <use ../images/../images//methods/log_hist_trial.pdf>
 Package pdftex.def Info: ../images/../images//methods/log_hist_trial.pdf  used on input line 452.
 (pdftex.def)             Requested size: 318.67207pt x 121.23898pt.
-<../images/../images//methods/activity_filter_good_trial.pdf, id=1411, 910.602pt x 551.57692pt>
+<../images/../images//methods/activity_filter_good_trial.pdf, id=1485, 910.602pt x 551.57692pt>
 File: ../images/../images//methods/activity_filter_good_trial.pdf Graphic file (type pdf)
 <use ../images/../images//methods/activity_filter_good_trial.pdf>
 Package pdftex.def Info: ../images/../images//methods/activity_filter_good_trial.pdf  used on input line 468.
 (pdftex.def)             Requested size: 239.00557pt x 144.77007pt.
-<../images/../images//methods/trajectory_filter_good_trial.pdf, id=1412, 415.11887pt x 415.11887pt>
+<../images/../images//methods/trajectory_filter_good_trial.pdf, id=1486, 415.11887pt x 415.11887pt>
 File: ../images/../images//methods/trajectory_filter_good_trial.pdf Graphic file (type pdf)
 <use ../images/../images//methods/trajectory_filter_good_trial.pdf>
 Package pdftex.def Info: ../images/../images//methods/trajectory_filter_good_trial.pdf  used on input line 474.
 (pdftex.def)             Requested size: 159.333pt x 159.33035pt.
-<../images/../images//methods/activity_filter_long_trial.pdf, id=1413, 910.602pt x 551.57692pt>
+<../images/../images//methods/activity_filter_long_trial.pdf, id=1487, 910.602pt x 551.57692pt>
 File: ../images/../images//methods/activity_filter_long_trial.pdf Graphic file (type pdf)
 <use ../images/../images//methods/activity_filter_long_trial.pdf>
 Package pdftex.def Info: ../images/../images//methods/activity_filter_long_trial.pdf  used on input line 480.
 (pdftex.def)             Requested size: 239.00557pt x 144.77007pt.
-<../images/../images//methods/trajectory_filter_long_trial.pdf, id=1414, 415.11887pt x 415.11887pt>
+<../images/../images//methods/trajectory_filter_long_trial.pdf, id=1488, 415.11887pt x 415.11887pt>
 File: ../images/../images//methods/trajectory_filter_long_trial.pdf Graphic file (type pdf)
 <use ../images/../images//methods/trajectory_filter_long_trial.pdf>
 Package pdftex.def Info: ../images/../images//methods/trajectory_filter_long_trial.pdf  used on input line 486.
 (pdftex.def)             Requested size: 159.333pt x 159.33035pt.
- [66] [67 <../images/../images//methods/log_hist_movement.pdf> <../images/../images//methods/log_hist_calibration.pdf> <../images/../images//methods/log_hist_trial.pdf>] [68 <../images/../images//methods/activity_filter_good_trial.pdf> <../images/../images//methods/trajectory_filter_good_trial.pdf> <../images/../images//methods/activity_filter_long_trial.pdf> <../images/../images//methods/trajectory_filter_long_trial.pdf>]) (./chapters/5_Task_Performance.tex [69
-
+ [66] [67 <../images/../images//methods/log_hist_movement.pdf> <../images/../images//methods/log_hist_calibration.pdf> <../images/../images//methods/log_hist_trial.pdf>] [68 <../images/../images//methods/activity_filter_good_trial.pdf> <../images/../images//methods/trajectory_filter_good_trial.pdf> <../images/../images//methods/activity_filter_long_trial.pdf> <../images/../images//methods/trajectory_filter_long_trial.pdf>] [69
 
 ] [70
 
-]
-Chapter 4.
-[71] [72
+]) (./chapters/5_Task_Performance.tex [71
+
+] [72
 
 ]
-<../images/../images//basic_results/performance_over_blocks/hits_and_noholds.pdf, id=1861, 1147.95183pt x 1147.60371pt>
+Chapter 4.
+[73] [74
+
+]
+<../images/../images//basic_results/performance_over_blocks/hits_and_noholds.pdf, id=1947, 1147.95183pt x 1147.60371pt>
 File: ../images/../images//basic_results/performance_over_blocks/hits_and_noholds.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/performance_over_blocks/hits_and_noholds.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/performance_over_blocks/hits_and_noholds.pdf  used on input line 33.
@@ -856,96 +855,96 @@ Package pdftex.def Info: ../images/../images//basic_results/performance_over_blo
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [73] [74 <../images/../images//basic_results/performance_over_blocks/hits_and_noholds.pdf>]
-<../images/../images//basic_results/trial_reward/reward_histogram.pdf, id=1970, 505.07758pt x 495.92905pt>
+ [75] [76 <../images/../images//basic_results/performance_over_blocks/hits_and_noholds.pdf>]
+<../images/../images//basic_results/trial_reward/reward_histogram.pdf, id=2055, 505.07758pt x 495.92905pt>
 File: ../images/../images//basic_results/trial_reward/reward_histogram.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/trial_reward/reward_histogram.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/trial_reward/reward_histogram.pdf  used on input line 49.
 (pdftex.def)             Requested size: 175.66808pt x 172.48807pt.
-<../images/../images//basic_results/trial_reward/hit_fraction_histogram.pdf, id=1971, 511.60979pt x 495.92905pt>
+<../images/../images//basic_results/trial_reward/hit_fraction_histogram.pdf, id=2056, 511.60979pt x 495.92905pt>
 File: ../images/../images//basic_results/trial_reward/hit_fraction_histogram.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/trial_reward/hit_fraction_histogram.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/trial_reward/hit_fraction_histogram.pdf  used on input line 53.
 (pdftex.def)             Requested size: 175.66808pt x 170.286pt.
-<../images/../images//basic_results/performance_over_blocks/hit_fraction_vs_reward.pdf, id=1972, 821.71867pt x 921.11491pt>
+<../images/../images//basic_results/performance_over_blocks/hit_fraction_vs_reward.pdf, id=2057, 821.71867pt x 921.11491pt>
 File: ../images/../images//basic_results/performance_over_blocks/hit_fraction_vs_reward.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/performance_over_blocks/hit_fraction_vs_reward.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/performance_over_blocks/hit_fraction_vs_reward.pdf  used on input line 61.
 (pdftex.def)             Requested size: 398.33858pt x 446.52937pt.
- [75 <../images/../images//basic_results/trial_reward/reward_histogram.pdf> <../images/../images//basic_results/trial_reward/hit_fraction_histogram.pdf>]
+ [77 <../images/../images//basic_results/trial_reward/reward_histogram.pdf> <../images/../images//basic_results/trial_reward/hit_fraction_histogram.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [76 <../images/../images//basic_results/performance_over_blocks/hit_fraction_vs_reward.pdf>]
-<../images/../images//basic_results/performance_over_blocks/reach_times_over_blocks.pdf, id=2097, 1147.98257pt x 569.27997pt>
+ [78 <../images/../images//basic_results/performance_over_blocks/hit_fraction_vs_reward.pdf>]
+<../images/../images//basic_results/performance_over_blocks/reach_times_over_blocks.pdf, id=2183, 1147.98257pt x 569.27997pt>
 File: ../images/../images//basic_results/performance_over_blocks/reach_times_over_blocks.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/performance_over_blocks/reach_times_over_blocks.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/performance_over_blocks/reach_times_over_blocks.pdf  used on input line 73.
 (pdftex.def)             Requested size: 398.33858pt x 197.53104pt.
-<../images/../images//basic_results/performance_over_blocks/path_length_over_blocks.pdf, id=2098, 1147.95183pt x 569.44366pt>
+<../images/../images//basic_results/performance_over_blocks/path_length_over_blocks.pdf, id=2184, 1147.95183pt x 569.44366pt>
 File: ../images/../images//basic_results/performance_over_blocks/path_length_over_blocks.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/performance_over_blocks/path_length_over_blocks.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/performance_over_blocks/path_length_over_blocks.pdf  used on input line 80.
 (pdftex.def)             Requested size: 398.33858pt x 197.59653pt.
-<../images/../images//basic_results/performance_over_blocks/example_path_segments.pdf, id=2099, 860.01299pt x 860.01299pt>
+<../images/../images//basic_results/performance_over_blocks/example_path_segments.pdf, id=2185, 860.01299pt x 860.01299pt>
 File: ../images/../images//basic_results/performance_over_blocks/example_path_segments.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/performance_over_blocks/example_path_segments.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/performance_over_blocks/example_path_segments.pdf  used on input line 86.
 (pdftex.def)             Requested size: 278.83578pt x 278.83165pt.
-<../images/../images//basic_results/performance_over_blocks/path_segments_over_blocks.pdf, id=2100, 1147.95183pt x 569.44366pt>
+<../images/../images//basic_results/performance_over_blocks/path_segments_over_blocks.pdf, id=2186, 1147.95183pt x 569.44366pt>
 File: ../images/../images//basic_results/performance_over_blocks/path_segments_over_blocks.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/performance_over_blocks/path_segments_over_blocks.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/performance_over_blocks/path_segments_over_blocks.pdf  used on input line 92.
 (pdftex.def)             Requested size: 398.33858pt x 197.59653pt.
-<../images/../images//basic_results/performance_over_blocks/reward_v_metrics.pdf, id=2101, 1029.62598pt x 1453.34595pt>
+<../images/../images//basic_results/performance_over_blocks/reward_v_metrics.pdf, id=2187, 1029.62598pt x 1453.34595pt>
 File: ../images/../images//basic_results/performance_over_blocks/reward_v_metrics.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/performance_over_blocks/reward_v_metrics.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/performance_over_blocks/reward_v_metrics.pdf  used on input line 106.
 (pdftex.def)             Requested size: 398.33858pt x 562.2787pt.
- [77] [78 <../images/../images//basic_results/performance_over_blocks/reach_times_over_blocks.pdf> <../images/../images//basic_results/performance_over_blocks/path_length_over_blocks.pdf>] [79 <../images/../images//basic_results/performance_over_blocks/example_path_segments.pdf>] [80 <../images/../images//basic_results/performance_over_blocks/path_segments_over_blocks.pdf>] [81 <../images/../images//basic_results/performance_over_blocks/reward_v_metrics.pdf>] [82
+ [79] [80 <../images/../images//basic_results/performance_over_blocks/reach_times_over_blocks.pdf> <../images/../images//basic_results/performance_over_blocks/path_length_over_blocks.pdf>] [81 <../images/../images//basic_results/performance_over_blocks/example_path_segments.pdf>] [82 <../images/../images//basic_results/performance_over_blocks/path_segments_over_blocks.pdf>] [83 <../images/../images//basic_results/performance_over_blocks/reward_v_metrics.pdf>] [84
 
 ]
-<../images/../images//basic_results/form_response/arm_vs_reward.pdf, id=2337, 773.922pt x 455.04869pt>
+<../images/../images//basic_results/form_response/arm_vs_reward.pdf, id=2422, 773.922pt x 455.04869pt>
 File: ../images/../images//basic_results/form_response/arm_vs_reward.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/form_response/arm_vs_reward.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/form_response/arm_vs_reward.pdf  used on input line 193.
 (pdftex.def)             Requested size: 398.33858pt x 234.21729pt.
-<../images/../images//basic_results/form_response/days_vs_reward.pdf, id=2338, 773.922pt x 451.4107pt>
+<../images/../images//basic_results/form_response/days_vs_reward.pdf, id=2423, 773.922pt x 451.4107pt>
 File: ../images/../images//basic_results/form_response/days_vs_reward.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/form_response/days_vs_reward.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/form_response/days_vs_reward.pdf  used on input line 199.
 (pdftex.def)             Requested size: 398.33858pt x 232.34479pt.
-<../images/../images//basic_results/form_response/hour_of_day_vs_reward.pdf, id=2339, 773.922pt x 455.04869pt>
+<../images/../images//basic_results/form_response/hour_of_day_vs_reward.pdf, id=2424, 773.922pt x 455.04869pt>
 File: ../images/../images//basic_results/form_response/hour_of_day_vs_reward.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/form_response/hour_of_day_vs_reward.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/form_response/hour_of_day_vs_reward.pdf  used on input line 205.
 (pdftex.def)             Requested size: 398.33858pt x 234.21729pt.
-<../images/../images//basic_results/form_response/sleep_vs_reward.pdf, id=2340, 773.922pt x 455.04869pt>
+<../images/../images//basic_results/form_response/sleep_vs_reward.pdf, id=2425, 773.922pt x 455.04869pt>
 File: ../images/../images//basic_results/form_response/sleep_vs_reward.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/form_response/sleep_vs_reward.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/form_response/sleep_vs_reward.pdf  used on input line 211.
 (pdftex.def)             Requested size: 398.33858pt x 234.21729pt.
-<../images/../images//basic_results/form_response/compare_subject_groups.pdf, id=2341, 782.6283pt x 519.92548pt>
+<../images/../images//basic_results/form_response/compare_subject_groups.pdf, id=2426, 782.6283pt x 519.92548pt>
 File: ../images/../images//basic_results/form_response/compare_subject_groups.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/form_response/compare_subject_groups.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/form_response/compare_subject_groups.pdf  used on input line 217.
 (pdftex.def)             Requested size: 398.33858pt x 264.62694pt.
-<../images/../images//basic_results/form_response/male_female_arms.pdf, id=2342, 501.87813pt x 489.82813pt>
+<../images/../images//basic_results/form_response/male_female_arms.pdf, id=2427, 501.87813pt x 489.82813pt>
 File: ../images/../images//basic_results/form_response/male_female_arms.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/form_response/male_female_arms.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/form_response/male_female_arms.pdf  used on input line 223.
 (pdftex.def)             Requested size: 239.00557pt x 233.26123pt.
- [83 <../images/../images//basic_results/form_response/arm_vs_reward.pdf>] [84 <../images/../images//basic_results/form_response/days_vs_reward.pdf> <../images/../images//basic_results/form_response/hour_of_day_vs_reward.pdf>] [85 <../images/../images//basic_results/form_response/sleep_vs_reward.pdf> <../images/../images//basic_results/form_response/compare_subject_groups.pdf>] [86 <../images/../images//basic_results/form_response/male_female_arms.pdf>]
-<../images/../images//basic_results/decoder_vs_performance/hits_over_targets.pdf, id=2630, 1177.18861pt x 932.84962pt>
+ [85 <../images/../images//basic_results/form_response/arm_vs_reward.pdf>] [86 <../images/../images//basic_results/form_response/days_vs_reward.pdf> <../images/../images//basic_results/form_response/hour_of_day_vs_reward.pdf>] [87 <../images/../images//basic_results/form_response/sleep_vs_reward.pdf> <../images/../images//basic_results/form_response/compare_subject_groups.pdf>] [88 <../images/../images//basic_results/form_response/male_female_arms.pdf>]
+<../images/../images//basic_results/decoder_vs_performance/hits_over_targets.pdf, id=2716, 1177.18861pt x 932.84962pt>
 File: ../images/../images//basic_results/decoder_vs_performance/hits_over_targets.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/decoder_vs_performance/hits_over_targets.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/decoder_vs_performance/hits_over_targets.pdf  used on input line 237.
 (pdftex.def)             Requested size: 398.33858pt x 315.65585pt.
-<../images/../images//basic_results/decoder_vs_performance/target_means.pdf, id=2631, 475.57913pt x 455.22182pt>
+<../images/../images//basic_results/decoder_vs_performance/target_means.pdf, id=2717, 475.57913pt x 455.22182pt>
 File: ../images/../images//basic_results/decoder_vs_performance/target_means.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/decoder_vs_performance/target_means.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/decoder_vs_performance/target_means.pdf  used on input line 241.
 (pdftex.def)             Requested size: 195.18808pt x 186.83664pt.
-<../images/../images//basic_results/decoder_vs_performance/target_hit_pvalues.pdf, id=2632, 900.53314pt x 815.65636pt>
+<../images/../images//basic_results/decoder_vs_performance/target_hit_pvalues.pdf, id=2718, 900.53314pt x 815.65636pt>
 File: ../images/../images//basic_results/decoder_vs_performance/target_hit_pvalues.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/decoder_vs_performance/target_hit_pvalues.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/decoder_vs_performance/target_hit_pvalues.pdf  used on input line 245.
@@ -957,116 +956,114 @@ LaTeX Warning: Float too large for page by 8.58853pt on input line 249.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [87
+ [89
 
 ]
-<../images/../images//basic_results/decoder_vs_performance/decoder_normality_test.pdf, id=2639, 968.50487pt x 944.92336pt>
+<../images/../images//basic_results/decoder_vs_performance/decoder_normality_test.pdf, id=2725, 968.50487pt x 944.92336pt>
 File: ../images/../images//basic_results/decoder_vs_performance/decoder_normality_test.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/decoder_vs_performance/decoder_normality_test.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/decoder_vs_performance/decoder_normality_test.pdf  used on input line 255.
 (pdftex.def)             Requested size: 398.33858pt x 388.63223pt.
-<../images/../images//basic_results/decoder_vs_performance/decoder_cosine_vs_reward.pdf, id=2642, 788.17711pt x 451.4107pt>
+<../images/../images//basic_results/decoder_vs_performance/decoder_cosine_vs_reward.pdf, id=2728, 788.17711pt x 451.4107pt>
 File: ../images/../images//basic_results/decoder_vs_performance/decoder_cosine_vs_reward.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/decoder_vs_performance/decoder_cosine_vs_reward.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/decoder_vs_performance/decoder_cosine_vs_reward.pdf  used on input line 273.
 (pdftex.def)             Requested size: 398.33858pt x 228.14313pt.
- [88] [89 <../images/../images//basic_results/decoder_vs_performance/hits_over_targets.pdf> <../images/../images//basic_results/decoder_vs_performance/target_means.pdf> <../images/../images//basic_results/decoder_vs_performance/target_hit_pvalues.pdf>] [90 <../images/../images//basic_results/decoder_vs_performance/decoder_normality_test.pdf>] [91 <../images/../images//basic_results/decoder_vs_performance/decoder_cosine_vs_reward.pdf>]
+ [90] [91 <../images/../images//basic_results/decoder_vs_performance/hits_over_targets.pdf> <../images/../images//basic_results/decoder_vs_performance/target_means.pdf> <../images/../images//basic_results/decoder_vs_performance/target_hit_pvalues.pdf>] [92 <../images/../images//basic_results/decoder_vs_performance/decoder_normality_test.pdf>] [93 <../images/../images//basic_results/decoder_vs_performance/decoder_cosine_vs_reward.pdf>]
 Underfull \vbox (badness 6332) has occurred while \output is active []
 
- [92
+ [94
 
 ]
-<../images/../images//basic_results/mean_trajectories/mean_trajectories.pdf, id=2958, 1293.6023pt x 1293.83817pt>
+<../images/../images//basic_results/mean_trajectories/mean_trajectories.pdf, id=3044, 1293.6023pt x 1293.83817pt>
 File: ../images/../images//basic_results/mean_trajectories/mean_trajectories.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/mean_trajectories/mean_trajectories.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/mean_trajectories/mean_trajectories.pdf  used on input line 295.
 (pdftex.def)             Requested size: 398.33858pt x 398.40073pt.
-<../images/../images//basic_results/trajectory_variance/rotated_trajectories.pdf, id=2959, 1146.62509pt x 569.46376pt>
+<../images/../images//basic_results/trajectory_variance/rotated_trajectories.pdf, id=3045, 1146.62509pt x 569.46376pt>
 File: ../images/../images//basic_results/trajectory_variance/rotated_trajectories.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/trajectory_variance/rotated_trajectories.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/trajectory_variance/rotated_trajectories.pdf  used on input line 302.
 (pdftex.def)             Requested size: 398.33858pt x 197.82942pt.
-<../images/../images//basic_results/trajectory_variance/subject_example_trajectory_variance.pdf, id=2960, 1185.63448pt x 744.47324pt>
+<../images/../images//basic_results/trajectory_variance/subject_example_trajectory_variance.pdf, id=3046, 1185.63448pt x 744.47324pt>
 File: ../images/../images//basic_results/trajectory_variance/subject_example_trajectory_variance.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/trajectory_variance/subject_example_trajectory_variance.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/trajectory_variance/subject_example_trajectory_variance.pdf  used on input line 309.
 (pdftex.def)             Requested size: 660.10393pt x 414.48254pt.
-<../images/../images//basic_results/trajectory_variance/trajectory_variance_blocks.pdf, id=2961, 773.922pt x 446.89699pt>
+<../images/../images//basic_results/trajectory_variance/trajectory_variance_blocks.pdf, id=3047, 773.922pt x 446.89699pt>
 File: ../images/../images//basic_results/trajectory_variance/trajectory_variance_blocks.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/trajectory_variance/trajectory_variance_blocks.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/trajectory_variance/trajectory_variance_blocks.pdf  used on input line 317.
 (pdftex.def)             Requested size: 398.33858pt x 230.02155pt.
-<../images/../images//basic_results/trajectory_variance/trajectory_variance_pvalues.png, id=2962, 601.5273pt x 531.9072pt>
+<../images/../images//basic_results/trajectory_variance/trajectory_variance_pvalues.png, id=3048, 601.5273pt x 531.9072pt>
 File: ../images/../images//basic_results/trajectory_variance/trajectory_variance_pvalues.png Graphic file (type png)
 <use ../images/../images//basic_results/trajectory_variance/trajectory_variance_pvalues.png>
 Package pdftex.def Info: ../images/../images//basic_results/trajectory_variance/trajectory_variance_pvalues.png  used on input line 320.
 (pdftex.def)             Requested size: 278.83578pt x 246.57135pt.
- [93 <../images/../images//basic_results/mean_trajectories/mean_trajectories.pdf>] [94 <../images/../images//basic_results/trajectory_variance/rotated_trajectories.pdf>] [95 <../images/../images//basic_results/trajectory_variance/subject_example_trajectory_variance.pdf>] [96 <../images/../images//basic_results/trajectory_variance/trajectory_variance_blocks.pdf> <../images/../images//basic_results/trajectory_variance/trajectory_variance_pvalues.png>]) (./chapters/6_Data_Manifold.tex [97
+ [95 <../images/../images//basic_results/mean_trajectories/mean_trajectories.pdf>] [96 <../images/../images//basic_results/trajectory_variance/rotated_trajectories.pdf>] [97 <../images/../images//basic_results/trajectory_variance/subject_example_trajectory_variance.pdf>] [98 <../images/../images//basic_results/trajectory_variance/trajectory_variance_blocks.pdf> <../images/../images//basic_results/trajectory_variance/trajectory_variance_pvalues.png>]) (./chapters/6_Data_Manifold.tex [99
 
-
-] [98
+] [100
 
 ]
 Chapter 5.
-[99] [100
+[101] [102
 
 ]
-Underfull \vbox (badness 3000) has occurred while \output is active []
+Underfull \vbox (badness 6332) has occurred while \output is active []
 
- [101]
-<../images/../images//more_results/manifold/umap_over_blocks_22.pdf, id=3153, 1246.6575pt x 924.37784pt>
+ [103]
+<../images/../images//more_results/manifold/umap_over_blocks_22.pdf, id=3238, 1246.6575pt x 924.37784pt>
 File: ../images/../images//more_results/manifold/umap_over_blocks_22.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/manifold/umap_over_blocks_22.pdf>
 Package pdftex.def Info: ../images/../images//more_results/manifold/umap_over_blocks_22.pdf  used on input line 65.
 (pdftex.def)             Requested size: 358.50227pt x 265.82004pt.
-<../images/../images//more_results/manifold/umap_over_blocks_6.pdf, id=3154, 1246.6575pt x 924.37784pt>
+<../images/../images//more_results/manifold/umap_over_blocks_6.pdf, id=3239, 1246.6575pt x 924.37784pt>
 File: ../images/../images//more_results/manifold/umap_over_blocks_6.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/manifold/umap_over_blocks_6.pdf>
 Package pdftex.def Info: ../images/../images//more_results/manifold/umap_over_blocks_6.pdf  used on input line 69.
 (pdftex.def)             Requested size: 358.50227pt x 265.82004pt.
- [102]
 
-LaTeX Warning: Text page 103 contains only floats.
-
-[103 <../images/../images//more_results/manifold/umap_over_blocks_22.pdf> <../images/../images//more_results/manifold/umap_over_blocks_6.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [104]
+ [104] [105 <../images/../images//more_results/manifold/umap_over_blocks_22.pdf> <../images/../images//more_results/manifold/umap_over_blocks_6.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [105]
-<../images/../images//more_results/pairplot/raw_pairplot.png, id=3236, 1425.8871pt x 1419.1419pt>
+ [106]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [107]
+<../images/../images//more_results/pairplot/raw_pairplot.png, id=3321, 1425.8871pt x 1419.1419pt>
 File: ../images/../images//more_results/pairplot/raw_pairplot.png Graphic file (type png)
 <use ../images/../images//more_results/pairplot/raw_pairplot.png>
 Package pdftex.def Info: ../images/../images//more_results/pairplot/raw_pairplot.png  used on input line 94.
 (pdftex.def)             Requested size: 398.33858pt x 396.44754pt.
-<../images/../images//more_results/pairplot/log_pairplot.png, id=3237, 1419.6237pt x 1419.1419pt>
+<../images/../images//more_results/pairplot/log_pairplot.png, id=3322, 1419.6237pt x 1419.1419pt>
 File: ../images/../images//more_results/pairplot/log_pairplot.png Graphic file (type png)
 <use ../images/../images//more_results/pairplot/log_pairplot.png>
 Package pdftex.def Info: ../images/../images//more_results/pairplot/log_pairplot.png  used on input line 100.
 (pdftex.def)             Requested size: 398.33858pt x 398.20155pt.
-<../images/../images//more_results/gmms/PCA_rank_fig.pdf, id=3240, 1528.39145pt x 1512.77292pt>
+<../images/../images//more_results/gmms/PCA_rank_fig.pdf, id=3325, 1528.39145pt x 1512.77292pt>
 File: ../images/../images//more_results/gmms/PCA_rank_fig.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/PCA_rank_fig.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/PCA_rank_fig.pdf  used on input line 106.
 (pdftex.def)             Requested size: 398.33858pt x 394.25809pt.
- [106 <../images/../images//more_results/pairplot/raw_pairplot.png>] [107 <../images/../images//more_results/pairplot/log_pairplot.png>] [108 <../images/../images//more_results/gmms/PCA_rank_fig.pdf>]
+ [108 <../images/../images//more_results/pairplot/raw_pairplot.png>] [109 <../images/../images//more_results/pairplot/log_pairplot.png>] [110 <../images/../images//more_results/gmms/PCA_rank_fig.pdf>]
 Underfull \vbox (badness 6332) has occurred while \output is active []
 
- [109
+ [111
 
 ]
-<../images/../images//basic_results/pca_dimensionality/PCA_rank_over_models.pdf, id=3332, 959.53482pt x 571.90573pt>
+<../images/../images//basic_results/pca_dimensionality/PCA_rank_over_models.pdf, id=3417, 959.53482pt x 571.90573pt>
 File: ../images/../images//basic_results/pca_dimensionality/PCA_rank_over_models.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/pca_dimensionality/PCA_rank_over_models.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/PCA_rank_over_models.pdf  used on input line 141.
 (pdftex.def)             Requested size: 398.33858pt x 237.415pt.
-<../images/../images//basic_results/pca_dimensionality/pca_pvalues.png, id=3333, 566.115pt x 512.1534pt>
+<../images/../images//basic_results/pca_dimensionality/pca_pvalues.png, id=3418, 566.115pt x 512.1534pt>
 File: ../images/../images//basic_results/pca_dimensionality/pca_pvalues.png Graphic file (type png)
 <use ../images/../images//basic_results/pca_dimensionality/pca_pvalues.png>
 Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/pca_pvalues.png  used on input line 146.
 (pdftex.def)             Requested size: 239.00557pt x 216.22047pt.
-<../images/../images//basic_results/pca_dimensionality/pca_rank_vs_reward.pdf, id=3334, 1171.71246pt x 658.37595pt>
+<../images/../images//basic_results/pca_dimensionality/pca_rank_vs_reward.pdf, id=3419, 1171.71246pt x 658.37595pt>
 File: ../images/../images//basic_results/pca_dimensionality/pca_rank_vs_reward.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/pca_dimensionality/pca_rank_vs_reward.pdf>
 Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/pca_rank_vs_reward.pdf  used on input line 154.
@@ -1074,66 +1071,62 @@ Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/p
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [110]
+ [112]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [111 <../images/../images//basic_results/pca_dimensionality/PCA_rank_over_models.pdf> <../images/../images//basic_results/pca_dimensionality/pca_pvalues.png>]
+ [113 <../images/../images//basic_results/pca_dimensionality/PCA_rank_over_models.pdf> <../images/../images//basic_results/pca_dimensionality/pca_pvalues.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [112 <../images/../images//basic_results/pca_dimensionality/pca_rank_vs_reward.pdf>]
-<../images/../images//basic_results/pca_dimensionality/solla_models.pdf, id=3514, 893.94292pt x 498.83676pt>
+ [114 <../images/../images//basic_results/pca_dimensionality/pca_rank_vs_reward.pdf>]
+<../images/../images//basic_results/pca_dimensionality/solla_models.pdf, id=3598, 893.94292pt x 498.83676pt>
 File: ../images/../images//basic_results/pca_dimensionality/solla_models.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/pca_dimensionality/solla_models.pdf>
-Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/solla_models.pdf  used on input line 180.
+Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/solla_models.pdf  used on input line 182.
 (pdftex.def)             Requested size: 398.33858pt x 222.2747pt.
-<../images/../images//basic_results/pca_dimensionality/solla_models_significance.png, id=3515, 614.0541pt x 569.4876pt>
+<../images/../images//basic_results/pca_dimensionality/solla_models_significance.png, id=3599, 614.0541pt x 569.4876pt>
 File: ../images/../images//basic_results/pca_dimensionality/solla_models_significance.png Graphic file (type png)
 <use ../images/../images//basic_results/pca_dimensionality/solla_models_significance.png>
-Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/solla_models_significance.png  used on input line 185.
+Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/solla_models_significance.png  used on input line 187.
 (pdftex.def)             Requested size: 239.00557pt x 221.6561pt.
- [113]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [114 <../images/../images//basic_results/pca_dimensionality/solla_models.pdf> <../images/../images//basic_results/pca_dimensionality/solla_models_significance.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [115]
-<../images/../images//basic_results/pca_dimensionality/grassmann_models.pdf, id=3631, 893.94292pt x 498.83676pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [116 <../images/../images//basic_results/pca_dimensionality/solla_models.pdf> <../images/../images//basic_results/pca_dimensionality/solla_models_significance.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [117]
+<../images/../images//basic_results/pca_dimensionality/grassmann_models.pdf, id=3715, 893.94292pt x 498.83676pt>
 File: ../images/../images//basic_results/pca_dimensionality/grassmann_models.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/pca_dimensionality/grassmann_models.pdf>
-Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/grassmann_models.pdf  used on input line 240.
+Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/grassmann_models.pdf  used on input line 242.
 (pdftex.def)             Requested size: 398.33858pt x 222.2747pt.
-<../images/../images//basic_results/pca_dimensionality/grassmann_models_significance.png, id=3632, 614.0541pt x 569.4876pt>
+<../images/../images//basic_results/pca_dimensionality/grassmann_models_significance.png, id=3716, 614.0541pt x 569.4876pt>
 File: ../images/../images//basic_results/pca_dimensionality/grassmann_models_significance.png Graphic file (type png)
 <use ../images/../images//basic_results/pca_dimensionality/grassmann_models_significance.png>
-Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/grassmann_models_significance.png  used on input line 245.
+Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/grassmann_models_significance.png  used on input line 247.
 (pdftex.def)             Requested size: 239.00557pt x 221.6561pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [116]
+ [118]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [117 <../images/../images//basic_results/pca_dimensionality/grassmann_models.pdf> <../images/../images//basic_results/pca_dimensionality/grassmann_models_significance.png>]
-<../images/../images//basic_results/pca_dimensionality/gr_nmf.pdf, id=3736, 893.94292pt x 498.83676pt>
+ [119 <../images/../images//basic_results/pca_dimensionality/grassmann_models.pdf> <../images/../images//basic_results/pca_dimensionality/grassmann_models_significance.png>]
+<../images/../images//basic_results/pca_dimensionality/gr_nmf.pdf, id=3819, 893.94292pt x 498.83676pt>
 File: ../images/../images//basic_results/pca_dimensionality/gr_nmf.pdf Graphic file (type pdf)
 <use ../images/../images//basic_results/pca_dimensionality/gr_nmf.pdf>
-Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/gr_nmf.pdf  used on input line 259.
+Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/gr_nmf.pdf  used on input line 261.
 (pdftex.def)             Requested size: 398.33858pt x 222.2747pt.
-<../images/../images//basic_results/pca_dimensionality/gr_nmf_sig.png, id=3737, 553.3473pt x 511.6716pt>
+<../images/../images//basic_results/pca_dimensionality/gr_nmf_sig.png, id=3820, 553.3473pt x 511.6716pt>
 File: ../images/../images//basic_results/pca_dimensionality/gr_nmf_sig.png Graphic file (type png)
 <use ../images/../images//basic_results/pca_dimensionality/gr_nmf_sig.png>
-Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/gr_nmf_sig.png  used on input line 264.
+Package pdftex.def Info: ../images/../images//basic_results/pca_dimensionality/gr_nmf_sig.png  used on input line 266.
 (pdftex.def)             Requested size: 239.00557pt x 220.99823pt.
- [118]
+ [120]
 Underfull \vbox (badness 1215) has occurred while \output is active []
 
- [119 <../images/../images//basic_results/pca_dimensionality/gr_nmf.pdf> <../images/../images//basic_results/pca_dimensionality/gr_nmf_sig.png>]
-Underfull \vbox (badness 1521) has occurred while \output is active []
+ [121 <../images/../images//basic_results/pca_dimensionality/gr_nmf.pdf> <../images/../images//basic_results/pca_dimensionality/gr_nmf_sig.png>] [122]) (./chapters/7_Mixture_Modeling.tex [123
 
- [120] [121] [122
-
-]) (./chapters/7_Mixture_Modeling.tex [123
 
 ] [124
 
@@ -1152,22 +1145,22 @@ Underfull \vbox (badness 6477) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [128]
-<../images/../images//more_results/gmms/gmm_vs_pca.pdf, id=3890, 759.64932pt x 1384.42342pt>
+<../images/../images//more_results/gmms/gmm_vs_pca.pdf, id=3964, 759.64932pt x 1384.42342pt>
 File: ../images/../images//more_results/gmms/gmm_vs_pca.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/gmm_vs_pca.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/gmm_vs_pca.pdf  used on input line 63.
 (pdftex.def)             Requested size: 289.7709pt x 528.08514pt.
-<../images/../images//more_results/gmms/subject_9_movement_gmm.pdf, id=3893, 612.19217pt x 612.19217pt>
+<../images/../images//more_results/gmms/subject_9_movement_gmm.pdf, id=3967, 612.19217pt x 612.19217pt>
 File: ../images/../images//more_results/gmms/subject_9_movement_gmm.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/subject_9_movement_gmm.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/subject_9_movement_gmm.pdf  used on input line 75.
 (pdftex.def)             Requested size: 323.45454pt x 323.45143pt.
-<../images/../images//more_results/gmms/subject_9_calibration_gmm.pdf, id=3894, 612.19217pt x 612.19217pt>
+<../images/../images//more_results/gmms/subject_9_calibration_gmm.pdf, id=3968, 612.19217pt x 612.19217pt>
 File: ../images/../images//more_results/gmms/subject_9_calibration_gmm.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/subject_9_calibration_gmm.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/subject_9_calibration_gmm.pdf  used on input line 79.
 (pdftex.def)             Requested size: 323.45454pt x 323.45143pt.
-<../images/../images//more_results/gmms/subject_1_trial_gmm.pdf, id=3895, 756.55898pt x 1143.15582pt>
+<../images/../images//more_results/gmms/subject_1_trial_gmm.pdf, id=3969, 756.55898pt x 1143.15582pt>
 File: ../images/../images//more_results/gmms/subject_1_trial_gmm.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/subject_1_trial_gmm.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/subject_1_trial_gmm.pdf  used on input line 87.
@@ -1179,12 +1172,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [130 <../images/../images//more_results/gmms/gmm_vs_pca.pdf>]
-<../images/../images//more_results/gmms/subject_37_gmms.pdf, id=3986, 651.57368pt x 642.62962pt>
+<../images/../images//more_results/gmms/subject_37_gmms.pdf, id=4061, 651.57368pt x 642.62962pt>
 File: ../images/../images//more_results/gmms/subject_37_gmms.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/subject_37_gmms.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/subject_37_gmms.pdf  used on input line 117.
 (pdftex.def)             Requested size: 323.45454pt x 319.00967pt.
-<../images/../images//more_results/gmms/subject_42_gmms.pdf, id=3987, 651.57368pt x 642.62962pt>
+<../images/../images//more_results/gmms/subject_42_gmms.pdf, id=4062, 651.57368pt x 642.62962pt>
 File: ../images/../images//more_results/gmms/subject_42_gmms.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/subject_42_gmms.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/subject_42_gmms.pdf  used on input line 122.
@@ -1195,48 +1188,48 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [135
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3838) has occurred while \output is active []
 
  [136]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [137]
-<../images/../images//more_results/gmms/entropy_over_models.pdf, id=4182, 782.32841pt x 474.30667pt>
+<../images/../images//more_results/gmms/entropy_over_models.pdf, id=4255, 782.32841pt x 474.30667pt>
 File: ../images/../images//more_results/gmms/entropy_over_models.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/entropy_over_models.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/entropy_over_models.pdf  used on input line 172.
 (pdftex.def)             Requested size: 398.33858pt x 241.50238pt.
-<../images/../images//more_results/gmms/model_entropy_pvalues.png, id=4183, 586.1097pt x 512.1534pt>
+<../images/../images//more_results/gmms/model_entropy_pvalues.png, id=4256, 586.1097pt x 512.1534pt>
 File: ../images/../images//more_results/gmms/model_entropy_pvalues.png Graphic file (type png)
 <use ../images/../images//more_results/gmms/model_entropy_pvalues.png>
 Package pdftex.def Info: ../images/../images//more_results/gmms/model_entropy_pvalues.png  used on input line 177.
 (pdftex.def)             Requested size: 278.83578pt x 243.6505pt.
-<../images/../images//more_results/gmms/total_variance_over_models.pdf, id=4186, 770.72255pt x 474.30667pt>
+<../images/../images//more_results/gmms/total_variance_over_models.pdf, id=4259, 770.72255pt x 474.30667pt>
 File: ../images/../images//more_results/gmms/total_variance_over_models.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/total_variance_over_models.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/total_variance_over_models.pdf  used on input line 187.
 (pdftex.def)             Requested size: 398.33858pt x 245.13551pt.
-<../images/../images//more_results/gmms/model_total_variance_pvalues.png, id=4187, 586.1097pt x 512.1534pt>
+<../images/../images//more_results/gmms/model_total_variance_pvalues.png, id=4260, 586.1097pt x 512.1534pt>
 File: ../images/../images//more_results/gmms/model_total_variance_pvalues.png Graphic file (type png)
 <use ../images/../images//more_results/gmms/model_total_variance_pvalues.png>
 Package pdftex.def Info: ../images/../images//more_results/gmms/model_total_variance_pvalues.png  used on input line 192.
 (pdftex.def)             Requested size: 278.83578pt x 243.6505pt.
-<../images/../images//more_results/gmms/entropy_gmms.pdf, id=4190, 966.87315pt x 646.72438pt>
+<../images/../images//more_results/gmms/entropy_gmms.pdf, id=4263, 966.87315pt x 646.72438pt>
 File: ../images/../images//more_results/gmms/entropy_gmms.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/entropy_gmms.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/entropy_gmms.pdf  used on input line 200.
 (pdftex.def)             Requested size: 398.33858pt x 266.44157pt.
-<../images/../images//more_results/gmms/total_variance_gmms.pdf, id=4191, 955.26729pt x 646.72438pt>
+<../images/../images//more_results/gmms/total_variance_gmms.pdf, id=4264, 955.26729pt x 646.72438pt>
 File: ../images/../images//more_results/gmms/total_variance_gmms.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/total_variance_gmms.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/total_variance_gmms.pdf  used on input line 206.
 (pdftex.def)             Requested size: 398.33858pt x 269.67834pt.
-<../images/../images//more_results/gmms/entropy_diffs.pdf, id=4192, 845.60547pt x 495.92905pt>
+<../images/../images//more_results/gmms/entropy_diffs.pdf, id=4265, 845.60547pt x 495.92905pt>
 File: ../images/../images//more_results/gmms/entropy_diffs.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/entropy_diffs.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/entropy_diffs.pdf  used on input line 212.
 (pdftex.def)             Requested size: 398.33858pt x 233.61638pt.
-<../images/../images//more_results/gmms/total_variance_diffs.pdf, id=4193, 851.98868pt x 495.92905pt>
+<../images/../images//more_results/gmms/total_variance_diffs.pdf, id=4266, 851.98868pt x 495.92905pt>
 File: ../images/../images//more_results/gmms/total_variance_diffs.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/total_variance_diffs.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/total_variance_diffs.pdf  used on input line 218.
@@ -1247,262 +1240,276 @@ Underfull \vbox (badness 6332) has occurred while \output is active []
  [143
 
 ]
-<../images/../images//more_results/gmms/gmm_rank.pdf, id=4538, 773.922pt x 487.19365pt>
+<../images/../images//more_results/gmms/gmm_rank.pdf, id=4684, 773.922pt x 487.19365pt>
 File: ../images/../images//more_results/gmms/gmm_rank.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/gmm_rank.pdf>
-Package pdftex.def Info: ../images/../images//more_results/gmms/gmm_rank.pdf  used on input line 249.
+Package pdftex.def Info: ../images/../images//more_results/gmms/gmm_rank.pdf  used on input line 247.
 (pdftex.def)             Requested size: 398.33858pt x 250.76257pt.
-<../images/../images//more_results/gmms/gmm_rank_pvalues.png, id=4539, 586.1097pt x 512.1534pt>
+<../images/../images//more_results/gmms/gmm_rank_pvalues.png, id=4685, 586.1097pt x 512.1534pt>
 File: ../images/../images//more_results/gmms/gmm_rank_pvalues.png Graphic file (type png)
 <use ../images/../images//more_results/gmms/gmm_rank_pvalues.png>
-Package pdftex.def Info: ../images/../images//more_results/gmms/gmm_rank_pvalues.png  used on input line 254.
+Package pdftex.def Info: ../images/../images//more_results/gmms/gmm_rank_pvalues.png  used on input line 252.
 (pdftex.def)             Requested size: 278.83578pt x 243.6505pt.
-<../images/../images//more_results/gmms/rank_vs_reward.pdf, id=4540, 1165.32924pt x 658.37595pt>
+<../images/../images//more_results/gmms/rank_vs_reward.pdf, id=4686, 1165.32924pt x 658.37595pt>
 File: ../images/../images//more_results/gmms/rank_vs_reward.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/rank_vs_reward.pdf>
-Package pdftex.def Info: ../images/../images//more_results/gmms/rank_vs_reward.pdf  used on input line 262.
+Package pdftex.def Info: ../images/../images//more_results/gmms/rank_vs_reward.pdf  used on input line 260.
 (pdftex.def)             Requested size: 398.33858pt x 225.05037pt.
  [144] [145 <../images/../images//more_results/gmms/gmm_rank.pdf> <../images/../images//more_results/gmms/gmm_rank_pvalues.png>] [146 <../images/../images//more_results/gmms/rank_vs_reward.pdf>]
-Underfull \vbox (badness 7238) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [147
 
 ]
-<../images/../images//more_results/gmm_diffs/frobenius_over_tasks.pdf, id=4674, 770.72255pt x 454.31845pt>
+<../images/../images//more_results/gmm_diffs/frobenius_over_tasks.pdf, id=4856, 780.30522pt x 454.31845pt>
 File: ../images/../images//more_results/gmm_diffs/frobenius_over_tasks.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmm_diffs/frobenius_over_tasks.pdf>
-Package pdftex.def Info: ../images/../images//more_results/gmm_diffs/frobenius_over_tasks.pdf  used on input line 300.
-(pdftex.def)             Requested size: 398.33858pt x 234.80502pt.
-<../images/../images//more_results/gmm_diffs/frobenius_over_tasks_pvalues.png, id=4675, 571.6557pt x 511.6716pt>
+Package pdftex.def Info: ../images/../images//more_results/gmm_diffs/frobenius_over_tasks.pdf  used on input line 298.
+(pdftex.def)             Requested size: 398.33858pt x 231.9281pt.
+<../images/../images//more_results/gmm_diffs/frobenius_over_tasks_pvalues.png, id=4857, 571.6557pt x 511.6716pt>
 File: ../images/../images//more_results/gmm_diffs/frobenius_over_tasks_pvalues.png Graphic file (type png)
 <use ../images/../images//more_results/gmm_diffs/frobenius_over_tasks_pvalues.png>
-Package pdftex.def Info: ../images/../images//more_results/gmm_diffs/frobenius_over_tasks_pvalues.png  used on input line 305.
+Package pdftex.def Info: ../images/../images//more_results/gmm_diffs/frobenius_over_tasks_pvalues.png  used on input line 303.
 (pdftex.def)             Requested size: 278.83578pt x 249.58919pt.
-<../images/../images//more_results/gmm_diffs/mean_gmm_differences.pdf, id=4676, 781.8723pt x 451.4107pt>
+<../images/../images//more_results/gmm_diffs/mean_gmm_differences.pdf, id=4858, 781.8723pt x 451.4107pt>
 File: ../images/../images//more_results/gmm_diffs/mean_gmm_differences.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmm_diffs/mean_gmm_differences.pdf>
-Package pdftex.def Info: ../images/../images//more_results/gmm_diffs/mean_gmm_differences.pdf  used on input line 313.
+Package pdftex.def Info: ../images/../images//more_results/gmm_diffs/mean_gmm_differences.pdf  used on input line 311.
 (pdftex.def)             Requested size: 398.33858pt x 229.98221pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [148]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \vbox (3.88838pt too high) has occurred while \output is active []
 
  [149 <../images/../images//more_results/gmm_diffs/frobenius_over_tasks.pdf> <../images/../images//more_results/gmm_diffs/frobenius_over_tasks_pvalues.png>]
-Underfull \vbox (badness 1565) has occurred while \output is active []
+Underfull \vbox (badness 8038) has occurred while \output is active []
 
  [150 <../images/../images//more_results/gmm_diffs/mean_gmm_differences.pdf>]
-<../images/../images//more_results/gmm_diffs/wasserstein_over_tasks.pdf, id=4825, 770.72255pt x 454.31845pt>
+<../images/../images//more_results/gmm_diffs/wasserstein_over_tasks.pdf, id=5012, 770.72255pt x 458.12956pt>
 File: ../images/../images//more_results/gmm_diffs/wasserstein_over_tasks.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmm_diffs/wasserstein_over_tasks.pdf>
-Package pdftex.def Info: ../images/../images//more_results/gmm_diffs/wasserstein_over_tasks.pdf  used on input line 349.
-(pdftex.def)             Requested size: 398.33858pt x 234.80502pt.
-<../images/../images//more_results/gmm_diffs/wasserstein_over_tasks_pvalues.png, id=4826, 571.6557pt x 511.6716pt>
+Package pdftex.def Info: ../images/../images//more_results/gmm_diffs/wasserstein_over_tasks.pdf  used on input line 347.
+(pdftex.def)             Requested size: 398.33858pt x 236.77472pt.
+<../images/../images//more_results/gmm_diffs/wasserstein_over_tasks_pvalues.png, id=5013, 571.6557pt x 511.6716pt>
 File: ../images/../images//more_results/gmm_diffs/wasserstein_over_tasks_pvalues.png Graphic file (type png)
 <use ../images/../images//more_results/gmm_diffs/wasserstein_over_tasks_pvalues.png>
-Package pdftex.def Info: ../images/../images//more_results/gmm_diffs/wasserstein_over_tasks_pvalues.png  used on input line 354.
+Package pdftex.def Info: ../images/../images//more_results/gmm_diffs/wasserstein_over_tasks_pvalues.png  used on input line 352.
 (pdftex.def)             Requested size: 278.83578pt x 249.58919pt.
-<../images/../images//more_results/gmm_diffs/mean_gmm_wasserstein.pdf, id=4827, 781.8723pt x 451.4107pt>
+<../images/../images//more_results/gmm_diffs/mean_gmm_wasserstein.pdf, id=5014, 781.8723pt x 451.4107pt>
 File: ../images/../images//more_results/gmm_diffs/mean_gmm_wasserstein.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmm_diffs/mean_gmm_wasserstein.pdf>
-Package pdftex.def Info: ../images/../images//more_results/gmm_diffs/mean_gmm_wasserstein.pdf  used on input line 361.
+Package pdftex.def Info: ../images/../images//more_results/gmm_diffs/mean_gmm_wasserstein.pdf  used on input line 359.
 (pdftex.def)             Requested size: 398.33858pt x 229.98221pt.
- [151] [152 <../images/../images//more_results/gmm_diffs/wasserstein_over_tasks.pdf> <../images/../images//more_results/gmm_diffs/wasserstein_over_tasks_pvalues.png>] [153 <../images/../images//more_results/gmm_diffs/mean_gmm_wasserstein.pdf>] [154
-
-] [155] [156
-
-]) (./chapters/8_Null_Space.tex [157
-
-] [158
+ [151] [152 <../images/../images//more_results/gmm_diffs/wasserstein_over_tasks.pdf> <../images/../images//more_results/gmm_diffs/wasserstein_over_tasks_pvalues.png>] [153 <../images/../images//more_results/gmm_diffs/mean_gmm_wasserstein.pdf>]) (./chapters/8_Null_Space.tex [154
 
 ]
 Chapter 7.
-[159] [160
+[155
+
+] [156
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [161]
+ [157]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [162]
-<../images/../images//more_results/gmms/nullspace_ratios_models.pdf, id=5023, 764.33932pt x 494.12709pt>
+ [158]
+<../images/../images//more_results/gmms/nullspace_ratios_models.pdf, id=5192, 764.33932pt x 494.12709pt>
 File: ../images/../images//more_results/gmms/nullspace_ratios_models.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/nullspace_ratios_models.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/nullspace_ratios_models.pdf  used on input line 64.
 (pdftex.def)             Requested size: 398.33858pt x 257.52058pt.
-<../images/../images//more_results/gmms/nullspace_pvalues_models.png, id=5024, 581.5326pt x 512.1534pt>
+<../images/../images//more_results/gmms/nullspace_pvalues_models.png, id=5193, 581.5326pt x 512.1534pt>
 File: ../images/../images//more_results/gmms/nullspace_pvalues_models.png Graphic file (type png)
 <use ../images/../images//more_results/gmms/nullspace_pvalues_models.png>
 Package pdftex.def Info: ../images/../images//more_results/gmms/nullspace_pvalues_models.png  used on input line 68.
 (pdftex.def)             Requested size: 278.83578pt x 245.58076pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [163]
-<../images/../images//more_results/gmms/null_task_magnitude_gmm.pdf, id=5030, 829.23804pt x 494.12709pt>
+<../images/../images//more_results/gmms/null_task_magnitude_gmm.pdf, id=5194, 829.23804pt x 494.12709pt>
 File: ../images/../images//more_results/gmms/null_task_magnitude_gmm.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/gmms/null_task_magnitude_gmm.pdf>
 Package pdftex.def Info: ../images/../images//more_results/gmms/null_task_magnitude_gmm.pdf  used on input line 77.
 (pdftex.def)             Requested size: 398.33858pt x 237.36679pt.
-<../images/../images//more_results/gmms/nullspace_pvalues_models_task_significance.png, id=5031, 510.708pt x 512.3943pt>
+<../images/../images//more_results/gmms/nullspace_pvalues_models_task_significance.png, id=5195, 510.708pt x 512.3943pt>
 File: ../images/../images//more_results/gmms/nullspace_pvalues_models_task_significance.png Graphic file (type png)
 <use ../images/../images//more_results/gmms/nullspace_pvalues_models_task_significance.png>
 Package pdftex.def Info: ../images/../images//more_results/gmms/nullspace_pvalues_models_task_significance.png  used on input line 82.
 (pdftex.def)             Requested size: 175.26994pt x 175.84583pt.
-<../images/../images//more_results/gmms/nullspace_pvalues_models_null_significance.png, id=5032, 581.5326pt x 512.1534pt>
+<../images/../images//more_results/gmms/nullspace_pvalues_models_null_significance.png, id=5196, 581.5326pt x 512.1534pt>
 File: ../images/../images//more_results/gmms/nullspace_pvalues_models_null_significance.png Graphic file (type png)
 <use ../images/../images//more_results/gmms/nullspace_pvalues_models_null_significance.png>
 Package pdftex.def Info: ../images/../images//more_results/gmms/nullspace_pvalues_models_null_significance.png  used on input line 88.
 (pdftex.def)             Requested size: 195.18808pt x 171.90262pt.
+ [159] [160 <../images/../images//more_results/gmms/nullspace_ratios_models.pdf> <../images/../images//more_results/gmms/nullspace_pvalues_models.png>] [161 <../images/../images//more_results/gmms/null_task_magnitude_gmm.pdf> <../images/../images//more_results/gmms/nullspace_pvalues_models_task_significance.png> <../images/../images//more_results/gmms/nullspace_pvalues_models_null_significance.png>] [162
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [164 <../images/../images//more_results/gmms/nullspace_ratios_models.pdf> <../images/../images//more_results/gmms/nullspace_pvalues_models.png>] [165 <../images/../images//more_results/gmms/null_task_magnitude_gmm.pdf> <../images/../images//more_results/gmms/nullspace_pvalues_models_task_significance.png> <../images/../images//more_results/gmms/nullspace_pvalues_models_null_significance.png>]
-<../images/../images//more_results/nullspace/example_samples.pdf, id=5276, 1160.63176pt x 1164.26595pt>
+]
+<../images/../images//more_results/nullspace/example_samples.pdf, id=5448, 1160.63176pt x 1164.26595pt>
 File: ../images/../images//more_results/nullspace/example_samples.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/nullspace/example_samples.pdf>
 Package pdftex.def Info: ../images/../images//more_results/nullspace/example_samples.pdf  used on input line 119.
 (pdftex.def)             Requested size: 398.33858pt x 399.57588pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [166]
-<../images/../images//more_results/nullspace/sample_ratio.pdf, id=5281, 770.72255pt x 477.1882pt>
+<../images/../images//more_results/nullspace/sample_ratio.pdf, id=5449, 770.72255pt x 477.1882pt>
 File: ../images/../images//more_results/nullspace/sample_ratio.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/nullspace/sample_ratio.pdf>
 Package pdftex.def Info: ../images/../images//more_results/nullspace/sample_ratio.pdf  used on input line 126.
 (pdftex.def)             Requested size: 398.33858pt x 246.62477pt.
-<../images/../images//more_results/nullspace/sample_ratio_significance.png, id=5282, 601.0455pt x 531.6663pt>
+<../images/../images//more_results/nullspace/sample_ratio_significance.png, id=5450, 601.0455pt x 531.6663pt>
 File: ../images/../images//more_results/nullspace/sample_ratio_significance.png Graphic file (type png)
 <use ../images/../images//more_results/nullspace/sample_ratio_significance.png>
 Package pdftex.def Info: ../images/../images//more_results/nullspace/sample_ratio_significance.png  used on input line 131.
 (pdftex.def)             Requested size: 278.83578pt x 246.65439pt.
+ [163 <../images/../images//more_results/nullspace/example_samples.pdf>]
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: Text page 164 contains only floats.
 
- [167 <../images/../images//more_results/nullspace/example_samples.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [168 <../images/../images//more_results/nullspace/sample_ratio.pdf> <../images/../images//more_results/nullspace/sample_ratio_significance.png>]
-<../images/../images//more_results/nullspace/hit_miss_task_null_ratio.pdf, id=5423, 1149.09305pt x 860.01299pt>
+[164 <../images/../images//more_results/nullspace/sample_ratio.pdf> <../images/../images//more_results/nullspace/sample_ratio_significance.png>]
+<../images/../images//more_results/nullspace/hit_miss_task_null_ratio.pdf, id=5593, 1149.09305pt x 860.01299pt>
 File: ../images/../images//more_results/nullspace/hit_miss_task_null_ratio.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/nullspace/hit_miss_task_null_ratio.pdf>
 Package pdftex.def Info: ../images/../images//more_results/nullspace/hit_miss_task_null_ratio.pdf  used on input line 152.
 (pdftex.def)             Requested size: 398.33858pt x 298.12206pt.
-
+ [165]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [169] [170 <../images/../images//more_results/nullspace/hit_miss_task_null_ratio.pdf>] [171]
-<../images/../images//more_results/nullspace/example_computed_solutions.pdf, id=5495, 1798.41956pt x 1798.52052pt>
+ [166 <../images/../images//more_results/nullspace/hit_miss_task_null_ratio.pdf>] [167]
+<../images/../images//more_results/nullspace/example_computed_solutions.pdf, id=5664, 1798.41956pt x 1798.52052pt>
 File: ../images/../images//more_results/nullspace/example_computed_solutions.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/nullspace/example_computed_solutions.pdf>
 Package pdftex.def Info: ../images/../images//more_results/nullspace/example_computed_solutions.pdf  used on input line 196.
 (pdftex.def)             Requested size: 398.33858pt x 398.33774pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [172]
-<../images/../images//more_results/nullspace/example_cost_functions.pdf, id=5500, 1158.63211pt x 577.2585pt>
+<../images/../images//more_results/nullspace/example_cost_functions.pdf, id=5665, 1158.63211pt x 577.2585pt>
 File: ../images/../images//more_results/nullspace/example_cost_functions.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/nullspace/example_cost_functions.pdf>
 Package pdftex.def Info: ../images/../images//more_results/nullspace/example_cost_functions.pdf  used on input line 202.
 (pdftex.def)             Requested size: 398.33858pt x 198.45854pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [173 <../images/../images//more_results/nullspace/example_computed_solutions.pdf>]
-<../images/../images//more_results/nullspace/cosine_distance_solutions.pdf, id=5552, 785.28864pt x 570.00821pt>
+<../images/../images//more_results/nullspace/cosine_distance_solutions.pdf, id=5666, 785.28864pt x 570.00821pt>
 File: ../images/../images//more_results/nullspace/cosine_distance_solutions.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/nullspace/cosine_distance_solutions.pdf>
 Package pdftex.def Info: ../images/../images//more_results/nullspace/cosine_distance_solutions.pdf  used on input line 208.
 (pdftex.def)             Requested size: 398.33858pt x 289.13477pt.
-<../images/../images//more_results/nullspace/optimization_pvalues.png, id=5553, 1228.8309pt x 1114.8852pt>
+<../images/../images//more_results/nullspace/optimization_pvalues.png, id=5667, 1228.8309pt x 1114.8852pt>
 File: ../images/../images//more_results/nullspace/optimization_pvalues.png Graphic file (type png)
 <use ../images/../images//more_results/nullspace/optimization_pvalues.png>
 Package pdftex.def Info: ../images/../images//more_results/nullspace/optimization_pvalues.png  used on input line 214.
 (pdftex.def)             Requested size: 398.33858pt x 361.39775pt.
+ [168] [169 <../images/../images//more_results/nullspace/example_computed_solutions.pdf>] [170 <../images/../images//more_results/nullspace/example_cost_functions.pdf> <../images/../images//more_results/nullspace/cosine_distance_solutions.pdf>] [171 <../images/../images//more_results/nullspace/optimization_pvalues.png>]
+Underfull \vbox (badness 6332) has occurred while \output is active []
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ [172
 
- [174 <../images/../images//more_results/nullspace/example_cost_functions.pdf> <../images/../images//more_results/nullspace/cosine_distance_solutions.pdf>] [175 <../images/../images//more_results/nullspace/optimization_pvalues.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [176]
-<../images/../images//more_results/nullspace/regression_scores.pdf, id=5656, 786.67148pt x 451.4107pt>
+]
+<../images/../images//more_results/nullspace/regression_scores.pdf, id=5824, 786.67148pt x 451.4107pt>
 File: ../images/../images//more_results/nullspace/regression_scores.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/nullspace/regression_scores.pdf>
 Package pdftex.def Info: ../images/../images//more_results/nullspace/regression_scores.pdf  used on input line 250.
 (pdftex.def)             Requested size: 398.33858pt x 228.57707pt.
-<../images/../images//more_results/nullspace/classification_scores.pdf, id=5657, 779.77069pt x 451.4107pt>
+<../images/../images//more_results/nullspace/classification_scores.pdf, id=5825, 779.77069pt x 451.4107pt>
 File: ../images/../images//more_results/nullspace/classification_scores.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/nullspace/classification_scores.pdf>
 Package pdftex.def Info: ../images/../images//more_results/nullspace/classification_scores.pdf  used on input line 256.
 (pdftex.def)             Requested size: 398.33858pt x 230.60213pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [177 <../images/../images//more_results/nullspace/regression_scores.pdf>]
-<../images/../images//more_results/nullspace/pca_2d_reconstructions.pdf, id=5716, 1674.92816pt x 533.58159pt>
+<../images/../images//more_results/nullspace/pca_2d_reconstructions.pdf, id=5826, 1674.92816pt x 533.58159pt>
 File: ../images/../images//more_results/nullspace/pca_2d_reconstructions.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/nullspace/pca_2d_reconstructions.pdf>
 Package pdftex.def Info: ../images/../images//more_results/nullspace/pca_2d_reconstructions.pdf  used on input line 262.
 (pdftex.def)             Requested size: 398.33858pt x 126.89792pt.
-<../images/../images//more_results/nullspace/pca_scores.pdf, id=5717, 773.922pt x 451.4107pt>
+<../images/../images//more_results/nullspace/pca_scores.pdf, id=5827, 773.922pt x 451.4107pt>
 File: ../images/../images//more_results/nullspace/pca_scores.pdf Graphic file (type pdf)
 <use ../images/../images//more_results/nullspace/pca_scores.pdf>
 Package pdftex.def Info: ../images/../images//more_results/nullspace/pca_scores.pdf  used on input line 268.
 (pdftex.def)             Requested size: 398.33858pt x 232.34479pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [178 <../images/../images//more_results/nullspace/classification_scores.pdf> <../images/../images//more_results/nullspace/pca_2d_reconstructions.pdf>] [179 <../images/../images//more_results/nullspace/pca_scores.pdf>] [180]) (./chapters/10_Next_Steps.tex [181
-
-
-] [182
+ [173] [174 <../images/../images//more_results/nullspace/regression_scores.pdf> <../images/../images//more_results/nullspace/classification_scores.pdf>] [175 <../images/../images//more_results/nullspace/pca_2d_reconstructions.pdf> <../images/../images//more_results/nullspace/pca_scores.pdf>]) (./chapters/9_Reinforcement_Learning.tex [176
 
 ]
 Chapter 8.
-[183] [184
+[177
+
+] [178
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [179]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [180]
+<../images/../images//modeling/example_fit.pdf, id=6156, 747.02525pt x 611.03593pt>
+File: ../images/../images//modeling/example_fit.pdf Graphic file (type pdf)
+<use ../images/../images//modeling/example_fit.pdf>
+Package pdftex.def Info: ../images/../images//modeling/example_fit.pdf  used on input line 57.
+(pdftex.def)             Requested size: 358.50227pt x 293.2473pt.
+<../images/../images//modeling/subject_means.pdf, id=6157, 739.0423pt x 611.03593pt>
+File: ../images/../images//modeling/subject_means.pdf Graphic file (type pdf)
+<use ../images/../images//modeling/subject_means.pdf>
+Package pdftex.def Info: ../images/../images//modeling/subject_means.pdf  used on input line 63.
+(pdftex.def)             Requested size: 358.50227pt x 296.408pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [181]
+<../images/../images//modeling/subject_means_diverge.pdf, id=6164, 739.0423pt x 611.03593pt>
+File: ../images/../images//modeling/subject_means_diverge.pdf Graphic file (type pdf)
+<use ../images/../images//modeling/subject_means_diverge.pdf>
+Package pdftex.def Info: ../images/../images//modeling/subject_means_diverge.pdf  used on input line 71.
+(pdftex.def)             Requested size: 358.50227pt x 296.408pt.
+ [182 <../images/../images//modeling/example_fit.pdf>] [183 <../images/../images//modeling/subject_means.pdf>] [184 <../images/../images//modeling/subject_means_diverge.pdf>]
+Underfull \vbox (badness 6332) has occurred while \output is active []
+
+ [185
+
+]
+<../images/../images//modeling/fit_models.pdf, id=6312, 1088.36177pt x 658.37595pt>
+File: ../images/../images//modeling/fit_models.pdf Graphic file (type pdf)
+<use ../images/../images//modeling/fit_models.pdf>
+Package pdftex.def Info: ../images/../images//modeling/fit_models.pdf  used on input line 90.
+(pdftex.def)             Requested size: 398.33858pt x 240.96323pt.
+<../images/../images//modeling/diverged_models.pdf, id=6313, 1094.74498pt x 658.37595pt>
+File: ../images/../images//modeling/diverged_models.pdf Graphic file (type pdf)
+<use ../images/../images//modeling/diverged_models.pdf>
+Package pdftex.def Info: ../images/../images//modeling/diverged_models.pdf  used on input line 94.
+(pdftex.def)             Requested size: 398.33858pt x 239.5568pt.
+ [186]
+
+LaTeX Warning: Text page 187 contains only floats.
+
+[187 <../images/../images//modeling/fit_models.pdf> <../images/../images//modeling/diverged_models.pdf>]) (./chapters/10_Next_Steps.tex [188]
+Chapter 9.
+[189
+
+] [190
 
 ]
 Underfull \vbox (badness 6332) has occurred while \output is active []
 
- [185]
+ [191]
 Underfull \vbox (badness 1552) has occurred while \output is active []
 
- [186] [187] [188] [189] [190] [191] [192]) (./main.bbl (./main.brf)
+ [192] [193] [194] [195] [196] [197]) (./main.bbl (./main.brf)
 \tf@brf=\write6
 \openout6 = `main.brf'.
 
- [193
+ [198] [199
 
-
-] [194
-
-] [195] [196] [197] [198] [199] [200] [201]) [202] (./main.aux (./preamble.aux))
-
-LaTeX Warning: There were undefined references.
-
+] [200] [201] [202] [203] [204] [205] [206]) [207] (./main.aux (./preamble.aux))
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 4CC8BA845C5CDF6222CD3E1163F6C21D;9729.
+(rerunfilecheck)             Checksum: 070C2FF4B7D3BF5B8DDB40B219532058;10313.
 Package rerunfilecheck Info: File `main.brf' has not changed.
-(rerunfilecheck)             Checksum: 51915904D2BF85C26DE4A2EB63FCD5A0;6119.
+(rerunfilecheck)             Checksum: 3E0A754BB2CCA0B58DFAB108B73D3AF9;6351.
  ) 
 Here is how much of TeX's memory you used:
- 21628 strings out of 476025
- 479619 string characters out of 5790017
+ 21733 strings out of 476025
+ 483074 string characters out of 5790017
  1863388 words of memory out of 5000000
- 41097 multiletter control sequences out of 15000+600000
- 563200 words of font info for 133 fonts, out of 8000000 for 9000
+ 41168 multiletter control sequences out of 15000+600000
+ 562515 words of font info for 134 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,14n,90p,2841b,1118s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/stix/STIXGeneral-Italic.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/stix/STIXGeneral-Regular.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (202 pages, 107989274 bytes).
+ 90i,14n,90p,2025b,1120s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/stix/STIXGeneral-Italic.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/stix/STIXGeneral-Regular.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (207 pages, 108391712 bytes).
 PDF statistics:
- 6369 PDF objects out of 7423 (max. 8388607)
- 2410 compressed objects within 25 object streams
- 519 named destinations out of 1000 (max. 500000)
- 998 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6813 PDF objects out of 7423 (max. 8388607)
+ 2570 compressed objects within 26 object streams
+ 545 named destinations out of 1000 (max. 500000)
+ 1063 words of extra memory for PDF output out of 10000 (max. 10000000)
 
