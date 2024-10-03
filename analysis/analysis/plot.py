@@ -124,7 +124,7 @@ def save_figure(fig, name, folder=".",format="pdf"):
         savepath,
         pad_inches=0.1,
         bbox_inches="tight",
-        dpi=300,
+        dpi=500,
         format=format,
         transparent=False,
     )

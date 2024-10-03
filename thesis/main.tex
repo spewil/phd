@@ -11,21 +11,53 @@
 \usepackage{bm}
 \usepackage{setspace}
 \usepackage[dvipsnames,table]{xcolor}
-\definecolor{purple}{rgb}{0.44, 0.16, 0.39}
+\definecolor{blue}{RGB}{57, 57, 172}
 \usepackage{lipsum}
-\usepackage[superscript,biblabel]{cite}
-\usepackage[colorlinks,pagebackref=true]{hyperref}\hypersetup{citecolor=purple,linkcolor=purple}
-% have to load cleverref after hyperref
-\usepackage[capitalize]{cleveref}
-\usepackage{enotez}
-\setenotez{backref=true}
-\let\footnote=\endnote%
 \usepackage{siunitx}
 \usepackage{mathtools}
 \usepackage[section]{placeins} % https://tex.stackexchange.com/questions/32598/force-latex-image-to-appear-in-the-section-in-which-its-declared
 \usepackage{rotating}
-\bibliographystyle{bib/naturemag}
+
+% https://tex.stackexchange.com/questions/12806/guidelines-for-customizing-biblatex-styles
+\usepackage[style=nature,backref=true,giveninits=true,isbn=false,url=false]{biblatex}
+% https://tex.stackexchange.com/questions/400384/how-to-disable-biblatex-showing-visited-on-on-the-references
+\AtEveryBibitem{
+    \clearfield{month}
+    \clearfield{day}
+    \clearfield{urldate}
+}
+\addbibresource{bib/bibliography.bib}
+% \bibliographystyle{bib/naturemag}
+% \usepackage[superscript,biblabel]{cite}
+\DefineBibliographyStrings{english}{
+  %  backrefpage={see p.},
+  backrefpage={},
+  %  backrefpages={see pp.}
+  backrefpages={}
+}
+\renewcommand*{\finentrypunct}{}
+\usepackage{xpatch}
+%\DeclareFieldFormat{backrefparens}{\mkbibparens{#1\addperiod}}
+\DeclareFieldFormat{backrefparens}{\addperiod\raisebox{4pt}{\scriptsize{#1}}}
+\xpatchbibmacro{pageref}{parens}{backrefparens}{}{}
+\let\cite\supercite
+
+\usepackage{enotez}
+\setenotez{backref=true}
+\let\footnote=\endnote%
+
 \usepackage{subfiles} % Best loaded last in the preamble
+\usepackage{xcolor}
+\usepackage{soul}
+
+\newcommand{\highlight}[2][yellow]{{%
+    \colorlet{foo}{#1}%
+    \sethlcolor{foo}\hl{#2}}%
+}
+
+\usepackage[colorlinks]{hyperref}\hypersetup{citecolor=blue,linkcolor=blue}
+% have to load cleverref after hyperref
+\usepackage[capitalize]{cleveref}
 
 \begin{document}
 
@@ -42,6 +74,6 @@
 \subfile{chapters/9_Reinforcement_Learning.tex}
 \subfile{chapters/10_Next_Steps}
 
-\bibliography{bib/bibliography.bib}
+\printbibliography
 
 \end{document}

@@ -3,6 +3,12 @@
 use `latexmk -pdf; latexmk -c` in main folder
 use `latexmk -pdf SECTION.tex; latexmk -c` in sections folder
 
+# compiling a chapter
+
+(from `\thesis`)
+
+`cd chapters; latexmk -pdf 7_Mixture_Modeling.tex; latexmk -c; cd ..; open chapters/7_Mixture_Modeling.pdf`
+
 NB: you have call section compilation command separately to regenerate these pdfs
 
 ## TODOs maybe 

@@ -6,24 +6,19 @@
 
 \bigskip
 \begin{quote}
-  \emph{Movement is nothing but the quality of our being.}
+  \raggedleft{\emph{Movement is nothing but the quality of our being.}}
   
   \raggedleft{--- Sunryu Suzuki, \emph{Zen Mind, Beginner's Mind} (1970)}
 \end{quote}
 
 \bigskip
 \begin{quote}
-  \emph{What I cannot create, I do not understand.}
+  \raggedleft{\emph{What I cannot create, I do not understand.}}
   
   \raggedleft{--- Richard Feynman's final blackboard (1988)}
 \end{quote}
 
 \cleardoublepage%
-
-
-
-
-
 
 
 
@@ -48,9 +43,9 @@ In 1939, a Bell Labs researcher named Homer Dudley engineered a demonstration de
   \caption[The Voder at the 1939 World's Fair]{The Voder project was a groundbreaking synthesis device to electronically produce human-like speech. The operator used 14 keys, a wrist bar, and a foot pedal in real time to manipulate electronic circuitry which generated speech-sound waveforms: vowels, consonants, and inflections. To use the device expertly required months of training. (a) Schematic of the Voder from the original paper. (b) Photo of an operator using the switchboard of the device.}\label{fig:voder}
 \end{figure}
 %
-While Dudley's work served as an engineering investigation to reproduce speech sounds mechanically in line with Bell Telephone's goals of transmitting such sounds along their wires, he effectively invented a speech prosthetic controlled by the muscles of the body rather than the muscles of the tongue and larynx\endnote{For the armchair historians, see Wolfgang von Kempelen's (inventor of the ``mechanical Turk'' chess-playing automaton) ``speaking machine'' from 1780 as an earlier example of such experiments. Note that Von Kempelen spent twenty-odd years developing his speaking machine, whereas this thesis required a mere six!}. By reconfiguring the inputs from the muscles usually used for speech production to the many muscles controlling the hand, arm, and feet of operator of the the Voder device, Dudley created an experimental environment for the operator, now a subject, to solve a redundant motor task. To achieve success in their task, the operator had to develop ``considerable skill'', as Dudley pointed out. It is known anecdotally that there were only a few Voder operators, and they each trained for months to produce intelligible answers to unrehearsed questions using the device.
+While Dudley's work served as an engineering investigation to reproduce speech sounds mechanically, in line with Bell Telephone's goals of transmitting such sounds along their wires, he effectively invented a speech prosthetic controlled by the muscles of the body rather than the muscles of the tongue and larynx\endnote{For the armchair historians, see Wolfgang von Kempelen's (inventor of the ``mechanical Turk'' chess-playing automaton) ``speaking machine'' from 1780 as an earlier example of such experiments. Note that Von Kempelen spent twenty-odd years developing his speaking machine, whereas this thesis required a mere six!}. By reconfiguring the inputs from the muscles usually used for speech production to the many muscles controlling the hand, arm, and feet of operator of the the Voder device, Dudley created an experimental environment for the operator, now a subject, to solve a redundant motor task. To achieve success in their task, the operator had to develop ``considerable skill'', as Dudley pointed out. It is known anecdotally that there were only a few Voder operators, and they each trained for months to produce intelligible answers to unrehearsed questions using the device.
 
-The experimental environment that Dudley created in 1939 is in exactly the same spirit as what we attempted to achieve with this work. The principle aim of this thesis is \textit{to construct an experimental platform on which a suite of motor skill learning experiments can be devised and recorded.} By developing and sharing this platform, we hope to advance our understanding of trial-to-trial motor skill learning through the combination of theory and experiment, beginning a process of data generation to yield insights into how human beings are able to solve complex motor tasks.
+Dudley created his experimental environment in 1939 with the same spirit we have brought to the work described herein. The principle aim of this thesis is \textit{to construct an experimental platform on which a suite of motor skill learning experiments can be devised and recorded.} By developing and sharing this platform, we hope to advance our understanding of trial-to-trial motor skill learning through the combination of theory and experiment, beginning a process of data generation to yield insights into human beings' abilities to solve new, challenging, complex motor tasks.
 
 % Variety in experiments -- not just repeated movements
 % In a talk by Emo Todorov, the renowned motor control theorist nots that we know how to design and interpret experiments that involve many repetitions of the same movement however there is limited role for online optimization in that context. instead \textbf{we need experiments where subjects are required to come up with new movements all the time. how can we get experimenters to do such experiments? show cool movies of robots doing cool things,and hopefully get the experimenters excited.} (todorov online optimization slides) The long term goal of the research direction suggested here is to develop tasks which ask subjects to produce a variety of movements in response to a variety of goals and perturbations. This will allow us to study the computations that underpin the remarkable human ability to solve the motor problems they constantly face. This stands in contrast to studies with many repetitions of the same movements. That said, we wish to validate our experimental setup on classical tasks as a stepping stone to tasks with greater variety.
@@ -70,13 +65,11 @@ The experimental environment that Dudley created in 1939 is in exactly the same 
 
 \section{The Movement Paradox}
 
-Humans have sought to understand the nature of intelligence, that elusive quality that allows us to perceive, reason, and act upon the world around us, from our introspective beginnings. For all our intellectual ambitions, we have yet to replicate one of the most fundamental aspects of intelligence: the ability to move with dexterity. Robotic motion excels at repetitive tasks in controlled environments, but tends to falter when faced with the ever-changing complexities of the real world. 
+Humans have sought to understand the nature of intelligence, that elusive quality that allows us to perceive, reason, and act upon the world around us, from our introspective beginnings. Despite our intellectual ambitions, we have yet to replicate one of the most fundamental aspects of intelligence: the ability to move with dexterity. Robotic motion excels at repetitive tasks in controlled environments, but has yet to deal naturalistically with the ever-changing complexities of the real world. 
 
 Hans Moravec's eponymous paradox states that it is easier to generate artificially intelligent performance on tasks we think of as intellectually challenging, such as chess, than to provide a machine with faculties we take for granted, such as movement. Moravec's Paradox, for example, encourages us not to look past the complex computations generated by the human motor system. Following Moravec, this work focuses on what is arguably the most advanced control apparatus in the known universe: the human hand. 
 
-The human hand is the pinnacle of evolutionary advancement, a marvel of evolutionary engineering. Muscles, tendons, and bones work in elegant harmony, governed by a neural processor which seamlessly integrates perception, cognition, and action. By working to disentangle the algorithms employed by the human brain to acquire and refine motor skills, we hope to inspire novel machine learning architectures that replicate and surpass our own capabilities.
-
-A recent review presented a compelling call to action to pursue research programs along exactly these lines:
+The human hand is the pinnacle of evolutionary advancement, a marvel of evolutionary engineering. Muscles, tendons, and bones work in elegant harmony, governed by a neural processor which seamlessly integrates perception, cognition, and action. By working to disentangle the algorithms employed by the human brain to acquire and refine motor skills, we hope to inspire novel machine learning architectures that replicate and surpass our own capabilities. A recent review presented a compelling call to action to pursue research programs along exactly these lines:
 %
 \begin{quote}
   \textit{The processes by which biological control solutions spanning large and continuous state spaces are constructed remain relatively unexplored. Future investigations may need to embed rich dynamical interactions between object dynamics and task goals in novel and complex movements\cite{McNamee2019}.}
